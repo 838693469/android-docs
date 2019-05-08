@@ -1,0 +1,218 @@
+commit 1a05793e2505d892f5ccbbd55974ea18e1488101
+Author: n010529 <hongwei.di@archermind.com>
+Date:   Thu Feb 21 10:46:19 2019 +0800
+
+    Bug Id:1285874: 	[AMT][LED][P-AOSP][WW]有未接来电时LED灯无反应
+    PRODUCT_NAME:ZC520KL AOSP Pie
+    Module:leds
+    ROOT_CAUSE:dtsi node解析fail
+    Solution:add dtsi node parse code
+    Test: as title
+    
+    Change-Id: Idea078199d973f14f0718f659608a81b2d9a3270
+    Signed-off-by: n010529 <hongwei.di@archermind.com>
+
+diff --git a/drivers/leds/leds-qpnp.c b/drivers/leds/leds-qpnp.c
+index 5bbb753..d5442c3 100644
+--- a/drivers/leds/leds-qpnp.c
++++ b/drivers/leds/leds-qpnp.c
+@@ -364,6 +364,11 @@ struct pwm_config_data {
+ 	bool	pwm_enabled;
+ 	bool use_blink;
+ 	bool blinking;
++	/*add by chenhuazhen for pwm blink start*/ 
++	bool pwm_use_blink;
++	unsigned long  pwm_blink_onms;
++	unsigned long  pwm_blink_offms;
++	/*add by chenhuazhen for pwm blink end*/ 
+ };
+ 
+ /**
+@@ -904,23 +909,44 @@ static int qpnp_mpp_set(struct qpnp_led_data *led)
+ 			}
+ 		}
+ 		if (led->mpp_cfg->pwm_mode == PWM_MODE) {
+-			/*config pwm for brightness scaling*/
+-			period_us = led->mpp_cfg->pwm_cfg->pwm_period_us;
+-			if (period_us > INT_MAX / NSEC_PER_USEC) {
+-				duty_us = (period_us * led->cdev.brightness) /
+-					LED_FULL;
+-				rc = pwm_config_us(
+-					led->mpp_cfg->pwm_cfg->pwm_dev,
+-					duty_us,
+-					period_us);
++			/*add by chenhuazhen for pwm blink start*/ 
++			if(led->cdev.blink_brightness) {
++
++				period_us = (led->cdev.blink_delay_on + led->cdev.blink_delay_off)*1000;
++				duty_us = led->cdev.blink_delay_on*1000 ;
++				printk("chz period_us =%d ,duty_us=%d \n",period_us,duty_us);
++				if (period_us > INT_MAX / NSEC_PER_USEC) {
++					rc = pwm_config_us(
++						led->mpp_cfg->pwm_cfg->pwm_dev,
++						duty_us,
++						period_us);
++				} else {
++					duty_ns=duty_us*NSEC_PER_USEC;
++					rc = pwm_config(
++						led->mpp_cfg->pwm_cfg->pwm_dev,
++						duty_ns,
++						period_us * NSEC_PER_USEC);
++				}
+ 			} else {
+-				duty_ns = ((period_us * NSEC_PER_USEC) /
+-					LED_FULL) * led->cdev.brightness;
+-				rc = pwm_config(
+-					led->mpp_cfg->pwm_cfg->pwm_dev,
+-					duty_ns,
+-					period_us * NSEC_PER_USEC);
+-			}
++				/*add by chenhuazhen for pwm blink end*/ 
++				/*config pwm for brightness scaling*/
++				period_us = led->mpp_cfg->pwm_cfg->pwm_period_us;
++				if (period_us > INT_MAX / NSEC_PER_USEC) {
++					duty_us = (period_us * led->cdev.brightness) /
++						LED_FULL;
++					rc = pwm_config_us(
++						led->mpp_cfg->pwm_cfg->pwm_dev,
++						duty_us,
++						period_us);
++				} else {
++					duty_ns = ((period_us * NSEC_PER_USEC) /
++						LED_FULL) * led->cdev.brightness;
++					rc = pwm_config(
++						led->mpp_cfg->pwm_cfg->pwm_dev,
++						duty_ns,
++						period_us * NSEC_PER_USEC);
++				}
++			} /*add by chenhuazhen for pwm blink*/ 
+ 			if (rc < 0) {
+ 				dev_err(&led->spmi_dev->dev, "Failed to " \
+ 					"configure pwm for new values\n");
+@@ -1811,12 +1837,50 @@ static void qpnp_led_set(struct led_classdev *led_cdev,
+ 		value = led->cdev.max_brightness;
+ 
+ 	led->cdev.brightness = value;
++	/*add by chenhuazhen for pwm blink start*/ 
++	led->cdev.blink_brightness = 0;
++	led->cdev.blink_delay_on = 0;
++	led->cdev.blink_delay_off = 0;
++	/*add by chenhuazhen for pwm blink end*/ 
+ 	if (led->in_order_command_processing)
+ 		queue_work(led->workqueue, &led->work);
+ 	else
+ 		schedule_work(&led->work);
+ }
+ 
++/*add by chenhuazhen for pwm blink start*/ 
++static int qpnp_mpp_blink_set(struct led_classdev *led_cdev,
++			    unsigned long *delay_on, unsigned long *delay_off)
++{
++	struct qpnp_led_data *led;
++	//static unsigned long led_delay_on,led_delay_off;
++
++	led = container_of(led_cdev, struct qpnp_led_data, cdev);
++
++	if((*delay_on!=led->cdev.blink_delay_on)||(*delay_off!=led->cdev.blink_delay_off)) {
++		if((*delay_on)&&(*delay_off)) {
++			
++			led->cdev.blink_brightness = led->cdev.max_brightness;
++			led->cdev.brightness = led->cdev.max_brightness;
++			if (led->in_order_command_processing)
++				queue_work(led->workqueue, &led->work);
++			else
++				schedule_work(&led->work);
++		} else {
++			led->cdev.blink_brightness = 0;
++			led->cdev.brightness = 0;
++			if (led->in_order_command_processing)
++				queue_work(led->workqueue, &led->work);
++			else
++				schedule_work(&led->work);
++		}
++	}
++	led->cdev.blink_delay_on = *delay_on;
++	led->cdev.blink_delay_off = *delay_off;
++	return 0;
++}
++/*add by chenhuazhen for pwm blink end*/ 
++
+ static void __qpnp_led_work(struct qpnp_led_data *led,
+ 				enum led_brightness value)
+ {
+@@ -2673,7 +2737,13 @@ static ssize_t blink_store(struct device *dev,
+ 
+ 	switch (led->id) {
+ 	case QPNP_ID_LED_MPP:
+-		led_blink(led, led->mpp_cfg->pwm_cfg);
++		/*add by chenhuazhen for pwm blink start*/ 
++		if(led->mpp_cfg->pwm_cfg->pwm_use_blink) {
++			qpnp_mpp_blink_set(led_cdev,&led->mpp_cfg->pwm_cfg->pwm_blink_onms,
++				&led->mpp_cfg->pwm_cfg->pwm_blink_offms);
++		} else
++		/*add by chenhuazhen for pwm blink end*/ 
++			led_blink(led, led->mpp_cfg->pwm_cfg);
+ 		break;
+ 	case QPNP_ID_RGB_RED:
+ 	case QPNP_ID_RGB_GREEN:
+@@ -3427,6 +3497,26 @@ static int qpnp_get_config_pwm(struct pwm_config_data *pwm_cfg,
+ 			return rc;
+ 	}
+ 
++	/*add by chenhuazhen for pwm blink start*/ 
++	pwm_cfg->pwm_use_blink =
++		of_property_read_bool(node, "qcom,pwm-use-blink");
++	if(pwm_cfg->pwm_use_blink) {
++		pwm_cfg->pwm_blink_offms= 0;
++		rc = of_property_read_u32(node, "qcom,pwm-blink-offms", &val);
++		if (!rc)
++			pwm_cfg->pwm_blink_offms = val;
++		else if (rc != -EINVAL)
++			goto bad_lpg_params;
++
++		pwm_cfg->pwm_blink_onms= 0;
++		rc = of_property_read_u32(node, "qcom,pwm-blink-onms", &val);
++		if (!rc)
++			pwm_cfg->pwm_blink_onms = val;
++		else if (rc != -EINVAL)
++			goto bad_lpg_params;
++
++	}
++	/*add by chenhuazhen for pwm blink end*/ 
+ 	pwm_cfg->use_blink =
+ 		of_property_read_bool(node, "qcom,use-blink");
+ 
+@@ -3550,6 +3640,9 @@ static int qpnp_get_config_pwm(struct pwm_config_data *pwm_cfg,
+ 
+ bad_lpg_params:
+ 	pwm_cfg->use_blink = false;
++	/*add by chenhuazhen for pwm blink start*/ 
++	pwm_cfg->pwm_use_blink =false;
++	/*add by chenhuazhen for pwm blink end*/ 
+ 	if (pwm_cfg->mode == PWM_MODE) {
+ 		dev_err(&spmi_dev->dev, "LPG parameters not set for" \
+ 			" blink mode, defaulting to PWM mode\n");
+@@ -3959,6 +4052,9 @@ static int qpnp_leds_probe(struct spmi_device *spmi)
+ 				goto fail_id_check;
+ 			}
+ 		} else if (strncmp(led_label, "mpp", sizeof("mpp")) == 0) {
++			/*add by chenhuazhen for pwm blink start*/ 
++			led->cdev.blink_set= qpnp_mpp_blink_set;
++			/*add by chenhuazhen for pwm blink end*/ 
+ 			rc = qpnp_get_config_mpp(led, temp);
+ 			if (rc < 0) {
+ 				dev_err(&led->spmi_dev->dev,
+@@ -4053,6 +4149,13 @@ static int qpnp_leds_probe(struct spmi_device *spmi)
+ 					&lpg_attr_group);
+ 				if (rc)
+ 					goto fail_id_check;
++			/*add by chenhuazhen for pwm blink start*/ 
++			}else if (led->mpp_cfg->pwm_cfg->pwm_use_blink) {
++				rc = sysfs_create_group(&led->cdev.dev->kobj,
++					&blink_attr_group);
++				if (rc)
++					goto fail_id_check;
++			/*add by chenhuazhen for pwm blink end*/ 
+ 			} else if (led->mpp_cfg->pwm_cfg->mode == LPG_MODE) {
+ 				rc = sysfs_create_group(&led->cdev.dev->kobj,
+ 					&lpg_attr_group);

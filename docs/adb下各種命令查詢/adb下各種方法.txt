@@ -1,0 +1,1 @@
+/sys/firmware/devicetree/base/module		----> adb下查看dts加載選項

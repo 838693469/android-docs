@@ -1,0 +1,1058 @@
+commit d8eda0f489904e9ea3c6293f6216daa5122f158c
+Author: guoliang <guoliang_cm@meitu.com>
+Date:   Mon Aug 6 13:34:51 2018 +0800
+
+    [NEW][LED]add for read led blink 3 times when lower power
+    
+    Change-Id: I9a197c8dc088294c3a346e283100afb170d8e4c8
+    Reviewed-on: http://172.16.32.240:8081/2034
+    Reviewed-by: 郭亮 <guoliang_cm@meitu.com>
+    Reviewed-by: 林永嘉 <lyj1@meitu.com>
+    Tested-by: 林永嘉 <lyj1@meitu.com>
+
+diff --git a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Application/QcomChargerApp/QcomChargerApp.c b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Application/QcomChargerApp/QcomChargerApp.c
+index 8b38bc6..aeb82ff 100755
+--- a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Application/QcomChargerApp/QcomChargerApp.c
++++ b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Application/QcomChargerApp/QcomChargerApp.c
+@@ -95,6 +95,9 @@ File Logging Dependencies
+ */
+ #include "ULogFront.h"
+ #include "ULogUEFI.h"
++// Add begin by ODM.guoliang for : red led blink 3 times when low power
++#include "aw9109_led.h"
++// Add end
+ 
+ /*===========================================================================*/
+ /*                  FUNCTIONS PROTOTYPES                                     */
+@@ -197,6 +200,13 @@ EFI_STATUS QcomChargerApp_Entry
+       }
+     }
+ 
++// Add begin by ODM.guoliang for : red led blink 3 times when low power
++	 if (ChargingAction == EFI_QCOM_CHARGER_ACTION_SHUTDOWN)
++	 {
++	 	aw9109_led_red2_blink_lowpower();
++	 }
++// Add end
++
+     Status |= pQcomChargerProtocol->TakeAction(ChargingAction, &ChargerActionInfo);
+ 
+     /* DO charger App Actions */
+diff --git a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Application/QcomChargerApp/QcomChargerApp.inf b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Application/QcomChargerApp/QcomChargerApp.inf
+index 5d4bb95..a602b9c 100755
+--- a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Application/QcomChargerApp/QcomChargerApp.inf
++++ b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Application/QcomChargerApp/QcomChargerApp.inf
+@@ -56,7 +56,9 @@
+   QcomLib
+   ULogApiLib
+   ReportStatusCodeLib
+-  
++# Add begin by ODM.guoliang for : red led blink 3 times when low power
++  AW9109Lib
++# Add end
+ 
+ [Guids]
+   gQcomChargerLpmDataGuid
+diff --git a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Include/aw9109_led.h b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Include/aw9109_led.h
+new file mode 100755
+index 0000000..1b2cffe
+--- /dev/null
++++ b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Include/aw9109_led.h
+@@ -0,0 +1,85 @@
++#ifndef AW9109_LED_H
++#define AW9109_LED_H
++
++#include "i2c_api.h"
++
++#define     RSTR       	 0x00
++#define     GCR      	 0x01
++#define     LER1   	     0x50
++#define     LER2   	     0x51
++#define     LCR   	     0x52
++#define     PMD          0x53
++#define     RMD          0x54
++#define     CTRS1  	     0x55
++#define     CTRS2  	     0x56
++#define     IMAX1    	 0x57
++#define     IMAX2    	 0x58
++#define     IMAX3    	 0x59
++#define     IMAX4    	 0x5a
++#define     IMAX5    	 0x5b
++#define     TIER     	 0x5c
++#define     INTVEC   	 0x5d
++#define     LISR2     	 0x5e
++#define     SADDR	     0x5f
++#define     PCR      	 0x60
++#define     CMDR     	 0x61
++#define     RA       	 0x62
++#define     RB       	 0x63
++#define     RC       	 0x64
++#define     RD       	 0x65
++#define     R1       	 0x66
++#define     R2       	 0x67
++#define     R3       	 0x68
++#define     R4       	 0x69
++#define     R5       	 0x6a
++#define     R6       	 0x6b
++#define     R7       	 0x6c
++#define     R8       	 0x6d
++#define     GRPMSK1  	 0x6e
++#define     GRPMSK2  	 0x6f
++#define     TCR      	 0x70
++#define     TAR      	 0x71
++#define     TDR      	 0x72
++#define     TDATA      	 0x73
++#define     TANA     	 0x74
++#define     TKST     	 0x75
++#define     FEXT   	     0x76
++#define     WP       	 0x7d
++#define     WADDR    	 0x7e
++#define     WDATA    	 0x7f
++
++#define AW9109_I2C_BUS_ID I2C_INSTANCE_004
++
++#define LED_CODE_RED1	0xa800
++#define LED_CODE_RED2	0xa500
++#define LED_CODE_RED3	0xa200
++
++#define LED_CODE_GREEN1	0xa900
++#define LED_CODE_GREEN2	0xa600
++#define LED_CODE_GREEN3	0xa300
++
++#define LED_CODE_BLUE1	0xaa00
++#define LED_CODE_BLUE2	0xa700
++#define LED_CODE_BLUE3	0xa400
++
++
++typedef enum
++{
++	LED_ALL_DISABLE,
++	LED_BLUE_BLINK
++} LED_CTL_CMD;
++
++typedef enum
++{
++	LED_ONE,
++	LED_TWO,
++	LED_THREE,
++	LED_ALL
++} T_LED_NUM;
++
++int aw9109_led_init(UINT32 BUS_ID);
++void aw9120_led_disable(void);
++void aw9109_led_blue2_blink(void);
++void aw9109_led_red2_blink_lowpower(void);
++
++#endif	/* AW9109_REG_H */
+diff --git a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Library/AW9109Lib/AW9109Lib.c b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Library/AW9109Lib/AW9109Lib.c
+new file mode 100755
+index 0000000..f05c720
+--- /dev/null
++++ b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Library/AW9109Lib/AW9109Lib.c
+@@ -0,0 +1,501 @@
++/**
++* @file AW9109Lib.c
++
++  Copyright (c) 2008-2018, 2018, meitu Technologies, Inc. All rights reserved.
++*/
++
++/*===========================================================================
++
++                      EDIT HISTORY FOR FILE
++
++This section contains comments describing changes made to this file.
++Notice that changes are listed in reverse chronological order.
++
++
++when       who     what, where, why
++--------   ---     ----------------------------------------------------------
++07/30/18   guoliang     Created.
++==============================================================================*/
++
++/*==============================================================================
++
++                       INCLUDE FILES FOR THIS MODULE
++
++==============================================================================*/
++
++#include <Uefi.h>
++#include <stdio.h>
++#include <stdarg.h>
++#include <Uefi.h>
++#include <Library/UefiLib.h>
++#include <Library/TestInterface.h>
++#include <Library/QcomLib.h>
++#include <Library/DebugLib.h>
++#include "DalDevice.h"
++#include "DALSys.h"
++#include "DALDeviceId.h"
++#include "DALStdErr.h"
++#include "DDITlmm.h"
++#include "aw9109_led.h"
++/*==============================================================================
++
++	                         DEFINES FOR THIS MODULE
++
++==============================================================================*/
++#define LOG_BUF_LEN_MAX			256
++#define AW9109_I2C_FREQUENCY	400
++#define AW9109_SLAVE_ADDR		0x2c
++
++static i2c_slave_config cfg;
++static void *pI2cHandle = NULL;
++
++// Add begin by ODM.guoliang for : merge from other projects for other owner use
++static uint8 aw9109_led_inited;
++// Add end
++
++uint16 led_code_blue2_blink[1][5] = {
++	{0x803f,0xe7ff,0x3c48,0xc7ff,0x3c48}
++};
++
++void my_log(const char* fmt, ...)
++{
++  char log_buf[LOG_BUF_LEN_MAX]={"[AW9109]"} ;
++  va_list vargs;
++
++  va_start(vargs, fmt);
++  vsnprintf(log_buf + sizeof("[AW9109]") - 1 , LOG_BUF_LEN_MAX - sizeof("[AW9109]"), fmt, vargs);
++  va_end(vargs);
++  DEBUG((EFI_D_ERROR, log_buf));
++}
++
++i2c_status aw9109_i2c_init(UINT32 SlaveAddr, UINT32 I2cFreq, UINT32 BUS_ID)
++{
++	i2c_status i2cstatus = I2C_SUCCESS;
++	cfg.bus_frequency_khz = I2cFreq;
++	cfg.slave_address = SlaveAddr;
++	cfg.mode = I2C;
++	cfg.slave_max_clock_stretch_us = 500;
++	cfg.core_configuration1 = 0;
++	cfg.core_configuration2 = 0;
++
++	i2cstatus = i2c_open((i2c_instance) (BUS_ID), &pI2cHandle);
++	if (I2C_SUCCESS != i2cstatus)
++	{
++		my_log("[AW9109]Failed to initialize I2C %d\n", i2cstatus);
++	}
++	return i2cstatus;
++}
++
++unsigned int i2c_read_reg(unsigned char addr)
++{
++	uint32 bRead = 0;
++	unsigned int getdata = 0;
++	i2c_status i2cstatus = I2C_SUCCESS;
++	unsigned char rdbuf[2] = {0};
++
++	i2cstatus = i2c_read(pI2cHandle, &cfg, addr, 1, rdbuf, 2, &bRead, 2500);
++	if(I2C_SUCCESS != i2cstatus)
++	{
++		my_log("[AW9109]Read addr:0x%x error\n", addr);
++	}
++
++	getdata=rdbuf[0] & 0x00ff;
++	getdata<<= 8;
++	getdata |=rdbuf[1];
++
++	return getdata;
++}
++
++unsigned int i2c_write_reg(unsigned char addr, unsigned int reg_data)
++{
++	uint32 bWrote = 0;
++	i2c_status i2cstatus = I2C_SUCCESS;
++	unsigned char wdbuf[2] = {0};
++
++	wdbuf[1] = (unsigned char)(reg_data & 0x00ff);
++	wdbuf[0] = (unsigned char)((reg_data & 0xff00)>>8);
++
++	i2cstatus = i2c_write(pI2cHandle, &cfg, addr, 1, wdbuf, 2, &bWrote, 2500);
++	if(I2C_SUCCESS != i2cstatus)
++	{
++		my_log("[AW9109]Write addr:0x%X data:0x%X error\n", addr, reg_data);
++	}
++
++	return bWrote;
++}
++
++i2c_status i2c_deinit()
++{
++	return i2c_close(pI2cHandle);
++}
++
++int aw9109_led_powercontrol(int on)
++{
++	DalDeviceHandle *tlmm_handle;
++	DALResult result;
++
++	DALGpioSignalType gpio_cfg = (DALGpioSignalType)DAL_GPIO_CFG(77, 0, DAL_GPIO_OUTPUT, DAL_GPIO_PULL_UP, DAL_GPIO_2MA);
++
++	DALSYS_InitMod(NULL);
++
++	// Create a TLMM handle
++	result = DAL_DeviceAttach(DALDEVICEID_TLMM, &tlmm_handle);
++	if(result != DAL_SUCCESS)
++	{
++		my_log("[AW9109]DAL_DeviceAttach() result not DAL_SUCCESS\n");
++		return -1;
++	}
++
++    // Enable GPIOx
++	result = DalDevice_Open(tlmm_handle, DAL_OPEN_SHARED);
++	if(result != DAL_SUCCESS)
++	{
++		my_log("[AW9109]DalDevice_Open() result not DAL_SUCCESS\n");
++		DAL_DeviceDetach(tlmm_handle);
++		return -1;
++	}
++
++	/* Configure the GPIO. */
++	result = DalTlmm_ConfigGpio(tlmm_handle, gpio_cfg, DAL_TLMM_GPIO_ENABLE);
++	if(result != DAL_SUCCESS)
++	{
++		my_log("[AW9109]DalTlmm_ConfigGpio() result not DAL_SUCCESS\n");
++		DalDevice_Close(tlmm_handle);
++		DAL_DeviceDetach(tlmm_handle);
++		return -1;
++	}
++
++	/* Drive the GPIO HIGH or LOW. */
++	if(on)
++	{
++		result = DalTlmm_GpioOut(tlmm_handle, gpio_cfg, DAL_GPIO_HIGH_VALUE);
++	} else {
++		result = DalTlmm_GpioOut(tlmm_handle, gpio_cfg, DAL_GPIO_LOW_VALUE);
++	}
++
++    if(result != DAL_SUCCESS)
++    {
++		my_log("[AW9109]DalTlmm_GpioOut() result not DAL_SUCCESS\n");
++		DalDevice_Close(tlmm_handle);
++		DAL_DeviceDetach(tlmm_handle);
++		return -1;
++	}
++
++	DalDevice_Close(tlmm_handle);
++	DAL_DeviceDetach(tlmm_handle);
++
++	return 0;
++}
++
++
++int aw9109_led_init(UINT32 BUS_ID)
++{
++
++	my_log("[AW9109]aw9109_led_init bus id is %d\n", BUS_ID);
++
++	if(aw9109_led_powercontrol(1) == -1)
++	{
++		my_log("[AW9109]aw9109_led_powercontrol(1) failed\n");
++		return -1;
++	}
++
++	/*wait 5ms*///pm_busy_wait(5*1000);  delay at least 5ms after pdn pin enable ic
++    DALSYS_BusyWait(5 * 1000);
++
++	if(I2C_SUCCESS != aw9109_i2c_init(AW9109_SLAVE_ADDR, AW9109_I2C_FREQUENCY, BUS_ID))
++	{
++		my_log("[AW9109]aw9109_i2c_init failed\n");
++		return -1;
++	}
++
++	if(0xb223 == i2c_read_reg(RSTR))
++	{
++		aw9109_led_inited = 1;
++	} else {
++		aw9109_led_inited = 0;
++		return -1;
++	}
++
++	return 0;
++}
++
++void aw9109_led_disable(void)
++{
++    unsigned int reg;
++
++    reg = i2c_read_reg(GCR);
++    reg &= 0xfffe;
++    i2c_write_reg(GCR, reg);
++	i2c_deinit();
++
++	/*wait 5ms*///pm_busy_wait(5*1000);
++    DALSYS_BusyWait(5*1000);
++
++	aw9109_led_powercontrol(0);
++	aw9109_led_inited = 0;
++}
++
++
++void aw9109_led_blue2_blink(void)
++{
++    unsigned int reg;
++	int i = 0;
++	uint16 *p = (uint16 *)led_code_blue2_blink;
++
++	aw9109_led_init(AW9109_I2C_BUS_ID);
++
++	/* 关闭LED功能(GCR bit'0 ==> 0)*/
++    reg = i2c_read_reg(GCR);
++    reg &= 0xfffe;
++    i2c_write_reg(GCR, reg);
++
++	/*设置LED最大驱动电流*/
++    i2c_write_reg(IMAX1, 0x4444);
++    i2c_write_reg(IMAX2, 0x4444);
++    i2c_write_reg(IMAX3, 0x4444);
++
++    i2c_write_reg(LER1, 0x07ff);
++    i2c_write_reg(LER2, 0x07ff);
++    i2c_write_reg(CTRS1, 0x0000);
++
++	/* 使能LED功能(GCR bit'0 ==> 1)*/
++    reg |= 0x0001;
++    i2c_write_reg(GCR, reg);
++
++    i2c_write_reg(PMD, 0x0000);
++    i2c_write_reg(RMD, 0x0000);
++    i2c_write_reg(WADDR, 0x0000);
++
++   	for(i = 0; i < sizeof(led_code_blue2_blink)/sizeof(led_code_blue2_blink[0][0]); i++)
++	{
++		i2c_write_reg(WDATA, *(p++));
++	}
++
++	i2c_write_reg(WDATA, 0x0000);
++
++    i2c_write_reg(SADDR, 0x0000);
++    i2c_write_reg(PMD, 0x0001);
++    i2c_write_reg(RMD, 0x0002);
++
++	i2c_deinit();
++}
++
++void aw9109_led_red2_blink_lowpower(void)
++{
++	unsigned int reg;
++
++	aw9109_led_init(AW9109_I2C_BUS_ID);
++
++	/* 关闭LED功能(GCR bit'0 ==> 0)*/
++    reg = i2c_read_reg(GCR);
++    reg &= 0xfffe;
++    i2c_write_reg(GCR, reg);
++
++	/*设置LED最大驱动电流*/
++    i2c_write_reg(IMAX1, 0x4444);
++    i2c_write_reg(IMAX2, 0x4444);
++    i2c_write_reg(IMAX3, 0x4444);
++
++    i2c_write_reg(LER1, 0x07ff);
++    i2c_write_reg(LER2, 0x07ff);
++    i2c_write_reg(CTRS1, 0x0000);
++
++	/* 使能LED功能(GCR bit'0 ==> 1)*/
++    reg |= 0x0001;
++    i2c_write_reg(GCR, reg);
++
++    i2c_write_reg(PMD, 0x0000);
++    i2c_write_reg(RMD, 0x0000);
++    i2c_write_reg(WADDR, 0x0000);
++
++    i2c_write_reg(WDATA, 0x803f);
++    i2c_write_reg(WDATA, 0xe5ff);
++    i2c_write_reg(WDATA, 0x3a58);
++    i2c_write_reg(WDATA, 0xc5ff);
++    i2c_write_reg(WDATA, 0x392c);
++    i2c_write_reg(WDATA, 0x0000);
++    i2c_write_reg(SADDR, 0x0000);
++    i2c_write_reg(PMD, 0x0001);
++    i2c_write_reg(RMD, 0x0002);
++
++	DALSYS_BusyWait(1500*1000);
++
++	aw9109_led_disable();
++}
++
++// Add begin by ODM.guoliang for : merge from other projects for other owner use
++
++int aw9109_led_deinit()
++{
++
++    i2c_status i2cstatus = I2C_SUCCESS;
++
++    if(!aw9109_led_inited)
++        return 1;
++
++    i2cstatus = i2c_close(pI2cHandle);
++
++    if(I2C_SUCCESS == i2cstatus) {
++        aw9109_led_inited=0;
++        my_log("___ aw9109_led_deinit   finished");
++    } else {
++        my_log("___ aw9109_led_deinit   fail %d",i2cstatus);
++    }
++
++
++    return (int)i2cstatus;
++}
++
++int aw9109_leds_set_brights_api(uint16 led_code, uint8 brightness, boolean on)
++{
++
++    uint16 dat = led_code;
++
++    if(on) {
++        dat=dat | brightness;
++    }
++
++    i2c_write_reg(PMD, 0x0000);         // PMR-Load SRAM with I2C
++    i2c_write_reg(RMD, 0x0000);         // RMR-Hold Mode
++    i2c_write_reg(WADDR, 0x0000);
++    i2c_write_reg(WDATA, dat);          //H-LEDn  L-brightness
++    i2c_write_reg(WDATA, 0x0000);
++    i2c_write_reg(SADDR, 0x0000);
++    i2c_write_reg(PMD, 0x0001);
++    i2c_write_reg(RMD, 0x0002);
++
++    return 0;
++}
++
++int aw9109_leds_set_brights_api_all(uint8 brightness,boolean on)
++{
++    uint16 dat[3] = { LED_CODE_RED1, LED_CODE_RED2, LED_CODE_RED3 };
++
++	aw9109_led_init(AW9109_I2C_BUS_ID);
++
++    if(on) {
++        dat[0] = dat[0] | brightness;
++        dat[1] = dat[1] | brightness;
++        dat[2] = dat[2] | brightness;
++    }
++
++    i2c_write_reg(PMD, 0x0000);         // PMR-Load SRAM with I2C
++    i2c_write_reg(RMD, 0x0000);         // RMR-Hold Mode
++    i2c_write_reg(WADDR, 0x0000);
++    i2c_write_reg(WDATA, dat[0]);    	//H-LEDn  L-brightness
++    i2c_write_reg(WDATA, dat[1]);    	//H-LEDn  L-brightness
++    i2c_write_reg(WDATA, dat[2]);    	//H-LEDn  L-brightness
++    i2c_write_reg(WDATA, 0x0000);
++    i2c_write_reg(SADDR, 0x0000);
++
++    i2c_write_reg(PMD, 0x0001);
++    i2c_write_reg(RMD, 0x0002);
++
++    return 0;
++}
++
++
++void aw9109_led_blue1_blink (void)
++{
++
++//LED9  LED3_RGB_BLU    left
++    i2c_write_reg(RSTR, 0x55aa);		// software reset
++    i2c_write_reg(IMAX2, 0x0004);		// IMAX1-LED7~LED9 Current
++    i2c_write_reg(LER1, 0x0010);		// LED1: bit4  enable output
++    i2c_write_reg(GCR, 0x0001);
++    i2c_write_reg(WADDR, 0x0000);		// WADDR-SRAM Load Addr
++    i2c_write_reg(WDATA, 0x803f);
++    i2c_write_reg(WDATA, 0xe4ff);		//led1 fade-out step:FF
++    i2c_write_reg(WDATA, 0x3c48);		//wait for a time
++    i2c_write_reg(WDATA, 0xc4ff);		//led1 fade-in step: FF
++    i2c_write_reg(WDATA, 0x3c48);		//wait for a time
++    i2c_write_reg(WDATA, 0x0000);		// jump
++    i2c_write_reg(SADDR, 0x0000);
++    i2c_write_reg(PMD, 0x0001);
++    i2c_write_reg(RMD, 0x0002);
++}
++
++
++
++void aw9109_led_all_disable (void)
++{
++    i2c_write_reg(GCR, 0);
++}
++
++
++/////////////////////////////////////////////////////////////////////////////
++// Function name:aw9109_led_ctrl_meitu
++// Purpose: xbl led control
++// Input Parameters:  enum  LED_CTL_CMD cmd
++// Return type: uint8      0-Successful       other-Fail
++// Output Parameters: no
++/////////////////////////////////////////////////////////////////////////////
++int aw9109_led_ctrl_meitu(LED_CTL_CMD cmd)
++{
++
++    if(!aw9109_led_inited)
++	{
++        if(aw9109_led_init(AW9109_I2C_BUS_ID))
++		{
++            return -1;
++        }
++    }
++
++    my_log("___ aw9109_led_ctrl_meitu cmd=%d", cmd);
++
++    switch (cmd) {
++        case LED_ALL_DISABLE: // 0
++			aw9109_led_all_disable();
++        break;
++
++		case LED_BLUE_BLINK:
++			aw9109_led_blue1_blink();
++        break;
++
++        default :
++			return -1;
++    }
++
++    return 0;
++}
++
++
++/////////////////////////////////////////////////////////////////////////////
++/*
++ led_num: led num: LED_ONE---left   LED_TWO---middle  LED_THREE---right     LED_ALL--- all red led
++ on: true--enalbe   flase--disable
++ return 0--- sucessful     other ---fail
++*/
++/////////////////////////////////////////////////////////////////////////////
++int flash_red_led(T_LED_NUM led_num, boolean on)
++{
++
++    if(!aw9109_led_inited) {
++        if( aw9109_led_init(AW9109_I2C_BUS_ID)) {
++            return -1;
++        }
++    }
++
++    switch (led_num) {
++    case LED_ONE:
++        aw9109_leds_set_brights_api(LED_CODE_RED1,0xff,on);
++        break;
++    case LED_TWO:
++        aw9109_leds_set_brights_api(LED_CODE_RED2,0xff,on);
++        break;
++    case LED_THREE:
++        aw9109_leds_set_brights_api(LED_CODE_RED3,0xff,on);
++        break;
++    case LED_ALL:
++        aw9109_leds_set_brights_api_all(0xff,on);
++        break;
++
++    default :
++        my_log("___ flash_red_led  error led_num=%d  on=%d",led_num,on);
++        return -1;
++    }
++
++    return 0;
++}
++
++// Add end
+diff --git a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Library/AW9109Lib/AW9109Lib.inf b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Library/AW9109Lib/AW9109Lib.inf
+new file mode 100755
+index 0000000..d0f6615
+--- /dev/null
++++ b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Library/AW9109Lib/AW9109Lib.inf
+@@ -0,0 +1,42 @@
++#/** @file
++#  
++#  AW9109 Library INF file
++#  
++#  Copyright (c) 2008-2018, 2018, meitu Technologies, Inc. All rights reserved.
++#
++#**/
++
++#==============================================================================
++#                              EDIT HISTORY
++#
++#
++# when       who     what, where, why
++# --------   ---     ----------------------------------------------------------
++# 07/30/18   guoliang     Created.
++#
++#==============================================================================
++
++[Defines]
++  INF_VERSION                    = 0x00010005
++  BASE_NAME                      = AW9109Lib
++  FILE_GUID                      = E9DB9D62-FA37-DBE0-91B0-A9228718BEBD
++  MODULE_TYPE                    = BASE
++  VERSION_STRING                 = 1.0
++  LIBRARY_CLASS                  = AW9109Lib
++
++[Sources.common]
++  AW9109Lib.c
++
++[Packages]
++  MdePkg/MdePkg.dec
++  MdeModulePkg/MdeModulePkg.dec
++  QcomPkg/QcomPkg.dec
++
++[LibraryClasses]
++  DALModEnvLib
++  I2CLib
++  BaseLib
++  BaseMemoryLib
++  
++
++
+diff --git a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Library/MEITU/LED/AW9109/aw9109_led.c b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Library/MEITU/LED/AW9109/aw9109_led.c
+deleted file mode 100755
+index bb2d463..0000000
+--- a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Library/MEITU/LED/AW9109/aw9109_led.c
++++ /dev/null
+@@ -1,216 +0,0 @@
+-#include "aw9109_led.h"
+-#include <Uefi.h>
+-#include <Library/UefiLib.h>
+-#include <Library/TestInterface.h>
+-#include <Library/QcomLib.h>
+-#include <Library/DebugLib.h>
+-#include <stdio.h>
+-#include <stdarg.h>
+-#include "boot_logger.h"
+-#include "DDITlmm.h"
+-
+-#define LOG_BUF_LEN_MAX		256
+-
+-#define AW9109_I2C_FREQUENCY	400
+-#define AW9109_SLAVE_ADDR		0x2c
+-
+-static i2c_slave_config cfg;
+-static void *pI2cHandle = NULL;
+-
+-uint16 led_code_blue_blink[1][5] = {
+-	{0x803f,0xe7ff,0x3c48,0xc7ff,0x3c48}
+-};
+-
+-
+-void my_log(const char* fmt, ...)
+-{
+-	char log_buf[LOG_BUF_LEN_MAX]={0} ;
+-	va_list vargs;
+-
+-	va_start(vargs, fmt);
+-	vsnprintf(log_buf, LOG_BUF_LEN_MAX-1, fmt, vargs);
+-	va_end(vargs);
+-	boot_log_message(log_buf);
+-}
+-
+-i2c_status aw9109_i2c_init(UINT32 SlaveAddr, UINT32 I2cFreq, UINT32 BUS_ID)
+-{
+-	i2c_status i2cstatus = I2C_SUCCESS;
+-	cfg.bus_frequency_khz = I2cFreq;
+-	cfg.slave_address = SlaveAddr;
+-	cfg.mode = I2C;
+-	cfg.slave_max_clock_stretch_us = 500;
+-	cfg.core_configuration1 = 0;
+-	cfg.core_configuration2 = 0;
+-
+-	i2cstatus = i2c_open((i2c_instance) (BUS_ID), &pI2cHandle);
+-	if (I2C_SUCCESS != i2cstatus)
+-	{
+-		my_log("[AW9109]Failed to initialize I2C %d\n", i2cstatus);
+-	}
+-
+-	return i2cstatus;
+-}
+-
+-unsigned int i2c_read_reg(unsigned char addr)
+-{
+-	uint32 bRead = 0;
+-	unsigned int getdata = 0;
+-	i2c_status i2cstatus = I2C_SUCCESS;
+-	unsigned char rdbuf[2] = {0};
+-
+-	i2cstatus = i2c_read(pI2cHandle, &cfg, addr, 1, rdbuf, 2, &bRead, 2500);
+-	if(I2C_SUCCESS != i2cstatus)
+-	{
+-		my_log("[AW9109]Read addr:0x%x error\n", addr);
+-	}
+-
+-	getdata=rdbuf[0] & 0x00ff;
+-	getdata<<= 8;
+-	getdata |=rdbuf[1];
+-
+-	return getdata;
+-}
+-
+-unsigned int i2c_write_reg(unsigned char addr, unsigned int reg_data)
+-{
+-	uint32 bWrote = 0;
+-	i2c_status i2cstatus = I2C_SUCCESS;
+-	unsigned char wdbuf[2] = {0};
+-
+-	wdbuf[1] = (unsigned char)(reg_data & 0x00ff);
+-	wdbuf[0] = (unsigned char)((reg_data & 0xff00)>>8);
+-
+-	i2cstatus = i2c_write(pI2cHandle, &cfg, addr, 1, wdbuf, 2, &bWrote, 2500);
+-	if(I2C_SUCCESS != i2cstatus)
+-	{
+-		my_log("[AW9109]Write addr:0x%X data:0x%X error\n", addr, reg_data);
+-	}
+-
+-	return bWrote;
+-}
+-
+-i2c_status i2c_deinit()
+-{
+-	return i2c_close(pI2cHandle);
+-}
+-
+-int aw9109_led_powercontrol(int on)
+-{
+-	DalDeviceHandle *tlmm_handle;
+-	DALResult result;
+-
+-	DALGpioSignalType gpio_cfg = (DALGpioSignalType)DAL_GPIO_CFG(77, 0, DAL_GPIO_OUTPUT, DAL_GPIO_PULL_UP, DAL_GPIO_2MA);
+-
+-	// Create a TLMM handle
+-	result = DAL_DeviceAttach(DALDEVICEID_TLMM, &tlmm_handle);
+-	if(result != DAL_SUCCESS)
+-	{
+-		my_log("[AW9109]DAL_DeviceAttach() result not DAL_SUCCESS\n");
+-		return -1;
+-	}
+-
+-	// Enable GPIOx
+-	result = DalDevice_Open(tlmm_handle, DAL_OPEN_SHARED);
+-	if(result != DAL_SUCCESS)
+-	{
+-		my_log("[AW9109]DalDevice_Open() result not DAL_SUCCESS\n");
+-		DAL_DeviceDetach(tlmm_handle);
+-		return -1;
+-	}
+-
+-	/* Configure the GPIO. */
+-	result = DalTlmm_ConfigGpio(tlmm_handle, gpio_cfg, DAL_TLMM_GPIO_ENABLE);
+-	if(result != DAL_SUCCESS)
+-	{
+-		my_log("[AW9109]DalTlmm_ConfigGpio() result not DAL_SUCCESS\n");
+-		DalDevice_Close(tlmm_handle);
+-		DAL_DeviceDetach(tlmm_handle);
+-		return -1;
+-	}
+-
+-	/* Drive the GPIO HIGH or LOW. */
+-	if(on)
+-	{
+-		result = DalTlmm_GpioOut(tlmm_handle, gpio_cfg, DAL_GPIO_HIGH_VALUE);
+-	} else {
+-		result = DalTlmm_GpioOut(tlmm_handle, gpio_cfg, DAL_GPIO_LOW_VALUE);
+-	}
+-
+-	if(result != DAL_SUCCESS)
+-	{
+-		my_log("[AW9109]DalTlmm_GpioOut() result not DAL_SUCCESS\n");
+-		DalDevice_Close(tlmm_handle);
+-		DAL_DeviceDetach(tlmm_handle);
+-		return -1;
+-	}
+-
+-	DalDevice_Close(tlmm_handle);
+-	DAL_DeviceDetach(tlmm_handle);
+-
+-	return 0;
+-}
+-
+-
+-i2c_status aw9109_led_init(UINT32 BUS_ID)
+-{
+-	my_log("[AW9109]aw9109_led_init bus id is %d\n", BUS_ID);
+-	aw9109_led_powercontrol(1);
+-	return aw9109_i2c_init(AW9109_SLAVE_ADDR, AW9109_I2C_FREQUENCY, BUS_ID);
+-}
+-
+-void aw9109_led_disable(void)
+-{
+-	unsigned int reg;
+-	reg = i2c_read_reg(GCR);
+-	reg &= 0xfffe;
+-	i2c_write_reg(GCR, reg);
+-	i2c_deinit();
+-	aw9109_led_powercontrol(0);
+-}
+-
+-
+-void aw9109_led_blue_enable(void)
+-{
+-	unsigned int reg;
+-	int i = 0;
+-	uint16 *p = (uint16 *)led_code_blue_blink;
+-
+-	aw9109_led_init(AW9109_I2C_BUS_ID);
+-
+-	/* 关闭LED功能(GCR bit'0 ==> 0)*/
+-	reg = i2c_read_reg(GCR);
+-	reg &= 0xfffe;
+-	i2c_write_reg(GCR, reg);
+-
+-	/*设置LED最大驱动电流*/
+-	i2c_write_reg(IMAX1, 0x4444);
+-	i2c_write_reg(IMAX2, 0x4444);
+-	i2c_write_reg(IMAX3, 0x4444);
+-
+-	i2c_write_reg(LER1, 0x07ff);
+-	i2c_write_reg(LER2, 0x07ff);
+-	i2c_write_reg(CTRS1, 0x0000);
+-
+-	/* 使能LED功能(GCR bit'0 ==> 1)*/
+-	reg |= 0x0001;
+-	i2c_write_reg(GCR, reg);
+-
+-	i2c_write_reg(PMD, 0x0000);
+-	i2c_write_reg(RMD, 0x0000);
+-	i2c_write_reg(WADDR, 0x0000);
+-
+-	for(i = 0; i < sizeof(led_code_blue_blink)/sizeof(led_code_blue_blink[0][0]); i++)
+-	{
+-		i2c_write_reg(WDATA, *(p++));
+-	}
+-
+-	i2c_write_reg(WDATA, 0x0000);
+-
+-	i2c_write_reg(SADDR, 0x0000);
+-	i2c_write_reg(PMD, 0x0001);
+-	i2c_write_reg(RMD, 0x0002);
+-
+-	i2c_deinit();
+-}
+-
+diff --git a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Library/MEITU/LED/AW9109/aw9109_led.h b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Library/MEITU/LED/AW9109/aw9109_led.h
+deleted file mode 100755
+index e5ba246..0000000
+--- a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Library/MEITU/LED/AW9109/aw9109_led.h
++++ /dev/null
+@@ -1,57 +0,0 @@
+-#ifndef AW9109_REG_H
+-#define AW9109_REG_H
+-
+-#include "i2c_api.h"
+-
+-#define     RSTR       	 0x00
+-#define     GCR      	 0x01
+-#define     LER1   	     0x50
+-#define     LER2   	     0x51
+-#define     LCR   	     0x52
+-#define     PMD          0x53
+-#define     RMD          0x54
+-#define     CTRS1  	     0x55
+-#define     CTRS2  	     0x56
+-#define     IMAX1    	 0x57
+-#define     IMAX2    	 0x58
+-#define     IMAX3    	 0x59
+-#define     IMAX4    	 0x5a
+-#define     IMAX5    	 0x5b
+-#define     TIER     	 0x5c
+-#define     INTVEC   	 0x5d
+-#define     LISR2     	 0x5e
+-#define     SADDR	     0x5f
+-#define     PCR      	 0x60
+-#define     CMDR     	 0x61
+-#define     RA       	 0x62
+-#define     RB       	 0x63
+-#define     RC       	 0x64
+-#define     RD       	 0x65
+-#define     R1       	 0x66
+-#define     R2       	 0x67
+-#define     R3       	 0x68
+-#define     R4       	 0x69
+-#define     R5       	 0x6a
+-#define     R6       	 0x6b
+-#define     R7       	 0x6c
+-#define     R8       	 0x6d
+-#define     GRPMSK1  	 0x6e
+-#define     GRPMSK2  	 0x6f
+-#define     TCR      	 0x70
+-#define     TAR      	 0x71
+-#define     TDR      	 0x72
+-#define     TDATA      	 0x73
+-#define     TANA     	 0x74
+-#define     TKST     	 0x75
+-#define     FEXT   	     0x76
+-#define     WP       	 0x7d
+-#define     WADDR    	 0x7e
+-#define     WDATA    	 0x7f
+-
+-#define AW9109_I2C_BUS_ID I2C_INSTANCE_004
+-
+-i2c_status aw9109_led_init(UINT32 BUS_ID);
+-void aw9109_led_disable(void);
+-void aw9109_led_blue_enable(void);
+-
+-#endif	/* AW9109_REG_H */
+diff --git a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/LA/Core.dsc b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/LA/Core.dsc
+index 3d0f14d..30d9ded 100755
+--- a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/LA/Core.dsc
++++ b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/LA/Core.dsc
+@@ -844,6 +844,16 @@
+       NULL|EmbeddedPkg/Library/LzmaHobCustomDecompressLib/LzmaHobCustomDecompressLib.inf
+   }
+ 
++# Add begin by ODM.guoliang for : AW9109Lib
++  QcomPkg/Library/AW9109Lib/AW9109Lib.inf {
++	<LibraryClasses>
++	  	# DAL Libraries
++  		DALModEnvLib|QcomPkg/Library/DALModEnvLib/DALModEnvLib.inf
++  		DALCommonDxeLib|QcomPkg/Library/DALCommonLib/DALCommonDxeLib.inf
++ 	 	DALFwkLib|QcomPkg/Library/DALFwkLib/DALFwkLib.inf
++  }
++# Add end
++
+   ArmPkg/Drivers/CpuDxe/CpuDxe.inf
+ 
+   # Report Status Code Router & Handler
+@@ -1252,6 +1262,10 @@
+ 
+   #QCOM Charger app
+   QcomPkg/Application/QcomChargerApp/QcomChargerApp.inf {
++  # Add begin by ODM.guoliang for : red led blink 3 times when low power
++	<LibraryClasses>
++		AW9109Lib|QcomPkg/Library/AW9109Lib/AW9109Lib.inf
++  # Add end
+   	<PcdsFixedAtBuild>
+     gEfiMdePkgTokenSpaceGuid.PcdReportStatusCodePropertyMask|0x07
+   }
+diff --git a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Library/XBLLoaderLib/XBLLoaderLib.inf b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Library/XBLLoaderLib/XBLLoaderLib.inf
+index 431b4a3..e1dedee 100755
+--- a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Library/XBLLoaderLib/XBLLoaderLib.inf
++++ b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Library/XBLLoaderLib/XBLLoaderLib.inf
+@@ -44,7 +44,7 @@
+   boot_dload.c
+   sys_debug_mc.c
+ # Add begin by ODM.guoliang for : blue led blink when entered xbl dump
+-  ../../../Library/MEITU/LED/AW9109/aw9109_led.c
++  ../../../Library/AW9109Lib/AW9109Lib.c
+ # Add end
+ 
+ [Sources.Arm]
+diff --git a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Library/XBLLoaderLib/XBLLoaderLibPkg.dec b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Library/XBLLoaderLib/XBLLoaderLibPkg.dec
+index cd78807..2d1a818 100755
+--- a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Library/XBLLoaderLib/XBLLoaderLibPkg.dec
++++ b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Library/XBLLoaderLib/XBLLoaderLibPkg.dec
+@@ -35,7 +35,8 @@
+   ../../../XBLLoader
+   ../../../Library/NullLibs/PIMEMTargetLibNull
+ # Add begin by ODM.guoliang for : blue led blink when entered xbl dump
+-  ../../../Library/MEITU/LED/AW9109
++  ../../../Include
++  ../../../Library/AW9109Lib
+ # Add end
+ 
+ 
+diff --git a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Library/XBLLoaderLib/sbl1_target.c b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Library/XBLLoaderLib/sbl1_target.c
+index ebad9b5..4e1f22b 100755
+--- a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Library/XBLLoaderLib/sbl1_target.c
++++ b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Library/XBLLoaderLib/sbl1_target.c
+@@ -238,7 +238,7 @@ void sbl1_dload_entry ()
+                             &xbl_ramdump_config_entry);
+ 
+   // Add begin by ODM.guoliang for : blue led blink when entered xbl dump
+-  aw9109_led_blue_enable();
++  aw9109_led_blue2_blink();
+   // Add end
+ 
+   /* XBLRamDump image has been loaded.  Change MMU permissions to allow

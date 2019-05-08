@@ -1,0 +1,249 @@
+From 579f2d529569c32bc5024e2da59fd13c526d871e Mon Sep 17 00:00:00 2001
+From: chenchanghao <changhao.chen@archermind.com>
+Date: Mon, 11 Jun 2018 17:08:42 +0800
+Subject: [PATCH] [NEW][LCD][BP] Tina LCD bringup
+
+Change-Id: Ibf2390126835fd99fa61b1f51f3021ece44717fa
+---
+
+diff --git a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Include/Library/MDPPlatformLib.h b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Include/Library/MDPPlatformLib.h
+index 03f83a2..5212df5 100755
+--- a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Include/Library/MDPPlatformLib.h
++++ b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/Include/Library/MDPPlatformLib.h
+@@ -103,6 +103,9 @@
+   MDPPLATFORM_PANEL_NT36850_TRULY_WQHD_CMD,               /* Truly NT36850 wqhd dual dsi command mode */
+   MDPPLATFORM_PANEL_RM67195_AMOLED_FHD_CMD,               /* RM67195 amoled fhd command mode */
+   MDPPLATFORM_PANEL_HX8399_TRULY_FHD_VIDEO,               /* Truly Hx8399 fhd single dsi video mode */
++  // Add begin by chenchanghao for: Tina LCD bringup
++  MDPPLATFORM_PANEL_TINA_SAMSUNG_1080_CMD,             /* Single DSI CMD mode panel for Tina*/
++  // Add end
+   MDPPLATFORM_PANEL_MAX
+ } MDPPlatformPanelType;
+ 
+diff --git a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Library/MDPPlatformLib/MDPPlatformLib.c b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Library/MDPPlatformLib/MDPPlatformLib.c
+index b3df5b9..1c5603f 100755
+--- a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Library/MDPPlatformLib/MDPPlatformLib.c
++++ b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Library/MDPPlatformLib/MDPPlatformLib.c
+@@ -65,6 +65,7 @@
+ #define CDP_DISP_RESET_GPIO               75      //GPIO number for LCD0_RESET
+ #define CDP_DISP_TE_GPIO                  10      //GPIO number for TE
+ #define CDP_DISP_MODE_SEL                 76      //GPIO for panel mode select 0 = Dual Port, 1 = Single Port (DSC)
++#define CDP_DISP_EN                       12      //GPIO for panel enable
+ 
+ 
+ /* Helper macro for supported panels table entry PanelInfoType */
+@@ -186,6 +187,86 @@
+ /*===========================================================================
+  Local Configuration Definitions
+  ===========================================================================*/
++// Add begin by chenchanghao for: Tina LCD bringup
++/******************************************************************
++ *                   MEITU 6.01¡± FHD+ (AMS601NT11)                *
++ *                                                                *
++ *                   1080x2160                                    *
++ *                   Single-DSI                                   *
++ *                   Command mode                                 *
++ ******************************************************************/
++const static int8 Tina_samsung_cmd_xmldata[] =
++"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
++"<PanelName>SAMSUNG-TINA</PanelName>"
++"<PanelDescription>Tina Samsung CMD Mode Panel (1080x2160 24bpp)</PanelDescription>"
++"<Group id=\"Active Timing\">"
++" <HorizontalActive>1080</HorizontalActive>"
++" <HorizontalFrontPorch>8</HorizontalFrontPorch>"
++" <HorizontalBackPorch>8</HorizontalBackPorch>"
++" <HorizontalSyncPulse>4</HorizontalSyncPulse>"
++" <HorizontalSyncSkew>0</HorizontalSyncSkew>"
++" <HorizontalLeftBorder>0</HorizontalLeftBorder>"
++" <HorizontalRightBorder>0</HorizontalRightBorder>"
++" <VerticalActive>2160</VerticalActive>"
++" <VerticalFrontPorch>8</VerticalFrontPorch>"
++" <VerticalBackPorch>4</VerticalBackPorch>"
++" <VerticalSyncPulse>8</VerticalSyncPulse>"
++" <VerticalSyncSkew>0</VerticalSyncSkew>"
++" <VerticalTopBorder>0</VerticalTopBorder>"
++" <VerticalBottomBorder>0</VerticalBottomBorder>"
++" <InvertDataPolarity>False</InvertDataPolarity>"
++" <InvertVsyncPolairty>False</InvertVsyncPolairty>"
++" <InvertHsyncPolarity>False</InvertHsyncPolarity>"
++" <BorderColor>0x0</BorderColor>"
++"</Group>"
++"<Group id=\"Display Interface\">"
++" <InterfaceType>9</InterfaceType>"
++" <InterfaceColorFormat>3</InterfaceColorFormat>"
++"</Group>"
++"<Group id=\"DSI Interface\">"
++" <DSIChannelId>2</DSIChannelId>"
++" <DSIVirtualId>0</DSIVirtualId>"
++" <DSIColorFormat>36</DSIColorFormat>"
++" <DSITrafficMode>2</DSITrafficMode>"
++" <DSILanes>4</DSILanes>"
++" <DSILowPowerModeInBLLPEOF units='Bool'>True</DSILowPowerModeInBLLPEOF>\n"
++" <DSILowPowerModeInBLLP units='Bool'>True</DSILowPowerModeInBLLP>\n"
++" <DSITECheckEnable>True</DSITECheckEnable>"
++" <DSITEUsingDedicatedTEPin>True</DSITEUsingDedicatedTEPin>"
++" <DSITEvSyncStartPos>480</DSITEvSyncStartPos>"
++"<DSIEnableAutoRefresh>True</DSIEnableAutoRefresh>"
++"<DSIAutoRefreshFrameNumDiv>1</DSIAutoRefreshFrameNumDiv>"
++"<PanelOrientation>2</PanelOrientation>"
++" <DSIRefreshRate>0x3C0000</DSIRefreshRate>"
++" <DSIInitMasterTime units='integer'>1</DSIInitMasterTime>\n"
++" <DSIControllerMapping>\n"
++"  00\n"
++" </DSIControllerMapping>\n"
++" <DSILP11AtInit>True</DSILP11AtInit>\n"
++"</Group>"
++"<DSIInitSequence>"
++"05 11 00\n"
++"ff 0a\n"
++"15 35 00\n"
++"39 2b 00 00 08 6f\n"
++"15 53 28\n"
++"ff 70\n"
++"05 29 00\n"
++"39 51 03 ff\n"
++"</DSIInitSequence>"
++"<DSITermSequence>"
++" 05 28 00\n"
++" 05 10 00\n"
++" FF 78\n"
++"</DSITermSequence>"
++"<TLMMGPIODefaultHigh>34</TLMMGPIODefaultHigh>"
++"<Group id='Backlight Configuration'>"
++" <BacklightType>3</BacklightType>\n"
++" <BacklightPmicControlType>2</BacklightPmicControlType>\n"
++" <DisplayResetInfo>0 10 1000 10000 0</DisplayResetInfo>\n"
++"</Group>\n";
++// Add end
++
+ /******************************************************************
+  *                   Sharp 5.5" 4k Panel                            *
+  *                                                                *
+@@ -2413,6 +2494,29 @@
+ ***************************************************************************/
+ /* Default panel for SDM670 : Dual DSI Video mode. */
+ static PlatformDSIDetectParams panelList_0[] = {    /* subtype == 1 */
++    // Add begin by chenchanghao for: Tina LCD bringup
++    // Panel #2 - DSI Command Mode Panel (1080x2160 24bpp
++    {
++      0x06,                                                  // uCmdType
++      0x05,                                                  // total number of retry on failures
++      {
++        {{0xDA, 0x00},                                       // address to read ID1
++        {0x30, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}     // expected readback
++        },
++        {{0xDB, 0x00},                                       // address to read ID2
++        {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}     // expected readback
++        },
++        {{0xDC, 0x00},                                       // address to read ID3
++        {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}     // expected readback
++        }
++      },
++      0,                                                     // Lane remap order {0, 1, 2, 3}
++      Tina_samsung_cmd_xmldata,                           // psPanelCfg (panel configuration)
++      sizeof(Tina_samsung_cmd_xmldata),                   // uPanelCfgSize
++      MDPPLATFORM_PANEL_TINA_SAMSUNG_1080_CMD,            // eSelectedPanel
++      0                                                      // uFlags
++    },
++    // Add end
+     // Panel #1 - Truly Dual DSI Video Mode Panel (1440x2560 24bpp
+     {
+       0x06,                                                  // uCmdType
+@@ -2445,6 +2549,9 @@
+ */
+ const PanelInfoType gPanelList[] =
+ {
++  // Add begin by chenchanghao for: Tina LCD bringup
++  PANEL_CREATE_ENTRY("tina_samsung_1080_cmd",  MDPPLATFORM_PANEL_TINA_SAMSUNG_1080_CMD,  "qcom,tina_mdss_dsi_samsung_1080p_cmd",      DISP_INTF_DSI, Tina_samsung_cmd_xmldata ,      DISP_TOPOLOGY_CONFIG_0, DISP_TIMING_CONFIG_NONE, PLL_OVERRIDE_NONE, DISP_MODE_SINGLE_DSI,      DISP_MODE_SINGLE_DSI,  DISP_MODE_SINGLE_DSI),
++  // Add end
+   /*Supported Panels*/
+   /*4k cmd*/
+   PANEL_CREATE_ENTRY("sharp_4k_dsc_cmd",            MDPPLATFORM_PANEL_SHARP_4K_DSC_CMD,            "dsi_sharp_4k_dsc_cmd_display:",         DISP_INTF_DSI, Sharp_4k_cmd_dsc_xmldata,              DISP_TOPOLOGY_CONFIG_NONE,  DISP_TIMING_CONFIG_NONE, PLL_OVERRIDE_NONE, DISP_MODE_DUAL_DSI,                                DISP_MODE_DUAL_DSI,                                   DISP_MODE_DUAL_DSI),
+@@ -2621,6 +2728,18 @@
+       DEBUG((EFI_D_WARN, "DisplayDxe: Configure GPIO %d for TE line failed %d\n", CDP_DISP_TE_GPIO));
+     }
+ 
++   DEBUG((EFI_D_ERROR, "DisplayDxe: Configure GPIO %d for CDP_DISP_EN start!\n", CDP_DISP_EN));
++  /* Add begin by chenchanghao: Config and pull up enable_pin gpio12 for bringup panel*/
++  if (EFI_SUCCESS != TLMMProtocol->ConfigGpio((UINT32)EFI_GPIO_CFG(CDP_DISP_EN, 0, GPIO_OUTPUT, GPIO_PULL_UP, GPIO_16MA), TLMM_GPIO_ENABLE))
++  {
++    DEBUG((EFI_D_WARN, "DisplayDxe: Configure GPIO %d for CDP_DISP_EN Failed!\n", CDP_DISP_EN));
++  }
++
++  if (EFI_SUCCESS != TLMMProtocol->GpioOut((UINT32)EFI_GPIO_CFG(CDP_DISP_EN, 0, GPIO_OUTPUT, GPIO_NO_PULL, GPIO_16MA), GPIO_HIGH_VALUE))
++  {
++    DEBUG((EFI_D_WARN, "DisplayDxe: CDP_DISP_EN line High failed!\n"));
++  }
++  /*Add end*/
+   }
+ 
+   return Status;
+@@ -3504,16 +3623,26 @@
+               if (0x12 == ((sPlatformInfo.sEFIPlatformType.version >> 16) & 0xFF))
+               {
+                  /* QRD670 SKU2 uses Hx8399 panel */
+-                 pPlatformParams->sPlatformPanel.pPanelXMLConfig = (int8 *)Truly_HX8399_FHD_video_xmldata;
+-                 pPlatformParams->sPlatformPanel.uConfigSize     = sizeof(Truly_HX8399_FHD_video_xmldata);
+-                 pPlatformParams->sPlatformPanel.eSelectedPanel  = MDPPLATFORM_PANEL_HX8399_TRULY_FHD_VIDEO;
++                // pPlatformParams->sPlatformPanel.pPanelXMLConfig = (int8 *)Truly_HX8399_FHD_video_xmldata;
++                // pPlatformParams->sPlatformPanel.uConfigSize     = sizeof(Truly_HX8399_FHD_video_xmldata);
++                // pPlatformParams->sPlatformPanel.eSelectedPanel  = MDPPLATFORM_PANEL_HX8399_TRULY_FHD_VIDEO;
++
++                /* QRD670 uses samsung_cmd panel */
++                   pPlatformParams->sPlatformPanel.pPanelXMLConfig = (int8 *)Tina_samsung_cmd_xmldata;
++                   pPlatformParams->sPlatformPanel.uConfigSize     = sizeof(Tina_samsung_cmd_xmldata);
++                   pPlatformParams->sPlatformPanel.eSelectedPanel  = MDPPLATFORM_PANEL_TINA_SAMSUNG_1080_CMD;
+               }
+               else
+               {
+                 /* QRD670 uses NT36850 panel */
+-                pPlatformParams->sPlatformPanel.pPanelXMLConfig = (int8 *)Truly_NT36850_WQHD_cmd_xmldata;
+-                pPlatformParams->sPlatformPanel.uConfigSize     = sizeof(Truly_NT36850_WQHD_cmd_xmldata);
+-                pPlatformParams->sPlatformPanel.eSelectedPanel  = MDPPLATFORM_PANEL_NT36850_TRULY_WQHD_CMD;
++                //pPlatformParams->sPlatformPanel.pPanelXMLConfig = (int8 *)Truly_NT36850_WQHD_cmd_xmldata;
++                //pPlatformParams->sPlatformPanel.uConfigSize     = sizeof(Truly_NT36850_WQHD_cmd_xmldata);
++                //pPlatformParams->sPlatformPanel.eSelectedPanel  = MDPPLATFORM_PANEL_NT36850_TRULY_WQHD_CMD;
++
++                /* QRD670 uses samsung_cmd panel */
++                 pPlatformParams->sPlatformPanel.pPanelXMLConfig = (int8 *)Tina_samsung_cmd_xmldata;
++                 pPlatformParams->sPlatformPanel.uConfigSize     = sizeof(Tina_samsung_cmd_xmldata);
++                 pPlatformParams->sPlatformPanel.eSelectedPanel  = MDPPLATFORM_PANEL_TINA_SAMSUNG_1080_CMD;
+               }
+               break;
+ 
+diff --git a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Settings/PMIC/core/pm_config_pam.c b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Settings/PMIC/core/pm_config_pam.c
+index cc3f86f..3390661 100755
+--- a/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Settings/PMIC/core/pm_config_pam.c
++++ b/AMSS/BOOT.XF.2.1/boot_images/QcomPkg/SDM670Pkg/Settings/PMIC/core/pm_config_pam.c
+@@ -95,11 +95,11 @@
+ };
+ 
+ const pm_prm_vreg_data_type
+-pm_pam_disp_prim_b_ldo1 [] =
++pm_pam_disp_prim_b_ldo6 [] =
+ {
+      /*     mode    voltage(mV)  headroom(mV)   enable*/ 
+     { PM_PRM_VREG_MODE_LPM, 0, 0, PM_PRM_DEV_DISABLE },  // GENERIC_STANDBY
+-    { PM_PRM_VREG_MODE_NPM, 880, 0, PM_PRM_DEV_ENABLE }  // GENERIC_ACTIVE
++    { PM_PRM_VREG_MODE_NPM, 3000, 0, PM_PRM_DEV_ENABLE }  // GENERIC_ACTIVE
+ };
+ 
+ const pm_prm_vreg_data_type
+@@ -114,7 +114,7 @@
+ pm_pam_disp_prim_rails_info [] = 
+ {
+     { (void*)pm_pam_disp_prim_a_ldo1, PM_PRM_RSRC_VRM_VREG },
+-    { (void*)pm_pam_disp_prim_b_ldo1, PM_PRM_RSRC_VRM_VREG },
++    { (void*)pm_pam_disp_prim_b_ldo6, PM_PRM_RSRC_VRM_VREG },
+     { (void*)pm_pam_disp_prim_a_ldo11, PM_PRM_RSRC_VRM_VREG },
+ }; 
+ 
+@@ -122,7 +122,7 @@
+ pm_pam_deps_disp_prim [] =
+ {
+     PM_PRM_CLIENT_VREG_DEP ( a,  ldo, 1 ),
+-    PM_PRM_CLIENT_VREG_DEP ( b,  ldo, 1 ),
++    PM_PRM_CLIENT_VREG_DEP ( b,  ldo, 6 ),
+     PM_PRM_CLIENT_VREG_DEP ( a,  ldo, 11 ),
+ };
+ 
