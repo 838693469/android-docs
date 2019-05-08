@@ -1,0 +1,1665 @@
+[   17.161329] [NVT-ts] nvt_ts_resume 1660: Touch is already resume
+[   17.164592] ueventd: loading /devices/soc/4080000.qcom,mss/firmware/modem.b21 took 23ms
+[   17.165556] init: starting service 'bootanim'...
+[   17.170110] ueventd: firmware: loading 'modem.b22' for '/devices/soc/4080000.qcom,mss/firmware/modem.b22'
+[   17.176256] ueventd: loading /devices/soc/4080000.qcom,mss/firmware/modem.b22 took 6ms
+[   17.217641] init: Service 'nvram_country' (pid 565) exited with status 0
+[   17.260695] pil-q6v5-mss 4080000.qcom,mss: modem: Brought out of reset
+[   17.337357] pil-q6v5-mss 4080000.qcom,mss: modem: Power/Clock ready interrupt received
+[   17.337375] pil-q6v5-mss 4080000.qcom,mss: Subsystem error monitoring/handling services are up
+[   17.338160] mitigate_inrush_notifier_cb: subsystem modem has completed powerup
+[   17.338183] ipa_get_ipc_logbuf_low:2736 IPA HW is not supported
+[   17.340079] M-Notify: General: 7
+[   17.340085] ipa_get_ipc_logbuf_low:2736 IPA HW is not supported
+[   17.358088] inrush-current-mitigation driver exited
+[   17.450309] rmt_storage:INFO:rmt_storage_open_cb: Processing: Open Request for /boot/modem_fs1!
+[   17.460183] sysmon-qmi: sysmon_clnt_svc_arrive: Connection established between QMI handle and modem's SSCTL service
+[   17.460303] rmt_storage:INFO:rmt_storage_open_cb: Processing: Open Request for /boot/modem_fs2!
+[   17.469058] rmt_storage:INFO:rmt_storage_open_cb: Processing: Open Request for /boot/modem_fsg!
+[   17.477636] rmt_storage:INFO:rmt_storage_open_cb: Processing: Open Request for /boot/modem_fsc!
+[   17.487036] rmt_storage:INFO:rmt_storage_alloc_buff_cb: Received req_size: 0! avail: 1572864
+[   17.495255] rmt_storage:INFO:rmt_storage_rw_iovec_cb: Read iovec request received for /boot/modem_fs1
+[   17.504028] rmt_storage:INFO:rmt_storage_client_thread: Calling Read [offset=512, size=512]for /boot/modem_fs1!
+[   17.514613] rmt_storage:INFO:rmt_storage_client_thread: Done Read (bytes = 512) for /boot/modem_fs1!
+[   17.523754] rmt_storage:INFO:rmt_storage_rw_iovec_cb: Read iovec request received for /boot/modem_fs2
+[   17.532241] rmt_storage:INFO:rmt_storage_client_thread: Calling Read [offset=512, size=512]for /boot/modem_fs2!
+[   17.542857] rmt_storage:INFO:rmt_storage_client_thread: Done Read (bytes = 512) for /boot/modem_fs2!
+[   17.554237] rmt_storage:INFO:rmt_storage_rw_iovec_cb: Read iovec request received for /boot/modem_fs2
+[   17.562637] rmt_storage:INFO:rmt_storage_client_thread: Calling Read [offset=1024, size=916480]for /boot/modem_fs2!
+[   17.586460] rmt_storage:INFO:rmt_storage_client_thread: Done Read (bytes = 916480) for /boot/modem_fs2!
+[   17.652966] apr_tal:Modem Is Up
+[   17.659929] diag: In diag_send_feature_mask_update, control channel is not open, p: 0, 0000000000000000
+[   17.791641] selinux: avc:  denied  { set } for property=persist.asus.savelogs.dumpstate pid=798 uid=0 gid=1015 scontext=u:r:savelogs:s0 tcontext=u:object_r:persist_ims_prop:s0 tclass=property_service permissive=0\x0a
+[   17.811047] init: sys_prop(PROP_MSG_SETPROP2): permission denied uid:0 name:persist.asus.savelogs.dumpstate
+[   17.843015] selinux: avc:  denied  { set } for property=persist.asus.savelogs.dumpstate pid=802 uid=0 gid=1015 scontext=u:r:savelogs:s0 tcontext=u:object_r:persist_ims_prop:s0 tclass=property_service permissive=0\x0a
+[   17.862442] init: sys_prop(PROP_MSG_SETPROP2): permission denied uid:0 name:persist.asus.savelogs.dumpstate
+[   17.893511] selinux: avc:  denied  { set } for property=persist.asus.uts pid=803 uid=0 gid=1015 scontext=u:r:savelogs:s0 tcontext=u:object_r:persist_ims_prop:s0 tclass=property_service permissive=0\x0a
+[   17.911615] init: sys_prop(PROP_MSG_SETPROP2): permission denied uid:0 name:persist.asus.uts
+[   17.919873] QSEECOM: __qseecom_process_incomplete_cmd: fail:resp res= -65,app_id = 0,lstr = 12288
+[   17.919882] get_ice_device_from_storage_type: found ice device ffffffc0d8d95200
+[   17.945632] diag: USB channel diag disconnected
+[   17.945709] qti_ctrl_queue_notify: qti_ctrl_queue_notify: rmnet ctrl file handler 0000000000000000 is not open
+[   17.954521] gbam_disconnect_work: gbam_disconnect_work: Bam channel is not opened
+[   17.955346] init: Service 'adbd' (pid 564) killed by signal 1
+[   17.955372] init: Sending signal 9 to service 'adbd' (pid 564) process group...
+[   17.955525] init: Successfully killed process cgroup uid 0 pid 564 in 0ms
+[   18.045538] init: Service 'savelogs' (pid 566) exited with status 0
+[   18.134427] get_ice_device_from_storage_type: found ice device ffffffc0d8d95200
+[   18.136502] QSEECOM: qseecom_create_key: Set the key successfully
+[   18.148125] diag: In diagfwd_data_read_done, unable to write to mux error: -19
+[   18.156238] device-mapper: req-crypt: req_crypt_ctr: Mapping block_device /dev/block/bootdevice/by-name/userdata to dm-req-crypt ok!\x0a
+[   18.172119] EXT4-fs (dm-0): mounted filesystem with ordered data mode. Opts: barrier=1,noauto_da_alloc,discard
+[   18.172195] SELinux: initialized (dev dm-0, type ext4), uses xattr
+[   18.177308] init: processing action (vold.decrypt=trigger_post_fs_data) from (/init.rc:688)
+[   18.177447] init: processing action (post-fs-data) from (/init.rc:383)
+[   18.224855] scm_call failed: func id 0x42000c16, ret: -1, syscall returns: 0x0, 0x0, 0x0
+[   18.231959] hyp_assign_table: Failed to assign memory protection, ret = -5
+[   18.231974] memshare: hyp_assign_phys failed size=2097152 err=-5
+[   18.286538] init: starting service 'exec 5 (/system/bin/vdc --wait cryptfs init_user0)'...
+[   18.288162] init: SVC_EXEC pid 817 (uid 0 gid 0+0 context default) started; waiting...
+[   18.311101] init: Service 'exec 5 (/system/bin/vdc --wait cryptfs init_user0)' (pid 817) exited with status 0 waiting took 0.024000 seconds
+[   18.312246] selinux: SELinux: Skipping restorecon_recursive(/data)\x0a
+[   18.312968] init: starting service 'exec 6 (/system/bin/tzdatacheck /system/usr/share/zoneinfo /data/misc/zoneinfo)'...
+[   18.314339] init: SVC_EXEC pid 818 (uid 1000 gid 1000+0 context default) started; waiting...
+[   18.328089] [NVT-ts] update_firmware_request 51: filename is NT36672_AUO599_Asus_T89189_FWC7.bin
+[   18.332081] init: Service 'exec 6 (/system/bin/tzdatacheck /system/usr/share/zoneinfo /data/misc/zoneinfo)' (pid 818) exited with status 0 waiting took 0.019000 seconds
+[   18.332473] init: processing action (post-fs-data) from (/init.usb.rc:6)
+[   18.335439] init: processing action (post-fs-data) from (/vendor/etc/init/hw/init.qcom.rc:223)
+[   18.337348] ueventd: firmware: loading 'NT36672_AUO599_Asus_T89189_FWC7.bin' for '/devices/soc/78b7000.i2c/i2c-3/3-0062/firmware/NT36672_AUO599_Asus_T89189_FWC7.bin'
+[   18.338747] ueventd: firmware: could not find firmware for NT36672_AUO599_Asus_T89189_FWC7.bin
+[   18.346704] ueventd: loading /devices/soc/78b7000.i2c/i2c-3/3-0062/firmware/NT36672_AUO599_Asus_T89189_FWC7.bin took 9ms
+[   18.346968] [NVT-ts] update_firmware_request 55: firmware load failed, ret=-11
+[   18.353605] [NVT-ts] Boot_Update_Firmware 987: update_firmware_request failed. (-11)
+[   18.398671] init: Unable to open '/sys/block/dm-1/queue/read_ahead_kb': No such file or directory
+[   18.426967] init: processing action (post-fs-data) from (/vendor/etc/init/hw/init.target.rc:65)
+[   18.432225] selinux: SELinux: Skipping restorecon_recursive(/ADF)\x0a
+[   18.432780] init: processing action (post-fs-data) from (init.carrier.rc:37)
+[   18.433205] init: service carrier_switcher does not have a SELinux domain defined
+[   18.439830] init: processing action (post-fs-data) from (/vendor/etc/init/hw/init.qcom.factory.rc:53)
+[   18.451608] init: processing action (post-fs-data) from (/vendor/etc/init/hw/init.qcom.test.rc:29)
+[   18.452983] init: processing action (post-fs-data) from (/system/etc/init/bootstat.rc:3)
+[   18.455949] init: processing action (init.svc.bootanim=running && ro.crypto.type=block && post-fs-data) from (/system/etc/init/bootstat.rc:44)
+[   18.456621] init: starting service 'exec 7 (/system/bin/bootstat -r post_decrypt_time_elapsed)'...
+[   18.458134] init: SVC_EXEC pid 820 (uid 1000 gid 1007+0 context default) started; waiting...
+[   18.479257] init: Service 'exec 7 (/system/bin/bootstat -r post_decrypt_time_elapsed)' (pid 820) exited with status 0 waiting took 0.023000 seconds
+[   18.479631] init: processing action (post-fs-data) from (/system/etc/init/logtagd.rc:4)
+[   18.482513] init: processing action (post-fs-data) from (/vendor/etc/init/hostapd.android.rc:9)
+[   18.486357] init: processing action (vold.decrypt=trigger_load_persist_props) from (/init.rc:683)
+[   18.486459] init: Couldn't load property file: Unable to open '/data/local.prop': No such file or directory: No such file or directory
+[   18.723518] init: property_set("ro.persistent_properties.ready", "true") failed: property already set
+[   18.731885] init: Command 'load_persist_props' action=vold.decrypt=trigger_load_persist_props (/init.rc:684) returned 0 took 245ms.
+[   18.732504] init: starting service 'logd-reinit'...
+[   18.734022] init: property_set("ro.boottime.logd-reinit", "18725362805") failed: property already set
+[   18.743569] init: processing action (vold.decrypt=trigger_restart_framework) from (/init.rc:696)
+[   18.743637] init: ExecStart(update_verifier): Service not found
+[   18.748731] init: cannot find '/system/bin/install-recovery.sh', disabling 'flash_recovery': No such file or directory
+[   18.752978] logd.daemon: reinit
+[   18.759881] init: starting service 'qcom-c_main-sh'...
+[   18.761903] init: starting service 'cnd'...
+[   18.763814] init: starting service 'dpmQmiMgr'...
+[   18.766096] init: starting service 'ptt_socket_app'...
+[   18.768358] init: starting service 'cnss_diag'...
+[   18.771135] init: starting service 'time_daemon'...
+[   18.773101] init: cannot find '/vendor/bin/vppservice', disabling 'vppservice': No such file or directory
+[   18.781906] init: cannot find '/system/bin/qrngd', disabling 'qrngd': No such file or directory
+[   18.791643] init: starting service 'thermal-engine'...
+[   18.793877] init: starting service 'wcnss-service'...
+[   18.796234] init: starting service 'imsstarter'...
+[   18.796295] type=1400 audit(678990.449:49): avc: denied { sys_ptrace } for pid=746 comm="ps" capability=19 scontext=u:r:savelogs:s0 tcontext=u:r:savelogs:s0 tclass=capability permissive=0 duplicate messages suppressed
+[   18.796485] init: Created socket '/dev/socket/thermal-send-client', mode 666, user 1000, group 1000
+[   18.797304] init: Created socket '/dev/socket/thermal-recv-client', mode 660, user 1000, group 1000
+[   18.797913] init: Created socket '/dev/socket/thermal-recv-passive-client', mode 666, user 1000, group 1000
+[   18.798658] init: Created socket '/dev/socket/thermal-send-rule', mode 660, user 1000, group 1000
+[   18.799921] init: starting service 'adsprpcd'...
+[   18.802530] init: cannot find '/system/bin/hvdcp_opti', disabling 'hvdcp_opti': No such file or directory
+[   18.803603] init: starting service 'zygote'...
+[   18.806171] init: starting service 'zygote_secondary'...
+[   18.812452] init: Created socket '/dev/socket/zygote', mode 660, user 0, group 1000
+[   18.814552] init: Created socket '/dev/socket/zygote_secondary', mode 660, user 0, group 1000
+[   18.828632] type=1400 audit(678992.359:456): avc: denied { chown } for pid=825 comm="ptt_socket_app" capability=0 scontext=u:r:wcnss_service:s0 tcontext=u:r:wcnss_service:s0 tclass=capability permissive=0
+[   18.829345] init: starting service 'audioserver'...
+[   18.832055] init: starting service 'cameraserver'...
+[   18.834796] init: starting service 'drm'...
+[   18.837856] init: starting service 'installd'...
+[   18.863327] type=1400 audit(678992.359:456): avc: denied { chown } for pid=825 comm="ptt_socket_app" capability=0 scontext=u:r:wcnss_service:s0 tcontext=u:r:wcnss_service:s0 tclass=capability permissive=0
+[   18.864290] init: starting service 'keystore'...
+[   18.866918] init: starting service 'mediadrm'...
+[   18.871088] init: starting service 'mediaextractor'...
+[   18.874061] init: starting service 'mediametrics'...
+[   18.877072] init: starting service 'media'...
+[   18.882351] type=1400 audit(678992.359:457): avc: denied { setgid } for pid=825 comm="ptt_socket_app" capability=6 scontext=u:r:wcnss_service:s0 tcontext=u:r:wcnss_service:s0 tclass=capability permissive=0
+[   18.888179] SMBCHG: smbchg_temp_detect_work: charger_present = charger, charge_status = charging, wake_lock = active
+[   18.888188] FG: get_sram_prop_now: addr 0x5CC, offset 1 value 4354832
+[   18.888192] FG: get_sram_prop_now: addr 0x5CC, offset 3 value 152
+[   18.888196] SMBCHG: smbchg_temp_detect_work: bat_voltage = 4354, chg_current = 0, bat_capacity = 100
+[   18.888200] FG: get_sram_prop_now: addr 0x550, offset 2 value 307
+[   18.888217] SMBCHG: smbchg_masked_write_raw: addr = 0x1242 writing 0x0
+[   18.888286] SMBCHG: usb_thermal_check_usb_port_temp: otg remove !
+[   18.888292] SMBCHG: usb_thermal_check_usb_port_temp: usb_temp = 25, usbchg_gpio = 0, allow = 0, usb_enable = 1, otg_enable = 1, temp_alert = 0, pre_alert = 0
+[   18.889615] SMBCHG: smbchg_get_board_temp: get_board_temp 31617, 35
+[   18.889623] FG: get_sram_prop_now: addr 0x550, offset 2 value 307
+[   18.889630] SMBCHG: demoapp_battery_capacity_control: demo_app_enable = disable, usbchg_soc_enable = 1, battchg_soc_enable  = 1
+[   18.889633] SMBCHG: smbchg_temp_detect_work: bat_temp = 307, board_temp = 35
+[   18.904843] 'opened /dev/adsprpc-smd c 228 0'
+[   18.905457] init: starting service 'netd'...
+[   18.919542] init: starting service 'storaged'...
+[   18.921770] init: Opened file '/d/mmc0/mmc0:0001/ext_csd', flags 0
+[   18.923093] init: starting service 'wificond'...
+[   18.925607] init: starting service 'mediacodec'...
+[   18.928075] init: Created socket '/dev/socket/netd', mode 660, user 0, group 1000
+[   18.929135] init: Created socket '/dev/socket/dnsproxyd', mode 660, user 0, group 3003
+[   18.930201] init: Created socket '/dev/socket/mdns', mode 660, user 0, group 1000
+[   18.934193] init: Created socket '/dev/socket/fwmarkd', mode 660, user 0, group 3003
+[   18.964221] init: starting service 'ril-daemon'...
+[   18.980967] init: starting service 'qti_gnss_service'...
+[   18.982884] init: Command 'class_start main' action=vold.decrypt=trigger_restart_framework (/init.rc:699) returned 0 took 234ms.
+[   18.983736] init: Service 'logd-reinit' (pid 821) exited with status 0
+[   18.984142] init: Service 'ptt_socket_app' (pid 825) killed by signal 1
+[   18.985577] init: starting service 'nqnfcinfo'...
+[   18.987989] init: starting service 'cnss-daemon'...
+[   19.032266] init: cannot find '/vendor/bin/ssgqmigd', disabling 'ssgqmigd': No such file or directory
+[   19.043818] init: starting service 'mlid'...
+[   19.046655] init: starting service 'loc_launcher'...
+[   19.085678] init: Created socket '/dev/socket/mlid', mode 666, user 1021, group 1021
+[   19.088986] msm_thermal:set_enabled enabled = 0
+[   19.120298] init: starting service 'qcom-sh'...
+[   19.122694] init: starting service 'crashdata-sh'...
+[   19.124642] init: cannot find '/vendor/bin/qvop-daemon', disabling 'qvop-daemon': No such file or directory
+[   19.246471] init: cannot find '/system/vendor/bin/qseeproxydaemon', disabling 'qseeproxydaemon': No such file or directory
+[   19.308247] init: cannot find '/system/vendor/bin/qdmastatsd', disabling 'qdmastatsd': No such file or directory
+[   19.338237] init: cannot find '/vendor/bin/seemp_healthd', disabling 'seemp_healthd': No such file or directory
+[   19.353044] init: starting service 'qcamerasvr'...
+[   19.355710] init: cannot find '/system/vendor/bin/qfp-daemon', disabling 'qfp-daemon': No such file or directory
+[   19.381885] init: cannot find '/system/vendor/bin/audiod', disabling 'audiod': No such file or directory
+[   19.440297] init: cannot find '/system/vendor/bin/dts_configurator', disabling 'dts_configurator': No such file or directory
+[   19.478266] init: cannot find '/system/vendor/bin/mdtpd', disabling 'mdtpd': No such file or directory
+[   19.496558] init: starting service 'dpmd'...
+[   19.503035] init: Created socket '/dev/socket/dpmd', mode 660, user 0, group 1000
+[   19.503721] init: Created socket '/dev/socket/tcm', mode 660, user 0, group 3003
+[   19.504318] init: Created socket '/dev/socket/dpmwrapper', mode 660, user 0, group 3003
+[   19.508977] init: starting service 'gatekeeperd'...
+[   19.510747] init: cannot find '/system/xbin/perfprofd', disabling 'perfprofd': No such file or directory
+[   19.539680] init: starting service 'tombstoned'...
+[   19.543822] init: starting service 'fps_hal'...
+[   19.545737] init: Command 'class_start late_start' action=vold.decrypt=trigger_restart_framework (/init.rc:700) returned 0 took 560ms.
+[   19.546719] selinux: avc:  denied  { set } for property=wlan.driver.config pid=830 uid=1000 gid=1000 scontext=u:r:wcnss_service:s0 tcontext=u:object_r:wifi_prop:s0 tclass=property_service permissive=0\x0a
+[   19.597191] init: Created socket '/dev/socket/tombstoned_crash', mode 666, user 1000, group 1000
+[   19.597895] init: Created socket '/dev/socket/tombstoned_intercept', mode 666, user 1000, group 1000
+[   19.598893] init: Created socket '/dev/socket/tombstoned_java_trace', mode 666, user 1000, group 1000
+[   19.618855] init: sys_prop(PROP_MSG_SETPROP2): permission denied uid:1000 name:wlan.driver.config
+[   19.626865] init: processing action (vold.decrypt=trigger_restart_framework) from (/vendor/etc/init/hw/init.qcom.rc:540)
+[   19.627990] init: Service 'nqnfcinfo' (pid 893) killed by signal 1
+[   19.689758] init: cannot find '/system/vendor/bin/qmuxd', disabling 'qmuxd': No such file or directory
+[   19.720326] wcnss_wlan triggered by userspace
+[   19.721288] wcnss_pm_qos_add_request: add request
+[   19.721323] wcnss_pm_qos_update_request: update request 100
+[   19.724975] wcnss_notif_cb: wcnss notification event: 2
+[   19.728519] type=1400 audit(678992.359:457): avc: denied { setgid } for pid=825 comm="ptt_socket_app" capability=6 scontext=u:r:wcnss_service:s0 tcontext=u:r:wcnss_service:s0 tclass=capability permissive=0
+[   19.738560] ueventd: firmware: loading 'wcnss.mdt' for '/devices/soc/a21b000.qcom,pronto/firmware/wcnss.mdt'
+[   19.741372] ueventd: loading /devices/soc/a21b000.qcom,pronto/firmware/wcnss.mdt took 3ms
+[   19.741590] subsys-pil-tz a21b000.qcom,pronto: wcnss: loading from 0x000000008c900000 to 0x000000008cf42000
+[   19.743191] wcnss_notif_cb: wcnss notification event: 6
+[   19.749390] wcnss: IRIS Reg: 91100004
+[   19.763703] init: processing action (vold.decrypt=trigger_restart_framework) from (/vendor/etc/init/hw/init.target.rc:204)
+[   19.765866] init: processing action (persist.sys.nvinit=Ready) from (/vendor/etc/init/hw/init.qcom.rc:1163)
+[   19.766354] init: starting service 'nvram_country'...
+[   19.769527] init: property_set("ro.boottime.nvram_country", "19759376970") failed: property already set
+[   19.821478] ueventd: firmware: loading 'wcnss.b02' for '/devices/soc/a21b000.qcom,pronto/firmware/wcnss.b02'
+[   19.829287] ueventd: loading /devices/soc/a21b000.qcom,pronto/firmware/wcnss.b02 took 8ms
+[   19.839619] ueventd: firmware: loading 'wcnss.b04' for '/devices/soc/a21b000.qcom,pronto/firmware/wcnss.b04'
+[   19.843641] init: processing action (persist.sys.nvinit=Ready) from (/vendor/etc/init/hw/init.qcom.rc:1163)
+[   19.844131] init: Service 'imsstarter' (pid 831) exited with status 0
+[   19.844639] init: Service 'crashdata-sh' (pid 920) exited with status 0
+[   19.851976] ueventd: loading /devices/soc/a21b000.qcom,pronto/firmware/wcnss.b04 took 13ms
+[   19.857727] ueventd: firmware: loading 'wcnss.b06' for '/devices/soc/a21b000.qcom,pronto/firmware/wcnss.b06'
+[   19.908712] ueventd: loading /devices/soc/a21b000.qcom,pronto/firmware/wcnss.b06 took 51ms
+[   19.920525] ueventd: firmware: loading 'wcnss.b09' for '/devices/soc/a21b000.qcom,pronto/firmware/wcnss.b09'
+[   19.928389] ueventd: loading /devices/soc/a21b000.qcom,pronto/firmware/wcnss.b09 took 8ms
+[   19.933995] ueventd: firmware: loading 'wcnss.b10' for '/devices/soc/a21b000.qcom,pronto/firmware/wcnss.b10'
+[   19.935976] ueventd: loading /devices/soc/a21b000.qcom,pronto/firmware/wcnss.b10 took 2ms
+[   19.947029] ueventd: firmware: loading 'wcnss.b11' for '/devices/soc/a21b000.qcom,pronto/firmware/wcnss.b11'
+[   19.954265] ueventd: loading /devices/soc/a21b000.qcom,pronto/firmware/wcnss.b11 took 7ms
+[   19.968218] init: processing action (persist.radio.device.imei=*) from (/init.rc:770)
+[   19.968987] ueventd: firmware: loading 'wcnss.b12' for '/devices/soc/a21b000.qcom,pronto/firmware/wcnss.b12'
+[   19.969945] init: starting service 'vendor.msm_irqbalance'...
+[   19.971708] ueventd: loading /devices/soc/a21b000.qcom,pronto/firmware/wcnss.b12 took 2ms
+[   19.978679] type=1400 audit(1514791813.706:458): avc: denied { read } for pid=830 comm="wcnss_service" name="u:object_r:serialno_prop:s0" dev="tmpfs" ino=659 scontext=u:r:wcnss_service:s0 tcontext=u:object_r:serialno_prop:s0 tclass=file permissive=0
+[   20.038194] logd: logdr: UID=1000 GID=1000 PID=982 n tail=5 logMask=8 pid=959 start=0ns timeout=0ns
+[   20.059738] logd: logdr: UID=1000 GID=1000 PID=982 n tail=5 logMask=1 pid=959 start=0ns timeout=0ns
+[   20.069298] init: processing action (init.svc.zygote=running) from (/vendor/etc/init/hw/init.target.rc:262)
+[   20.071014] init: starting service 'ipacm-diag'...
+[   20.090279] init: Created socket '/dev/socket/ipacm_log_file', mode 660, user 1001, group 1001
+[   20.100596] subsys-pil-tz a21b000.qcom,pronto: wcnss: Brought out of reset
+[   20.125541] logd: logdr: UID=1000 GID=1000 PID=982 n tail=0 logMask=8 pid=959 start=0ns timeout=0ns
+[   20.126963] type=1400 audit(1514791813.706:458): avc: denied { read } for pid=830 comm="wcnss_service" name="u:object_r:serialno_prop:s0" dev="tmpfs" ino=659 scontext=u:r:wcnss_service:s0 tcontext=u:object_r:serialno_prop:s0 tclass=file permissive=0
+[   20.133194] logd: logdr: UID=1000 GID=1000 PID=982 n tail=0 logMask=1 pid=959 start=0ns timeout=0ns
+[   20.148386] type=1400 audit(1514791813.716:459): avc: denied { write } for pid=959 comm="android.hardwar" name="0" dev="dm-0" ino=1384452 scontext=u:r:hal_fingerprint_default:s0 tcontext=u:object_r:system_data_file:s0 tclass=dir permissive=0
+[   20.170375] type=1400 audit(1514791813.716:459): avc: denied { write } for pid=959 comm="android.hardwar" name="0" dev="dm-0" ino=1384452 scontext=u:r:hal_fingerprint_default:s0 tcontext=u:object_r:system_data_file:s0 tclass=dir permissive=0
+[   20.175978] init: processing action (service.qti.ims.enabled=1) from (/vendor/etc/init/hw/init.target.rc:214)
+[   20.176878] init: starting service 'imsqmidaemon'...
+[   20.179780] init: Created socket '/dev/socket/ims_qmid', mode 660, user 1000, group 1001
+[   20.181834] init: processing action (init.svc.wpa_supplicant=stopped) from (/vendor/etc/init/hw/init.qcom.rc:500)
+[   20.181927] init: do_stop: Service dhcpcd not found
+[   20.182921] init: Service 'fps_hal' (pid 959) killed by signal 6
+[   20.182953] init: Sending signal 9 to service 'fps_hal' (pid 959) process group...
+[   20.183295] init: Successfully killed process cgroup uid 1000 pid 959 in 0ms
+[   20.186056] init: Untracked pid 982 exited with status 0
+[   20.195935] type=1400 audit(1514791813.726:460): avc: denied { read write } for pid=959 comm="android.hardwar" name="vndbinder" dev="tmpfs" ino=756 scontext=u:r:hal_fingerprint_default:s0 tcontext=u:object_r:vndbinder_device:s0 tclass=chr_file permissive=0
+[   20.244657] msm_pm_qos_add_request: add request
+[   20.249749] init: starting service 'ipacm'...
+[   20.285947] init: processing action (vendor.ims.QMI_DAEMON_STATUS=1) from (/vendor/etc/init/hw/init.target.rc:224)
+[   20.286609] init: starting service 'imsdatadaemon'...
+[   20.290145] init: Created socket '/dev/socket/ims_datad', mode 660, user 1000, group 1001
+[   20.309789] msm_cci_init:1437: hw_version = 0x10020004
+[   20.309995] init: starting service 'ril-daemon2'...
+[   20.310042] msm_sensor_match_id: read id: 0x6885 expected id:0x6885 sensor_slave_addr:0x6c
+[   20.310051] ov16885 probe succeeded
+[   20.312917] init: Created socket '/dev/socket/rild2', mode 660, user 0, group 1001
+[   20.314039] init: Created socket '/dev/socket/rild-debug2', mode 660, user 1001, group 1000
+[   20.371994] init: starting service 'qti'...
+[   20.384717] init: processing action (vendor.ims.DATA_DAEMON_STATUS=1) from (/vendor/etc/init/hw/init.target.rc:239)
+[   20.386320] init: starting service 'ims_rtp_daemon'...
+[   20.390055] init: starting service 'vendor.imsrcsservice'...
+[   20.400563] msm_cci_init:1437: hw_version = 0x10020004
+[   20.400865] msm_sensor_match_id: read id: 0x885a expected id:0x885a sensor_slave_addr:0x6c
+[   20.400875] ov8856 probe succeeded
+[   20.406181] init: starting service 'netmgrd'...
+[   20.455469] init: Service 'qcom-sh' (pid 919) exited with status 0
+[   20.458760] msm_cci_init:1437: hw_version = 0x10020004
+[   20.459051] msm_sensor_match_id: read id: 0x376 expected id:0x376 sensor_slave_addr:0x20
+[   20.459060] imx376 probe succeeded
+[   20.464252] init: starting service 'port-bridge'...
+[   20.476440] ------------[ cut here ]------------
+[   20.480038] WARNING: CPU: 7 PID: 934 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:421 clk_disable+0x60/0x190()
+[   20.491224] gcc_camss_mclk0_clk: Never called prepare or calling disable after unprepare
+[   20.491234] Modules linked in:
+[   20.491249] CPU: 7 PID: 934 Comm: mm-qcamera-daem Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   20.491255] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   20.491262] Call trace:
+[   20.493666] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   20.493679] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   20.493692] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   20.493703] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   20.493713] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   20.493724] [<ffffffc000ac1c14>] clk_disable+0x60/0x190
+[   20.493736] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   20.493746] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   20.493757] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   20.493767] [<ffffffc00087ed80>] msm_sensor_driver_probe+0xfb8/0x12dc
+[   20.493777] [<ffffffc00087ceb8>] msm_sensor_init_subdev_ioctl+0xfc/0x2e4
+[   20.493787] [<ffffffc00087d114>] msm_sensor_init_subdev_do_ioctl+0x74/0x100
+[   20.493799] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   20.493809] [<ffffffc00087cdb4>] msm_sensor_init_subdev_fops_ioctl+0x14/0x1c
+[   20.493819] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   20.493830] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   20.493840] ---[ end trace 299cd2053d36422b ]---
+[   20.498256] ------------[ cut here ]------------
+[   20.502871] WARNING: CPU: 7 PID: 934 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:422 clk_disable+0x84/0x190()
+[   20.514051] gcc_camss_mclk0_clk is unbalanced
+[   20.514059] Modules linked in:
+[   20.514065] 
+[   20.514075] CPU: 7 PID: 934 Comm: mm-qcamera-daem Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   20.514081] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   20.514087] Call trace:
+[   20.515278] init: property_set("ro.config.versatility", "WW") failed: property already set
+[   20.515756] init: property_set("ro.config.CID", "ASUS") failed: property already set
+[   20.516177] init: property_set("ro.config.idcode", "1A") failed: property already set
+[   20.516584] init: property_set("ro.camera.sound.forced", "0") failed: property already set
+[   20.517149] type=1400 audit(1514791813.726:460): avc: denied { read write } for pid=959 comm="android.hardwar" name="vndbinder" dev="tmpfs" ino=756 scontext=u:r:hal_fingerprint_default:s0 tcontext=u:object_r:vndbinder_device:s0 tclass=chr_file permissive=0
+[   20.517164] type=1400 audit(1514791814.496:461): avc: denied { search } for pid=973 comm="nvram_country" name="block" dev="tmpfs" ino=4030 scontext=u:r:nvram_country:s0 tcontext=u:object_r:block_device:s0 tclass=dir permissive=0
+[   20.518153] init: Service 'port-bridge' (pid 1060) killed by signal 1
+[   20.535069] init: Service 'qcom-c_main-sh' (pid 822) exited with status 0
+[   20.535421] init: Service 'nvram_country' (pid 973) exited with status 0
+[   20.582196] subsys-pil-tz a21b000.qcom,pronto: wcnss: Power/Clock ready interrupt received
+[   20.583682] wcnss_notif_cb: wcnss notification event: 7
+[   20.591417] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   20.591429] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   20.591441] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   20.591452] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   20.591461] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   20.591472] [<ffffffc000ac1c38>] clk_disable+0x84/0x190
+[   20.591482] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   20.591492] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   20.591504] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   20.591513] [<ffffffc00087ed80>] msm_sensor_driver_probe+0xfb8/0x12dc
+[   20.591523] [<ffffffc00087ceb8>] msm_sensor_init_subdev_ioctl+0xfc/0x2e4
+[   20.591533] [<ffffffc00087d114>] msm_sensor_init_subdev_do_ioctl+0x74/0x100
+[   20.591545] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   20.591555] [<ffffffc00087cdb4>] msm_sensor_init_subdev_fops_ioctl+0x14/0x1c
+[   20.591564] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   20.591574] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   20.591581] ---[ end trace 299cd2053d36422c ]---
+[   20.595470] subsys-pil-tz a21b000.qcom,pronto: Subsystem error monitoring/handling services are up
+[   20.596147] ------------[ cut here ]------------
+[   20.596924] wcnss_notif_cb: wcnss notification event: 3
+[   20.596952] wcnss_pm_qos_update_request: update request -1
+[   20.596963] wcnss_pm_qos_remove_request: remove request
+[   20.600701] WARNING: CPU: 2 PID: 934 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:448 clk_unprepare+0x58/0xdc()
+[   20.602019] diag: In diag_send_feature_mask_update, control channel is not open, p: 2, 0000000000000000
+[   20.621744] gcc_camss_mclk0_clk is unbalanced (prepare)
+[   20.621753] Modules linked in:
+[   20.621759] 
+[   20.621768] CPU: 2 PID: 934 Comm: mm-qcamera-daem Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   20.621774] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   20.621780] Call trace:
+[   20.621814] selinux: avc:  denied  { set } for property=wlan.driver.ath pid=830 uid=1000 gid=1000 scontext=u:r:wcnss_service:s0 tcontext=u:object_r:wifi_prop:s0 tclass=property_service permissive=0\x0a
+[   20.621866] init: sys_prop(PROP_MSG_SETPROP2): permission denied uid:1000 name:wlan.driver.ath
+[   20.651305] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   20.651317] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   20.651330] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   20.651341] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   20.651349] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   20.651361] [<ffffffc000ac2710>] clk_unprepare+0x58/0xdc
+[   20.651372] [<ffffffc000855b3c>] msm_camera_clk_enable+0x248/0x298
+[   20.651381] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   20.651393] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   20.651401] [<ffffffc00087ed80>] msm_sensor_driver_probe+0xfb8/0x12dc
+[   20.651409] [<ffffffc00087ceb8>] msm_sensor_init_subdev_ioctl+0xfc/0x2e4
+[   20.651418] [<ffffffc00087d114>] msm_sensor_init_subdev_do_ioctl+0x74/0x100
+[   20.651429] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   20.651438] [<ffffffc00087cdb4>] msm_sensor_init_subdev_fops_ioctl+0x14/0x1c
+[   20.651448] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   20.651459] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   20.651951] type=1400 audit(1514791814.496:462): avc: denied { search } for pid=973 comm="nvram_country" name="block" dev="tmpfs" ino=4030 scontext=u:r:nvram_country:s0 tcontext=u:object_r:block_device:s0 tclass=dir permissive=0
+[   20.671730] ---[ end trace 299cd2053d36422d ]---
+[   20.676320] ------------[ cut here ]------------
+[   20.680735] WARNING: CPU: 2 PID: 934 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:421 clk_disable+0x60/0x190()
+[   20.690949] type=1400 audit(1514791814.626:463): avc: denied { ioctl } for pid=887 comm="rild" path="/system/vendor/radio/qcril_database/qcril.db" dev="mmcblk0p25" ino=7644 ioctlcmd=f50c scontext=u:r:rild:s0 tcontext=u:object_r:vendor_file:s0 tclass=file permissive=0
+[   20.715532] mclk0_clk_src: Never called prepare or calling disable after unprepare
+[   20.715543] Modules linked in:
+[   20.715555] CPU: 2 PID: 934 Comm: mm-qcamera-daem Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   20.715560] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   20.715565] Call trace:
+[   20.717963] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   20.717971] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   20.717984] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   20.717995] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   20.718003] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   20.718012] [<ffffffc000ac1c14>] clk_disable+0x60/0x190
+[   20.718024] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   20.718033] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   20.718043] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   20.718051] [<ffffffc00087ed80>] msm_sensor_driver_probe+0xfb8/0x12dc
+[   20.718059] [<ffffffc00087ceb8>] msm_sensor_init_subdev_ioctl+0xfc/0x2e4
+[   20.718067] [<ffffffc00087d114>] msm_sensor_init_subdev_do_ioctl+0x74/0x100
+[   20.718077] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   20.718085] [<ffffffc00087cdb4>] msm_sensor_init_subdev_fops_ioctl+0x14/0x1c
+[   20.718096] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   20.718105] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   20.718110] ---[ end trace 299cd2053d36422e ]---
+[   20.722557] ------------[ cut here ]------------
+[   20.727184] WARNING: CPU: 2 PID: 934 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:422 clk_disable+0x84/0x190()
+[   20.738352] mclk0_clk_src is unbalanced
+[   20.738357] Modules linked in:
+[   20.738361] 
+[   20.738368] CPU: 2 PID: 934 Comm: mm-qcamera-daem Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   20.738374] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   20.738379] Call trace:
+[   20.740788] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   20.740796] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   20.740805] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   20.740814] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   20.740821] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   20.740830] [<ffffffc000ac1c38>] clk_disable+0x84/0x190
+[   20.740838] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   20.740846] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   20.740856] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   20.740863] [<ffffffc00087ed80>] msm_sensor_driver_probe+0xfb8/0x12dc
+[   20.740871] [<ffffffc00087ceb8>] msm_sensor_init_subdev_ioctl+0xfc/0x2e4
+[   20.740879] [<ffffffc00087d114>] msm_sensor_init_subdev_do_ioctl+0x74/0x100
+[   20.740887] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   20.740895] [<ffffffc00087cdb4>] msm_sensor_init_subdev_fops_ioctl+0x14/0x1c
+[   20.740902] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   20.740910] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   20.740915] ---[ end trace 299cd2053d36422f ]---
+[   20.745636] ------------[ cut here ]------------
+[   20.750788] WARNING: CPU: 2 PID: 934 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:448 clk_unprepare+0x58/0xdc()
+[   20.761772] mclk0_clk_src is unbalanced (prepare)
+[   20.761785] Modules linked in:
+[   20.761793] 
+[   20.761804] CPU: 2 PID: 934 Comm: mm-qcamera-daem Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   20.761809] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   20.761815] Call trace:
+[   20.763716] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   20.763727] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   20.763743] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   20.763756] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   20.763763] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   20.763777] [<ffffffc000ac2710>] clk_unprepare+0x58/0xdc
+[   20.763788] [<ffffffc000855b3c>] msm_camera_clk_enable+0x248/0x298
+[   20.763798] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   20.763809] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   20.763818] [<ffffffc00087ed80>] msm_sensor_driver_probe+0xfb8/0x12dc
+[   20.763826] [<ffffffc00087ceb8>] msm_sensor_init_subdev_ioctl+0xfc/0x2e4
+[   20.763835] [<ffffffc00087d114>] msm_sensor_init_subdev_do_ioctl+0x74/0x100
+[   20.763847] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   20.763855] [<ffffffc00087cdb4>] msm_sensor_init_subdev_fops_ioctl+0x14/0x1c
+[   20.763867] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   20.763877] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   20.764434] ---[ end trace 299cd2053d364230 ]---
+[   20.768370] ------------[ cut here ]------------
+[   20.772926] WARNING: CPU: 2 PID: 934 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:421 clk_disable+0x60/0x190()
+[   20.784107] gcc_camss_mclk0_clk: Never called prepare or calling disable after unprepare
+[   20.784116] Modules linked in:
+[   20.784128] CPU: 2 PID: 934 Comm: mm-qcamera-daem Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   20.784133] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   20.784138] Call trace:
+[   20.786539] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   20.786547] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   20.786558] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   20.786568] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   20.786576] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   20.786585] [<ffffffc000ac1c14>] clk_disable+0x60/0x190
+[   20.786596] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   20.786604] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   20.786615] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   20.786622] [<ffffffc00087ed80>] msm_sensor_driver_probe+0xfb8/0x12dc
+[   20.786630] [<ffffffc00087ceb8>] msm_sensor_init_subdev_ioctl+0xfc/0x2e4
+[   20.786638] [<ffffffc00087d114>] msm_sensor_init_subdev_do_ioctl+0x74/0x100
+[   20.786649] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   20.786656] [<ffffffc00087cdb4>] msm_sensor_init_subdev_fops_ioctl+0x14/0x1c
+[   20.786665] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   20.786674] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   20.786680] ---[ end trace 299cd2053d364231 ]---
+[   20.791134] ------------[ cut here ]------------
+[   20.795739] WARNING: CPU: 2 PID: 934 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:422 clk_disable+0x84/0x190()
+[   20.806930] gcc_camss_mclk0_clk is unbalanced
+[   20.806935] Modules linked in:
+[   20.806940] 
+[   20.806949] CPU: 2 PID: 934 Comm: mm-qcamera-daem Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   20.806955] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   20.806960] Call trace:
+[   20.809367] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   20.809376] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   20.809384] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   20.809393] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   20.809401] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   20.809410] [<ffffffc000ac1c38>] clk_disable+0x84/0x190
+[   20.809419] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   20.809427] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   20.809436] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   20.809444] [<ffffffc00087ed80>] msm_sensor_driver_probe+0xfb8/0x12dc
+[   20.809452] [<ffffffc00087ceb8>] msm_sensor_init_subdev_ioctl+0xfc/0x2e4
+[   20.809460] [<ffffffc00087d114>] msm_sensor_init_subdev_do_ioctl+0x74/0x100
+[   20.809470] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   20.809477] [<ffffffc00087cdb4>] msm_sensor_init_subdev_fops_ioctl+0x14/0x1c
+[   20.809485] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   20.809493] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   20.809498] ---[ end trace 299cd2053d364232 ]---
+[   20.814295] ------------[ cut here ]------------
+[   20.818628] WARNING: CPU: 2 PID: 934 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:448 clk_unprepare+0x58/0xdc()
+[   20.830057] gcc_camss_mclk0_clk is unbalanced (prepare)
+[   20.830072] Modules linked in:
+[   20.830079] 
+[   20.830087] CPU: 2 PID: 934 Comm: mm-qcamera-daem Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   20.830093] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   20.830098] Call trace:
+[   20.832290] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   20.832299] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   20.832311] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   20.832323] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   20.832331] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   20.832342] [<ffffffc000ac2710>] clk_unprepare+0x58/0xdc
+[   20.832352] [<ffffffc000855b3c>] msm_camera_clk_enable+0x248/0x298
+[   20.832362] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   20.832373] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   20.832381] [<ffffffc00087ed80>] msm_sensor_driver_probe+0xfb8/0x12dc
+[   20.832390] [<ffffffc00087ceb8>] msm_sensor_init_subdev_ioctl+0xfc/0x2e4
+[   20.832398] [<ffffffc00087d114>] msm_sensor_init_subdev_do_ioctl+0x74/0x100
+[   20.832410] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   20.832418] [<ffffffc00087cdb4>] msm_sensor_init_subdev_fops_ioctl+0x14/0x1c
+[   20.832428] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   20.832438] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   20.832533] ---[ end trace 299cd2053d364233 ]---
+[   20.836880] ------------[ cut here ]------------
+[   20.841491] WARNING: CPU: 2 PID: 934 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:421 clk_disable+0x60/0x190()
+[   20.852675] mclk0_clk_src: Never called prepare or calling disable after unprepare
+[   20.852681] Modules linked in:
+[   20.852693] CPU: 2 PID: 934 Comm: mm-qcamera-daem Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   20.852698] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   20.852704] Call trace:
+[   20.855113] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   20.855121] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   20.855130] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   20.855139] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   20.855147] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   20.855155] [<ffffffc000ac1c14>] clk_disable+0x60/0x190
+[   20.855164] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   20.855173] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   20.855182] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   20.855190] [<ffffffc00087ed80>] msm_sensor_driver_probe+0xfb8/0x12dc
+[   20.855197] [<ffffffc00087ceb8>] msm_sensor_init_subdev_ioctl+0xfc/0x2e4
+[   20.855205] [<ffffffc00087d114>] msm_sensor_init_subdev_do_ioctl+0x74/0x100
+[   20.855216] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   20.855224] [<ffffffc00087cdb4>] msm_sensor_init_subdev_fops_ioctl+0x14/0x1c
+[   20.855233] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   20.855241] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   20.855246] ---[ end trace 299cd2053d364234 ]---
+[   20.859706] ------------[ cut here ]------------
+[   20.864316] WARNING: CPU: 2 PID: 934 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:422 clk_disable+0x84/0x190()
+[   20.875505] mclk0_clk_src is unbalanced
+[   20.875510] Modules linked in:
+[   20.875516] 
+[   20.875523] CPU: 2 PID: 934 Comm: mm-qcamera-daem Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   20.875528] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   20.875535] Call trace:
+[   20.877945] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   20.877955] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   20.877967] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   20.877976] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   20.877984] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   20.877993] [<ffffffc000ac1c38>] clk_disable+0x84/0x190
+[   20.878004] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   20.878012] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   20.878022] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   20.878030] [<ffffffc00087ed80>] msm_sensor_driver_probe+0xfb8/0x12dc
+[   20.878038] [<ffffffc00087ceb8>] msm_sensor_init_subdev_ioctl+0xfc/0x2e4
+[   20.878046] [<ffffffc00087d114>] msm_sensor_init_subdev_do_ioctl+0x74/0x100
+[   20.878056] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   20.878063] [<ffffffc00087cdb4>] msm_sensor_init_subdev_fops_ioctl+0x14/0x1c
+[   20.878071] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   20.878078] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   20.878084] ---[ end trace 299cd2053d364235 ]---
+[   20.882761] ------------[ cut here ]------------
+[   20.887157] WARNING: CPU: 2 PID: 934 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:448 clk_unprepare+0x58/0xdc()
+[   20.898740] mclk0_clk_src is unbalanced (prepare)
+[   20.898750] Modules linked in:
+[   20.898757] 
+[   20.898765] CPU: 2 PID: 934 Comm: mm-qcamera-daem Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   20.898771] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   20.898777] Call trace:
+[   20.900866] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   20.900877] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   20.900888] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   20.900897] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   20.900905] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   20.900922] [<ffffffc000ac2710>] clk_unprepare+0x58/0xdc
+[   20.900932] [<ffffffc000855b3c>] msm_camera_clk_enable+0x248/0x298
+[   20.900944] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   20.900954] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   20.900962] [<ffffffc00087ed80>] msm_sensor_driver_probe+0xfb8/0x12dc
+[   20.900971] [<ffffffc00087ceb8>] msm_sensor_init_subdev_ioctl+0xfc/0x2e4
+[   20.900979] [<ffffffc00087d114>] msm_sensor_init_subdev_do_ioctl+0x74/0x100
+[   20.900992] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   20.901000] [<ffffffc00087cdb4>] msm_sensor_init_subdev_fops_ioctl+0x14/0x1c
+[   20.901009] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   20.901021] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   20.901073] ---[ end trace 299cd2053d364236 ]---
+[   20.953265] init: starting service 'adbd'...
+[   20.955377] init: property_set("ro.boottime.adbd", "20946418115") failed: property already set
+[   20.957890] init: Created socket '/dev/socket/adbd', mode 660, user 1000, group 1000
+[   20.963903] msm_cci_init:1437: hw_version = 0x10020004
+[   20.964186] msm_sensor_match_id: read id: 0x885a expected id:0x885a sensor_slave_addr:0x20
+[   20.964196] ov8856_front probe succeeded
+[   20.972533] read descriptors
+[   20.972567] read strings
+[   20.972800] msm_hsusb msm_hsusb: CI13XXX_CONTROLLER_CONNECT_EVENT received
+[   20.975914] msm_otg 78db000.usb: Avail curr from USB = 2
+[   20.975941] msm_hsusb msm_hsusb: CI13XXX_CONTROLLER_SUSPEND_EVENT received
+[   20.976015] android_work: android_work: did not send uevent (1 1 0000000000000000)
+[   20.976051] FG: get_sram_prop_now: addr 0x594, offset 1 value 764400
+[   20.976103] SMBCHG: smbchg_external_power_changed: pmic_supply_type = (4), usb_driver_type = (4)
+[   20.976111] SMBCHG: smbchg_external_power_changed: usb type = SDP current_limit = 2
+[   20.976121] SMBCHG: smbchg_stay_awake: staying awake: 0x02 (bit 2)
+[   20.976131] SMBCHG: smbchg_vfloat_adjust_check: Starting vfloat adjustments
+[   20.976343] SMBCHG: smbchg_vfloat_adjust_work: Stopping vfloat adj taper=0 parallel_ma = 0
+[   20.976350] SMBCHG: smbchg_relax: relaxing: 0x00 (bit 2)
+[   20.976560] FG: get_sram_prop_now: addr 0x588, offset 3 value 4354375
+[   20.976567] FG: get_sram_prop_now: addr 0x554, offset 2 value 118041
+[   20.976591] SMBCHG: smbchg_calc_max_flash_current: avail_iflash=2668188, ocv=4354375, ibat=497718, rbatt=218041
+[   20.976619] FG: get_sram_prop_now: addr 0x5CC, offset 3 value 152
+[   20.976630] FG: get_sram_prop_now: addr 0x550, offset 2 value 310
+[   20.976640] FG: get_sram_prop_now: addr 0x5CC, offset 1 value 4354832
+[   20.976650] FG: get_sram_prop_now: addr 0x594, offset 1 value 764400
+[   20.979433] FG: get_sram_prop_now: addr 0x5CC, offset 1 value 4354832
+[   20.979613] FG: get_sram_prop_now: addr 0x5CC, offset 3 value 152
+[   20.981228] FG: get_sram_prop_now: addr 0x550, offset 2 value 310
+[   20.982960] msm_flash_subdev_do_ioctl:1070 Enter
+[   20.983215] FG: get_sram_prop_now: addr 0x594, offset 1 value 764400
+[   20.983717] healthd: battery l=100 v=4354 t=31.0 h=2 st=2 c=0 fc=3300000 chg=
+[   20.984665] FG: get_sram_prop_now: addr 0x5CC, offset 1 value 4354832
+[   20.984851] FG: get_sram_prop_now: addr 0x5CC, offset 3 value 152
+[   20.989029] FG: get_sram_prop_now: addr 0x550, offset 2 value 310
+[   20.990588] FG: get_sram_prop_now: addr 0x594, offset 1 value 764400
+[   20.990832] healthd: battery l=100 v=4354 t=31.0 h=2 st=2 c=0 fc=3300000 chg=
+[   21.000891] msm_flash_subdev_ioctl:762 Enter
+[   21.005037] msm_flash_get_subdev_id:152 Enter
+[   21.009448] msm_flash_get_subdev_id:162 subdev_id 0
+[   21.014421] msm_flash_get_subdev_id:163 Exit
+[   21.018665] msm_flash_subdev_do_ioctl:1070 Enter
+[   21.022915] msm_flash_subdev_ioctl:762 Enter
+[   21.027352] msm_flash_get_subdev_id:152 Enter
+[   21.028835] type=1400 audit(1514791814.626:463): avc: denied { ioctl } for pid=887 comm="rild" path="/system/vendor/radio/qcril_database/qcril.db" dev="mmcblk0p25" ino=7644 ioctlcmd=f50c scontext=u:r:rild:s0 tcontext=u:object_r:vendor_file:s0 tclass=file permissive=0
+[   21.028856] type=1400 audit(1514791815.016:464): avc: denied { write } for pid=501 comm="HwBinder:501_1" name="property_service" dev="tmpfs" ino=692 scontext=u:r:hal_audio_default:s0 tcontext=u:object_r:property_socket:s0 tclass=sock_file permissive=0
+[   21.058101] FG: get_monotonic_soc_raw: raw: 0xff
+[   21.075262] msm_hsusb msm_hsusb: CI13XXX_CONTROLLER_RESUME_EVENT received
+[   21.075327] msm_otg 78db000.usb: Avail curr from USB = 100
+[   21.075596] android_work: android_work: sent uevent USB_STATE=DISCONNECTED
+[   21.075628] FG: get_sram_prop_now: addr 0x594, offset 1 value 764400
+[   21.075673] SMBCHG: smbchg_external_power_changed: pmic_supply_type = (4), usb_driver_type = (4)
+[   21.075674] SMBCHG: smbchg_external_power_changed: usb type = SDP current_limit = 100
+[   21.075681] SMBCHG: smbchg_stay_awake: staying awake: 0x02 (bit 2)
+[   21.075688] SMBCHG: smbchg_vfloat_adjust_check: Starting vfloat adjustments
+[   21.075893] SMBCHG: smbchg_vfloat_adjust_work: Stopping vfloat adj taper=0 parallel_ma = 0
+[   21.075897] SMBCHG: smbchg_relax: relaxing: 0x00 (bit 2)
+[   21.076103] FG: get_sram_prop_now: addr 0x588, offset 3 value 4354375
+[   21.076107] FG: get_sram_prop_now: addr 0x554, offset 2 value 118041
+[   21.076128] SMBCHG: smbchg_calc_max_flash_current: avail_iflash=2668188, ocv=4354375, ibat=497718, rbatt=218041
+[   21.076152] FG: get_sram_prop_now: addr 0x5CC, offset 3 value 152
+[   21.076159] FG: get_sram_prop_now: addr 0x550, offset 2 value 310
+[   21.076167] FG: get_sram_prop_now: addr 0x5CC, offset 1 value 4354832
+[   21.076174] FG: get_sram_prop_now: addr 0x594, offset 1 value 764400
+[   21.080535] FG: get_sram_prop_now: addr 0x5CC, offset 1 value 4354832
+[   21.080777] FG: get_sram_prop_now: addr 0x5CC, offset 3 value 152
+[   21.083011] msm_flash_get_subdev_id:162 subdev_id 1
+[   21.083360] FG: get_sram_prop_now: addr 0x550, offset 2 value 310
+[   21.086509] FG: get_sram_prop_now: addr 0x594, offset 1 value 764400
+[   21.086795] healthd: battery l=100 v=4354 t=31.0 h=2 st=2 c=0 fc=3300000 chg=u
+[   21.087437] FG: get_sram_prop_now: addr 0x5CC, offset 1 value 4354832
+[   21.087599] FG: get_sram_prop_now: addr 0x5CC, offset 3 value 152
+[   21.090201] FG: get_sram_prop_now: addr 0x550, offset 2 value 310
+[   21.092898] FG: get_sram_prop_now: addr 0x594, offset 1 value 764400
+[   21.093198] healthd: battery l=100 v=4354 t=31.0 h=2 st=2 c=0 fc=3300000 chg=u
+[   21.101482] msm_flash_get_subdev_id:163 Exit
+[   21.123793] msm_csid_init: CSID_VERSION = 0x30040002
+[   21.124803] msm_csid_irq CSID0_IRQ_STATUS_ADDR = 0x800
+[   21.130932] msm_csid_init: CSID_VERSION = 0x30040002
+[   21.132041] msm_csid_irq CSID1_IRQ_STATUS_ADDR = 0x800
+[   21.136738] msm_csid_init: CSID_VERSION = 0x30040002
+[   21.137557] msm_csid_irq CSID0_IRQ_STATUS_ADDR = 0x800
+[   21.142286] msm_csid_init: CSID_VERSION = 0x30040002
+[   21.143176] msm_csid_irq CSID1_IRQ_STATUS_ADDR = 0x800
+[   21.166855] msm_eeprom_config32:1520 Eeprom already probed at kernel boot
+[   21.179189] msm_eeprom_config32:1520 Eeprom already probed at kernel boot
+[   21.196969] msm_eeprom_config32:1520 Eeprom already probed at kernel boot
+[   21.202049] android_work: android_work: sent uevent USB_STATE=CONNECTED
+[   21.203649] android_usb gadget: high-speed config #1: 86000c8.android_usb
+[   21.203689] diag: USB channel diag connected
+[   21.203834] msm_otg 78db000.usb: Avail curr from USB = 500
+[   21.204049] FG: get_sram_prop_now: addr 0x594, offset 1 value 764400
+[   21.204225] SMBCHG: smbchg_external_power_changed: pmic_supply_type = (4), usb_driver_type = (4)
+[   21.204243] SMBCHG: smbchg_external_power_changed: usb type = SDP current_limit = 500
+[   21.204254] SMBCHG: smbchg_stay_awake: staying awake: 0x02 (bit 2)
+[   21.204265] SMBCHG: smbchg_vfloat_adjust_check: Starting vfloat adjustments
+[   21.204583] SMBCHG: smbchg_vfloat_adjust_work: Stopping vfloat adj taper=0 parallel_ma = 0
+[   21.204591] SMBCHG: smbchg_relax: relaxing: 0x00 (bit 2)
+[   21.204663] get_prop_batt_status: 21 callbacks suppressed
+[   21.205127] gbam_connect_work: gbam_connect_work: Bam channel is not ready
+[   21.205708] FG: get_sram_prop_now: addr 0x5CC, offset 1 value 4354832
+[   21.205879] FG: get_sram_prop_now: addr 0x5CC, offset 3 value 152
+[   21.207328] FG: get_sram_prop_now: addr 0x550, offset 2 value 310
+[   21.209477] msm_eeprom_config32:1520 Eeprom already probed at kernel boot
+[   21.209478] FG: get_sram_prop_now: addr 0x594, offset 1 value 764400
+[   21.209744] healthd: battery l=100 v=4354 t=31.0 h=2 st=2 c=0 fc=3300000 chg=u
+[   21.231544] SMBCHG: get_prop_batt_status: CHGR_STS = 0x85
+[   21.231680] SMBCHG: get_prop_batt_status: CHGR_STS = 0x85
+[   21.231756] FG: get_sram_prop_now: addr 0x588, offset 3 value 4354375
+[   21.231763] FG: get_sram_prop_now: addr 0x554, offset 2 value 118041
+[   21.231788] SMBCHG: smbchg_calc_max_flash_current: avail_iflash=2698608, ocv=4354375, ibat=452088, rbatt=218041
+[   21.231842] FG: get_sram_prop_now: addr 0x5CC, offset 3 value 152
+[   21.231906] FG: get_sram_prop_now: addr 0x550, offset 2 value 310
+[   21.231917] FG: get_sram_prop_now: addr 0x5CC, offset 1 value 4354832
+[   21.231928] FG: get_sram_prop_now: addr 0x594, offset 1 value 764400
+[   21.236428] FG: get_sram_prop_now: addr 0x5CC, offset 1 value 4354832
+[   21.236914] FG: get_sram_prop_now: addr 0x5CC, offset 3 value 152
+[   21.239581] FG: get_sram_prop_now: addr 0x550, offset 2 value 310
+[   21.239880] SMBCHG: get_prop_batt_status: CHGR_STS = 0x85
+[   21.241870] FG: get_sram_prop_now: addr 0x594, offset 1 value 764400
+[   21.242152] healthd: battery l=100 v=4354 t=31.0 h=2 st=2 c=0 fc=3300000 chg=u
+[   21.243072] type=1400 audit(1514791815.016:464): avc: denied { write } for pid=501 comm="HwBinder:501_1" name="property_service" dev="tmpfs" ino=692 scontext=u:r:hal_audio_default:s0 tcontext=u:object_r:property_socket:s0 tclass=sock_file permissive=0
+[   21.243093] type=1400 audit(1514791815.226:465): avc: denied { dac_override } for pid=971 comm="dpmd" capability=1 scontext=u:r:dpmd:s0 tcontext=u:r:dpmd:s0 tclass=capability permissive=0
+[   21.244221] type=1400 audit(1514791815.226:465): avc: denied { dac_override } for pid=971 comm="dpmd" capability=1 scontext=u:r:dpmd:s0 tcontext=u:r:dpmd:s0 tclass=capability permissive=0
+[   21.244241] type=1400 audit(1514791815.226:466): avc: denied { dac_read_search } for pid=971 comm="dpmd" capability=2 scontext=u:r:dpmd:s0 tcontext=u:r:dpmd:s0 tclass=capability permissive=0
+[   21.249727] type=1400 audit(1514791815.226:466): avc: denied { dac_read_search } for pid=971 comm="dpmd" capability=2 scontext=u:r:dpmd:s0 tcontext=u:r:dpmd:s0 tclass=capability permissive=0
+[   21.249746] type=1400 audit(1514791815.236:467): avc: denied { dac_override } for pid=971 comm="dpmd" capability=1 scontext=u:r:dpmd:s0 tcontext=u:r:dpmd:s0 tclass=capability permissive=0
+[   21.255036] type=1400 audit(1514791815.236:467): avc: denied { dac_override } for pid=971 comm="dpmd" capability=1 scontext=u:r:dpmd:s0 tcontext=u:r:dpmd:s0 tclass=capability permissive=0
+[   21.255058] type=1400 audit(1514791815.236:468): avc: denied { dac_read_search } for pid=971 comm="dpmd" capability=2 scontext=u:r:dpmd:s0 tcontext=u:r:dpmd:s0 tclass=capability permissive=0
+[   21.258222] android_work: android_work: sent uevent USB_STATE=CONFIGURED
+[   21.261305] msm_qti_pp_get_rms_value_control, back not active to query rms be_idx:3
+[   21.264659] core_get_license_status: cmdrsp_license_result.result = 0x15 for module 0x1
+[   21.266163] msm_dolby_dap_param_to_get_control_get, port_id not set, do not query ADM
+[   21.266618] msm_dolby_dap_param_visualizer_control_get Incorrect VCNB length
+[   21.266618] msm_voice_sound_focus_get: Error getting Sound Focus Params, err=-22
+[   21.266696] msm_voice_source_tracking_get: Error getting Source Tracking Params, err=-22
+[   21.266771] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   21.266774] msm_audio_sound_focus_get: Could not get copp idx for port_id=16385
+[   21.266847] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   21.266850] msm_audio_source_tracking_get: Could not get copp idx for port_id=16385
+[   21.266958] msm_voice_sound_focus_get: Error getting Sound Focus Params, err=-22
+[   21.267056] msm_voice_source_tracking_get: Error getting Source Tracking Params, err=-22
+[   21.267129] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   21.267133] msm_audio_sound_focus_get: Could not get copp idx for port_id=4101
+[   21.267210] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   21.267213] msm_audio_source_tracking_get: Could not get copp idx for port_id=4101
+[   21.267281] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   21.267284] msm_audio_sound_focus_get: Could not get copp idx for port_id=4103
+[   21.267350] msm_audio_get_copp_idx_from_port_id: Invalid FE, exiting
+[   21.267353] msm_audio_source_tracking_get: Could not get copp idx for port_id=4103
+[   21.267617] core_get_license_status: cmdrsp_license_result.result = 0x15 for module 0x131ff
+[   21.270070] msm_pcm_volume_ctl_get substream runtime not found
+[   21.270529] msm_pcm_volume_ctl_get substream runtime not found
+[   21.270907] msm_pcm_volume_ctl_get substream runtime not found
+[   21.271055] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.271852] msm_pcm_volume_ctl_get substream runtime not found
+[   21.272306] msm_pcm_volume_ctl_get substream runtime not found
+[   21.272376] msm_pcm_volume_ctl_get substream or runtime not found
+[   21.273215] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.273702] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.274172] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.274771] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.275244] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.275732] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.276226] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.276699] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.277107] msm_pcm_volume_ctl_get substream or runtime not found
+[   21.278606] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.279326] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.279839] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.280380] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.280920] msm_compr_audio_effects_config_get: stream or effects inactive
+[   21.470531] wcdcal_hwdep_ioctl_shared: codec didn't set this 0!!
+[   21.471107] wcdcal_hwdep_ioctl_shared: codec didn't set this 3!!
+[   21.734297] init: property_set("ro.vendor.ril.svlte1x", "false") failed: property already set
+[   21.743233] init: property_set("ro.vendor.ril.svdo", "false") failed: property already set
+[   21.780220] wcnss_wlan_ctrl_probe: SMD ctrl channel up
+[   21.781173] wcnss: version 01050102
+[   21.781196] wcnss: schedule dnld work for pronto
+[   21.781206] wcnss: NV download
+[   21.781956] wcnss: build version CNSS-PR-4-0-00454
+[   21.784075] ueventd: firmware: loading 'wlan/prima/WCNSS_qcom_wlan_nv.bin' for '/devices/soc/a000000.qcom,wcnss-wlan/firmware/wlan!prima!WCNSS_qcom_wlan_nv.bin'
+[   21.795225] ueventd: loading /devices/soc/a000000.qcom,wcnss-wlan/firmware/wlan!prima!WCNSS_qcom_wlan_nv.bin took 11ms
+[   21.795390] wcnss: NV bin size: 31719, total_fragments: 11
+[   21.795537] wcnss: no space available for smd frame
+[   21.829378] MSM-CPP cpp_init_hardware:1005 CPP HW Version: 0x40030002
+[   21.829401] MSM-CPP cpp_init_hardware:1023 stream_cnt:0
+[   21.830565] wcnss: no space available for smd frame
+[   21.842674] ueventd: firmware: loading 'cpp_firmware_v1_5_0.fw' for '/devices/soc/1b04000.qcom,cpp/firmware/cpp_firmware_v1_5_0.fw'
+[   21.845001] ueventd: loading /devices/soc/1b04000.qcom,cpp/firmware/cpp_firmware_v1_5_0.fw took 2ms
+[   21.859460] wcnss: no space available for smd frame
+[   21.888319] wcnss: no space available for smd frame
+[   21.933607] type=1400 audit(1514791815.236:468): avc: denied { dac_read_search } for pid=971 comm="dpmd" capability=2 scontext=u:r:dpmd:s0 tcontext=u:r:dpmd:s0 tclass=capability permissive=0
+[   21.950710] type=1400 audit(1514791815.916:469): avc: denied { read } for pid=934 comm="mm-qcamera-daem" name="name" dev="sysfs" ino=38609 scontext=u:r:mm-qcamerad:s0 tcontext=u:object_r:sysfs_graphics:s0 tclass=file permissive=0
+[   21.970448] type=1400 audit(1514791815.916:469): avc: denied { read } for pid=934 comm="mm-qcamera-daem" name="name" dev="sysfs" ino=38609 scontext=u:r:mm-qcamerad:s0 tcontext=u:object_r:sysfs_graphics:s0 tclass=file permissive=0
+[   21.990496] type=1400 audit(1514791815.916:470): avc: denied { read } for pid=934 comm="mm-qcamera-daem" name="name" dev="sysfs" ino=38666 scontext=u:r:mm-qcamerad:s0 tcontext=u:object_r:sysfs_graphics:s0 tclass=file permissive=0
+[   22.010917] type=1400 audit(1514791815.916:470): avc: denied { read } for pid=934 comm="mm-qcamera-daem" name="name" dev="sysfs" ino=38666 scontext=u:r:mm-qcamerad:s0 tcontext=u:object_r:sysfs_graphics:s0 tclass=file permissive=0
+[   22.031259] type=1400 audit(1514791815.916:471): avc: denied { read } for pid=934 comm="mm-qcamera-daem" name="name" dev="sysfs" ino=38726 scontext=u:r:mm-qcamerad:s0 tcontext=u:object_r:sysfs_graphics:s0 tclass=file permissive=0
+[   22.111383] msm_pm_qos_update_request: update request 100
+[   22.121727] msm_csid_init: CSID_VERSION = 0x30040002
+[   22.123141] msm_csid_irq CSID0_IRQ_STATUS_ADDR = 0x800
+[   22.129878] MSM-CPP cpp_init_hardware:1005 CPP HW Version: 0x40030002
+[   22.129900] MSM-CPP cpp_init_hardware:1023 stream_cnt:0
+[   22.169093] msm_pm_qos_update_request: update request -1
+[   22.182118] msm_cci_init:1437: hw_version = 0x10020004
+[   22.182393] msm_sensor_match_id: read id: 0x6885 expected id:0x6885 sensor_slave_addr:0x6c
+[   22.249464] msm_flash_subdev_do_ioctl:1070 Enter
+[   22.253001] msm_flash_subdev_ioctl:762 Enter
+[   22.257494] msm_flash_config:693 Enter msm_flash_config type 0
+[   22.263905] msm_flash_init:473 Enter
+[   22.266546] msm_flash_init:531 Exit
+[   22.270048] msm_flash_config:751 Exit msm_flash_config type 0
+[   22.275706] msm_flash_subdev_do_ioctl:1131 Exit
+[   22.295676] msm_flash_subdev_do_ioctl:1070 Enter
+[   22.299402] msm_flash_subdev_ioctl:762 Enter
+[   22.303599] msm_flash_config:693 Enter msm_flash_config type 1
+[   22.309499] msm_flash_off:413 Enter
+[   22.313134] brightness value is 0,allenyao_led,1889
+[   22.317852] flash_node->type FLASH,allenyao_led,1906,led->num_leds 5
+[   22.324324] brightness value is 0,allenyao_led,1935
+[   22.329332] brightness value is 0,allenyao_led,1889
+[   22.334179] flash_node->type TORCH,allenyao_led,1903,led->num_leds 5
+[   22.340602] brightness value is 0,allenyao_led,1935
+[   22.345522] brightness value is 0,allenyao_led,1889
+[   22.350496] flash_node->type TORCH,allenyao_led,1903,led->num_leds 5
+[   22.356857] brightness value is 0,allenyao_led,1318,flash_node->type 1
+[   22.356971] msm_flash_off:425 Exit
+[   22.356976] msm_flash_config:751 Exit msm_flash_config type 1
+[   22.375133] msm_flash_subdev_do_ioctl:1131 Exit
+[   22.375134] SMBCHG: smbchg_otg_pulse_skip_disable: enabling pulse skip, reason 2
+[   22.456377] msm_pm_qos_update_request: update request 100
+[   22.469673] msm_csid_init: CSID_VERSION = 0x30040002
+[   22.470571] msm_csid_irq CSID0_IRQ_STATUS_ADDR = 0x800
+[   22.476981] MSM-CPP cpp_init_hardware:1005 CPP HW Version: 0x40030002
+[   22.477028] MSM-CPP cpp_init_hardware:1023 stream_cnt:0
+[   22.509111] msm_pm_qos_update_request: update request -1
+[   22.512478] msm_cci_init:1437: hw_version = 0x10020004
+[   22.512732] msm_sensor_match_id: read id: 0x376 expected id:0x376 sensor_slave_addr:0x20
+[   22.529610] msm_flash_subdev_do_ioctl:1070 Enter
+[   22.533049] msm_flash_subdev_ioctl:762 Enter
+[   22.537447] msm_flash_config:693 Enter msm_flash_config type 0
+[   22.543352] msm_flash_init:473 Enter
+[   22.546769] msm_flash_init:531 Exit
+[   22.550236] msm_flash_config:751 Exit msm_flash_config type 0
+[   22.555851] msm_flash_subdev_do_ioctl:1131 Exit
+[   22.572550] msm_flash_subdev_do_ioctl:1070 Enter
+[   22.576133] msm_flash_subdev_ioctl:762 Enter
+[   22.580522] msm_flash_config:693 Enter msm_flash_config type 1
+[   22.586201] msm_flash_off:413 Enter
+[   22.589722] brightness value is 0,allenyao_led,1889
+[   22.594655] flash_node->type FLASH,allenyao_led,1906,led->num_leds 6
+[   22.601117] brightness value is 0,allenyao_led,1935
+[   22.605995] brightness value is 0,allenyao_led,1889
+[   22.610984] flash_node->type TORCH,allenyao_led,1903,led->num_leds 6
+[   22.617365] brightness value is 0,allenyao_led,1935
+[   22.622363] brightness value is 0,allenyao_led,1889
+[   22.627253] flash_node->type TORCH,allenyao_led,1903,led->num_leds 6
+[   22.633762] msm_flash_off:425 Exit
+[   22.633778] brightness value is 0,allenyao_led,1318,flash_node->type 1
+[   22.636130] SMBCHG: smbchg_otg_pulse_skip_disable: enabling pulse skip, reason 2
+[   22.643708] msm_flash_config:751 Exit msm_flash_config type 1
+[   22.649449] msm_flash_subdev_do_ioctl:1131 Exit
+[   22.664662] ------------[ cut here ]------------
+[   22.668426] WARNING: CPU: 0 PID: 1386 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:421 clk_disable+0x60/0x190()
+[   22.679696] gcc_camss_mclk0_clk: Never called prepare or calling disable after unprepare
+[   22.679701] Modules linked in:
+[   22.679713] CPU: 0 PID: 1386 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   22.679718] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   22.679723] Call trace:
+[   22.682134] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   22.682142] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   22.682153] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   22.682164] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   22.682172] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   22.682181] [<ffffffc000ac1c14>] clk_disable+0x60/0x190
+[   22.682191] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   22.682200] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   22.682209] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   22.682218] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   22.682226] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   22.682234] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   22.682244] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   22.682252] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   22.682260] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   22.682269] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   22.682274] ---[ end trace 299cd2053d364237 ]---
+[   22.686726] ------------[ cut here ]------------
+[   22.691337] WARNING: CPU: 0 PID: 1386 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:422 clk_disable+0x84/0x190()
+[   22.702612] gcc_camss_mclk0_clk is unbalanced
+[   22.702615] Modules linked in:
+[   22.702620] 
+[   22.702627] CPU: 0 PID: 1386 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   22.702632] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   22.702637] Call trace:
+[   22.705048] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   22.705056] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   22.705066] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   22.705075] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   22.705082] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   22.705091] [<ffffffc000ac1c38>] clk_disable+0x84/0x190
+[   22.705099] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   22.705107] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   22.705117] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   22.705125] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   22.705133] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   22.705140] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   22.705149] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   22.705157] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   22.705165] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   22.705171] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   22.705176] ---[ end trace 299cd2053d364238 ]---
+[   22.709949] ------------[ cut here ]------------
+[   22.714313] WARNING: CPU: 4 PID: 1386 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:448 clk_unprepare+0x58/0xdc()
+[   22.725724] gcc_camss_mclk0_clk is unbalanced (prepare)
+[   22.725731] Modules linked in:
+[   22.725737] 
+[   22.725747] CPU: 3 PID: 1386 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   22.725753] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   22.725759] Call trace:
+[   22.728059] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   22.728067] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   22.728078] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   22.728089] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   22.728097] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   22.728109] [<ffffffc000ac2710>] clk_unprepare+0x58/0xdc
+[   22.728121] [<ffffffc000855b3c>] msm_camera_clk_enable+0x248/0x298
+[   22.728129] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   22.728140] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   22.728148] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   22.728156] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   22.728164] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   22.728174] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   22.728182] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   22.728192] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   22.728200] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   22.728277] ---[ end trace 299cd2053d364239 ]---
+[   22.732654] ------------[ cut here ]------------
+[   22.737261] WARNING: CPU: 3 PID: 1386 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:421 clk_disable+0x60/0x190()
+[   22.748534] mclk0_clk_src: Never called prepare or calling disable after unprepare
+[   22.748540] Modules linked in:
+[   22.748550] CPU: 3 PID: 1386 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   22.748557] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   22.748563] Call trace:
+[   22.750971] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   22.750980] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   22.750990] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   22.751000] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   22.751007] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   22.751016] [<ffffffc000ac1c14>] clk_disable+0x60/0x190
+[   22.751025] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   22.751033] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   22.751042] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   22.751049] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   22.751057] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   22.751064] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   22.751073] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   22.751081] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   22.751089] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   22.751097] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   22.751102] ---[ end trace 299cd2053d36423a ]---
+[   22.755564] ------------[ cut here ]------------
+[   22.760172] WARNING: CPU: 3 PID: 1386 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:422 clk_disable+0x84/0x190()
+[   22.771448] mclk0_clk_src is unbalanced
+[   22.771451] Modules linked in:
+[   22.771456] 
+[   22.771463] CPU: 3 PID: 1386 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   22.771468] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   22.771472] Call trace:
+[   22.773886] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   22.773895] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   22.773906] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   22.773915] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   22.773923] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   22.773931] [<ffffffc000ac1c38>] clk_disable+0x84/0x190
+[   22.773939] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   22.773947] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   22.773956] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   22.773964] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   22.773971] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   22.773979] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   22.773988] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   22.773996] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   22.774003] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   22.774011] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   22.774016] ---[ end trace 299cd2053d36423b ]---
+[   22.778622] ------------[ cut here ]------------
+[   22.784080] WARNING: CPU: 3 PID: 1386 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:448 clk_unprepare+0x58/0xdc()
+[   22.795100] mclk0_clk_src is unbalanced (prepare)
+[   22.795109] Modules linked in:
+[   22.795116] 
+[   22.795124] CPU: 3 PID: 1386 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   22.795130] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   22.795136] Call trace:
+[   22.796893] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   22.796901] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   22.796911] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   22.796921] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   22.796929] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   22.796939] [<ffffffc000ac2710>] clk_unprepare+0x58/0xdc
+[   22.796949] [<ffffffc000855b3c>] msm_camera_clk_enable+0x248/0x298
+[   22.796958] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   22.796968] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   22.796976] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   22.796984] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   22.796992] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   22.797002] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   22.797010] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   22.797019] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   22.797028] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   22.797034] ---[ end trace 299cd2053d36423c ]---
+[   22.801568] ------------[ cut here ]------------
+[   22.806098] WARNING: CPU: 3 PID: 1386 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:421 clk_disable+0x60/0x190()
+[   22.817371] gcc_camss_mclk0_clk: Never called prepare or calling disable after unprepare
+[   22.817376] Modules linked in:
+[   22.817388] CPU: 3 PID: 1386 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   22.817393] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   22.817399] Call trace:
+[   22.819806] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   22.819814] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   22.819824] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   22.819834] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   22.819841] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   22.819850] [<ffffffc000ac1c14>] clk_disable+0x60/0x190
+[   22.819859] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   22.819867] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   22.819876] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   22.819884] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   22.819892] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   22.819899] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   22.819909] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   22.819916] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   22.819925] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   22.819933] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   22.819938] ---[ end trace 299cd2053d36423d ]---
+[   22.824400] ------------[ cut here ]------------
+[   22.829017] WARNING: CPU: 3 PID: 1386 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:422 clk_disable+0x84/0x190()
+[   22.840286] gcc_camss_mclk0_clk is unbalanced
+[   22.840290] Modules linked in:
+[   22.840297] 
+[   22.840310] CPU: 3 PID: 1386 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   22.840316] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   22.840322] Call trace:
+[   22.842728] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   22.842738] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   22.842747] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   22.842755] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   22.842762] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   22.842771] [<ffffffc000ac1c38>] clk_disable+0x84/0x190
+[   22.842780] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   22.842788] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   22.842796] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   22.842804] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   22.842811] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   22.842819] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   22.842828] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   22.842836] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   22.842845] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   22.842852] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   22.842858] ---[ end trace 299cd2053d36423e ]---
+[   22.847656] ------------[ cut here ]------------
+[   22.852064] WARNING: CPU: 4 PID: 1386 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:448 clk_unprepare+0x58/0xdc()
+[   22.863450] gcc_camss_mclk0_clk is unbalanced (prepare)
+[   22.863457] Modules linked in:
+[   22.863464] 
+[   22.863474] CPU: 4 PID: 1386 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   22.863481] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   22.863487] Call trace:
+[   22.865729] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   22.865739] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   22.865751] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   22.865763] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   22.865773] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   22.865784] [<ffffffc000ac2710>] clk_unprepare+0x58/0xdc
+[   22.865797] [<ffffffc000855b3c>] msm_camera_clk_enable+0x248/0x298
+[   22.865807] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   22.865820] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   22.865830] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   22.865840] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   22.865850] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   22.865862] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   22.865873] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   22.865883] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   22.865895] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   22.865938] ---[ end trace 299cd2053d36423f ]---
+[   22.870618] ------------[ cut here ]------------
+[   22.874939] WARNING: CPU: 3 PID: 1386 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:421 clk_disable+0x60/0x190()
+[   22.886209] mclk0_clk_src: Never called prepare or calling disable after unprepare
+[   22.886215] Modules linked in:
+[   22.886229] CPU: 3 PID: 1386 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   22.886235] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   22.886243] Call trace:
+[   22.888643] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   22.888652] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   22.888662] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   22.888671] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   22.888679] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   22.888688] [<ffffffc000ac1c14>] clk_disable+0x60/0x190
+[   22.888697] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   22.888705] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   22.888714] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   22.888722] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   22.888730] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   22.888737] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   22.888747] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   22.888755] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   22.888763] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   22.888772] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   22.888777] ---[ end trace 299cd2053d364240 ]---
+[   22.893237] ------------[ cut here ]------------
+[   22.897843] WARNING: CPU: 3 PID: 1386 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:422 clk_disable+0x84/0x190()
+[   22.909128] mclk0_clk_src is unbalanced
+[   22.909137] Modules linked in:
+[   22.909143] 
+[   22.909151] CPU: 3 PID: 1386 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   22.909156] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   22.909161] Call trace:
+[   22.911558] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   22.911565] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   22.911576] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   22.911585] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   22.911593] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   22.911600] [<ffffffc000ac1c38>] clk_disable+0x84/0x190
+[   22.911609] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   22.911617] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   22.911625] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   22.911633] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   22.911640] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   22.911648] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   22.911656] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   22.911664] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   22.911672] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   22.911679] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   22.911684] ---[ end trace 299cd2053d364241 ]---
+[   22.916504] ------------[ cut here ]------------
+[   22.921215] WARNING: CPU: 3 PID: 1386 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:448 clk_unprepare+0x58/0xdc()
+[   22.932807] mclk0_clk_src is unbalanced (prepare)
+[   22.932819] Modules linked in:
+[   22.932826] 
+[   22.932836] CPU: 3 PID: 1386 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   22.932842] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   22.932848] Call trace:
+[   22.934568] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   22.934578] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   22.934589] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   22.934601] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   22.934609] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   22.934621] [<ffffffc000ac2710>] clk_unprepare+0x58/0xdc
+[   22.934631] [<ffffffc000855b3c>] msm_camera_clk_enable+0x248/0x298
+[   22.934639] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   22.934649] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   22.934658] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   22.934666] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   22.934674] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   22.934684] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   22.934692] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   22.934702] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   22.934711] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   22.934717] ---[ end trace 299cd2053d364242 ]---
+[   22.943039] msm_pm_qos_update_request: update request 100
+[   22.962490] sps:BAM 0x0000000004044000 is registered.
+[   22.962750] sps:BAM 0x0000000004044000 (va:0x0000000000000000) enabled: ver:0x27, number of pipes:6
+[   22.968063] msm_csid_init: CSID_VERSION = 0x30040002
+[   22.969249] msm_csid_irq CSID1_IRQ_STATUS_ADDR = 0x800
+[   22.984124] MSM-CPP cpp_init_hardware:1005 CPP HW Version: 0x40030002
+[   22.984146] MSM-CPP cpp_init_hardware:1023 stream_cnt:0
+[   23.005414] msm_pm_qos_update_request: update request -1
+[   23.021369] msm_cci_init:1437: hw_version = 0x10020004
+[   23.021801] msm_sensor_match_id: read id: 0x885a expected id:0x885a sensor_slave_addr:0x20
+[   23.107868] msm_flash_subdev_do_ioctl:1070 Enter
+[   23.111785] msm_flash_subdev_ioctl:762 Enter
+[   23.116057] msm_flash_config:693 Enter msm_flash_config type 0
+[   23.121997] msm_flash_init:473 Enter
+[   23.124903] msm_flash_init:531 Exit
+[   23.128506] msm_flash_config:751 Exit msm_flash_config type 0
+[   23.134109] msm_flash_subdev_do_ioctl:1131 Exit
+[   23.147298] msm_flash_subdev_do_ioctl:1070 Enter
+[   23.150980] msm_flash_subdev_ioctl:762 Enter
+[   23.155659] msm_flash_config:693 Enter msm_flash_config type 1
+[   23.161057] msm_flash_off:413 Enter
+[   23.164579] brightness value is 0,allenyao_led,1889
+[   23.169478] flash_node->type FLASH,allenyao_led,1906,led->num_leds 6
+[   23.175790] brightness value is 0,allenyao_led,1935
+[   23.180866] brightness value is 0,allenyao_led,1889
+[   23.185687] flash_node->type TORCH,allenyao_led,1903,led->num_leds 6
+[   23.192198] brightness value is 0,allenyao_led,1935
+[   23.197117] brightness value is 0,allenyao_led,1889
+[   23.202102] flash_node->type TORCH,allenyao_led,1903,led->num_leds 6
+[   23.208477] msm_flash_off:425 Exit
+[   23.208497] brightness value is 0,allenyao_led,1318,flash_node->type 1
+[   23.210860] SMBCHG: smbchg_otg_pulse_skip_disable: enabling pulse skip, reason 2
+[   23.218538] msm_flash_config:751 Exit msm_flash_config type 1
+[   23.224136] msm_flash_subdev_do_ioctl:1131 Exit
+[   23.241054] msm_pm_qos_update_request: update request 100
+[   23.252350] msm_csid_init: CSID_VERSION = 0x30040002
+[   23.253243] msm_csid_irq CSID1_IRQ_STATUS_ADDR = 0x800
+[   23.262768] MSM-CPP cpp_init_hardware:1005 CPP HW Version: 0x40030002
+[   23.262791] MSM-CPP cpp_init_hardware:1023 stream_cnt:0
+[   23.284745] msm_pm_qos_update_request: update request -1
+[   23.307886] msm_cci_init:1437: hw_version = 0x10020004
+[   23.308148] msm_sensor_match_id: read id: 0x885a expected id:0x885a sensor_slave_addr:0x6c
+[   23.397534] msm_flash_subdev_do_ioctl:1070 Enter
+[   23.401055] msm_flash_subdev_ioctl:762 Enter
+[   23.405514] msm_flash_config:693 Enter msm_flash_config type 0
+[   23.411314] msm_flash_init:473 Enter
+[   23.414598] msm_flash_init:531 Exit
+[   23.418094] msm_flash_config:751 Exit msm_flash_config type 0
+[   23.423652] type=1400 audit(1514791815.916:471): avc: denied { read } for pid=934 comm="mm-qcamera-daem" name="name" dev="sysfs" ino=38726 scontext=u:r:mm-qcamerad:s0 tcontext=u:object_r:sysfs_graphics:s0 tclass=file permissive=0
+[   23.423670] type=1400 audit(1514791817.406:472): avc: denied { create } for pid=834 comm="main" name="tasks" scontext=u:r:zygote:s0 tcontext=u:object_r:cgroup:s0 tclass=file permissive=0
+[   23.460820] msm_flash_subdev_do_ioctl:1131 Exit
+[   23.472249] msm_flash_subdev_do_ioctl:1070 Enter
+[   23.476315] msm_flash_subdev_ioctl:762 Enter
+[   23.480160] msm_flash_config:693 Enter msm_flash_config type 1
+[   23.485906] msm_flash_off:413 Enter
+[   23.489437] brightness value is 0,allenyao_led,1889
+[   23.494318] flash_node->type FLASH,allenyao_led,1906,led->num_leds 5
+[   23.500803] brightness value is 0,allenyao_led,1935
+[   23.505806] brightness value is 0,allenyao_led,1889
+[   23.510689] flash_node->type TORCH,allenyao_led,1903,led->num_leds 5
+[   23.517055] brightness value is 0,allenyao_led,1935
+[   23.522063] brightness value is 0,allenyao_led,1889
+[   23.526955] flash_node->type TORCH,allenyao_led,1903,led->num_leds 5
+[   23.533465] msm_flash_off:425 Exit
+[   23.533480] brightness value is 0,allenyao_led,1318,flash_node->type 1
+[   23.535835] SMBCHG: smbchg_otg_pulse_skip_disable: enabling pulse skip, reason 2
+[   23.543401] msm_flash_config:751 Exit msm_flash_config type 1
+[   23.549126] msm_flash_subdev_do_ioctl:1131 Exit
+[   23.612001] msm_pm_qos_update_request: update request 100
+[   23.625861] msm_csid_init: CSID_VERSION = 0x30040002
+[   23.627070] msm_csid_irq CSID0_IRQ_STATUS_ADDR = 0x800
+[   23.630264] MSM-CPP cpp_init_hardware:1005 CPP HW Version: 0x40030002
+[   23.630278] MSM-CPP cpp_init_hardware:1023 stream_cnt:0
+[   23.663682] msm_pm_qos_update_request: update request -1
+[   23.692408] CAM_MctServ (1509) used greatest stack depth: 10960 bytes left
+[   23.693215] msm_cci_init:1437: hw_version = 0x10020004
+[   23.693479] msm_sensor_match_id: read id: 0x6885 expected id:0x6885 sensor_slave_addr:0x6c
+[   23.758312] msm_flash_subdev_do_ioctl:1070 Enter
+[   23.761789] msm_flash_subdev_ioctl:762 Enter
+[   23.766517] msm_flash_config:693 Enter msm_flash_config type 0
+[   23.772237] msm_flash_init:473 Enter
+[   23.775584] msm_flash_init:531 Exit
+[   23.778848] msm_flash_config:751 Exit msm_flash_config type 0
+[   23.784881] msm_flash_subdev_do_ioctl:1131 Exit
+[   23.801460] msm_flash_subdev_do_ioctl:1070 Enter
+[   23.805036] msm_flash_subdev_ioctl:762 Enter
+[   23.809469] msm_flash_config:693 Enter msm_flash_config type 1
+[   23.815111] msm_flash_off:413 Enter
+[   23.818647] brightness value is 0,allenyao_led,1889
+[   23.823528] flash_node->type FLASH,allenyao_led,1906,led->num_leds 5
+[   23.830000] brightness value is 0,allenyao_led,1935
+[   23.834958] brightness value is 0,allenyao_led,1889
+[   23.839900] flash_node->type TORCH,allenyao_led,1903,led->num_leds 5
+[   23.846327] brightness value is 0,allenyao_led,1935
+[   23.851407] brightness value is 0,allenyao_led,1889
+[   23.856170] flash_node->type TORCH,allenyao_led,1903,led->num_leds 5
+[   23.862737] msm_flash_off:425 Exit
+[   23.862761] brightness value is 0,allenyao_led,1318,flash_node->type 1
+[   23.865121] SMBCHG: smbchg_otg_pulse_skip_disable: enabling pulse skip, reason 2
+[   23.872656] msm_flash_config:751 Exit msm_flash_config type 1
+[   23.878340] msm_flash_subdev_do_ioctl:1131 Exit
+[   23.991804] msm_pm_qos_update_request: update request 100
+[   24.001751] msm_csid_init: CSID_VERSION = 0x30040002
+[   24.002683] msm_csid_irq CSID0_IRQ_STATUS_ADDR = 0x800
+[   24.014015] MSM-CPP cpp_init_hardware:1005 CPP HW Version: 0x40030002
+[   24.014036] MSM-CPP cpp_init_hardware:1023 stream_cnt:0
+[   24.046681] msm_cci_init:1437: hw_version = 0x10020004
+[   24.046987] msm_sensor_match_id: read id: 0x376 expected id:0x376 sensor_slave_addr:0x20
+[   24.053741] msm_pm_qos_update_request: update request -1
+[   24.063159] msm_flash_subdev_do_ioctl:1070 Enter
+[   24.066575] msm_flash_subdev_ioctl:762 Enter
+[   24.071294] msm_flash_config:693 Enter msm_flash_config type 0
+[   24.076645] msm_flash_init:473 Enter
+[   24.080098] msm_flash_init:531 Exit
+[   24.083680] msm_flash_config:751 Exit msm_flash_config type 0
+[   24.089330] msm_flash_subdev_do_ioctl:1131 Exit
+[   24.135526] msm_flash_subdev_do_ioctl:1070 Enter
+[   24.139284] msm_flash_subdev_ioctl:762 Enter
+[   24.143613] msm_flash_config:693 Enter msm_flash_config type 1
+[   24.149302] msm_flash_off:413 Enter
+[   24.152651] brightness value is 0,allenyao_led,1889
+[   24.157602] flash_node->type FLASH,allenyao_led,1906,led->num_leds 6
+[   24.164084] brightness value is 0,allenyao_led,1935
+[   24.170023] brightness value is 0,allenyao_led,1889
+[   24.173953] flash_node->type TORCH,allenyao_led,1903,led->num_leds 6
+[   24.180453] brightness value is 0,allenyao_led,1935
+[   24.185325] brightness value is 0,allenyao_led,1889
+[   24.190358] flash_node->type TORCH,allenyao_led,1903,led->num_leds 6
+[   24.196719] msm_flash_off:425 Exit
+[   24.196752] brightness value is 0,allenyao_led,1318,flash_node->type 1
+[   24.199152] SMBCHG: smbchg_otg_pulse_skip_disable: enabling pulse skip, reason 2
+[   24.206702] msm_flash_config:751 Exit msm_flash_config type 1
+[   24.212499] msm_flash_subdev_do_ioctl:1131 Exit
+[   24.227507] ------------[ cut here ]------------
+[   24.231276] WARNING: CPU: 0 PID: 1558 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:421 clk_disable+0x60/0x190()
+[   24.242546] gcc_camss_mclk0_clk: Never called prepare or calling disable after unprepare
+[   24.242555] Modules linked in:
+[   24.242566] CPU: 0 PID: 1558 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   24.242572] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   24.242577] Call trace:
+[   24.244976] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   24.244984] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   24.244994] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   24.245003] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   24.245011] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   24.245019] [<ffffffc000ac1c14>] clk_disable+0x60/0x190
+[   24.245029] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   24.245038] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   24.245047] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   24.245055] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   24.245062] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   24.245070] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   24.245079] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   24.245087] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   24.245095] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   24.245104] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   24.245109] ---[ end trace 299cd2053d364243 ]---
+[   24.249569] ------------[ cut here ]------------
+[   24.254177] WARNING: CPU: 0 PID: 1558 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:422 clk_disable+0x84/0x190()
+[   24.265456] gcc_camss_mclk0_clk is unbalanced
+[   24.265461] Modules linked in:
+[   24.265465] 
+[   24.265473] CPU: 0 PID: 1558 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   24.265478] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   24.265483] Call trace:
+[   24.267892] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   24.267900] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   24.267910] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   24.267919] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   24.267926] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   24.267935] [<ffffffc000ac1c38>] clk_disable+0x84/0x190
+[   24.267945] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   24.267953] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   24.267962] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   24.267970] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   24.267977] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   24.267985] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   24.267993] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   24.268001] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   24.268009] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   24.268016] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   24.268021] ---[ end trace 299cd2053d364244 ]---
+[   24.272950] ------------[ cut here ]------------
+[   24.277153] WARNING: CPU: 0 PID: 1558 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:448 clk_unprepare+0x58/0xdc()
+[   24.288721] gcc_camss_mclk0_clk is unbalanced (prepare)
+[   24.288731] Modules linked in:
+[   24.288738] 
+[   24.288746] CPU: 0 PID: 1558 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   24.288752] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   24.288758] Call trace:
+[   24.290905] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   24.290915] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   24.290926] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   24.290935] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   24.290943] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   24.290953] [<ffffffc000ac2710>] clk_unprepare+0x58/0xdc
+[   24.290963] [<ffffffc000855b3c>] msm_camera_clk_enable+0x248/0x298
+[   24.290972] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   24.290981] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   24.290990] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   24.290998] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   24.291006] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   24.291016] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   24.291024] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   24.291033] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   24.291042] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   24.291761] ---[ end trace 299cd2053d364245 ]---
+[   24.295761] ------------[ cut here ]------------
+[   24.300108] WARNING: CPU: 4 PID: 1558 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:421 clk_disable+0x60/0x190()
+[   24.311379] mclk0_clk_src: Never called prepare or calling disable after unprepare
+[   24.311386] Modules linked in:
+[   24.311399] CPU: 4 PID: 1558 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   24.311406] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   24.311412] Call trace:
+[   24.313816] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   24.313826] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   24.313838] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   24.313849] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   24.313859] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   24.313868] [<ffffffc000ac1c14>] clk_disable+0x60/0x190
+[   24.313880] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   24.313890] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   24.313902] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   24.313914] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   24.313924] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   24.313934] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   24.313945] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   24.313955] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   24.313968] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   24.313978] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   24.313985] ---[ end trace 299cd2053d364246 ]---
+[   24.318408] ------------[ cut here ]------------
+[   24.323014] WARNING: CPU: 4 PID: 1558 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:422 clk_disable+0x84/0x190()
+[   24.334292] mclk0_clk_src is unbalanced
+[   24.334297] Modules linked in:
+[   24.334302] 
+[   24.334309] CPU: 4 PID: 1558 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   24.334315] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   24.334321] Call trace:
+[   24.336729] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   24.336738] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   24.336750] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   24.336760] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   24.336769] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   24.336779] [<ffffffc000ac1c38>] clk_disable+0x84/0x190
+[   24.336788] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   24.336798] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   24.336807] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   24.336817] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   24.336826] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   24.336836] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   24.336845] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   24.336855] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   24.336864] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   24.336873] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   24.336879] ---[ end trace 299cd2053d364247 ]---
+[   24.341437] ------------[ cut here ]------------
+[   24.345971] WARNING: CPU: 0 PID: 1558 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:448 clk_unprepare+0x58/0xdc()
+[   24.357634] mclk0_clk_src is unbalanced (prepare)
+[   24.357644] Modules linked in:
+[   24.357652] 
+[   24.357663] CPU: 5 PID: 1558 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   24.357670] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   24.357677] Call trace:
+[   24.359741] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   24.359753] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   24.359767] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   24.359779] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   24.359789] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   24.359802] [<ffffffc000ac2710>] clk_unprepare+0x58/0xdc
+[   24.359814] [<ffffffc000855b3c>] msm_camera_clk_enable+0x248/0x298
+[   24.359825] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   24.359838] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   24.359848] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   24.359859] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   24.359869] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   24.359881] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   24.359892] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   24.359902] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   24.359913] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   24.360065] ---[ end trace 299cd2053d364248 ]---
+[   24.364386] ------------[ cut here ]------------
+[   24.368943] WARNING: CPU: 0 PID: 1558 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:421 clk_disable+0x60/0x190()
+[   24.380214] gcc_camss_mclk0_clk: Never called prepare or calling disable after unprepare
+[   24.380219] Modules linked in:
+[   24.380231] CPU: 0 PID: 1558 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   24.380236] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   24.380241] Call trace:
+[   24.382651] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   24.382659] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   24.382669] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   24.382678] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   24.382686] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   24.382694] [<ffffffc000ac1c14>] clk_disable+0x60/0x190
+[   24.382704] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   24.382712] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   24.382722] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   24.382730] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   24.382738] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   24.382745] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   24.382755] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   24.382762] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   24.382771] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   24.382779] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   24.382785] ---[ end trace 299cd2053d364249 ]---
+[   24.387243] ------------[ cut here ]------------
+[   24.391852] WARNING: CPU: 0 PID: 1558 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:422 clk_disable+0x84/0x190()
+[   24.403128] gcc_camss_mclk0_clk is unbalanced
+[   24.403132] Modules linked in:
+[   24.403137] 
+[   24.403145] CPU: 0 PID: 1558 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   24.403151] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   24.403156] Call trace:
+[   24.405566] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   24.405574] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   24.405584] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   24.405592] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   24.405599] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   24.405609] [<ffffffc000ac1c38>] clk_disable+0x84/0x190
+[   24.405617] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   24.405625] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   24.405634] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   24.405642] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   24.405649] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   24.405657] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   24.405666] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   24.405674] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   24.405681] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   24.405688] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   24.405693] ---[ end trace 299cd2053d36424a ]---
+[   24.411130] ------------[ cut here ]------------
+[   24.414836] WARNING: CPU: 7 PID: 1558 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:448 clk_unprepare+0x58/0xdc()
+[   24.426251] gcc_camss_mclk0_clk is unbalanced (prepare)
+[   24.426259] Modules linked in:
+[   24.426266] 
+[   24.426276] CPU: 7 PID: 1558 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   24.426283] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   24.426289] Call trace:
+[   24.428576] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   24.428586] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   24.428599] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   24.428610] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   24.428621] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   24.428634] [<ffffffc000ac2710>] clk_unprepare+0x58/0xdc
+[   24.428647] [<ffffffc000855b3c>] msm_camera_clk_enable+0x248/0x298
+[   24.428657] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   24.428669] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   24.428680] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   24.428690] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   24.428701] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   24.428712] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   24.428723] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   24.428734] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   24.428745] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   24.428832] ---[ end trace 299cd2053d36424b ]---
+[   24.433258] ------------[ cut here ]------------
+[   24.437780] WARNING: CPU: 7 PID: 1558 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:421 clk_disable+0x60/0x190()
+[   24.449055] mclk0_clk_src: Never called prepare or calling disable after unprepare
+[   24.449064] Modules linked in:
+[   24.449076] CPU: 7 PID: 1558 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   24.449082] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   24.449089] Call trace:
+[   24.451490] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   24.451499] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   24.451511] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   24.451523] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   24.451533] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   24.451542] [<ffffffc000ac1c14>] clk_disable+0x60/0x190
+[   24.451553] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   24.451563] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   24.451575] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   24.451585] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   24.451595] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   24.451605] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   24.451616] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   24.451626] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   24.451636] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   24.451647] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   24.451653] ---[ end trace 299cd2053d36424c ]---
+[   24.456086] ------------[ cut here ]------------
+[   24.460697] WARNING: CPU: 7 PID: 1558 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:422 clk_disable+0x84/0x190()
+[   24.471967] mclk0_clk_src is unbalanced
+[   24.471973] Modules linked in:
+[   24.471979] 
+[   24.471989] CPU: 7 PID: 1558 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   24.471996] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   24.472002] Call trace:
+[   24.474402] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   24.474411] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   24.474422] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   24.474433] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   24.474442] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   24.474452] [<ffffffc000ac1c38>] clk_disable+0x84/0x190
+[   24.474462] [<ffffffc000855b34>] msm_camera_clk_enable+0x240/0x298
+[   24.474472] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   24.474482] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   24.474492] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   24.474501] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   24.474511] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   24.474522] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   24.474532] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   24.474541] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   24.474549] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   24.474556] ---[ end trace 299cd2053d36424d ]---
+[   24.480457] ------------[ cut here ]------------
+[   24.484145] WARNING: CPU: 1 PID: 1558 at /work/asus/sku1/kernel/msm-3.18/drivers/clk/msm/clock.c:448 clk_unprepare+0x58/0xdc()
+[   24.495477] mclk0_clk_src is unbalanced (prepare)
+[   24.495488] Modules linked in:
+[   24.495494] 
+[   24.495503] CPU: 0 PID: 1558 Comm: CAM_stopsensor Tainted: G        W      3.18.71-gcc76d83-dirty #2
+[   24.495509] Hardware name: Qualcomm Technologies, Inc. MSM8937-PMI8937 QRD SKU2 (DT)
+[   24.495515] Call trace:
+[   24.497850] [<ffffffc00008a844>] dump_backtrace+0x0/0x2c8
+[   24.497859] [<ffffffc00008ab20>] show_stack+0x14/0x1c
+[   24.497869] [<ffffffc000e43af0>] dump_stack+0x80/0xa4
+[   24.497879] [<ffffffc0000a6670>] warn_slowpath_common+0x88/0xac
+[   24.497887] [<ffffffc0000a66f4>] warn_slowpath_fmt+0x60/0x80
+[   24.497898] [<ffffffc000ac2710>] clk_unprepare+0x58/0xdc
+[   24.497907] [<ffffffc000855b3c>] msm_camera_clk_enable+0x248/0x298
+[   24.497916] [<ffffffc0008674fc>] msm_camera_power_down+0x148/0x394
+[   24.497925] [<ffffffc00087f434>] msm_sensor_power_down+0xb0/0xb8
+[   24.497933] [<ffffffc000881168>] msm_sensor_config32+0xbac/0xe90
+[   24.497941] [<ffffffc00087f604>] msm_sensor_subdev_ioctl+0xcc/0x1bc
+[   24.497949] [<ffffffc00087f730>] msm_sensor_subdev_do_ioctl+0x3c/0x44
+[   24.497959] [<ffffffc0007ed62c>] video_usercopy+0x26c/0x584
+[   24.497967] [<ffffffc000881578>] msm_sensor_subdev_fops_ioctl+0x14/0x1c
+[   24.497975] [<ffffffc0007fb5a0>] v4l2_compat_ioctl32+0x9c/0xb4
+[   24.497984] [<ffffffc0002110bc>] compat_SyS_ioctl+0x128/0x10e8
+[   24.498115] ---[ end trace 299cd2053d36424e ]---
+[   24.526317] msm_pm_qos_update_request: update request 100
+[   24.546709] msm_csid_init: CSID_VERSION = 0x30040002
+[   24.548242] init: starting service 'fps_hal'...
+[   24.550526] init: property_set("ro.boottime.fps_hal", "24541593687") failed: property already set
+[   24.554910] MSM-CPP cpp_init_hardware:1005 CPP HW Version: 0x40030002
+[   24.554925] MSM-CPP cpp_init_hardware:1023 stream_cnt:0
+[   24.592347] msm_pm_qos_update_request: update request -1
+[   24.596575] type=1400 audit(1514791817.406:472): avc: denied { create } for pid=834 comm="main" name="tasks" scontext=u:r:zygote:s0 tcontext=u:object_r:cgroup:s0 tclass=file permissive=0
+[   24.605161] msm_cci_init:1437: hw_version = 0x10020004
+[   24.605442] msm_sensor_match_id: read id: 0x885a expected id:0x885a sensor_slave_addr:0x20
+[   24.613441] type=1400 audit(1514791818.576:473): avc: denied { write } for pid=1582 comm="android.hardwar" name="0" dev="dm-0" ino=1384452 scontext=u:r:hal_fingerprint_default:s0 tcontext=u:object_r:system_data_file:s0 tclass=dir permissive=0
+[   24.634484] type=1400 audit(1514791818.576:473): avc: denied { write } for pid=1582 comm="android.hardwar" name="0" dev="dm-0" ino=1384452 scontext=u:r:hal_fingerprint_default:s0 tcontext=u:object_r:system_data_file:s0 tclass=dir permissive=0
+[   24.647844] FG: get_sram_prop_now: addr 0x5CC, offset 1 value 4354832
+[   24.648063] FG: get_sram_prop_now: addr 0x5CC, offset 3 value 152
+[   24.649287] FG: get_sram_prop_now: addr 0x550, offset 2 value 310
+[   24.649503] SMBCHG: get_prop_batt_status: CHGR_STS = 0x85
+[   24.651321] FG: get_sram_prop_now: addr 0x594, offset 1 value 764400
+[   24.651571] healthd: battery l=100 v=4354 t=31.0 h=2 st=2 c=0 fc=3300000 chg=u
+[   24.662862] type=1400 audit(1514791818.586:474): avc: denied { read write } for pid=1582 comm="android.hardwar" name="vndbinder" dev="tmpfs" ino=756 scontext=u:r:hal_fingerprint_default:s0 tcontext=u:object_r:vndbinder_device:s0 tclass=chr_file permissive=0
+[   24.681356] logd: logdr: UID=1000 GID=1000 PID=1606 n tail=5 logMask=8 pid=1582 start=0ns timeout=0ns
+[   24.683451] logd: logdr: UID=1000 GID=1000 PID=1606 n tail=5 logMask=1 pid=1582 start=0ns timeout=0ns
+[   24.689724] logd: logdr: UID=1000 GID=1000 PID=1606 n tail=0 logMask=8 pid=1582 start=0ns timeout=0ns
+[   24.691374] logd: logdr: UID=1000 GID=1000 PID=1606 n tail=0 logMask=1 pid=1582 start=0ns timeout=0ns
+[   24.697857] msm_flash_subdev_do_ioctl:1070 Enter
+[   24.701500] msm_flash_subdev_ioctl:762 Enter
+[   24.704196] init: Untracked pid 1606 exited with status 0
+[   24.705827] msm_flash_config:693 Enter msm_flash_config type 0
+[   24.708497] init: Service 'fps_hal' (pid 1582) killed by signal 6
+[   24.708522] init: Sending signal 9 to service 'fps_hal' (pid 1582) process group...
+[   24.708745] init: Successfully killed process cgroup uid 1000 pid 1582 in 0ms
+[   24.711742] msm_flash_init:473 Enter
+[   24.714891] msm_flash_init:531 Exit
+[   24.718384] msm_flash_config:751 Exit msm_flash_config type 0
+[   24.724372] msm_flash_subdev_do_ioctl:1131 Exit
+[   24.738231] msm_flash_subdev_do_ioctl:1070 Enter
+[   24.741964] msm_flash_subdev_ioctl:762 Enter
+[   24.746064] msm_flash_config:693 Enter msm_flash_config type 1
+[   24.752464] msm_flash_off:413 Enter
+[   24.755352] brightness value is 0,allenyao_led,1889
+[   24.760389] flash_node->type FLASH,allenyao_led,1906,led->num_leds 6
+[   24.766811] brightness value is 0,allenyao_led,1935
+[   24.771757] brightness value is 0,allenyao_led,1889
+[   24.776621] flash_node->type TORCH,allenyao_led,1903,led->num_leds 6
+[   24.783157] brightness value is 0,allenyao_led,1935
+[   24.788196] brightness value is 0,allenyao_led,1889
+[   24.792939] flash_node->type TORCH,allenyao_led,1903,led->num_leds 6
+[   24.799463] brightness value is 0,allenyao_led,1318,flash_node->type 1
+[   24.799621] msm_flash_off:425 Exit
+[   24.799627] msm_flash_config:751 Exit msm_flash_config type 1
+[   24.817520] msm_flash_subdev_do_ioctl:1131 Exit
+[   24.817520] SMBCHG: smbchg_otg_pulse_skip_disable: enabling pulse skip, reason 2
+[   24.824703] msm_pm_qos_update_request: update request 100
+[   24.836743] msm_csid_init: CSID_VERSION = 0x30040002
+[   24.848455] MSM-CPP cpp_init_hardware:1005 CPP HW Version: 0x40030002
+[   24.848479] MSM-CPP cpp_init_hardware:1023 stream_cnt:0
+[   24.869580] msm_pm_qos_update_request: update request -1
+[   24.886589] msm_cci_init:1437: hw_version = 0x10020004
+[   24.889794] msm_sensor_match_id: read id: 0x885a expected id:0x885a sensor_slave_addr:0x6c
+[   24.977768] msm_flash_subdev_do_ioctl:1070 Enter
+[   24.981674] msm_flash_subdev_ioctl:762 Enter
+[   24.985995] msm_flash_config:693 Enter msm_flash_config type 0
+[   24.991542] msm_flash_init:473 Enter
+[   24.994805] msm_flash_init:531 Exit
+[   24.998318] msm_flash_config:751 Exit msm_flash_config type 0
+[   25.004146] msm_flash_subdev_do_ioctl:1131 Exit
+[   25.015020] msm_flash_subdev_do_ioctl:1070 Enter
+[   25.018650] msm_flash_subdev_ioctl:762 Enter
+[   25.022857] msm_flash_config:693 Enter msm_flash_config type 1
+[   25.028929] msm_flash_off:413 Enter
+[   25.032148] brightness value is 0,allenyao_led,1889
+[   25.037092] flash_node->type FLASH,allenyao_led,1906,led->num_leds 5
+[   25.043619] brightness value is 0,allenyao_led,1935
+[   25.048590] brightness value is 0,allenyao_led,1889
+[   25.053437] flash_node->type TORCH,allenyao_led,1903,led->num_leds 5
+[   25.059867] brightness value is 0,allenyao_led,1935
+[   25.064779] brightness value is 0,allenyao_led,1889
+[   25.069788] flash_node->type TORCH,allenyao_led,1903,led->num_leds 5
+[   25.076217] msm_flash_off:425 Exit
+[   25.076819] brightness value is 0,allenyao_led,1318,flash_node->type 1
+[   25.079291] SMBCHG: smbchg_otg_pulse_skip_disable: enabling pulse skip, reason 2
+[   25.086143] msm_flash_config:751 Exit msm_flash_config type 1
+[   25.091973] msm_flash_subdev_do_ioctl:1131 Exit
+[   26.068082] FG: get_monotonic_soc_raw: raw: 0xff
+[   28.078753] FG: get_sram_prop_now: addr 0x5CC, offset 1 value 4354832
+[   28.078932] FG: get_sram_prop_now: addr 0x5CC, offset 3 value 152
+[   28.080221] FG: get_sram_prop_now: addr 0x550, offset 2 value 310
+[   28.080423] SMBCHG: get_prop_batt_status: CHGR_STS = 0x85
+[   28.082074] FG: get_sram_prop_now: addr 0x594, offset 1 value 764400
+[   28.082384] healthd: battery l=100 v=4354 t=31.0 h=2 st=2 c=0 fc=3300000 chg=u
+[   28.097048] ==> et6326_brightness_work led->cdev.name: red brightness enable_color: 0x4
+[   28.098811] ==> et6326_brightness_work led->cdev.name: green brightness enable_color: 0x4
