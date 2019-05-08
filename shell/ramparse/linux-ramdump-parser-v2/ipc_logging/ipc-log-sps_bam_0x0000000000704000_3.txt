@@ -1,0 +1,13 @@
+----------------------------------------------------------------------
+Log name: sps_bam_0x0000000000704000_3 (10 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[     3.483785634/         0xd0615b3] sps_bam_device_init: sps:BAM 0x0000000000704000: assuming max number of pipes: 31
+[     3.483789957/         0xd061605] sps_bam_device_init: sps:BAM device: phys 0x0000000000704000 IRQ 180
+[     3.483796572/         0xd061684] sps_register_bam_device: sps:BAM 0x0000000000704000 is registered.
+[     3.484183968/         0xd063393] sps_bam_enable: sps:BAM 0x0000000000704000 uses level for IRQ# 180
+[     3.484188551/         0xd0633eb] bam_check: sps:bam_check:bam=0x0000000000704000 0xffffff8001dc0000(va).
+[     3.484197197/         0xd063490] sps_bam_enable: sps:BAM 0x0000000000704000 number of pipes reported by hw: 8
+[     3.484205166/         0xd063529] sps_bam_enable: sps:BAM 0x0000000000704000 (va:0xffffff8001dc0000) enabled: ver:0x27, number of pipes:8
+Log extracted successfully

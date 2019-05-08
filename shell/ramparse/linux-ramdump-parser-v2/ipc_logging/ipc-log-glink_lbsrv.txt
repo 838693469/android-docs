@@ -1,0 +1,16 @@
+----------------------------------------------------------------------
+Log name: glink_lbsrv (3 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[     3.158412300/         0xca6c2b7] <LBSRV> glink_lbsrv_link_state_cb: dsps:smd_trans
+[     3.158430373/         0xca6c40e] <LBSRV> glink_lbsrv_link_state_cb: lpass:smd_trans
+[     3.158437613/         0xca6c498] <LBSRV> glink_lbsrv_link_state_cb: mpss:smd_trans
+[     3.158444019/         0xca6c517] <LBSRV> glink_lbsrv_link_state_worker: LINK_STATE_UP dsps:smd_trans
+[     3.158461571/         0xca6c665] <LBSRV> glink_lbsrv_link_state_cb: wcnss:smd_trans
+[     3.158464540/         0xca6c69e] <LBSRV> glink_lbsrv_link_state_worker: LINK_STATE_UP lpass:smd_trans
+[     3.158472508/         0xca6c736] <LBSRV> glink_lbsrv_link_state_cb: rpm:smd_trans
+[     3.158475269/         0xca6c76c] <LBSRV> glink_lbsrv_link_state_worker: LINK_STATE_UP mpss:smd_trans
+[     3.158494123/         0xca6c8d6] <LBSRV> glink_lbsrv_link_state_worker: LINK_STATE_UP wcnss:smd_trans
+[     3.158501311/         0xca6c960] <LBSRV> glink_lbsrv_link_state_worker: LINK_STATE_UP rpm:smd_trans
+Log extracted successfully

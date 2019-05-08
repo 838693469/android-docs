@@ -1,0 +1,279 @@
+diff --git a/boot_images/build/ms/build.sh b/boot_images/build/ms/build.sh
+index c077734..e89dbd6 100755
+--- a/boot_images/build/ms/build.sh
++++ b/boot_images/build/ms/build.sh
+@@ -180,23 +180,23 @@ then
+ 	then 
+ 		#sh build_8953.sh boot jsdcc BUILD_ID=JAAAANAZ $cmds  
+ 		sh build_8953.sh boot jsdcc BUILD_ID=JAASANAZ $cmds
+-		sh build_8953.sh boot jsdcc BUILD_ID=JAAIANAZ $cmds
++#		sh build_8953.sh boot jsdcc BUILD_ID=JAAIANAZ $cmds
+ 		sh build_8953.sh deviceprogrammer_ddr BUILD_ID=JAADANAZ $cmds,USES_DEVPRO_DDR
+-		sh build_8953.sh deviceprogrammer_ddr BUILD_ID=JAADANAZ $cmds,USES_DEVPRO_DDR_SEC
+-		sh build_8953.sh deviceprogrammer_ddr BUILD_ID=JAADANAZ $cmds,USES_DEVPRO_LITE
+-		sh build_8953.sh deviceprogrammer_ddr BUILD_ID=JAADANAZ $cmds,USES_DEVPRO_LITE_SEC
+-		sh build_8953.sh ddr_debug BUILD_ID=JAASANAZ $cmds
+-		sh build_8953.sh ddr_debug BUILD_ID=JAAIANAZ $cmds
++#		sh build_8953.sh deviceprogrammer_ddr BUILD_ID=JAADANAZ $cmds,USES_DEVPRO_DDR_SEC
++#		sh build_8953.sh deviceprogrammer_ddr BUILD_ID=JAADANAZ $cmds,USES_DEVPRO_LITE
++#		sh build_8953.sh deviceprogrammer_ddr BUILD_ID=JAADANAZ $cmds,USES_DEVPRO_LITE_SEC
++#		sh build_8953.sh ddr_debug BUILD_ID=JAASANAZ $cmds
++#		sh build_8953.sh ddr_debug BUILD_ID=JAAIANAZ $cmds
+ 	else 
+ 		#sh build_8953.sh boot jsdcc BUILD_ID=JAAAANAA $cmds
+ 		sh build_8953.sh boot jsdcc BUILD_ID=JAASANAA $cmds
+-		sh build_8953.sh boot jsdcc BUILD_ID=JAAIANAA $cmds
++#		sh build_8953.sh boot jsdcc BUILD_ID=JAAIANAA $cmds
+ 		sh build_8953.sh deviceprogrammer_ddr BUILD_ID=JAADANAA USES_FLAGS=USES_DEVPRO_DDR $cmds
+-		sh build_8953.sh deviceprogrammer_ddr BUILD_ID=JAADANAA USES_FLAGS=USES_DEVPRO_DDR_SEC $cmds
+-      	sh build_8953.sh deviceprogrammer_ddr BUILD_ID=JAADANAA USES_FLAGS=USES_DEVPRO_LITE $cmds
+-      	sh build_8953.sh deviceprogrammer_ddr BUILD_ID=JAADANAA USES_FLAGS=USES_DEVPRO_LITE_SEC $cmds
+-		sh build_8953.sh ddr_debug BUILD_ID=JAASANAA $cmds
+-		sh build_8953.sh ddr_debug BUILD_ID=JAAIANAA $cmds
++#		sh build_8953.sh deviceprogrammer_ddr BUILD_ID=JAADANAA USES_FLAGS=USES_DEVPRO_DDR_SEC $cmds
++#      	sh build_8953.sh deviceprogrammer_ddr BUILD_ID=JAADANAA USES_FLAGS=USES_DEVPRO_LITE $cmds
++#      	sh build_8953.sh deviceprogrammer_ddr BUILD_ID=JAADANAA USES_FLAGS=USES_DEVPRO_LITE_SEC $cmds
++#		sh build_8953.sh ddr_debug BUILD_ID=JAASANAA $cmds
++#		sh build_8953.sh ddr_debug BUILD_ID=JAAIANAA $cmds
+ 	fi
+    else
+    if [[ $BUILD_ID =~ JAAAANAZ ]] 
+diff --git a/boot_images/build/ms/build_8953.sh b/boot_images/build/ms/build_8953.sh
+index 4f40bed..29e230a 100755
+--- a/boot_images/build/ms/build_8953.sh
++++ b/boot_images/build/ms/build_8953.sh
+@@ -104,7 +104,7 @@ $TOOLS_SCONS_ROOT/build/rename-log.sh ${LOGNAM%.*}
+ $TOOLS_SCONS_ROOT/build/build.sh -f target.scons --tcfgf=8953.target.builds  $BUILD_CMD
+ 
+ #if there is an error stop compiling
+-if [[ $? != 0 ]]; then
++if [ $? != 0 ]; then
+     echo -e "Fail to compile 8953. Exiting ....."
+     exit 1
+ fi 
+diff --git a/boot_images/build/ms/setenv.sh b/boot_images/build/ms/setenv.sh
+index bb5f15f..4030285 100755
+--- a/boot_images/build/ms/setenv.sh
++++ b/boot_images/build/ms/setenv.sh
+@@ -70,6 +70,9 @@ if [ "$unamestr" = "Linux" ]; then
+      rm -f __temp.out
+    }
+ # Set up compiler path 
++if [ -n "$ARM_COMPILER_PATH" ]; then
++    echo -e "\nINFO: Already set ARM_COMPILER_PATH=$ARM_COMPILER_PATH\n"
++else
+    #ARM_COMPILER_PATH=/pkg/qct/software/arm/RVDS/5.01bld94/sw/debugger/configdb/Boards/ARM/Cortex-A8_RTSM/linux-pentium
+    export ARM_COMPILER_PATH=/pkg/qct/software/arm/RVDS/5.01bld94/bin64
+    export PYTHON_PATH=/pkg/qct/software/python/2.7.5/bin
+@@ -85,6 +88,7 @@ if [ "$unamestr" = "Linux" ]; then
+    export PATH=$MAKE_PATH:$PYTHON_PATH:$ARM_COMPILER_PATH:$PATH
+    export ARMHOME=$ARMROOT
+    export_armlmd_license
++fi
+ 
+ fi
+ 
+diff --git a/boot_images/core/boot/secboot3/hw/msm8953/boot_cdt_array.c b/boot_images/core/boot/secboot3/hw/msm8953/boot_cdt_array.c
+index 641bcc3..860e15a 100755
+--- a/boot_images/core/boot/secboot3/hw/msm8953/boot_cdt_array.c
++++ b/boot_images/core/boot/secboot3/hw/msm8953/boot_cdt_array.c
+@@ -42,7 +42,7 @@ uint8 config_data_table[CONFIG_DATA_TABLE_MAX_SIZE] =
+     #ifdef FEATURE_RUMI_BOOT
+     0x03, 0x0F, 0x01, 0x00, 0x00, 0x00,
+     #else
+-    0x03, 0x08, 0x01, 0x00, 0x00, 0x00, 
++    0x03, 0x0B, 0x12, 0x00, 0x00, 0x00, 
+     #endif
+ 
+                 0x02, 0x00, 
+diff --git a/boot_images/core/boot/secboot3/src/boot_uart.c b/boot_images/core/boot/secboot3/src/boot_uart.c
+index 9c7e6e9..b39f127 100755
+--- a/boot_images/core/boot/secboot3/src/boot_uart.c
++++ b/boot_images/core/boot/secboot3/src/boot_uart.c
+@@ -33,24 +33,6 @@ when       who     what, where, why
+ 
+ ===========================================================================*/
+ #include "boot_uart.h"
+-#include "busywait.h"
+-
+-/*=============================================================================
+-
+-            LOCAL DEFINITIONS AND DECLARATIONS FOR MODULE
+-
+-This section contains local definitions for constants, macros, types,
+-variables and other items needed by this module.
+-
+-=============================================================================*/
+-// Define the cable detection loop count
+-#define UART_CABLE_DETECTION_MAX_LOOP_COUNT 20
+-
+-// Define the cable detection pause time in us
+-#define UART_CABLE_DETECTION_PAUSE_TIME 10 
+-
+-/*check uart connection status*/
+-static boolean uart_connection_status = TRUE;
+ 
+ /*===========================================================================
+                       FUNCTION DECLARATIONS
+@@ -85,26 +67,7 @@ static boolean uart_connection_status = TRUE;
+ */
+ UartResult boot_uart_init(UartHandle* handle,UartPortID id)
+ {
+-  uint32 cable_detection_loop_count = 0;
+-  UartResult uart_init_status = Uart_init(handle, id);
+-  
+-  /* Query Serial Cable Status weather its connected or not.
+-	 Update uart_connection_status to TRUE if cable is not connected
+-     Update uart_connection_status to FALSE if cable is connected */  	 
+-
+-  do {
+-	uart_connection_status = Uart_is_break_active(*handle);
+-	 
+-    if (uart_connection_status == TRUE) {                                                                  		 
+-	  break;
+-	}
+-	  
+-	busywait (UART_CABLE_DETECTION_PAUSE_TIME);
+-	  
+-	cable_detection_loop_count++;
+-  } while ((cable_detection_loop_count) < UART_CABLE_DETECTION_MAX_LOOP_COUNT);
+-  
+-  return uart_init_status;
++  return Uart_init(handle, id);
+ }
+ 
+ 
+@@ -192,10 +155,5 @@ uint32 boot_uart_rx(UartHandle handle, char* buf,uint32 bytes_to_rx)
+ */
+ uint32 boot_uart_tx(UartHandle handle, char* buf, uint32 bytes_to_tx)
+ {
+-  /* If uart connection is disconnected then don't flush log through uart*/
+-  if (uart_connection_status == TRUE) {
+-    return 0;
+-  }
+-
+-  return Uart_transmit(handle,buf,bytes_to_tx); 
++	return Uart_transmit(handle,buf,bytes_to_tx); 
+ }
+diff --git a/boot_images/core/bsp/bootloaders/sbl1/build/msm8953.scons b/boot_images/core/bsp/bootloaders/sbl1/build/msm8953.scons
+index 4bf0180..cc34e63 100755
+--- a/boot_images/core/bsp/bootloaders/sbl1/build/msm8953.scons
++++ b/boot_images/core/bsp/bootloaders/sbl1/build/msm8953.scons
+@@ -171,6 +171,7 @@ env.Replace(ARM_CPU = "${ARM_CPU_CMD} ${ARM_CPU_A53}")
+ # enable stack protection
+ env.Append(CFLAGS = " --protect_stack ")
+ env.Append(CFLAGS = " --diag_error=warning ")
++env.Append(CFLAGS = " --diag_suppress=9931,9933 ")
+ #------------------------------------------------------------------------------
+ # Check compiler version. If the version is not higher than armct5.01B43, exit 
+ #------------------------------------------------------------------------------
+diff --git a/boot_images/core/securemsm/secdbgplcy/oem/oem_debug_policy.c b/boot_images/core/securemsm/secdbgplcy/oem/oem_debug_policy.c
+index 441b79b..15aa6d6 100755
+--- a/boot_images/core/securemsm/secdbgplcy/oem/oem_debug_policy.c
++++ b/boot_images/core/securemsm/secdbgplcy/oem/oem_debug_policy.c
+@@ -36,7 +36,7 @@ when         who                what, where, why
+ #include <comdef.h>
+ 
+ /* Serial Number Flag */
+-//#define SKIP_SERIAL_NUMBER_CHECK 1
++#define SKIP_SERIAL_NUMBER_CHECK 1
+ 
+ boolean is_sec_dbg_skip_serial_number(void)
+ {
+diff --git a/boot_images/core/storage/tools/deviceprogrammer_ddr/src/firehose/deviceprogrammer_initialize.c b/boot_images/core/storage/tools/deviceprogrammer_ddr/src/firehose/deviceprogrammer_initialize.c
+index 03efff3..d1dcde7 100755
+--- a/boot_images/core/storage/tools/deviceprogrammer_ddr/src/firehose/deviceprogrammer_initialize.c
++++ b/boot_images/core/storage/tools/deviceprogrammer_ddr/src/firehose/deviceprogrammer_initialize.c
+@@ -102,6 +102,7 @@ void deviceprogrammer_init_hw() {
+     }
+ #endif
+ 
++/*
+ #ifndef SKIP_SECBOOT_CHECK_NOT_RECOMMENDED_BY_QUALCOMM 
+     // This check below is to ensure that only VIP programmer is run on secure boot devices
+     // In otherwords, signing the non VIP programmer is highly not recommended
+@@ -110,6 +111,7 @@ void deviceprogrammer_init_hw() {
+       strlcat(err_log, "Secure boot detected. VIP not enabled:fail ", sizeof(err_log));
+     }
+ #endif
++*/
+ 
+     // These PMIC calls were added to have long key power off to be
+     // working from flash programmer so that device can be powered off in
+diff --git a/boot_images/core/systemdrivers/pmic/framework/src/pm_target_information.c b/boot_images/core/systemdrivers/pmic/framework/src/pm_target_information.c
+index b578b3a..90692a0 100755
+--- a/boot_images/core/systemdrivers/pmic/framework/src/pm_target_information.c
++++ b/boot_images/core/systemdrivers/pmic/framework/src/pm_target_information.c
+@@ -46,6 +46,10 @@ when        who         what, where, why
+ #include "pm_version.h"
+ #include "pm_comm.h"
+ 
++#include "boot_logger.h"
++#define SET_TEST_MAX_STR_LENGTH 60 /* For settings validation test */
++static char log_str[SET_TEST_MAX_STR_LENGTH];
++
+ 
+ /*===========================================================================
+ 
+@@ -160,6 +164,9 @@ void pm_target_information_init(void)
+     pm_model_type pmi_model = pm_get_pmic_model((uint8)1);
+     pm_model_type pm_model = pm_get_pmic_model((uint8)0);
+ 
++    snprintf(log_str,SET_TEST_MAX_STR_LENGTH,"===> wangs: pmi_model=%d, pm_model=%d", pmi_model, pm_model);
++    boot_log_message(log_str);
++
+     switch(pm_model)
+     {
+        case PMIC_IS_PM8994:
+@@ -180,6 +187,7 @@ void pm_target_information_init(void)
+ 
+        case PMIC_IS_PM8950:
+          pmic_props = "/boot/pm8950";
++         boot_log_message("===> wangs: pmic_props = /boot/pm8950");
+          break;
+ 
+        case PMIC_IS_PM8937:
+@@ -215,6 +223,9 @@ void pm_target_information_init(void)
+        
+          /* Default prop */
+          pmic_props = "/boot/pm8953_pmi8950";
++         boot_log_message("===> wangs: pmic_props = /boot/pm8953");
++
++#if 0
+          /* If REG_REVID_SPARE_0 == 0x40 , it is PMI8940 */
+          /* If REG_REVID_SPARE_0 == 0x37 , it is PMI8937 else PMI8950 */
+          pm_comm_read_byte(PMIC_B_SLAVEID_SEC, REG_REVID_SPARE_0, &rev_id_spare_0, 0);
+@@ -237,6 +248,7 @@ void pm_target_information_init(void)
+              pmic_props = "/boot/pm8953_pmi8950";
+            }
+          }
++#endif
+          break;
+ 
+        default:
+diff --git a/boot_images/core/systemdrivers/pmic/target/msm8953_pm8953_pmi8950/system/src/pm_sbl_boot.c b/boot_images/core/systemdrivers/pmic/target/msm8953_pm8953_pmi8950/system/src/pm_sbl_boot.c
+index 58855c1..53791a6 100755
+--- a/boot_images/core/systemdrivers/pmic/target/msm8953_pm8953_pmi8950/system/src/pm_sbl_boot.c
++++ b/boot_images/core/systemdrivers/pmic/target/msm8953_pm8953_pmi8950/system/src/pm_sbl_boot.c
+@@ -61,6 +61,7 @@ when       who     what, where, why
+ #include "CoreVerify.h"
+ #include "pm_smbchg_driver.h"
+ #include "pm_smbchg_chgr.h"
++#include "boot_logger.h"
+ 
+ /*===========================================================================
+ 
+@@ -83,6 +84,13 @@ pm_sbl_pre_config(void)
+   sbl_param_ptr = (pm_sbl_specific_data_type*)pm_target_information_get_specific_info(PM_PROP_SBL_SPECIFIC_DATA);
+   CORE_VERIFY_PTR(sbl_param_ptr);
+ 
++  boot_log_message("===> wangs: disable battery missing detection, Start");
++  //GP1 是一种低电压关机的机制
++  err_flag |= pm_comm_write_byte(2, 0x853, 0x00, 0); //disable GP1 reset.
++  err_flag |= pm_comm_write_byte(2, 0x12D0, 0xA5, 0); //unlock the register.
++  err_flag |= pm_comm_write_byte(2, 0x12F3, 0xC0, 0); //disable battery missing detection.
++  err_flag |= pm_comm_write_byte(2, 0x853, 0x80, 0); //enable GP1 reset.
++
+   err_flag |= pm_log_pon_reasons(sbl_param_ptr->verbose_uart_logging);
+ 
+   return err_flag;

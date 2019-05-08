@@ -1,0 +1,53 @@
+diff --git a/services/powermanager/Android.bp b/services/powermanager/Android.bp
+index 7b3af70..4f9118e 100644
+--- a/services/powermanager/Android.bp
++++ b/services/powermanager/Android.bp
+@@ -6,6 +6,8 @@ cc_library_shared {
+     shared_libs: [
+         "libutils",
+         "libbinder",
++	"libutilscallstack",
++	"liblog",
+     ],
+ 
+     cflags: [
+diff --git a/services/powermanager/IPowerManager.cpp b/services/powermanager/IPowerManager.cpp
+index ea3a831..56fe107 100644
+--- a/services/powermanager/IPowerManager.cpp
++++ b/services/powermanager/IPowerManager.cpp
+@@ -17,6 +17,7 @@
+ #define LOG_TAG "IPowerManager"
+ //#define LOG_NDEBUG 0
+ #include <utils/Log.h>
++#include <utils/CallStack.h>
+ 
+ #include <stdint.h>
+ #include <sys/types.h>
+@@ -38,6 +39,13 @@ public:
+     virtual status_t acquireWakeLock(int flags, const sp<IBinder>& lock, const String16& tag,
+             const String16& packageName, bool isOneWay)
+     {
++        //Filter tag, e.g AudioMix.
++        if (strcmp(String8(tag).string(), "AudioMix") == 0) {
++            ALOG(LOG_ERROR, LOG_TAG, "wangs acquireWakeLock flags %d, tag %s, packageName %s", flags,
++                    String8(tag).string(), String8(packageName).string());
++            CallStack callStack(LOG_TAG);
++        }
++
+         Parcel data, reply;
+         data.writeInterfaceToken(IPowerManager::getInterfaceDescriptor());
+ 
+@@ -54,6 +62,13 @@ public:
+     virtual status_t acquireWakeLockWithUid(int flags, const sp<IBinder>& lock, const String16& tag,
+             const String16& packageName, int uid, bool isOneWay)
+     {
++        //Filter tag, e.g AudioMix.
++        if (strcmp(String8(tag).string(), "AudioMix") == 0) {
++            ALOG(LOG_ERROR, LOG_TAG, "wangs acquireWakeLockWithUid flags %d, tag %s, packageName %s", flags,
++                    String8(tag).string(), String8(packageName).string());
++            CallStack callStack(LOG_TAG);
++        }
++
+         Parcel data, reply;
+         data.writeInterfaceToken(IPowerManager::getInterfaceDescriptor());
+ 

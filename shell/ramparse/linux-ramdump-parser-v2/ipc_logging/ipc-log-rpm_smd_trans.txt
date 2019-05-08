@@ -1,0 +1,11 @@
+----------------------------------------------------------------------
+Log name: rpm_smd_trans (10 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[     0.746672866/         0x9e4323f] <CORE> smd_trans:rpm glink_core_rx_cmd_version_ack: [local]1:00000000 [remote]1:00000000
+[     0.746679845/         0x9e432c4] <CORE> smd_trans:rpm glink_core_rx_cmd_version_ack: Local negotiation complete 1:00000000
+[     0.746684845/         0x9e43324] <CORE> smd_trans:rpm glink_core_rx_cmd_version: [local]1:00000000 [remote]1:00000000
+[     0.746690366/         0x9e4338e] <CORE> smd_trans:rpm glink_core_rx_cmd_version: Remote and local version are matched 1:00000000
+[     0.746695366/         0x9e433ed] <CORE> smd_trans:rpm glink_core_rx_cmd_version: Remote negotiation complete 1:00000000
+Log extracted successfully

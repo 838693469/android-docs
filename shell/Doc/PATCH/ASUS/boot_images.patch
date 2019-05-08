@@ -1,0 +1,69 @@
+diff --git a/BOOT.BF.3.3/boot_images/build/ms/build_8917.sh b/BOOT.BF.3.3/boot_images/build/ms/build_8917.sh
+index de2bfd6..fb513bd 100755
+--- a/BOOT.BF.3.3/boot_images/build/ms/build_8917.sh
++++ b/BOOT.BF.3.3/boot_images/build/ms/build_8917.sh
+@@ -104,7 +104,7 @@ $TOOLS_SCONS_ROOT/build/rename-log.sh ${LOGNAM%.*}
+ $TOOLS_SCONS_ROOT/build/build.sh -f target.scons --tcfgf=8917.target.builds  $BUILD_CMD
+ 
+ #if there is an error stop compiling
+-if [[ $? != 0 ]]; then
++if [ $? != 0 ]; then
+     echo -e "Fail to compile 8917. Exiting ....."
+     exit 1
+ fi 
+diff --git a/BOOT.BF.3.3/boot_images/build/ms/build_8937.sh b/BOOT.BF.3.3/boot_images/build/ms/build_8937.sh
+index 1ac1b2b..d8a6a06 100755
+--- a/BOOT.BF.3.3/boot_images/build/ms/build_8937.sh
++++ b/BOOT.BF.3.3/boot_images/build/ms/build_8937.sh
+@@ -104,7 +104,7 @@ $TOOLS_SCONS_ROOT/build/rename-log.sh ${LOGNAM%.*}
+ $TOOLS_SCONS_ROOT/build/build.sh -f target.scons --tcfgf=8937.target.builds  $BUILD_CMD
+ 
+ #if there is an error stop compiling
+-if [[ $? != 0 ]]; then
++if [ $? != 0 ]; then
+     echo -e "Fail to compile 8937. Exiting ....."
+     exit 1
+ fi 
+diff --git a/BOOT.BF.3.3/boot_images/build/ms/setenv.sh b/BOOT.BF.3.3/boot_images/build/ms/setenv.sh
+index 6e6861f..5936e17 100644
+--- a/BOOT.BF.3.3/boot_images/build/ms/setenv.sh
++++ b/BOOT.BF.3.3/boot_images/build/ms/setenv.sh
+@@ -70,6 +70,9 @@ unamestr=`uname`
+      rm -f __temp.out
+    }
+ # Set up compiler path
++if [ -n "$ARM_COMPILER_PATH" ]; then
++    echo -e "\nINFO: Already set ARM_COMPILER_PATH=$ARM_COMPILER_PATH\n"
++else
+ #[BUILD] modify by liunianliang begin
+    #export ARM_COMPILER_PATH=$T/prebuilts/none-hlos-tools/ARM_Compiler_5.01u3/bin64
+    #export ARM_COMPILER_PATH=$(MKTOPDIR)/prebuilts/none-hlos-tools/ARM_Compiler_5.01u3/bin64
+@@ -94,6 +97,7 @@ unamestr=`uname`
+    #export ARMLMD_LICENSE_FILE=8224@192.168.132.222
+    #export LM_LICENSE_FILE=8224@192.168.132.222
+ #[BUILD] end
++fi
+ #==============================================================================
+ # Dump environment to stdout so that calling scripts can read it.
+ #==============================================================================
+diff --git a/BOOT.BF.3.3/boot_images/core/boot/secboot3/src/boot_logger.h b/BOOT.BF.3.3/boot_images/core/boot/secboot3/src/boot_logger.h
+index 5d04d60..d420bd8 100755
+--- a/BOOT.BF.3.3/boot_images/core/boot/secboot3/src/boot_logger.h
++++ b/BOOT.BF.3.3/boot_images/core/boot/secboot3/src/boot_logger.h
+@@ -339,6 +339,16 @@ void boot_log_set_ref_time(uint32 ref_time);
+ */
+ void boot_log_message(char *);
+ 
++#include <stdio.h>
++#include <stdlib.h>
++#define WANGS_LOG_BUF_SIZE 128
++#define LOG_WANGS(format, ...) \
++    do { \
++        char wangs_buf[WANGS_LOG_BUF_SIZE] = {0}; \
++        snprintf(wangs_buf, WANGS_LOG_BUF_SIZE, ">>> WANGS >>> " format, ##__VA_ARGS__); \
++        boot_log_message(wangs_buf); \
++    } while(0)
++
+ 
+ /*===========================================================================
+ 

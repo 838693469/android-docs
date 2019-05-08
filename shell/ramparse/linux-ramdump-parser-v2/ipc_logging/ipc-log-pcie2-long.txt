@@ -1,0 +1,8 @@
+----------------------------------------------------------------------
+Log name: pcie2-long (50 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[     1.869743338/         0xb2d3887] DBG1:pcie_init: PCIe IPC logging pcie2-long is enable for RC2
+[     1.870158859/         0xb2d57b1] DBG1:pcie_init: PCIe IPC logging pcie2-dump is enable for RC2
+Log extracted successfully

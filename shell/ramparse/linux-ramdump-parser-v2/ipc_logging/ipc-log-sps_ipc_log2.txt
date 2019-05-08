@@ -1,0 +1,8 @@
+----------------------------------------------------------------------
+Log name: sps_ipc_log2 (10 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[     3.483249280/         0xd05ed78] phy2bam: sps:phy2bam.
+[    21.373743970/        0x217f4892] phy2bam: sps:phy2bam.
+Log extracted successfully

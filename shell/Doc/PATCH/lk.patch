@@ -1,0 +1,197 @@
+diff --git a/app/aboot/aboot.c b/app/aboot/aboot.c
+index d9f5bee..71672a1 100644
+--- a/app/aboot/aboot.c
++++ b/app/aboot/aboot.c
+@@ -830,7 +830,7 @@ void boot_linux(void *kernel, unsigned *tags,
+ #else
+ 		dprintf(CRITICAL,
+ 			"The dm-verity is not started in enforcing mode.\nWait for 5 seconds before proceeding\n");
+-		mdelay(5000);
++		//mdelay(5000);
+ #endif
+ 	}
+ 
+@@ -1007,7 +1007,7 @@ static void verify_signed_bootimg(uint32_t bootimg_addr, uint32_t bootimg_size)
+ #else
+ 			dprintf(CRITICAL,
+ 					"Your device has failed verification and may not work properly.\nWait for 5 seconds before proceeding\n");
+-			mdelay(5000);
++			//mdelay(5000);
+ #endif
+ 
+ 			break;
+@@ -1018,7 +1018,7 @@ static void verify_signed_bootimg(uint32_t bootimg_addr, uint32_t bootimg_size)
+ #else
+ 			dprintf(CRITICAL,
+ 					"Your device has loaded a different operating system.\nWait for 5 seconds before proceeding\n");
+-			mdelay(5000);
++			//mdelay(5000);
+ #endif
+ 			break;
+ 		default:
+@@ -1334,7 +1334,7 @@ int boot_linux_from_mmc(void)
+ #else
+ 		dprintf(CRITICAL,
+ 			"Your device has been unlocked and can't be trusted.\nWait for 5 seconds before proceeding\n");
+-		mdelay(5000);
++		//mdelay(5000);
+ #endif
+ 	}
+ #endif
+@@ -4084,6 +4084,7 @@ void aboot_init(const struct app_descriptor *app)
+ 
+ 	target_serialno((unsigned char *) sn_buf);
+ 	dprintf(SPEW,"serial number: %s\n",sn_buf);
++	dprintf(CRITICAL, "===> wangs: EFUSE: %s\n", is_secure_boot_enable()? "yes":"no");
+ 
+ 	memset(display_panel_buf, '\0', MAX_PANEL_BUF_SIZE);
+ 
+@@ -4105,10 +4106,10 @@ void aboot_init(const struct app_descriptor *app)
+ 	}
+ 	if (!boot_into_fastboot)
+ 	{
+-		if (keys_get_state(KEY_HOME) || keys_get_state(KEY_VOLUMEUP))
++		if (/*keys_get_state(KEY_HOME) || */keys_get_state(KEY_VOLUMEDOWN))
+ 			boot_into_recovery = 1;
+ 		if (!boot_into_recovery &&
+-			(keys_get_state(KEY_BACK) || keys_get_state(KEY_VOLUMEDOWN)))
++			(/*keys_get_state(KEY_BACK) || */keys_get_state(KEY_VOLUMEUP)))
+ 			boot_into_fastboot = true;
+ 	}
+ 	#if NO_KEYPAD_DRIVER
+@@ -4202,9 +4203,9 @@ normal_boot:
+ 
+ 	/* initialize and start fastboot */
+ 	fastboot_init(target_get_scratch_address(), target_get_max_flash_size());
+-#if FBCON_DISPLAY_MSG
++//#if FBCON_DISPLAY_MSG
+ 	display_fastboot_menu();
+-#endif
++//#endif
+ }
+ 
+ uint32_t get_page_size()
+diff --git a/makefile b/makefile
+index 277a714..137c3fb 100644
+--- a/makefile
++++ b/makefile
+@@ -60,9 +60,9 @@ ifeq ($(SIGNED_KERNEL),1)
+   CFLAGS += -D_SIGNED_KERNEL=1
+ endif
+ 
+-ifeq ($(TARGET_BUILD_VARIANT),user)
+-  CFLAGS += -DDISABLE_FASTBOOT_CMDS=1
+-endif
++#ifeq ($(TARGET_BUILD_VARIANT),user)
++#  CFLAGS += -DDISABLE_FASTBOOT_CMDS=1
++#endif
+ 
+ # setup toolchain prefix
+ TOOLCHAIN_PREFIX ?= arm-eabi-
+diff --git a/platform/msm_shared/rules.mk b/platform/msm_shared/rules.mk
+index 7a9e688..2ecadb8 100755
+--- a/platform/msm_shared/rules.mk
++++ b/platform/msm_shared/rules.mk
+@@ -54,11 +54,11 @@ OBJS += \
+ 	$(LOCAL_DIR)/boot_verifier.o
+ endif
+ 
+-ifeq ($(ENABLE_FBCON_DISPLAY_MSG),1)
++#ifeq ($(ENABLE_FBCON_DISPLAY_MSG),1)
+ OBJS += \
+ 	$(LOCAL_DIR)/menu_keys_detect.o \
+ 	$(LOCAL_DIR)/display_menu.o
+-endif
++#endif
+ 
+ ifeq ($(ENABLE_GLINK_SUPPORT),1)
+ OBJS += \
+diff --git a/project/msm8953.mk b/project/msm8953.mk
+index e109e9e..d7e6365 100644
+--- a/project/msm8953.mk
++++ b/project/msm8953.mk
+@@ -21,7 +21,7 @@ else
+ ENABLE_SECAPP_LOADER := 1
+ ENABLE_RPMB_SUPPORT := 1
+ #enable fbcon display menu
+-ENABLE_FBCON_DISPLAY_MSG := 1
++ENABLE_FBCON_DISPLAY_MSG := 0
+ endif
+ endif
+ 
+diff --git a/target/msm8953/oem_panel.c b/target/msm8953/oem_panel.c
+index 9a4658e..8bce0b6 100644
+--- a/target/msm8953/oem_panel.c
++++ b/target/msm8953/oem_panel.c
+@@ -51,7 +51,10 @@
+ #include "include/panel_r69006_1080p_cmd.h"
+ #include "include/panel_truly_wuxga_video.h"
+ 
++#include "include/panel_ili9881c_fhd_video_dj.h"
+ 
++#include <platform/gpio.h>
++#include <platform/timer.h>
+ /*---------------------------------------------------------------------------*/
+ /* static panel selection variable                                           */
+ /*---------------------------------------------------------------------------*/
+@@ -61,6 +64,7 @@ enum {
+ 	R69006_1080P_VIDEO_PANEL,
+ 	R69006_1080P_CMD_PANEL,
+ 	TRULY_WUXGA_VIDEO_PANEL,
++	ILI9881C_FHD_VIDEO_DJ_PANEL,
+ 	UNKNOWN_PANEL
+ };
+ 
+@@ -74,6 +78,7 @@ static struct panel_list supp_panels[] = {
+ 	{"r69006_1080p_video", R69006_1080P_VIDEO_PANEL},
+ 	{"r69006_1080p_cmd", R69006_1080P_CMD_PANEL},
+ 	{"truly_wuxga_video", TRULY_WUXGA_VIDEO_PANEL},
++	{"ili9881c_fhd_video_dj", ILI9881C_FHD_VIDEO_DJ_PANEL},
+ };
+ 
+ static uint32_t panel_id;
+@@ -249,6 +254,34 @@ static int init_panel_data(struct panel_struct *panelstruct,
+ 		pinfo->dfps.panel_dfps = truly_wuxga_video_dfps;
+ 		pinfo->mipi.signature 	= TRULY_WUXGA_VIDEO_SIGNATURE;
+ 		break;
++	case ILI9881C_FHD_VIDEO_DJ_PANEL:
++		panelstruct->paneldata    = &ili9881c_fhd_video_dj_panel_data;
++		panelstruct->paneldata->panel_with_enable_gpio = 1;
++		panelstruct->panelres     = &ili9881c_fhd_video_dj_panel_res;
++		panelstruct->color        = &ili9881c_fhd_video_dj_color;
++		panelstruct->videopanel   = &ili9881c_fhd_video_dj_video_panel;
++		panelstruct->commandpanel = &ili9881c_fhd_video_dj_command_panel;
++		panelstruct->state        = &ili9881c_fhd_video_dj_state;
++		panelstruct->laneconfig   = &ili9881c_fhd_video_dj_lane_config;
++		panelstruct->paneltiminginfo
++			= &ili9881c_fhd_video_dj_timing_info;
++		panelstruct->panelresetseq
++					 = &ili9881c_fhd_video_dj_panel_reset_seq;
++		panelstruct->backlightinfo = &ili9881c_fhd_video_dj_backlight;
++		pinfo->labibb = &ili9881c_fhd_video_dj_labibb;
++		pinfo->mipi.panel_on_cmds
++			= ili9881c_fhd_video_dj_on_command;
++		pinfo->mipi.num_of_panel_on_cmds
++			= ILI9881C_FHD_VIDEO_DJ_ON_COMMAND;
++		pinfo->mipi.panel_off_cmds
++			= ili9881c_fhd_video_dj_off_command;
++		pinfo->mipi.num_of_panel_off_cmds
++			= ILI9881C_FHD_VIDEO_DJ_OFF_COMMAND;
++		memcpy(phy_db->timing,
++			ili9881c_fhd_video_dj_timings, MAX_TIMING_CONFIG * sizeof(uint32_t));
++		pinfo->mipi.signature 	= ILI9881C_FHD_VIDEO_DJ_SIGNATURE;
++		phy_db->regulator_mode = DSI_PHY_REGULATOR_LDO_MODE;
++		break;
+ 	case UNKNOWN_PANEL:
+ 	default:
+ 		memset(panelstruct, 0, sizeof(struct panel_struct));
+@@ -313,6 +346,9 @@ int oem_panel_select(const char *panel_name, struct panel_struct *panelstruct,
+ 		return PANEL_TYPE_UNKNOWN;
+ 	}
+ 
++    panel_id = ILI9881C_FHD_VIDEO_DJ_PANEL;
++    dprintf(CRITICAL, "wangs: able to search the panel: ILI9881C_FHD_VIDEO_DJ_PANEL\n");
++
+ panel_init:
+ 	/*
+ 	 * Update all data structures after 'panel_init' label. Only panel

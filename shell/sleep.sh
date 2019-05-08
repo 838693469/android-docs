@@ -1,0 +1,6 @@
+adb shell 'echo 32 > /sys/module/msm_pm/parameters/debug_mask'
+adb shell 'echo 9 > /sys/module/mpm_of/parameters/debug_mask'
+adb shell 'echo 0 > /sys/module/qpnp_rtc/parameters/poweron_alarm'
+adb shell 'echo 1 > /sys/kernel/debug/clk/debug_suspend'
+adb shell 'echo 1 > /sys/module/kernel/parameters/initcall_debug'
+adb shell 'echo 1 > /sys/module/msm_show_resume_irq/parameters/debug_mask'

@@ -1,0 +1,11 @@
+----------------------------------------------------------------------
+Log name: mpss_smd_trans (10 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[     0.745715261/         0x9e3ea6e] <CORE> smd_trans:mpss glink_core_rx_cmd_version_ack: [local]1:00000000 [remote]1:00000000
+[     0.745722449/         0x9e3eaf6] <CORE> smd_trans:mpss glink_core_rx_cmd_version_ack: Local negotiation complete 1:00000000
+[     0.745727657/         0x9e3eb5a] <CORE> smd_trans:mpss glink_core_rx_cmd_version: [local]1:00000000 [remote]1:00000000
+[     0.745733230/         0x9e3ebc5] <CORE> smd_trans:mpss glink_core_rx_cmd_version: Remote and local version are matched 1:00000000
+[     0.745738178/         0x9e3ec23] <CORE> smd_trans:mpss glink_core_rx_cmd_version: Remote negotiation complete 1:00000000
+Log extracted successfully

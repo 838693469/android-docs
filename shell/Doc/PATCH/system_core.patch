@@ -1,0 +1,118 @@
+diff --git a/adb/Android.mk b/adb/Android.mk
+index c473ed2..9766553 100644
+--- a/adb/Android.mk
++++ b/adb/Android.mk
+@@ -343,9 +343,9 @@ LOCAL_CFLAGS := \
+     -D_GNU_SOURCE \
+     -Wno-deprecated-declarations \
+ 
+-LOCAL_CFLAGS += -DALLOW_ADBD_NO_AUTH=$(if $(filter userdebug eng,$(TARGET_BUILD_VARIANT)),1,0)
++LOCAL_CFLAGS += -DALLOW_ADBD_NO_AUTH=$(if $(filter user userdebug eng,$(TARGET_BUILD_VARIANT)),1,0)
+ 
+-ifneq (,$(filter userdebug eng,$(TARGET_BUILD_VARIANT)))
++ifneq (,$(filter user userdebug eng,$(TARGET_BUILD_VARIANT)))
+ LOCAL_CFLAGS += -DALLOW_ADBD_DISABLE_VERITY=1
+ LOCAL_CFLAGS += -DALLOW_ADBD_ROOT=1
+ endif
+diff --git a/adb/daemon/main.cpp b/adb/daemon/main.cpp
+index 5adeb44..3b9a207 100644
+--- a/adb/daemon/main.cpp
++++ b/adb/daemon/main.cpp
+@@ -81,7 +81,7 @@ static bool should_drop_privileges() {
+     std::string prop = android::base::GetProperty("service.adb.root", "");
+     bool adb_root = (prop == "1");
+     bool adb_unroot = (prop == "0");
+-    if (ro_debuggable && adb_root) {
++    if (ro_debuggable || adb_root) {
+         drop = false;
+     }
+     // ... and "adb unroot" lets you explicitly drop privileges.
+@@ -153,11 +153,13 @@ static void drop_privileges(int server_port) {
+         // minijail_enter() will abort if any priv-dropping step fails.
+         minijail_enter(jail.get());
+ 
++#if 0
+         if (root_seclabel != nullptr) {
+             if (selinux_android_setcon(root_seclabel) < 0) {
+                 LOG(FATAL) << "Could not set SELinux context";
+             }
+         }
++#endif
+         std::string error;
+         std::string local_name =
+             android::base::StringPrintf("tcp:%d", server_port);
+@@ -183,7 +185,7 @@ int adbd_main(int server_port) {
+     // descriptor will always be open.
+     adbd_cloexec_auth_socket();
+ 
+-    if (ALLOW_ADBD_NO_AUTH && !android::base::GetBoolProperty("ro.adb.secure", false)) {
++    if (ALLOW_ADBD_NO_AUTH || !android::base::GetBoolProperty("ro.adb.secure", false)) {
+         auth_required = false;
+     }
+ 
+diff --git a/adb/set_verity_enable_state_service.cpp b/adb/set_verity_enable_state_service.cpp
+index 0fcf89b..a8a01c5 100644
+--- a/adb/set_verity_enable_state_service.cpp
++++ b/adb/set_verity_enable_state_service.cpp
+@@ -157,12 +157,14 @@ void set_verity_enabled_state_service(int fd, void* cookie) {
+         }
+     }
+ 
++#if 0
+     // Should never be possible to disable dm-verity on a USER build
+     // regardless of using AVB or VB1.0.
+     if (!__android_log_is_debuggable()) {
+         WriteFdFmt(fd, "verity cannot be disabled/enabled - USER build\n");
+         return;
+     }
++#endif
+ 
+     if (using_avb) {
+         // Yep, the system is using AVB.
+diff --git a/fs_mgr/Android.bp b/fs_mgr/Android.bp
+index f23150d..300d0d1 100644
+--- a/fs_mgr/Android.bp
++++ b/fs_mgr/Android.bp
+@@ -63,7 +63,7 @@ cc_library_static {
+         "libfstab",
+     ],
+     cppflags: [
+-        "-DALLOW_ADBD_DISABLE_VERITY=0",
++        "-DALLOW_ADBD_DISABLE_VERITY=1",
+     ],
+     product_variables: {
+         debuggable: {
+diff --git a/init/Android.bp b/init/Android.bp
+index 70a4ac6..eea466f 100644
+--- a/init/Android.bp
++++ b/init/Android.bp
+@@ -26,11 +26,11 @@ cc_defaults {
+         "-Wextra",
+         "-Wno-unused-parameter",
+         "-Werror",
+-        "-DALLOW_LOCAL_PROP_OVERRIDE=0",
+-        "-DALLOW_PERMISSIVE_SELINUX=0",
+-        "-DREBOOT_BOOTLOADER_ON_PANIC=0",
+-        "-DWORLD_WRITABLE_KMSG=0",
+-        "-DDUMP_ON_UMOUNT_FAILURE=0",
++        "-DALLOW_LOCAL_PROP_OVERRIDE=1",
++        "-DALLOW_PERMISSIVE_SELINUX=1",
++        "-DREBOOT_BOOTLOADER_ON_PANIC=1",
++        "-DWORLD_WRITABLE_KMSG=1",
++        "-DDUMP_ON_UMOUNT_FAILURE=1",
+         "-DSHUTDOWN_ZERO_TIMEOUT=0",
+     ],
+     product_variables: {
+diff --git a/init/Android.mk b/init/Android.mk
+index b161742..c2d45e7 100644
+--- a/init/Android.mk
++++ b/init/Android.mk
+@@ -4,7 +4,7 @@ LOCAL_PATH:= $(call my-dir)
+ 
+ # --
+ 
+-ifneq (,$(filter userdebug eng,$(TARGET_BUILD_VARIANT)))
++ifneq (,$(filter user userdebug eng,$(TARGET_BUILD_VARIANT)))
+ init_options += \
+     -DALLOW_LOCAL_PROP_OVERRIDE=1 \
+     -DALLOW_PERMISSIVE_SELINUX=1 \

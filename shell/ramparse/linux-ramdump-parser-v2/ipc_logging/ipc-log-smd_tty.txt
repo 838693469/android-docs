@@ -1,0 +1,17 @@
+----------------------------------------------------------------------
+Log name: smd_tty (2 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[     3.332766728/         0xcd9d74c] smd_tty_devicetree_init:adding smd1
+[     3.332891884/         0xcd9e0ac] smd_tty_devicetree_init:adding smd2
+[     3.333051207/         0xcd9ec9e] smd_tty_devicetree_init:adding smd3
+[     3.333171884/         0xcd9f5ac] smd_tty_devicetree_init:adding smd4
+[     3.333291780/         0xcd9fea9] smd_tty_devicetree_init:adding smd5
+[     3.333405113/         0xcda0729] smd_tty_devicetree_init:adding smd6
+[     3.333518342/         0xcda0fa7] smd_tty_devicetree_init:adding smd7
+[     3.333645634/         0xcda1933] smd_tty_devicetree_init:adding smd8
+[     3.333759644/         0xcda21c0] smd_tty_devicetree_init:adding smd11
+[     3.333880217/         0xcda2acb] smd_tty_devicetree_init:adding smd21
+[     3.333993551/         0xcda334b] smd_tty_devicetree_init:adding smd36
+Log extracted successfully

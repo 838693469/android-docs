@@ -1,0 +1,31 @@
+----------------------------------------------------------------------
+Log name: sps_bam_0x0000000004044000_3 (10 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[    21.374721887/        0x217f91ed] sps_bam_device_init: sps:BAM device: phys 0x0000000004044000 IRQ 181
+[    21.374743293/        0x217f9385] sps_register_bam_device: sps:BAM 0x0000000004044000 is registered.
+[    21.375000116/        0x217fa6c8] sps_bam_enable: sps:BAM 0x0000000004044000 uses level for IRQ# 181
+[    21.375008137/        0x217fa761] sps_bam_enable: sps:Enable wakeup irq for BAM 0x0000000004044000 IRQ 181
+[    21.375012720/        0x217fa7b9] bam_init: sps:bam_init:bam=0x0000000004044000 0x0000000000000000(va).ee=0.
+[    21.375039699/        0x217fa9c0] sps_bam_enable: sps:BAM 0x0000000004044000 number of pipes reported by hw: 6
+[    21.375061418/        0x217fab61] sps_bam_enable: sps:BAM 0x0000000004044000 (va:0x0000000000000000) enabled: ver:0x27, number of pipes:6
+[    24.373826948/        0x24ee36ca] sps_device_reset: sps:sps_device_reset.
+[    24.373831063/        0x24ee3719] sps_bam_reset: sps:BAM device RESET: phys 0x0000000004044000 IRQ 181
+[    24.373837104/        0x24ee378d] bam_exit: sps:bam_exit:bam=0x0000000004044000 0x0000000000000000(va).ee=0.
+[    24.373869396/        0x24ee39f9] sps_bam_disable: sps:BAM 0x0000000004044000 disabled
+[    24.373919709/        0x24ee3dc0] sps_bam_enable: sps:BAM 0x0000000004044000 uses level for IRQ# 181
+[    24.373925646/        0x24ee3e31] sps_bam_enable: sps:Enable wakeup irq for BAM 0x0000000004044000 IRQ 181
+[    24.373930229/        0x24ee3e8a] bam_init: sps:bam_init:bam=0x0000000004044000 0x0000000000000000(va).ee=0.
+[    24.373954396/        0x24ee4059] sps_bam_enable: sps:BAM 0x0000000004044000 number of pipes reported by hw: 6
+[    24.373959032/        0x24ee40b2] sps_bam_enable: sps:BAM 0x0000000004044000 (va:0x0000000000000000) enabled: ver:0x27, number of pipes:6
+[    28.121442689/        0x293825f8] sps_device_reset: sps:sps_device_reset.
+[    28.121446803/        0x29382647] sps_bam_reset: sps:BAM device RESET: phys 0x0000000004044000 IRQ 181
+[    28.121452741/        0x293826b9] bam_exit: sps:bam_exit:bam=0x0000000004044000 0x0000000000000000(va).ee=0.
+[    28.121478887/        0x293828b0] sps_bam_disable: sps:BAM 0x0000000004044000 disabled
+[    28.121518730/        0x29382bad] sps_bam_enable: sps:BAM 0x0000000004044000 uses level for IRQ# 181
+[    28.121523730/        0x29382c0c] sps_bam_enable: sps:Enable wakeup irq for BAM 0x0000000004044000 IRQ 181
+[    28.121527272/        0x29382c50] bam_init: sps:bam_init:bam=0x0000000004044000 0x0000000000000000(va).ee=0.
+[    28.121548210/        0x29382de2] sps_bam_enable: sps:BAM 0x0000000004044000 number of pipes reported by hw: 6
+[    28.121551647/        0x29382e24] sps_bam_enable: sps:BAM 0x0000000004044000 (va:0x0000000000000000) enabled: ver:0x27, number of pipes:6
+Log extracted successfully

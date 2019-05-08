@@ -1,0 +1,52 @@
+----------------------------------------------------------------------
+Log name: kqmi_req_resp (3 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[    15.509367129/        0x1ac93458] QCCI TX CF:0 TI:1 MI:23 ML:1e SvcId: 2b
+[    15.511508640/        0x1ac9d4ec] QCCI RX CF:2 TI:1 MI:23 ML:7 SvcId: 2b
+[    15.536335932/        0x1ad11afa] QCCI TX CF:0 TI:2 MI:23 ML:1e SvcId: 2b
+[    15.537228380/        0x1ad15de7] QCCI RX CF:2 TI:2 MI:23 ML:7 SvcId: 2b
+[    16.405246351/        0x1bcfab43] QCCI TX CF:0 TI:3 MI:23 ML:1e SvcId: 2b
+[    16.406714476/        0x1bd0195b] QCCI RX CF:2 TI:3 MI:23 ML:7 SvcId: 2b
+[    16.406845413/        0x1bd0232d] QCCI TX CF:0 TI:4 MI:23 ML:1e SvcId: 2b
+[    16.407395570/        0x1bd04c71] QCCI RX CF:2 TI:4 MI:23 ML:7 SvcId: 2b
+[    16.547429372/        0x1bf952fa] QCSI RX CF:0 TI:1 MI:23 ML:e SvcId: 1c
+[    16.547457810/        0x1bf9551c] QCSI TX CF:2 TI:1 MI:23 ML:19 SvcId: 1c
+[    17.142409166/        0x1ca7a276] QCSI RX CF:0 TI:1 MI:24 ML:e SvcId: 34
+[    17.142436509/        0x1ca7a483] QCSI TX CF:2 TI:1 MI:24 ML:15 SvcId: 34
+[    17.726721199/        0x1d52d1dd] QCSI RX CF:0 TI:2 MI:22 ML:20 SvcId: 34
+[    17.739916824/        0x1d56af89] QCSI TX CF:2 TI:2 MI:22 ML:25 SvcId: 34
+[    19.192182401/        0x1f00277c] QCCI TX CF:0 TI:5 MI:23 ML:1e SvcId: 2b
+[    19.194942141/        0x1f00f66f] QCCI RX CF:2 TI:5 MI:23 ML:7 SvcId: 2b
+[    19.195112297/        0x1f010332] QCCI TX CF:0 TI:1 MI:23 ML:1e SvcId: 2b
+[    19.195736932/        0x1f01320c] QCCI RX CF:2 TI:1 MI:23 ML:7 SvcId: 2b
+[    19.200952714/        0x1f02b944] QCCI TX CF:0 TI:6 MI:23 ML:1e SvcId: 2b
+[    19.202561880/        0x1f0331ea] QCCI RX CF:2 TI:6 MI:23 ML:7 SvcId: 2b
+[    19.202660839/        0x1f033957] QCCI TX CF:0 TI:2 MI:23 ML:1e SvcId: 2b
+[    19.219807193/        0x1f083f56] QCCI RX CF:2 TI:2 MI:23 ML:7 SvcId: 2b
+[    20.209480008/        0x202a30c6] QCCI TX CF:0 TI:7 MI:23 ML:1e SvcId: 2b
+[    20.210410008/        0x202a7687] QCCI RX CF:2 TI:7 MI:23 ML:7 SvcId: 2b
+[    20.210499748/        0x202a7d41] QCCI TX CF:0 TI:3 MI:23 ML:1e SvcId: 2b
+[    20.210879488/        0x202a99bb] QCCI RX CF:2 TI:3 MI:23 ML:7 SvcId: 2b
+[    20.223051831/        0x202e2aac] QCCI TX CF:0 TI:8 MI:23 ML:1e SvcId: 2b
+[    20.224017717/        0x202e731a] QCCI RX CF:2 TI:8 MI:23 ML:7 SvcId: 2b
+[    20.224106571/        0x202e79c4] QCCI TX CF:0 TI:4 MI:23 ML:1e SvcId: 2b
+[    20.224405373/        0x202e902e] QCCI RX CF:2 TI:4 MI:23 ML:7 SvcId: 2b
+[    25.991716641/        0x26c83485] QCCI TX CF:0 TI:9 MI:23 ML:1e SvcId: 2b
+[    25.992707839/        0x26c87edb] QCCI RX CF:2 TI:9 MI:23 ML:7 SvcId: 2b
+[    25.994614036/        0x26c90dd3] QCCI TX CF:0 TI:5 MI:23 ML:1e SvcId: 2b
+[    25.996003932/        0x26c97612] QCCI RX CF:2 TI:5 MI:23 ML:7 SvcId: 2b
+[    26.011426172/        0x26cdfabe] QCCI TX CF:0 TI:a MI:23 ML:1e SvcId: 2b
+[    26.012325964/        0x26ce3e38] QCCI RX CF:2 TI:a MI:23 ML:7 SvcId: 2b
+[    26.012392995/        0x26ce433e] QCCI TX CF:0 TI:6 MI:23 ML:1e SvcId: 2b
+[    26.013781068/        0x26ceab5a] QCCI RX CF:2 TI:6 MI:23 ML:7 SvcId: 2b
+[    26.075420339/        0x26e0ba4c] QCCI TX CF:0 TI:b MI:23 ML:1e SvcId: 2b
+[    26.076382318/        0x26e10272] QCCI RX CF:2 TI:b MI:23 ML:7 SvcId: 2b
+[    26.078390339/        0x26e1990d] QCCI TX CF:0 TI:7 MI:23 ML:1e SvcId: 2b
+[    26.079659297/        0x26e1f838] QCCI RX CF:2 TI:7 MI:23 ML:7 SvcId: 2b
+[    26.168142683/        0x26fbe47e] QCCI TX CF:0 TI:c MI:23 ML:1e SvcId: 2b
+[    26.169088724/        0x26fc2b6d] QCCI RX CF:2 TI:c MI:23 ML:7 SvcId: 2b
+[    26.169171068/        0x26fc319a] QCCI TX CF:0 TI:8 MI:23 ML:1e SvcId: 2b
+[    26.170606224/        0x26fc9d3d] QCCI RX CF:2 TI:8 MI:23 ML:7 SvcId: 2b
+Log extracted successfully

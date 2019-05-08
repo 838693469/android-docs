@@ -1,0 +1,107 @@
+diff --git a/core/config.mk b/core/config.mk
+index 1d2617e..c22650e 100644
+--- a/core/config.mk
++++ b/core/config.mk
+@@ -222,7 +222,8 @@ include $(BUILD_SYSTEM)/envsetup.mk
+ 
+ # Pruned directory options used when using findleaves.py
+ # See envsetup.mk for a description of SCAN_EXCLUDE_DIRS
+-FIND_LEAVES_EXCLUDES := $(addprefix --prune=, $(SCAN_EXCLUDE_DIRS) .repo .git)
++FIND_LEAVES_EXCLUDES := $(addprefix --prune=, $(SCAN_EXCLUDE_DIRS) .repo .git out .ccache logs amss_codes)
++$(warning *** FIND_LEAVES_EXCLUDES : $(FIND_LEAVES_EXCLUDES))
+ 
+ # The build system exposes several variables for where to find the kernel
+ # headers:
+diff --git a/core/main.mk b/core/main.mk
+index 6cafad6..b178a40 100644
+--- a/core/main.mk
++++ b/core/main.mk
+@@ -274,9 +274,12 @@ ifneq (,$(user_variant))
+   # Target is secure in user builds.
+   ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=1
+   ADDITIONAL_DEFAULT_PROPERTIES += security.perf_harden=1
++  ADDITIONAL_DEFAULT_PROPERTIES += service.adb.root=1
+ 
+   ifeq ($(user_variant),user)
+     ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=1
++    ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.usb.config=adb
++    tags_to_install += debug
+   endif
+ 
+   ifeq ($(user_variant),userdebug)
+diff --git a/envsetup.sh b/envsetup.sh
+index fee5818..eeb6288 100644
+--- a/envsetup.sh
++++ b/envsetup.sh
+@@ -544,6 +544,7 @@ function add_lunch_combo()
+     LUNCH_MENU_CHOICES=(${LUNCH_MENU_CHOICES[@]} $new_combo)
+ }
+ 
++if false; then
+ # add the default one here
+ add_lunch_combo aosp_arm-eng
+ add_lunch_combo aosp_arm64-eng
+@@ -551,6 +552,7 @@ add_lunch_combo aosp_mips-eng
+ add_lunch_combo aosp_mips64-eng
+ add_lunch_combo aosp_x86-eng
+ add_lunch_combo aosp_x86_64-eng
++fi
+ 
+ function print_lunch_menu()
+ {
+@@ -597,6 +599,7 @@ function lunch()
+     else
+         selection=$answer
+     fi
++    echo -e "\nwangs: [${FUNCNAME[0]}] selection = $selection\n"
+ 
+     export TARGET_BUILD_APPS=
+ 
+@@ -636,7 +639,7 @@ function lunch()
+     fi
+     export TARGET_BUILD_TYPE=release
+ 
+-    echo
++    echo -e "\nwangs: [${FUNCNAME[0]}] TARGET_PRODUCT=${TARGET_PRODUCT}, TARGET_BUILD_VARIANT=${TARGET_BUILD_VARIANT}\n"
+ 
+     set_stuff_for_environment
+     printconfig
+@@ -760,8 +763,8 @@ function call_hook
+             do
+                 ARGS+=$prefix"/"$dir" "
+             done
+-            echo $ARGS
+         fi
++        echo -e "\nwangs: [${FUNCNAME[0]}] ARGS = $ARGS\n"
+         if [ -e $T/${QCPATH}/common/restriction_checker/restriction_checker.py ]; then
+             python $T/${QCPATH}/common/restriction_checker/restriction_checker.py $T $ARGS
+         else
+@@ -1668,12 +1671,17 @@ function make()
+ 
+     if [ -f $ANDROID_BUILD_TOP/$QTI_BUILDTOOLS_DIR/build/update-vendor-hal-makefiles.sh ]; then
+         vendor_hal_script=$ANDROID_BUILD_TOP/$QTI_BUILDTOOLS_DIR/build/update-vendor-hal-makefiles.sh
+-        source $vendor_hal_script --check
+-        regen_needed=$?
++        if [ -f ${ANDROID_BUILD_TOP}/out/vendor-hal/hidl-gen.chksum ]; then
++            source $vendor_hal_script --check
++            regen_needed=$?
++        else
++            regen_needed=1
++        fi
+     else
+         vendor_hal_script=$ANDROID_BUILD_TOP/device/qcom/common/vendor_hal_makefile_generator.sh
+         regen_needed=1
+     fi
++    echo -e "\nwangs: [${FUNCNAME[0]}] regen_needed = $regen_needed\n"
+ 
+     if [ $regen_needed -eq 1 ]; then
+         _wrap_build $(get_make_command hidl-gen) hidl-gen ALLOW_MISSING_DEPENDENCIES=true
+@@ -1742,7 +1750,7 @@ if [ "x$SHELL" != "x/bin/bash" ]; then
+ fi
+ 
+ # Execute the contents of any vendorsetup.sh files we can find.
+-for f in `test -d device && find -L device -maxdepth 4 -name 'vendorsetup.sh' 2> /dev/null | sort` \
++for f in `test -d device/qcom && find -L device/qcom -maxdepth 4 -name 'vendorsetup.sh' 2> /dev/null | sort` \
+          `test -d vendor && find -L vendor -maxdepth 4 -name 'vendorsetup.sh' 2> /dev/null | sort` \
+          `test -d product && find -L product -maxdepth 4 -name 'vendorsetup.sh' 2> /dev/null | sort`
+ do

@@ -1,0 +1,11 @@
+----------------------------------------------------------------------
+Log name: dsps_smd_trans (10 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[     0.744748074/         0x9e3a1e8] <CORE> smd_trans:dsps glink_core_rx_cmd_version_ack: [local]1:00000000 [remote]1:00000000
+[     0.744758230/         0x9e3a2a5] <CORE> smd_trans:dsps glink_core_rx_cmd_version_ack: Local negotiation complete 1:00000000
+[     0.744764324/         0x9e3a31a] <CORE> smd_trans:dsps glink_core_rx_cmd_version: [local]1:00000000 [remote]1:00000000
+[     0.744770209/         0x9e3a38b] <CORE> smd_trans:dsps glink_core_rx_cmd_version: Remote and local version are matched 1:00000000
+[     0.744775939/         0x9e3a3f9] <CORE> smd_trans:dsps glink_core_rx_cmd_version: Remote negotiation complete 1:00000000
+Log extracted successfully

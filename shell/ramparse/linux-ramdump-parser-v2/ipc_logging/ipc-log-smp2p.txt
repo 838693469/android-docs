@@ -1,0 +1,65 @@
+----------------------------------------------------------------------
+Log name: smp2p (3 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[     3.160233238/         0xca74b45] SMP2P Int Apps->modem(1)
+[     3.160237144/         0xca74b8f] smp2p_do_negotiation: negotiation pid 1: State 0->1 F0x00000001
+[     3.160243550/         0xca74c0a] msm_smp2p_in_register: 'smp2p':1 registered
+[     3.160271675/         0xca74e27] SMP2P Int Apps->lpass(2)
+[     3.160274696/         0xca74e5f] smp2p_do_negotiation: negotiation pid 2: State 0->1 F0x00000001
+[     3.160279436/         0xca74ebb] msm_smp2p_in_register: 'smp2p':2 registered
+[     3.160300946/         0xca75058] SMP2P Int Apps->wcnss(4)
+[     3.160303863/         0xca75090] smp2p_do_negotiation: negotiation pid 4: State 0->1 F0x00000001
+[     3.160308342/         0xca750e6] msm_smp2p_in_register: 'smp2p':4 registered
+[     6.835754290/        0x10dc1b59] msm_smp2p_in_register: 'slave-kernel':1 registered
+[     6.836087415/        0x10dc3456] create mapping:432 naem:slave-kernel pid:1
+[     6.836855020/        0x10dc6de9] msm_smp2p_in_register: 'slave-kernel':2 registered
+[     6.837144343/        0x10dc839b] create mapping:464 naem:slave-kernel pid:2
+[     6.837818613/        0x10dcb62e] msm_smp2p_in_register: 'slave-kernel':4 registered
+[     6.838136843/        0x10dcce0a] create mapping:496 naem:slave-kernel pid:4
+[    14.505430981/        0x19a31519] SMP2P Int lpass(2)->Apps
+[    14.505447283/        0x19a31651] SMP2P Int Apps->lpass(2)
+[    14.505450928/        0x19a31697] smp2p_do_negotiation: negotiation complete pid 2: State 1->2 F0x00000001
+[    14.505468012/        0x19a317df] smp2p_out_create_v1: item 'master-kernel':2 fully created as entry 1 of 16
+[    14.505471189/        0x19a3181c] SMP2P Int Apps->lpass(2)
+[    14.505485928/        0x19a31937] smp2p_out_create_v1: item 'smp2p':2 fully created as entry 2 of 16
+[    14.505488481/        0x19a31968] SMP2P Int Apps->lpass(2)
+[    14.505491449/        0x19a319a0] smp2p_rmt_out_edge_notify: 'smp2p':2 opened
+[    14.505527178/        0x19a31c50] SMP2P Int lpass(2)->Apps
+[    14.519547751/        0x19a737db] SMP2P Int lpass(2)->Apps
+[    14.519565356/        0x19a7392c] SMP2P Int lpass(2)->Apps
+[    14.519570043/        0x19a73986] 'slave-kernel':2 GPIO bit 2 virq 466 (0->1,-) - edge 0->1 triggering
+[    14.519602804/        0x19a73bfb] SMP2P Int lpass(2)->Apps
+[    14.519606501/        0x19a73c42] 'slave-kernel':2 GPIO bit 1 virq 465 (0->1,-) - edge 0->1 triggering
+[    14.536705356/        0x19ac3ead] SMP2P Int lpass(2)->Apps
+[    16.380190986/        0x1bc85423] SMP2P Int modem(1)->Apps
+[    16.380214684/        0x1bc855df] SMP2P Int Apps->modem(1)
+[    16.380218278/        0x1bc85624] smp2p_do_negotiation: negotiation complete pid 1: State 1->2 F0x00000001
+[    16.380235101/        0x1bc85767] smp2p_out_create_v1: item 'master-kernel':1 fully created as entry 1 of 16
+[    16.380238590/        0x1bc857aa] SMP2P Int Apps->modem(1)
+[    16.380254111/        0x1bc858d4] smp2p_out_create_v1: item 'smp2p':1 fully created as entry 2 of 16
+[    16.380256663/        0x1bc85905] SMP2P Int Apps->modem(1)
+[    16.380259736/        0x1bc8593f] smp2p_rmt_out_edge_notify: 'smp2p':1 opened
+[    16.380316924/        0x1bc85d8b] SMP2P Int modem(1)->Apps
+[    16.405028278/        0x1bcf9ae5] SMP2P Int modem(1)->Apps
+[    16.405047809/        0x1bcf9c5b] SMP2P Int modem(1)->Apps
+[    16.405052549/        0x1bcf9cb6] 'slave-kernel':1 GPIO bit 2 virq 434 (0->1,-) - edge 0->1 triggering
+[    16.405107966/        0x1bcfa0df] SMP2P Int modem(1)->Apps
+[    16.405112132/        0x1bcfa12e] 'slave-kernel':1 GPIO bit 1 virq 433 (0->1,-) - edge 0->1 triggering
+[    20.122857612/        0x2010d01c] SMP2P Int wcnss(4)->Apps
+[    20.122880321/        0x2010d1cb] SMP2P Int Apps->wcnss(4)
+[    20.122885060/        0x2010d226] smp2p_do_negotiation: negotiation complete pid 4: State 1->2 F0x00000001
+[    20.122906935/        0x2010d3ca] smp2p_out_create_v1: item 'master-kernel':4 fully created as entry 1 of 16
+[    20.122910685/        0x2010d412] SMP2P Int Apps->wcnss(4)
+[    20.122928550/        0x2010d569] smp2p_out_create_v1: item 'smp2p':4 fully created as entry 2 of 16
+[    20.122931258/        0x2010d59d] SMP2P Int Apps->wcnss(4)
+[    20.122934383/        0x2010d5d9] smp2p_rmt_out_edge_notify: 'smp2p':4 opened
+[    20.122965789/        0x2010d835] SMP2P Int wcnss(4)->Apps
+[    20.138029123/        0x201541fd] SMP2P Int wcnss(4)->Apps
+[    20.209349540/        0x202a26ff] SMP2P Int wcnss(4)->Apps
+[    20.209362144/        0x202a27ef] 'slave-kernel':4 GPIO bit 2 virq 498 (0->1,-) - edge 0->1 triggering
+[    20.222889696/        0x202e1e84] SMP2P Int wcnss(4)->Apps
+[    20.222902561/        0x202e1f77] 'slave-kernel':4 GPIO bit 1 virq 497 (0->1,-) - edge 0->1 triggering
+[    33.093740412/        0x2ee8e059] SMP2P Int Apps->lpass(2)
+Log extracted successfully

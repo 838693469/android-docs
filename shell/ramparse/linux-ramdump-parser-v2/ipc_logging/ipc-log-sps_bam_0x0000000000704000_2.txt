@@ -1,0 +1,44 @@
+----------------------------------------------------------------------
+Log name: sps_bam_0x0000000000704000_2 (10 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[     3.484038812/         0xd0628af] sps_connect: sps:sps_connect: bam 0x0000000000704000 src 0xffffffc0d742bc00 dest 0x7fffffffffffffff mode SRC
+[     3.484057197/         0xd062a10] sps_bam_pipe_connect: sps:BAM 0x0000000000704000; pipe 3; mode:0; options:0x20000001.
+[     3.484211207/         0xd06359d] bam_pipe_init: sps:bam_pipe_init:bam=0x0000000000704000 0xffffff8001dc0000(va).pipe=3.
+[     3.484231416/         0xd063722] sps_bam_pipe_set_params: sps:BAM 0x0000000000704000 pipe 3 opt 0x20000001
+[     3.484341624/         0xd063f65] pipe_set_irq: sps:BAM:0x0000000000704000; pipe 3; poll:0, irq_mask:0x1; pipe state:0x0; dev state:0xc.
+[     3.484347093/         0xd063fce] bam_pipe_set_irq: sps:bam_pipe_set_irq:bam=0x0000000000704000 0xffffff8001dc0000(va).pipe=3; irq_en:1; src_mask:0x1; ee:1.
+[     3.484355270/         0xd06406b] sps_bam_pipe_connect: sps:BAM 0x0000000000704000; pipe 3; pipe_index_mask:0x8; pipe_active_mask:0x8.
+[     3.484360270/         0xd0640cb] bam_pipe_enable: sps:bam_pipe_enable:bam=0x0000000000704000 0xffffff8001dc0000(va).pipe=3.
+[     3.484364801/         0xd064122] bam_pipe_enable: sps:bam=0xffffff8001dc0000(va).pipe=3 is already enabled.
+[     3.484370062/         0xd064188] sps_register_event: sps:sps_register_event; events:33.
+[     3.484641624/         0xd0655e5] sps_connect: sps:sps_connect: bam 0x0000000000704000 src 0x7fffffffffffffff dest 0xffffffc0d742bc00 mode DEST
+[     3.484653864/         0xd0656d0] sps_bam_pipe_connect: sps:BAM 0x0000000000704000; pipe 2; mode:1; options:0x20000000.
+[     3.484674697/         0xd065860] bam_pipe_init: sps:bam_pipe_init:bam=0x0000000000704000 0xffffff8001dc0000(va).pipe=2.
+[     3.484690843/         0xd065996] sps_bam_pipe_set_params: sps:BAM 0x0000000000704000 pipe 2 opt 0x20000000
+[     3.484795687/         0xd066174] pipe_set_irq: sps:BAM:0x0000000000704000; pipe 2; poll:0, irq_mask:0x0; pipe state:0x0; dev state:0xc.
+[     3.484800218/         0xd0661ca] bam_pipe_set_irq: sps:bam_pipe_set_irq:bam=0x0000000000704000 0xffffff8001dc0000(va).pipe=2; irq_en:0; src_mask:0x0; ee:1.
+[     3.484806312/         0xd06623f] sps_bam_pipe_connect: sps:BAM 0x0000000000704000; pipe 2; pipe_index_mask:0x4; pipe_active_mask:0xc.
+[     3.484809801/         0xd066282] bam_pipe_enable: sps:bam_pipe_enable:bam=0x0000000000704000 0xffffff8001dc0000(va).pipe=2.
+[     3.484813759/         0xd0662ce] bam_pipe_enable: sps:bam=0xffffff8001dc0000(va).pipe=2 is already enabled.
+[     3.491530582/         0xd085a91] sps_connect: sps:sps_connect: bam 0x0000000000704000 src 0xffffffc0d742bc00 dest 0x7fffffffffffffff mode SRC
+[     3.491554489/         0xd085c5c] sps_bam_pipe_connect: sps:BAM 0x0000000000704000; pipe 5; mode:0; options:0x20000001.
+[     3.491580999/         0xd085e59] bam_pipe_init: sps:bam_pipe_init:bam=0x0000000000704000 0xffffff8001dc0000(va).pipe=5.
+[     3.491604124/         0xd086015] sps_bam_pipe_set_params: sps:BAM 0x0000000000704000 pipe 5 opt 0x20000001
+[     3.491732145/         0xd0869b0] pipe_set_irq: sps:BAM:0x0000000000704000; pipe 5; poll:0, irq_mask:0x1; pipe state:0x0; dev state:0xc.
+[     3.491737978/         0xd086a1f] bam_pipe_set_irq: sps:bam_pipe_set_irq:bam=0x0000000000704000 0xffffff8001dc0000(va).pipe=5; irq_en:1; src_mask:0x1; ee:1.
+[     3.491746832/         0xd086ac9] sps_bam_pipe_connect: sps:BAM 0x0000000000704000; pipe 5; pipe_index_mask:0x20; pipe_active_mask:0x2c.
+[     3.491752509/         0xd086b36] bam_pipe_enable: sps:bam_pipe_enable:bam=0x0000000000704000 0xffffff8001dc0000(va).pipe=5.
+[     3.491757041/         0xd086b8d] bam_pipe_enable: sps:bam=0xffffff8001dc0000(va).pipe=5 is already enabled.
+[     3.491762770/         0xd086bfc] sps_register_event: sps:sps_register_event; events:33.
+[     3.492065062/         0xd0882a7] sps_connect: sps:sps_connect: bam 0x0000000000704000 src 0x7fffffffffffffff dest 0xffffffc0d742bc00 mode DEST
+[     3.492077301/         0xd088392] sps_bam_pipe_connect: sps:BAM 0x0000000000704000; pipe 4; mode:1; options:0x20000000.
+[     3.492098864/         0xd088530] bam_pipe_init: sps:bam_pipe_init:bam=0x0000000000704000 0xffffff8001dc0000(va).pipe=4.
+[     3.492115687/         0xd088673] sps_bam_pipe_set_params: sps:BAM 0x0000000000704000 pipe 4 opt 0x20000000
+[     3.492235218/         0xd088f6a] pipe_set_irq: sps:BAM:0x0000000000704000; pipe 4; poll:0, irq_mask:0x0; pipe state:0x0; dev state:0xc.
+[     3.492239489/         0xd088fbc] bam_pipe_set_irq: sps:bam_pipe_set_irq:bam=0x0000000000704000 0xffffff8001dc0000(va).pipe=4; irq_en:0; src_mask:0x0; ee:1.
+[     3.492246312/         0xd08903f] sps_bam_pipe_connect: sps:BAM 0x0000000000704000; pipe 4; pipe_index_mask:0x10; pipe_active_mask:0x3c.
+[     3.492249957/         0xd089085] bam_pipe_enable: sps:bam_pipe_enable:bam=0x0000000000704000 0xffffff8001dc0000(va).pipe=4.
+[     3.492253759/         0xd0890ce] bam_pipe_enable: sps:bam=0xffffff8001dc0000(va).pipe=4 is already enabled.
+Log extracted successfully

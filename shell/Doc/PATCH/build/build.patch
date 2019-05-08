@@ -1,0 +1,36 @@
+diff --git a/core/config.mk b/core/config.mk
+index 6152060..6cdc058 100644
+--- a/core/config.mk
++++ b/core/config.mk
+@@ -166,7 +166,7 @@ include $(BUILD_SYSTEM)/envsetup.mk
+ 
+ # Pruned directory options used when using findleaves.py
+ # See envsetup.mk for a description of SCAN_EXCLUDE_DIRS
+-FIND_LEAVES_EXCLUDES := $(addprefix --prune=, $(OUT_DIR) $(SCAN_EXCLUDE_DIRS) .repo .git)
++FIND_LEAVES_EXCLUDES := $(addprefix --prune=, $(OUT_DIR) $(SCAN_EXCLUDE_DIRS) .repo .git logs)
+ 
+ # The build system exposes several variables for where to find the kernel
+ # headers:
+diff --git a/core/main.mk b/core/main.mk
+index a612f83..ac57b2e 100644
+--- a/core/main.mk
++++ b/core/main.mk
+@@ -389,15 +389,17 @@ user_variant := $(filter user userdebug,$(TARGET_BUILD_VARIANT))
+ enable_target_debugging := true
+ tags_to_install :=
+ ifneq (,$(user_variant))
++  ifeq ($(user_variant),user)
+   # Target is secure in user builds.
+   ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=1
+   ADDITIONAL_DEFAULT_PROPERTIES += security.perf_harden=1
+ 
+-  ifeq ($(user_variant),user)
+     ADDITIONAL_DEFAULT_PROPERTIES += ro.adb.secure=1
+   endif
+ 
+   ifeq ($(user_variant),userdebug)
++  # Set device insecure for non-user builds.
++  ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
+     # Pick up some extra useful tools
+     tags_to_install += debug
+   else

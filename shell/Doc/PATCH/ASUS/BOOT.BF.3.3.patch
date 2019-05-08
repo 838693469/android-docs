@@ -1,0 +1,293 @@
+diff --git a/BOOT.BF.3.3/boot_images/build/ms/build_8917.sh b/BOOT.BF.3.3/boot_images/build/ms/build_8917.sh
+index de2bfd6..fb513bd 100755
+--- a/BOOT.BF.3.3/boot_images/build/ms/build_8917.sh
++++ b/BOOT.BF.3.3/boot_images/build/ms/build_8917.sh
+@@ -104,7 +104,7 @@ $TOOLS_SCONS_ROOT/build/rename-log.sh ${LOGNAM%.*}
+ $TOOLS_SCONS_ROOT/build/build.sh -f target.scons --tcfgf=8917.target.builds  $BUILD_CMD
+ 
+ #if there is an error stop compiling
+-if [[ $? != 0 ]]; then
++if [ $? != 0 ]; then
+     echo -e "Fail to compile 8917. Exiting ....."
+     exit 1
+ fi 
+diff --git a/BOOT.BF.3.3/boot_images/build/ms/build_8937.sh b/BOOT.BF.3.3/boot_images/build/ms/build_8937.sh
+index 1ac1b2b..d8a6a06 100755
+--- a/BOOT.BF.3.3/boot_images/build/ms/build_8937.sh
++++ b/BOOT.BF.3.3/boot_images/build/ms/build_8937.sh
+@@ -104,7 +104,7 @@ $TOOLS_SCONS_ROOT/build/rename-log.sh ${LOGNAM%.*}
+ $TOOLS_SCONS_ROOT/build/build.sh -f target.scons --tcfgf=8937.target.builds  $BUILD_CMD
+ 
+ #if there is an error stop compiling
+-if [[ $? != 0 ]]; then
++if [ $? != 0 ]; then
+     echo -e "Fail to compile 8937. Exiting ....."
+     exit 1
+ fi 
+diff --git a/BOOT.BF.3.3/boot_images/build/ms/setenv.sh b/BOOT.BF.3.3/boot_images/build/ms/setenv.sh
+index 6e6861f..5936e17 100644
+--- a/BOOT.BF.3.3/boot_images/build/ms/setenv.sh
++++ b/BOOT.BF.3.3/boot_images/build/ms/setenv.sh
+@@ -70,6 +70,9 @@ unamestr=`uname`
+      rm -f __temp.out
+    }
+ # Set up compiler path
++if [ -n "$ARM_COMPILER_PATH" ]; then
++    echo -e "\nINFO: Already set ARM_COMPILER_PATH=$ARM_COMPILER_PATH\n"
++else
+ #[BUILD] modify by liunianliang begin
+    #export ARM_COMPILER_PATH=$T/prebuilts/none-hlos-tools/ARM_Compiler_5.01u3/bin64
+    #export ARM_COMPILER_PATH=$(MKTOPDIR)/prebuilts/none-hlos-tools/ARM_Compiler_5.01u3/bin64
+@@ -94,6 +97,7 @@ unamestr=`uname`
+    #export ARMLMD_LICENSE_FILE=8224@192.168.132.222
+    #export LM_LICENSE_FILE=8224@192.168.132.222
+ #[BUILD] end
++fi
+ #==============================================================================
+ # Dump environment to stdout so that calling scripts can read it.
+ #==============================================================================
+diff --git a/BOOT.BF.3.3/boot_images/core/boot/secboot3/src/boot_logger.h b/BOOT.BF.3.3/boot_images/core/boot/secboot3/src/boot_logger.h
+index 2ac3b5c..609bc0d 100755
+--- a/BOOT.BF.3.3/boot_images/core/boot/secboot3/src/boot_logger.h
++++ b/BOOT.BF.3.3/boot_images/core/boot/secboot3/src/boot_logger.h
+@@ -337,6 +337,16 @@ void boot_log_set_ref_time(uint32 ref_time);
+ */
+ void boot_log_message(char *);
+ 
++#include <stdio.h>
++#include <stdlib.h>
++#define WANGS_LOG_BUF_SIZE 128
++#define LOG_WANGS(format, ...) \
++    do { \
++        char wangs_buf[WANGS_LOG_BUF_SIZE] = {0}; \
++        snprintf(wangs_buf, WANGS_LOG_BUF_SIZE, ">>> WANGS >>> " format, ##__VA_ARGS__); \
++        boot_log_message(wangs_buf); \
++    } while(0)
++
+ 
+ /*===========================================================================
+ 
+diff --git a/BOOT.BF.3.3/boot_images/core/boot/secboot3/src/boot_uart.c b/BOOT.BF.3.3/boot_images/core/boot/secboot3/src/boot_uart.c
+index 9c7e6e9..afebfba 100755
+--- a/BOOT.BF.3.3/boot_images/core/boot/secboot3/src/boot_uart.c
++++ b/BOOT.BF.3.3/boot_images/core/boot/secboot3/src/boot_uart.c
+@@ -94,6 +94,7 @@ UartResult boot_uart_init(UartHandle* handle,UartPortID id)
+ 
+   do {
+-	uart_connection_status = Uart_is_break_active(*handle);
++	//uart_connection_status = Uart_is_break_active(*handle);
+ 	 
+     if (uart_connection_status == TRUE) {                                                                  		 
+ 	  break;
+@@ -192,10 +193,12 @@ uint32 boot_uart_rx(UartHandle handle, char* buf,uint32 bytes_to_rx)
+ */
+ uint32 boot_uart_tx(UartHandle handle, char* buf, uint32 bytes_to_tx)
+ {
++#if 0
+   /* If uart connection is disconnected then don't flush log through uart*/
+   if (uart_connection_status == TRUE) {
+     return 0;
+   }
++#endif
+ 
+   return Uart_transmit(handle,buf,bytes_to_tx); 
+ }
+diff --git a/BOOT.BF.3.3/boot_images/core/hwengines/tsens/config/8937/BootTempCheckBsp.c b/BOOT.BF.3.3/boot_images/core/hwengines/tsens/config/8937/BootTempCheckBsp.c
+index 1cf0486..b512063 100755
+--- a/BOOT.BF.3.3/boot_images/core/hwengines/tsens/config/8937/BootTempCheckBsp.c
++++ b/BOOT.BF.3.3/boot_images/core/hwengines/tsens/config/8937/BootTempCheckBsp.c
+@@ -48,7 +48,7 @@
+  * -------------------------------------------------------------------------*/
+ const BootTempCheckBspType BootTempCheckBsp[] = {
+    {
+-      /* .nUpperThresholdDegC */ 150,
++      /* .nUpperThresholdDegC */ 60,    //150
+       /* .nLowerThresholdDegC */ -150,
+       /* .uBootSensorIdx      */ 0
+    }
+diff --git a/BOOT.BF.3.3/boot_images/core/hwengines/tsens/src/common/BootTempCheck.c b/BOOT.BF.3.3/boot_images/core/hwengines/tsens/src/common/BootTempCheck.c
+index a48bb5c..5b6462a 100755
+--- a/BOOT.BF.3.3/boot_images/core/hwengines/tsens/src/common/BootTempCheck.c
++++ b/BOOT.BF.3.3/boot_images/core/hwengines/tsens/src/common/BootTempCheck.c
+@@ -36,6 +36,7 @@
+ #include "BootTempCheckBsp.h"
+ #include "TsensBoot.h"
+ #include "DALStdDef.h"
++#include "boot_logger.h"
+ 
+ /*----------------------------------------------------------------------------
+  * Preprocessor Definitions and Constants
+@@ -119,6 +120,7 @@ BootTempCheckStatusType BootTempCheck(void)
+ 
+    if (tsensResult == TSENS_SUCCESS)
+    {
++      LOG_WANGS("%s: nDegC = %d C", __func__, nDegC);
+       if (nDegC > pBootTempCheckBsp->nUpperThresholdDegC)
+       {
+          return BOOT_TEMP_CHECK_TEMP_ABOVE_THRESHOLD;
+diff --git a/BOOT.BF.3.3/boot_images/core/securemsm/secdbgplcy/oem/oem_debug_policy.c b/BOOT.BF.3.3/boot_images/core/securemsm/secdbgplcy/oem/oem_debug_policy.c
+index 441b79b..15aa6d6 100755
+--- a/BOOT.BF.3.3/boot_images/core/securemsm/secdbgplcy/oem/oem_debug_policy.c
++++ b/BOOT.BF.3.3/boot_images/core/securemsm/secdbgplcy/oem/oem_debug_policy.c
+@@ -36,7 +36,7 @@ when         who                what, where, why
+ #include <comdef.h>
+ 
+ /* Serial Number Flag */
+-//#define SKIP_SERIAL_NUMBER_CHECK 1
++#define SKIP_SERIAL_NUMBER_CHECK 1
+ 
+ boolean is_sec_dbg_skip_serial_number(void)
+ {
+diff --git a/BOOT.BF.3.3/boot_images/core/storage/tools/deviceprogrammer_ddr/src/firehose/deviceprogrammer_initialize.c b/BOOT.BF.3.3/boot_images/core/storage/tools/deviceprogrammer_ddr/src/firehose/deviceprogrammer_initialize.c
+index 03efff3..d1dcde7 100755
+--- a/BOOT.BF.3.3/boot_images/core/storage/tools/deviceprogrammer_ddr/src/firehose/deviceprogrammer_initialize.c
++++ b/BOOT.BF.3.3/boot_images/core/storage/tools/deviceprogrammer_ddr/src/firehose/deviceprogrammer_initialize.c
+@@ -102,6 +102,7 @@ void deviceprogrammer_init_hw() {
+     }
+ #endif
+ 
++/*
+ #ifndef SKIP_SECBOOT_CHECK_NOT_RECOMMENDED_BY_QUALCOMM 
+     // This check below is to ensure that only VIP programmer is run on secure boot devices
+     // In otherwords, signing the non VIP programmer is highly not recommended
+@@ -110,6 +111,7 @@ void deviceprogrammer_init_hw() {
+       strlcat(err_log, "Secure boot detected. VIP not enabled:fail ", sizeof(err_log));
+     }
+ #endif
++*/
+ 
+     // These PMIC calls were added to have long key power off to be
+     // working from flash programmer so that device can be powered off in
+diff --git a/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/app/chg/src/pm_app_smbchg.c b/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/app/chg/src/pm_app_smbchg.c
+index cfb4296..d8c18fa 100755
+--- a/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/app/chg/src/pm_app_smbchg.c
++++ b/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/app/chg/src/pm_app_smbchg.c
+@@ -273,7 +273,7 @@ pm_err_flag_type pm_sbl_chg_check_weak_battery_status(uint32 device_index)
+         //Check if JEITA check is enabled
+         if (chg_param_ptr->enable_jeita_hard_limit_check)
+         {
+-            //Read JEITA condition
++            //Read JEITA condition (0x1210)
+             CHG_VERIFY(pm_smbchg_bat_if_irq_status(device_index, PM_SMBCHG_BAT_IF_HOT_BAT_HARD_LIM,  PM_IRQ_STATUS_RT, &hot_bat_hard_lim_rt_sts ));
+             CHG_VERIFY(pm_smbchg_bat_if_irq_status(device_index, PM_SMBCHG_BAT_IF_COLD_BAT_HARD_LIM, PM_IRQ_STATUS_RT, &cold_bat_hard_lim_rt_sts));
+ 
+@@ -432,7 +432,24 @@ pm_err_flag_type pm_sbl_config_fg_sram(uint32 device_index)
+         //err_flag |= PmicFgSram_Dump(device_index, 0x0454, 0x0454);
+         //err_flag |= PmicFgSram_Dump(device_index, 0x0444, 0x0448);
+         //err_flag |= PmicFgSram_Dump(device_index, 0x0448, 0x0452);
+-        
++
++        {
++            uint32 ReadData = 0;
++            uint32 temperature = 0;
++            char wangs_buf[128] = {0};
++
++            ReadData = PmicFgSram_Dump(device_index, 0x0552, 0x0554);
++            //2bytes in front is battery temperature data
++            ReadData = (ReadData & 0xFFFF0000) >> 16;
++
++            //calcution Degree Kelvin and convert to Degree Celsius (0.0625)
++            temperature = (ReadData * 625) / 10000;
++            temperature -= 273;
++
++            snprintf(wangs_buf, 128, ">>> WANGS >>> %s: FG temperature = %d C", __func__, temperature);
++            boot_log_message(wangs_buf);
++        }
++
+         //boot_log_message("END: Configure FG SRAM");
+      }
+   }
+diff --git a/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/config/msm8937/pmi8940/pm_config_target.c b/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/config/msm8937/pmi8940/pm_config_target.c
+index f4dbca5..8deab64 100755
+--- a/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/config/msm8937/pmi8940/pm_config_target.c
++++ b/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/config/msm8937/pmi8940/pm_config_target.c
+@@ -117,16 +117,16 @@ pmi8940_smbchg_specific_data[1] = {
+       {PM_SMBCHG_BAT_IF_BAT_MISS_DETECT_SRC_BMD_PIN,     PM_DISABLE_CONFIG },  //Battery Missing Detection Source
+       {PM_SMBCHG_MISC_WD_TMOUT_18S,                      PM_DISABLE_CONFIG },  //WDOG Timeout
+       {FALSE,                                            PM_DISABLE_CONFIG },  //Enable WDOG
+-      {1000,                                             PM_DISABLE_CONFIG },  //FAST Charging Current
+-      {250,                                              PM_DISABLE_CONFIG },  //PRE Charge Current
+-      {3000,                                             PM_DISABLE_CONFIG },  //PRE to Fast Charge Current
++      {2000,                                             PM_ENABLE_CONFIG },  //FAST Charging Current
++      {300,                                              PM_ENABLE_CONFIG },  //PRE Charge Current
++      {3000,                                             PM_ENABLE_CONFIG },  //PRE to Fast Charge Voltage
+       {4350,                                             PM_ENABLE_CONFIG },  //Float Voltage
+       {2100,                                             PM_DISABLE_CONFIG },  //USBIN Input Current Limit
+ //      {1000,                                             PM_DISABLE_CONFIG },  //DCIN Input Current Limit
+       {200,                                              PM_DISABLE_CONFIG },  //apsd_reset_theshold_mv
+-      3500,                                                                    //bootup_battery_theshold_mv
++      3550,                                                                    //bootup_battery_theshold_mv
+       3800,                                                                    //wipowr bootup battery thesholdmv
+-      FALSE,                                                                   //Enable/Disable JEITA Hard Temp Limit Check in SBL
++      TRUE,                                                                   //Enable/Disable JEITA Hard Temp Limit Check in SBL
+ 	  FALSE,                                                                   // dbc_high_current_mode
+    }
+ };
+@@ -150,15 +150,18 @@ pmi8940_fg_sram_data[SBL_SRAM_CONFIG_SIZE] =
+ {
+      //JEITA Thresholds:
+     //SramAddr,  SramData, DataOffset, DataSize, EnableConfig
+-    { 0x0454,     0x23,     0,          1,        PM_DISABLE_CONFIG }, //JEITA Soft Cold Threshold:  default = 0x23
+-    { 0x0454,     0x46,     1,          1,        PM_DISABLE_CONFIG }, //JEITA Soft Hot  Threshold:  default = 0x46
+-    { 0x0454,     0x1E,     2,          1,        PM_DISABLE_CONFIG }, //JEITA Hard Cold Threshold:  default = 0x1E
+-    { 0x0454,     0x48,     3,          1,        PM_DISABLE_CONFIG }, //JEITA hard Hot  Threshold:  default = 0x48
++	//0x00 = 243K = -30C
++    { 0x0454,     0x1E,     0,          1,        PM_ENABLE_CONFIG }, //JEITA Soft Cold Threshold:  default = 0x23
++    { 0x0454,     0x5A,     1,          1,        PM_ENABLE_CONFIG }, //JEITA Soft Hot  Threshold:  default = 0x46
++    { 0x0454,     0x1D,     2,          1,        PM_ENABLE_CONFIG }, //JEITA Hard Cold Threshold:  default = 0x1E
++    { 0x0454,     0x5B,     3,          1,        PM_ENABLE_CONFIG }, //JEITA hard Hot  Threshold:  default = 0x48
+     
+     //Thermistor Beta Coefficents:    
+-    { 0x0444,     0x86D8,   2,          2,        PM_DISABLE_CONFIG }, //thremistor_c1_coeff:  default = 0x86D8;
+-    { 0x0448,     0x50F1,   0,          2,        PM_DISABLE_CONFIG }, //thremistor_c2_coeff:  default = 0x50F1;
+-    { 0x0448,     0x3C11,   2,          2,        PM_DISABLE_CONFIG }  //thremistor_c3_coeff:  default = 0x3C11;  
++	//B=3435K,±1%
++    //qcom,thermal-coefficients=[C8 86 C1 50 D3 37];
++    { 0x0444,     0x86C8,   2,          2,        PM_ENABLE_CONFIG }, //thremistor_c1_coeff:  default = 0x86D8;
++    { 0x0448,     0x50C1,   0,          2,        PM_ENABLE_CONFIG }, //thremistor_c2_coeff:  default = 0x50F1;
++    { 0x0448,     0x37D3,   2,          2,        PM_ENABLE_CONFIG }  //thremistor_c3_coeff:  default = 0x3C11;  
+ };
+ 
+ unsigned pmi8940_smps_phase_lut_a[ ]= {0,0,0,0};
+diff --git a/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/framework/inc/pm_fg_sram.h b/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/framework/inc/pm_fg_sram.h
+index 5ffb8dd..06476c6 100755
+--- a/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/framework/inc/pm_fg_sram.h
++++ b/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/framework/inc/pm_fg_sram.h
+@@ -117,7 +117,7 @@ pm_err_flag_type PmicFgSram_Init(FgSramState FgSramState);
+ pm_err_flag_type PmicFgSram_GetState(FgSramState *FgSramSt);
+ 
+ //Single Check on SRAM memory access
+-pm_err_flag_type PmicFgSram_Dump(uint32  PmicDeviceIndex, uint32 DumpSramStartAddr,
++uint32 PmicFgSram_Dump(uint32  PmicDeviceIndex, uint32 DumpSramStartAddr,
+                                    uint32 DumpSramEndAddr);
+ 
+ pm_err_flag_type PmicFgSram_ProgBurstAccessEx(uint32 PmicDeviceIndex, FgSramAddrDataEx_type * AddrDataPairEx, uint32 Count);
+diff --git a/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/framework/src/pm_fg_sram.c b/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/framework/src/pm_fg_sram.c
+index b10f08a..1e2afbb 100755
+--- a/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/framework/src/pm_fg_sram.c
++++ b/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/framework/src/pm_fg_sram.c
+@@ -147,7 +147,7 @@ PmicFgSram_Dump()
+ @brief
+ Dump Sram contents for given range
+ */
+-pm_err_flag_type PmicFgSram_Dump(uint32 PmicDeviceIndex, uint32 DumpSramStartAddr, uint32 DumpSramEndAddr)
++uint32 PmicFgSram_Dump(uint32 PmicDeviceIndex, uint32 DumpSramStartAddr, uint32 DumpSramEndAddr)
+ {
+   pm_err_flag_type       Status   = PM_ERR_FLAG__SUCCESS;
+   pm_err_flag_type err_flg  = PM_ERR_FLAG__SUCCESS;
+@@ -211,6 +211,15 @@ pm_err_flag_type PmicFgSram_Dump(uint32 PmicDeviceIndex, uint32 DumpSramStartAdd
+   Status |= PmicFgSram_ReleaseFgSramAccess(PmicDeviceIndex);
+ 
+   Status |= err_flg;
++
++  if (PM_ERR_FLAG__SUCCESS == Status) {
++      char wangs_buf[128] = {0};
++      snprintf(wangs_buf, 128, ">>> WANGS >>> %s: FG read 0x0552 = 0x%x", __func__, ReadData);
++      boot_log_message(wangs_buf);
++
++      return ReadData;
++  }
++
+   return Status;
+ }
+ 

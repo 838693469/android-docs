@@ -1,0 +1,29 @@
+diff --git a/modem_proc/core/systemdrivers/tlmm/config/msm8953/PlatformIO_QRD.xml b/modem_proc/core/systemdrivers/tlmm/config/msm8953/PlatformIO_QRD.xml
+index 47e3b89..b7b608b 100755
+--- a/modem_proc/core/systemdrivers/tlmm/config/msm8953/PlatformIO_QRD.xml
++++ b/modem_proc/core/systemdrivers/tlmm/config/msm8953/PlatformIO_QRD.xml
+@@ -39,9 +39,11 @@
+     <props name="uim1_data" type="TLMMGpioIdType">{51, 1}</props>
+     <props name="uim1_clk" type="TLMMGpioIdType">{52, 1}</props>
+     <props name="uim1_reset" type="TLMMGpioIdType">{53, 1}</props>
++    <props name="uim1_present" type="TLMMGpioIdType">{54, 1}</props>
+     <props name="uim2_data" type="TLMMGpioIdType">{55, 1}</props>
+     <props name="uim2_clk" type="TLMMGpioIdType">{56, 1}</props>
+     <props name="uim2_reset" type="TLMMGpioIdType">{57, 1}</props>
++    <props name="uim2_present" type="TLMMGpioIdType">{58, 1}</props>
+     <props name="gp_pdm_2a" type="TLMMGpioIdType">{60, 0}</props>
+     <props name="lcd_rst_n" type="TLMMGpioIdType">{61, 0}</props>
+     <props name="nfc_fwdl_req" type="TLMMGpioIdType">{62, 0}</props>
+diff --git a/modem_proc/gps/gnss/mgp/me/gen8/src/cgps_ext.c b/modem_proc/gps/gnss/mgp/me/gen8/src/cgps_ext.c
+index 9fc5b25..24d2ac5 100755
+--- a/modem_proc/gps/gnss/mgp/me/gen8/src/cgps_ext.c
++++ b/modem_proc/gps/gnss/mgp/me/gen8/src/cgps_ext.c
+@@ -471,7 +471,7 @@ void gnss_UpdateWwanTxAntennaStatus( gnss_TxAntennaEnumType e_TxAntUsed )
+ 
+ /* Customer needs to change this variable in order to override NAVRF driver ELNA setting */
+ gnss_ExternalGNSSConfigStruct gnssz_ExtElnaCfg =
+-{ GNSS_RF_DEFAULT_CFG, C_GNSS_RF_ELNA_GPIO_NUM_DEFAULT, NULL, C_NAVRF_NPA_RESOURCE_NAME_DEFAULT, C_PMIC_NPA_MODE_ID_RF_MODE_DEFAULT}; 
++{ GNSS_RF_HAS_ELNA, 116, NULL, C_NAVRF_NPA_RESOURCE_NAME_DEFAULT, C_PMIC_NPA_MODE_ID_RF_MODE_DEFAULT}; 
+ 
+ void gnss_SetExternalCtrlForGNSS(gnss_ExternalGNSSConfigStruct z_GnssCfg)
+ {

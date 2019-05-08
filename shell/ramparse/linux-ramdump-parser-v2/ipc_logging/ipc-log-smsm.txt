@@ -1,0 +1,152 @@
+----------------------------------------------------------------------
+Log name: smsm (4 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[     0.887659741/         0xa0d8044] smsm_change_state 0:00000000->00001000
+[     0.887671824/         0xa0d812a] SMSM snapshot wake lock
+[     0.888941512/         0xa0de066] SMSM Change 0: 00000000->00001000
+[     0.888949845/         0xa0de104] SMSM snapshot wake unlock
+[     0.888954272/         0xa0de159] SMSM snapshot queue response time      0.001268542 s
+[     0.894361564/         0xa0f76e6] SMSM snapshot wake lock
+[     0.894396929/         0xa0f798d] SMSM snapshot wake unlock
+[     0.894400939/         0xa0f79d9] SMSM snapshot queue response time      0.000032604 s
+[     0.901064012/         0xa116d96] SMSM snapshot wake lock
+[     0.901098752/         0xa117030] SMSM snapshot wake unlock
+[     0.901102658/         0xa117079] SMSM snapshot queue response time      0.000031979 s
+[    14.519752751/        0x19a7473b] smsm_change_state 0:00001000->00001020
+[    16.368519684/        0x1bc4e8c5] SMSM Int Modem->Apps
+[    16.368531715/        0x1bc4e9a6] SMSM snapshot wake lock
+[    16.368576038/        0x1bc4ecfd] SMSM Change 0: 00001000->00001021
+[    16.368585257/        0x1bc4edaa] SMSM Change 1: 00000000->08000001
+[    16.368589059/        0x1bc4edf3] SMSM Change 2: 00000000->08000001
+[    16.368593851/        0x1bc4ee50] SMSM snapshot wake unlock
+[    16.368598382/        0x1bc4eea6] SMSM snapshot queue response time      0.000042552 s
+[    16.369167549/        0x1bc51957] SMSM Int Modem->Apps
+[    16.369175101/        0x1bc519e7] SMSM snapshot wake lock
+[    16.369215465/        0x1bc51cef] SMSM Change 0: 00001021->00001029
+[    16.369220309/        0x1bc51d4c] SMSM Change 1: 08000001->08000009
+[    16.369224632/        0x1bc51d9f] SMSM snapshot wake unlock
+[    16.369227965/        0x1bc51de1] SMSM snapshot queue response time      0.000039479 s
+[    16.404219893/        0x1bcf5e43] smsm_change_state 0:00001029->00001029
+[    20.224567665/        0x202e9c58] smsm_change_state 0:00001029->00001029
+[    21.373577720/        0x217f3c1a] SMSM Int Modem->Apps
+[    21.373584074/        0x217f3c93] SMSM snapshot wake lock
+[    21.373645637/        0x217f4132] SMSM Change 1: 08000009->0800000b
+[    21.375189283/        0x217fb4f7] smsm_change_state 0:00001029->00001829
+[    21.375194804/        0x217fb561] SMSM Apps->MODEM
+[    21.375689595/        0x217fda7f] SMSM Change 3: 00000000->08000001
+[    21.375697199/        0x217fdb10] SMSM snapshot wake unlock
+[    21.375703918/        0x217fdb92] SMSM snapshot queue response time      0.000060469 s
+[    22.374091577/        0x22a45aa3] smsm_change_state 0:00001829->0000182b
+[    22.374096317/        0x22a45afe] SMSM Apps->MODEM
+[    22.374145484/        0x22a45eaf] SMSM Int Modem->Apps
+[    22.374149755/        0x22a45f00] SMSM snapshot wake lock
+[    22.374197932/        0x22a4629e] SMSM Change 0: 00001029->0000182b
+[    22.374201213/        0x22a462dc] SMSM Change 1: 0800000b->0800080b
+[    22.374221994/        0x22a4646c] SMSM snapshot wake unlock
+[    22.374225067/        0x22a464a6] SMSM snapshot queue response time      0.000047396 s
+[    22.568121422/        0x22dd32e0] smsm_change_state 0:0000182b->00001829
+[    22.568125432/        0x22dd332d] SMSM Apps->MODEM
+[    22.568159651/        0x22dd35bf] SMSM Int Modem->Apps
+[    22.568163922/        0x22dd3610] SMSM snapshot wake lock
+[    22.568208193/        0x22dd3963] SMSM Change 0: 0000182b->00001829
+[    22.568211474/        0x22dd39a1] SMSM Change 1: 0800080b->0800000b
+[    22.568222359/        0x22dd3a76] SMSM snapshot wake unlock
+[    22.568224651/        0x22dd3a9e] SMSM snapshot queue response time      0.000043594 s
+[    24.373671896/        0x24ee2b2f] SMSM Int Modem->Apps
+[    24.373681323/        0x24ee2bde] SMSM snapshot wake lock
+[    24.373731115/        0x24ee2f9e] SMSM Change 1: 0800000b->08000009
+[    24.374208407/        0x24ee5366] smsm_change_state 0:00001829->00001029
+[    24.374212209/        0x24ee53b0] SMSM Apps->MODEM
+[    24.374229344/        0x24ee54f9] SMSM snapshot wake unlock
+[    24.374233250/        0x24ee5544] SMSM snapshot queue response time      0.000048021 s
+[    28.121355658/        0x29381f72] SMSM Int Modem->Apps
+[    28.121360866/        0x29381fd6] SMSM snapshot wake lock
+[    28.121403470/        0x29382308] SMSM Change 0: 00001829->00001029
+[    28.121408314/        0x29382364] SMSM Change 1: 08000009->0800000b
+[    28.121652428/        0x293835b3] smsm_change_state 0:00001029->00001829
+[    28.121655605/        0x293835f0] SMSM Apps->MODEM
+[    28.122005553/        0x29385030] SMSM snapshot wake unlock
+[    28.122009720/        0x29385080] SMSM snapshot queue response time      0.000041406 s
+[    28.135396439/        0x293c3c80] smsm_change_state 0:00001829->0000182b
+[    28.135400814/        0x293c3cd4] SMSM Apps->MODEM
+[    28.135471283/        0x293c4223] SMSM Int Modem->Apps
+[    28.135478053/        0x293c429f] SMSM snapshot wake lock
+[    28.135541543/        0x293c4764] SMSM Change 0: 00001029->0000182b
+[    28.135545658/        0x293c47b2] SMSM Change 1: 0800000b->0800080b
+[    28.135576126/        0x293c49fb] SMSM snapshot wake unlock
+[    28.135580033/        0x293c4a45] SMSM snapshot queue response time      0.000061927 s
+[    28.528075919/        0x29af4776] smsm_change_state 0:0000182b->00001829
+[    28.528080815/        0x29af47d3] SMSM Apps->MODEM
+[    28.528154096/        0x29af4d57] SMSM Int Modem->Apps
+[    28.528161232/        0x29af4ddd] SMSM snapshot wake lock
+[    28.528254253/        0x29af54d9] SMSM Change 0: 0000182b->00001829
+[    28.528259253/        0x29af5536] SMSM Change 1: 0800080b->0800000b
+[    28.528270971/        0x29af5618] SMSM snapshot wake unlock
+[    28.528274773/        0x29af5660] SMSM snapshot queue response time      0.000091666 s
+[    28.588168055/        0x29c0e25f] smsm_change_state 0:00001829->0000182b
+[    28.588172169/        0x29c0e2ae] SMSM Apps->MODEM
+[    28.588221128/        0x29c0e65d] SMSM Int Modem->Apps
+[    28.588227638/        0x29c0e6d8] SMSM snapshot wake lock
+[    28.588361284/        0x29c0f0de] SMSM Change 0: 00001829->0000182b
+[    28.588364930/        0x29c0f124] SMSM Change 1: 0800000b->0800080b
+[    28.588384721/        0x29c0f2a1] SMSM snapshot wake unlock
+[    28.588388628/        0x29c0f2ea] SMSM snapshot queue response time      0.000132292 s
+[    28.788070399/        0x29fb730c] smsm_change_state 0:0000182b->00001829
+[    28.788075503/        0x29fb736e] SMSM Apps->MODEM
+[    28.788146597/        0x29fb78c6] SMSM Int Modem->Apps
+[    28.788154253/        0x29fb7957] SMSM snapshot wake lock
+[    28.788193316/        0x29fb7c45] SMSM Change 0: 0000182b->00001829
+[    28.788198420/        0x29fb7ca7] SMSM Change 1: 0800080b->0800000b
+[    28.788213889/        0x29fb7dd0] SMSM snapshot wake unlock
+[    28.788217535/        0x29fb7e16] SMSM snapshot queue response time      0.000038281 s
+[    29.139237484/        0x2a625494] smsm_change_state 0:00001829->0000182b
+[    29.139241546/        0x2a6254e2] SMSM Apps->MODEM
+[    29.139296806/        0x2a625908] SMSM Int Modem->Apps
+[    29.139302275/        0x2a625970] SMSM snapshot wake lock
+[    29.139350452/        0x2a625d0e] SMSM Change 0: 00001829->0000182b
+[    29.139355036/        0x2a625d66] SMSM Change 1: 0800000b->0800080b
+[    29.139376754/        0x2a625f07] SMSM snapshot wake unlock
+[    29.139380869/        0x2a625f55] SMSM snapshot queue response time      0.000046927 s
+[    29.348358786/        0x2a9f98ad] smsm_change_state 0:0000182b->00001829
+[    29.348362797/        0x2a9f98f9] SMSM Apps->MODEM
+[    29.348407745/        0x2a9f9c5a] SMSM Int Modem->Apps
+[    29.348412328/        0x2a9f9cb2] SMSM snapshot wake lock
+[    29.348450922/        0x2a9f9f97] SMSM Change 0: 0000182b->00001829
+[    29.348455349/        0x2a9f9fec] SMSM Change 1: 0800080b->0800000b
+[    29.348466703/        0x2a9fa0c6] SMSM snapshot wake unlock
+[    29.348470765/        0x2a9fa113] SMSM snapshot queue response time      0.000036980 s
+[    30.139375872/        0x2b8756f5] smsm_change_state 0:00001829->0000182b
+[    30.139379830/        0x2b875741] SMSM Apps->MODEM
+[    30.139436445/        0x2b875b81] SMSM Int Modem->Apps
+[    30.139441914/        0x2b875bea] SMSM snapshot wake lock
+[    30.139555455/        0x2b87646e] SMSM Change 0: 00001829->0000182b
+[    30.139560872/        0x2b8764d6] SMSM Change 1: 0800000b->0800080b
+[    30.139585664/        0x2b8766b1] SMSM snapshot wake unlock
+[    30.139589518/        0x2b8766fb] SMSM snapshot queue response time      0.000112291 s
+[    30.338114466/        0x2bc1905b] smsm_change_state 0:0000182b->00001829
+[    30.338119623/        0x2bc190bd] SMSM Apps->MODEM
+[    30.338167175/        0x2bc1944e] SMSM Int Modem->Apps
+[    30.338171498/        0x2bc194a2] SMSM snapshot wake lock
+[    30.338238216/        0x2bc199a2] SMSM Change 0: 0000182b->00001829
+[    30.338242331/        0x2bc199f1] SMSM Change 1: 0800080b->0800000b
+[    30.338254623/        0x2bc19ade] SMSM snapshot wake unlock
+[    30.338258529/        0x2bc19b28] SMSM snapshot queue response time      0.000065573 s
+[    31.139544833/        0x2cac5ba2] smsm_change_state 0:00001829->0000182b
+[    31.139550146/        0x2cac5c07] SMSM Apps->MODEM
+[    31.139617802/        0x2cac611c] SMSM Int Modem->Apps
+[    31.139622438/        0x2cac6179] SMSM snapshot wake lock
+[    31.139673167/        0x2cac6545] SMSM Change 0: 00001829->0000182b
+[    31.139678010/        0x2cac659f] SMSM Change 1: 0800000b->0800080b
+[    31.139702385/        0x2cac6773] SMSM snapshot wake unlock
+[    31.139707177/        0x2cac67ce] SMSM snapshot queue response time      0.000049323 s
+[    31.338119157/        0x2ce688b5] smsm_change_state 0:0000182b->00001829
+[    31.338124157/        0x2ce68914] SMSM Apps->MODEM
+[    31.338173167/        0x2ce68cc3] SMSM Int Modem->Apps
+[    31.338177803/        0x2ce68d1a] SMSM snapshot wake lock
+[    31.338220511/        0x2ce6904f] SMSM Change 0: 0000182b->00001829
+[    31.338224938/        0x2ce690a4] SMSM Change 1: 0800080b->0800000b
+[    31.338237751/        0x2ce6919a] SMSM snapshot wake unlock
+[    31.338241136/        0x2ce691db] SMSM snapshot queue response time      0.000041666 s
+Log extracted successfully

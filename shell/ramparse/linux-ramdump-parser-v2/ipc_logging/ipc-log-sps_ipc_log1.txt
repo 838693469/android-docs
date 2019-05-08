@@ -1,0 +1,32 @@
+----------------------------------------------------------------------
+Log name: sps_ipc_log1 (10 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[     3.484033603/         0xd06284c] sps_h2bam: sps:sps_h2bam: BAM handle:0xffffffc0d742bc00.
+[     3.484046416/         0xd062941] sps_h2bam: sps:sps_h2bam: BAM handle:0xffffffc0d742bc00.
+[     3.484048707/         0xd06296d] sps_h2bam: sps:sps_h2bam: BAM handle:0x7fffffffffffffff.
+[     3.484638134/         0xd0655a3] sps_h2bam: sps:sps_h2bam: BAM handle:0xffffffc0d742bc00.
+[     3.484647718/         0xd06565a] sps_h2bam: sps:sps_h2bam: BAM handle:0x7fffffffffffffff.
+[     3.484650009/         0xd065686] sps_h2bam: sps:sps_h2bam: BAM handle:0xffffffc0d742bc00.
+[     3.491524072/         0xd085a16] sps_h2bam: sps:sps_h2bam: BAM handle:0xffffffc0d742bc00.
+[     3.491541884/         0xd085b6a] sps_h2bam: sps:sps_h2bam: BAM handle:0xffffffc0d742bc00.
+[     3.491544228/         0xd085b97] sps_h2bam: sps:sps_h2bam: BAM handle:0x7fffffffffffffff.
+[     3.492061520/         0xd088264] sps_h2bam: sps:sps_h2bam: BAM handle:0xffffffc0d742bc00.
+[     3.492071312/         0xd088320] sps_h2bam: sps:sps_h2bam: BAM handle:0x7fffffffffffffff.
+[     3.492073603/         0xd08834b] sps_h2bam: sps:sps_h2bam: BAM handle:0xffffffc0d742bc00.
+[    21.374779439/        0x217f963c] sps_h2bam: sps:sps_h2bam: BAM handle:0xffffffc0ce49d400.
+[    21.374793554/        0x217f974b] sps_h2bam: sps:sps_h2bam: BAM handle:0x7fffffffffffffff.
+[    21.374797512/        0x217f9795] sps_h2bam: sps:sps_h2bam: BAM handle:0xffffffc0ce49d400.
+[    21.375128085/        0x217fb061] sps_h2bam: sps:sps_h2bam: BAM handle:0xffffffc0ce49d400.
+[    21.375137720/        0x217fb11b] sps_h2bam: sps:sps_h2bam: BAM handle:0xffffffc0ce49d400.
+[    21.375140637/        0x217fb151] sps_h2bam: sps:sps_h2bam: BAM handle:0x7fffffffffffffff.
+[    24.373821323/        0x24ee365f] sps_h2bam: sps:sps_h2bam: BAM handle:0xffffffc0ce49d400.
+[    28.121437637/        0x29382597] sps_h2bam: sps:sps_h2bam: BAM handle:0xffffffc0ce49d400.
+[    28.121557168/        0x29382e8e] sps_h2bam: sps:sps_h2bam: BAM handle:0xffffffc0ce49d400.
+[    28.121565449/        0x29382f2d] sps_h2bam: sps:sps_h2bam: BAM handle:0x7fffffffffffffff.
+[    28.121567793/        0x29382f5a] sps_h2bam: sps:sps_h2bam: BAM handle:0xffffffc0ce49d400.
+[    28.121609564/        0x2938327c] sps_h2bam: sps:sps_h2bam: BAM handle:0xffffffc0ce49d400.
+[    28.121615293/        0x293832ea] sps_h2bam: sps:sps_h2bam: BAM handle:0xffffffc0ce49d400.
+[    28.121617585/        0x29383316] sps_h2bam: sps:sps_h2bam: BAM handle:0x7fffffffffffffff.
+Log extracted successfully

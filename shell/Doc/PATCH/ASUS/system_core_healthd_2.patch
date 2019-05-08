@@ -1,0 +1,310 @@
+From 765c76d0e111fed47fdc470af4a49202642dbb18 Mon Sep 17 00:00:00 2001
+From: wangsen <sen.wang@archermind.com>
+Date: Thu, 17 Jan 2019 14:04:12 +0800
+Subject: [PATCH] =?UTF-8?q?[ZB555KL]{ID:1274225}=20=E4=BF=AE=E6=94=B9?=
+ =?UTF-8?q?=E5=85=B3=E6=9C=BA=E5=85=85=E7=94=B5LED=E4=BA=AE=EF=BC=8C?=
+ =?UTF-8?q?=E5=85=85=E7=94=B5=E9=80=BB=E8=BE=91=E5=9B=BE=E6=A0=87=E4=BC=98?=
+ =?UTF-8?q?=E5=8C=96=20[5/5]?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+[Problem]
+
+[Solution]
+
+[Test]
+ok
+
+[Comment]
+no
+
+Change-Id: I80e250097576eaab643b9e506e0bafbb5dd96ca3
+Signed-off-by: wangsen <sen.wang@archermind.com>
+---
+ healthd/healthd_mode_charger.cpp |  12 ++-
+ healthd/lights.cpp               | 217 +++++++++++++++++++--------------------
+ 2 files changed, 115 insertions(+), 114 deletions(-)
+
+diff --git a/healthd/healthd_mode_charger.cpp b/healthd/healthd_mode_charger.cpp
+index 0dc6a67..7179f2b 100644
+--- a/healthd/healthd_mode_charger.cpp
++++ b/healthd/healthd_mode_charger.cpp
+@@ -201,12 +201,12 @@ static animation::frame asus_animation_frames[] = {
+         .surface = NULL,
+     },
+     {
+-        .max_level = 86,
++        .max_level = 89,
+         .surface_path = "charger/hd720_bat_10_08",
+         .surface = NULL,
+     },
+     {
+-        .max_level = 94,
++        .max_level = 96,
+         .surface_path = "charger/hd720_bat_10_09",
+         .surface = NULL,
+     },
+@@ -681,22 +681,26 @@ static void handle_power_supply_state(charger* charger, int64_t now) {
+                     red_led_onoff(0);
+                     break;
+             }
+-            LOGE("[asus_poweroff_charger_animation] cur_led_status=%d\n", led_status);
+             show_chg_led_status = led_status;
+         }
+     } else {
+         green_led_onoff(0);
+         red_led_onoff(0);
+         set_int_value(USB_THERMAL_REDBLINK, 0);
++        show_chg_led_status = 0;
+     }
++
++    LOGE("[asus_poweroff_charger_animation] current usb_high_temp=%d, battery_high_temp=%d, chg_led_status=%d\n", show_usb_high_temp_picture, show_battery_high_temp_picture, show_chg_led_status);
+ #endif
+ 
+     if (!charger->charger_connected) {
++#ifndef ASUS_POWEROFF_CHARGER_ANIMATION
+         /* Last cycle would have stopped at the extreme top of battery-icon
+          * Need to show the correct level corresponding to capacity.
+          */
+         kick_animation(charger->batt_anim);
+         request_suspend(false);
++#endif
+         if (charger->next_pwr_check == -1) {
+             charger->next_pwr_check = now + UNPLUGGED_SHUTDOWN_TIME;
+             LOGW("[%" PRId64 "] device unplugged: shutting down in %" PRId64 " (@ %" PRId64 ")\n",
+@@ -876,7 +880,7 @@ void healthd_mode_charger_init(struct healthd_config* config) {
+ 
+         ret = res_create_display_surface(anim->frames[i].surface_path, &anim->frames[i].surface);
+         if (ret < 0) {
+-            LOGE("[asus_poweroff_charger_animation] image:%s has unexpected frame count (%d, expected %d)\n", anim->frames[i].surface_path, i, anim->num_frames);
++            LOGE("[asus_poweroff_charger_animation] image:'%s' has unexpected frame count=%d, err=%d\n", anim->frames[i].surface_path, i, ret);
+             ret = res_create_display_surface("charger/battery_fail", &anim->frames[i].surface);
+             if (ret < 0) {
+                 LOGE("Cannot load built in battery_fail image for frame count %d\n", i);
+diff --git a/healthd/lights.cpp b/healthd/lights.cpp
+index a1e2e8b..6683d93 100755
+--- a/healthd/lights.cpp
++++ b/healthd/lights.cpp
+@@ -1,110 +1,107 @@
+-
+-//liqiang@wind-mobi.com 20171219 begin
+-#define LOG_TAG "lights_wind"
+-
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <ctype.h>
+-#include <utils/Log.h>
+-#include <fcntl.h>
+-#include <cutils/properties.h>
+-//#include <linux/android_alarm.h>
+-#include <sys/reboot.h>
+-#include <errno.h>
+-#include <time.h>
+-#include <stdarg.h>
+-#include <cutils/klog.h>
+-
+-#include <dirent.h>
+-#include <errno.h>
+-#include <stdio.h>
+-#include <string.h>
+-
+-#define LED_RED_PATH "/sys/class/leds/red/brightness"
+-#define LED_GREEN_PATH "/sys/class/leds/green/brightness"
+-
+-static int write_to_file(const char* path, const char* buf, int size)
+-{
+-    if (!path) {
+-          KLOG_ERROR(LOG_TAG,"null path to write");
+-        return 0;
+-    }
+-
+-    KLOG_ERROR(LOG_TAG,"path: %s, buf: %s, size: %d\n", path ,buf, size);
+-
+-
+-    int fd = open(path, O_RDWR);
+-    if (fd == -1) {
+-        KLOG_ERROR(LOG_TAG,"Could not open '%s'\n", path);
+-        return 0;
+-    }
+-
+-    int count = write(fd, buf, size);
+-    if (count != size) {
+-        KLOG_ERROR(LOG_TAG,"write file (%s) fail, count: %d\n", path, count);
+-        close(fd);
+-        return 0;
+-    }
+-
+-    close(fd);
+-    return count;
+-}
+-
+-void set_int_value(const char * path, const int value)
+-{
+-    char buf[32];
+-    sprintf(buf, "%d", value);
+-
+-    KLOG_ERROR(LOG_TAG" %s, %s \n",, path ,buf);
+-
+-    write_to_file(path, buf, strlen(buf));
+-}
+-
+-
+-static int read_from_file(const char* path, char* buf, int size)
+-{
+-    if (!path) {	
+-        return 0;
+-    }
+-
+-    int fd = open(path, O_RDONLY);
+-    if (fd == -1) {
+-        return 0;
+-    }
+-
+-    int count = read(fd, buf, size); 
+-    if (count > 0) {
+-        count = (count < size) ? count : size - 1;
+-        while (count > 0 && buf[count-1] == '\n') count--;
+-        buf[count] = '\0';
+-    } else {
+-        buf[0] = '\0';
+-    }
+-
+-    close(fd);
+-    return count;
+-}
+-
+-int get_int_value(const char * path)
+-{
+-    int size = 32;
+-    char buf[size];
+-    if(!read_from_file(path, buf, size))
+-        return 0;
+-    return atoi(buf);
+-}
+-
+-
+-
+-void red_led_onoff(unsigned char brightness)
+-{
+-	set_int_value(LED_RED_PATH, brightness);
+-}
+-
+-
+-void green_led_onoff(unsigned char brightness)
+-{
+-	set_int_value(LED_GREEN_PATH, brightness);
+-}
+-
+-//liqiang@wind-mobi.com 20171219 end
+\ No newline at end of file
++#define LOG_TAG "lights_wind"
++
++#include <stdio.h>
++#include <stdlib.h>
++#include <ctype.h>
++#include <utils/Log.h>
++#include <fcntl.h>
++#include <cutils/properties.h>
++#include <sys/reboot.h>
++#include <errno.h>
++#include <time.h>
++#include <stdarg.h>
++#include <cutils/klog.h>
++
++#include <dirent.h>
++#include <errno.h>
++#include <stdio.h>
++#include <string.h>
++
++#define LED_RED_PATH "/sys/class/leds/red/brightness"
++#define LED_GREEN_PATH "/sys/class/leds/green/brightness"
++
++static int write_to_file(const char* path, const char* buf, int size)
++{
++    if (!path) {
++        KLOG_ERROR(LOG_TAG, "null path to write\n");
++        return 0;
++    }
++
++    KLOG_ERROR(LOG_TAG, "path: %s, buf: %s, size: %d\n", path, buf, size);
++
++
++    int fd = open(path, O_RDWR);
++    if (fd == -1) {
++        KLOG_ERROR(LOG_TAG, "Could not open '%s'\n", path);
++        return 0;
++    }
++
++    int count = write(fd, buf, size);
++    if (count != size) {
++        KLOG_ERROR(LOG_TAG, "write file (%s) fail, count: %d\n", path, count);
++        close(fd);
++        return 0;
++    }
++
++    close(fd);
++    return count;
++}
++
++void set_int_value(const char * path, const int value)
++{
++    char buf[32];
++    sprintf(buf, "%d", value);
++
++    KLOG_ERROR(LOG_TAG, "path: %s, buf: %s\n", path, buf);
++
++    write_to_file(path, buf, strlen(buf));
++}
++
++
++static int read_from_file(const char* path, char* buf, int size)
++{
++    if (!path) {
++        KLOG_ERROR(LOG_TAG, "null path to read\n");
++        return 0;
++    }
++
++    int fd = open(path, O_RDONLY);
++    if (fd == -1) {
++        KLOG_ERROR(LOG_TAG, "Could not open '%s'\n", path);
++        return 0;
++    }
++
++    int count = read(fd, buf, size);
++    if (count > 0) {
++        count = (count < size) ? count : size - 1;
++        while (count > 0 && buf[count-1] == '\n')
++            count--;
++        buf[count] = '\0';
++    } else {
++        buf[0] = '\0';
++    }
++
++    close(fd);
++    return count;
++}
++
++int get_int_value(const char * path)
++{
++    int size = 32;
++    char buf[size];
++    if(!read_from_file(path, buf, size))
++        return 0;
++    return atoi(buf);
++}
++
++
++void red_led_onoff(unsigned char brightness)
++{
++    set_int_value(LED_RED_PATH, brightness);
++}
++
++
++void green_led_onoff(unsigned char brightness)
++{
++    set_int_value(LED_GREEN_PATH, brightness);
++}
+-- 
+1.9.1
+

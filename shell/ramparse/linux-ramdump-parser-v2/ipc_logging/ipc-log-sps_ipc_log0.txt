@@ -1,0 +1,25 @@
+----------------------------------------------------------------------
+Log name: sps_ipc_log0 (10 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[     0.811413595/         0x9f729cc] msm_sps_probe: sps:get data from device tree.
+[     3.483800166/         0xd0616c9] sps_alloc_endpoint: sps:sps_alloc_endpoint.
+[     3.483805322/         0xd06172c] sps_client_init: sps:sps_client_init.
+[     3.483808812/         0xd06176f] sps_get_config: sps:sps_get_config.
+[     3.484374020/         0xd0641d3] sps_alloc_endpoint: sps:sps_alloc_endpoint.
+[     3.484377562/         0xd064217] sps_client_init: sps:sps_client_init.
+[     3.484379749/         0xd064241] sps_get_config: sps:sps_get_config.
+[     3.491142197/         0xd083d77] sps_alloc_endpoint: sps:sps_alloc_endpoint.
+[     3.491150947/         0xd083e18] sps_client_init: sps:sps_client_init.
+[     3.491154801/         0xd083e62] sps_get_config: sps:sps_get_config.
+[     3.491767457/         0xd086c55] sps_alloc_endpoint: sps:sps_alloc_endpoint.
+[     3.491771520/         0xd086ca3] sps_client_init: sps:sps_client_init.
+[     3.491774072/         0xd086cd4] sps_get_config: sps:sps_get_config.
+[    21.374748606/        0x217f93eb] sps_alloc_endpoint: sps:sps_alloc_endpoint.
+[    21.374756210/        0x217f947c] sps_client_init: sps:sps_client_init.
+[    21.374761418/        0x217f94e0] sps_get_config: sps:sps_get_config.
+[    21.375108710/        0x217faeed] sps_alloc_endpoint: sps:sps_alloc_endpoint.
+[    21.375113918/        0x217faf50] sps_client_init: sps:sps_client_init.
+[    21.375117512/        0x217faf95] sps_get_config: sps:sps_get_config.
+Log extracted successfully

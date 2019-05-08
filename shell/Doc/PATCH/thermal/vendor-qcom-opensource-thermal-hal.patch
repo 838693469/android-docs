@@ -1,0 +1,111 @@
+commit 4d52a991bbe8da9d3f8a3a0a47a26239358ae1ed
+Author: n010529 <hongwei.di@archermind.com>
+Date:   Tue Apr 2 17:26:27 2019 +0800
+
+    [AOSP Pie] 添加msm8937/8917/8940 soc thermal hal support
+    
+    Change-Id: Idd81ff7a3bb2b0d588b8f28810fc2d74333e5c31
+    Signed-off-by: n010529 <hongwei.di@archermind.com>
+
+diff --git a/thermal_common.c b/thermal_common.c
+index 9374929..6fa37b7 100644
+--- a/thermal_common.c
++++ b/thermal_common.c
+@@ -337,7 +337,7 @@ static ssize_t read_temperature(int sensor_num, int type, const char *name,
+ 	return -1;
+     }
+     temp = atof(buf);
+-
++    ALOGD("%s temp is %dC!\n", __func__, (int)(temp * mult));
+     (*out) = (temperature_t) {
+         .type = type,
+         .name = name,
+diff --git a/thermal_common.h b/thermal_common.h
+index 8ffbc5c..2207a0d 100644
+--- a/thermal_common.h
++++ b/thermal_common.h
+@@ -31,6 +31,7 @@
+ 
+ enum therm_msm_id {
+     THERM_MSM_UNKNOWN = 0,
++    THERM_MSM_8937,
+     THERM_MSM_8953,
+     THERM_SDM_660,
+     THERM_SDM_630,
+diff --git a/thermal_target.c b/thermal_target.c
+index bf3f0a5..94c40de 100644
+--- a/thermal_target.c
++++ b/thermal_target.c
+@@ -44,6 +44,9 @@ struct therm_msm_soc_type {
+ 
+ static struct therm_msm_soc_type msm_soc_table[] = {
+     {THERM_MSM_8953, 293},
++    {THERM_MSM_8937, 294},// add for 8937 platform soc
++    {THERM_MSM_8937, 303},// add for 8917 platform soc
++    {THERM_MSM_8937, 313},// add for 8940 platform soc
+     {THERM_MSM_8953, 304},
+     {THERM_MSM_8953, 338},
+     {THERM_MSM_8953, 351},
+@@ -262,6 +265,51 @@ static struct target_therm_cfg sensor_cfg_630[] = {
+     }
+ };
+ 
++static char *cpu_sensors_8937[] =
++{
++    "tsens_tz_sensor5",
++    "tsens_tz_sensor6",
++    "tsens_tz_sensor7",
++    "tsens_tz_sensor8"
++};
++
++static char *misc_sensors_8937[] =
++{
++    "tsens_tz_sensor9",
++    "battery",
++    "xo_therm"
++};
++
++static struct target_therm_cfg sensor_cfg_8937[] = {
++    {
++        .type = DEVICE_TEMPERATURE_CPU,
++        .sensor_list = cpu_sensors_8937,
++        .sens_cnt = ARRAY_SIZE(cpu_sensors_8937),
++        .mult = 1,
++    },
++    {
++        .type = DEVICE_TEMPERATURE_GPU,
++        .sensor_list = &misc_sensors_8937[0],
++        .sens_cnt = 1,
++        .mult = 1,
++        .label = "GPU",
++    },
++    {
++        .type = DEVICE_TEMPERATURE_BATTERY,
++        .sensor_list = &misc_sensors_8937[1],
++        .sens_cnt = 1,
++        .mult = 0.001,
++        .label = "battery",
++    },
++    {
++        .type = DEVICE_TEMPERATURE_SKIN,
++        .sensor_list = &misc_sensors_8937[2],
++        .sens_cnt = 1,
++        .mult = 1,
++        .label = "skin",
++    }
++};
++
+ static char *cpu_sensors_8953[] =
+ {
+     "tsens_tz_sensor9",
+@@ -513,6 +561,10 @@ ssize_t get_temperatures(thermal_module_t *module, temperature_t *list, size_t s
+                 cfg = sensor_cfg_8953;
+                 num_cfg = ARRAY_SIZE(sensor_cfg_8953);
+                 break;
++	    case THERM_MSM_8937:
++		cfg = sensor_cfg_8937;
++		num_cfg = ARRAY_SIZE(sensor_cfg_8937);
++		break;
+             case THERM_SDM_660:
+                 cfg = sensor_cfg_660;
+                 num_cfg = ARRAY_SIZE(sensor_cfg_660);

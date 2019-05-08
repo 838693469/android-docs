@@ -1,0 +1,29 @@
+diff --git a/init/main.c b/init/main.c
+index ce781b1..2bc9bc9 100644
+--- a/init/main.c
++++ b/init/main.c
+@@ -519,6 +519,24 @@ asmlinkage __visible void __init start_kernel(void)
+ 	local_irq_disable();
+ 	early_boot_irqs_disabled = true;
+ 
++    {
++        unsigned long aboot_log_phy_addr = 0x23400000;
++        void *aboot_log_virt_addr = phys_to_virt(aboot_log_phy_addr);
++        char logbuf[512];
++        int i = 0;
++
++        printk("\n");
++        printk("[aboot] >>>>>>>>>>>>>>>>>>>>> begin <<<<<<<<<<<<<<<<<<<<<\n");
++        for (i = 0; i < 0x8000; i++) {
++            memcpy(logbuf, aboot_log_virt_addr + i, 1);
++            if (logbuf[0] != '\0')
++                printk("%c", logbuf[0]);
++        }
++        printk("\n");
++        printk("[aboot] >>>>>>>>>>>>>>>>>>>>> end <<<<<<<<<<<<<<<<<<<<<\n");
++        printk("\n");
++    }
++
+ /*
+  * Interrupts are still disabled. Do necessary setups, then
+  * enable them

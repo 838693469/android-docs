@@ -1,0 +1,11 @@
+----------------------------------------------------------------------
+Log name: wcnss_smd_trans (10 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[     0.746162501/         0x9e40bf9] <CORE> smd_trans:wcnss glink_core_rx_cmd_version_ack: [local]1:00000000 [remote]1:00000000
+[     0.746169480/         0x9e40c7c] <CORE> smd_trans:wcnss glink_core_rx_cmd_version_ack: Local negotiation complete 1:00000000
+[     0.746174532/         0x9e40cde] <CORE> smd_trans:wcnss glink_core_rx_cmd_version: [local]1:00000000 [remote]1:00000000
+[     0.746180157/         0x9e40d49] <CORE> smd_trans:wcnss glink_core_rx_cmd_version: Remote and local version are matched 1:00000000
+[     0.746185053/         0x9e40da8] <CORE> smd_trans:wcnss glink_core_rx_cmd_version: Remote negotiation complete 1:00000000
+Log extracted successfully

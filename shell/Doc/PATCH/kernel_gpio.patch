@@ -1,0 +1,43 @@
+diff --git a/drivers/gpio/gpiolib.c b/drivers/gpio/gpiolib.c
+index 164ee9b..438d54b 100644
+--- a/drivers/gpio/gpiolib.c
++++ b/drivers/gpio/gpiolib.c
+@@ -1766,8 +1766,10 @@ static void gpiolib_dbg_show(struct seq_file *s, struct gpio_chip *chip)
+ 	int			is_irq;
+ 
+ 	for (i = 0; i < chip->ngpio; i++, gpio++, gdesc++) {
+-		if (!test_bit(FLAG_REQUESTED, &gdesc->flags))
++		if (!test_bit(FLAG_REQUESTED, &gdesc->flags)) {
++			seq_printf(s, " gpio-%-4d  %-4s\n", gpio, chip->get ? (chip->get(chip, i) ? "high" : "low") : "?");
+ 			continue;
++		}
+ 
+ 		gpiod_get_direction(gdesc);
+ 		is_out = test_bit(FLAG_IS_OUT, &gdesc->flags);
+diff --git a/drivers/pinctrl/qcom/pinctrl-msm.c b/drivers/pinctrl/qcom/pinctrl-msm.c
+index 7d0ad5e..32352fa 100644
+--- a/drivers/pinctrl/qcom/pinctrl-msm.c
++++ b/drivers/pinctrl/qcom/pinctrl-msm.c
+@@ -526,9 +526,11 @@ static void msm_gpio_dbg_show_one(struct seq_file *s,
+ 	drive = (ctl_reg >> g->drv_bit) & 7;
+ 	pull = (ctl_reg >> g->pull_bit) & 3;
+ 
+-	seq_printf(s, " %-8s: %-3s %d", g->name, is_out ? "out" : "in", func);
+-	seq_printf(s, " %dmA", msm_regval_to_drive(drive));
+-	seq_printf(s, " %s", pulls[pull]);
++	seq_printf(s, " %-8s: ctl(0x%08x) func(%d)", g->name, g->ctl_reg, func);
++	seq_printf(s, " %2dmA", msm_regval_to_drive(drive));
++	seq_printf(s, " %-9s", pulls[pull]);
++
++	seq_printf(s, " %-3s %d", is_out ? "out" : "in", chip->get(chip, offset));
+ }
+ 
+ static void msm_gpio_dbg_show(struct seq_file *s, struct gpio_chip *chip)
+@@ -537,6 +539,7 @@ static void msm_gpio_dbg_show(struct seq_file *s, struct gpio_chip *chip)
+ 	unsigned i;
+ 
+ 	for (i = 0; i < chip->ngpio; i++, gpio++) {
++	if (i != 0 && i != 1 && i != 2 && i != 3 && i != 135 && i != 136 && i != 137 && i != 138)
+ 		msm_gpio_dbg_show_one(s, NULL, chip, i, gpio);
+ 		seq_puts(s, "\n");
+ 	}

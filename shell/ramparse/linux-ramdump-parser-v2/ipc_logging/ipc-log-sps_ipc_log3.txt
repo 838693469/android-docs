@@ -1,0 +1,14 @@
+----------------------------------------------------------------------
+Log name: sps_ipc_log3 (10 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[     0.811395626/         0x9f7287c] msm_sps_probe: sps:msm_sps_probe.
+[     0.811404480/         0x9f7291d] get_device_tree_data: sps:default device type 3.
+[     0.811409741/         0x9f72982] get_device_tree_data: sps:PIPE_ATTR_EE is  supported.
+[     0.811420158/         0x9f72a4a] msm_sps_probe: sps:BAM type is:2
+[     0.811673699/         0x9f73d50] sps_device_init: sps:sps_device_init.
+[     0.813608751/         0x9f7ce6f] msm_sps_probe: sps:sps is ready.
+[     3.483240374/         0xd05ecd3] sps_register_bam_device: sps:sps_register_bam_device: Client requests to register BAM 0x0000000000704000.
+[    21.373730429/        0x217f478e] sps_register_bam_device: sps:sps_register_bam_device: Client requests to register BAM 0x0000000004044000.
+Log extracted successfully

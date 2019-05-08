@@ -1,0 +1,84 @@
+From 1e12fd7d0e887ee020bb14b8d09f0ccbb6fa9109 Mon Sep 17 00:00:00 2001
+From: wangsen <sen.wang@archermind.com>
+Date: Sat, 29 Dec 2018 18:30:29 +0800
+Subject: [PATCH] =?UTF-8?q?[ZB555KL]{ID:}=20BP=20=E9=85=8D=E7=BD=AE?=
+ =?UTF-8?q?=E5=90=AF=E5=8A=A8/=E5=85=85=E7=94=B5LED=E5=8A=9F=E8=83=BD?=
+ =?UTF-8?q?=E7=8A=B6=E6=80=81=20[1/1]?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+[Problem]
+
+[Solution]
+
+[Test]
+ok
+
+[Comment]
+no
+
+Change-Id: I772ee79e16393fa970a2c7e2c00807bca6c54734
+Signed-off-by: wangsen <sen.wang@archermind.com>
+---
+ .../core/systemdrivers/pmic/app/chg/src/pm_app_smbchg.c           | 3 +++
+ .../pmic/target/msm8937_pm8937_pmi8937/system/src/pm_sbl_boot.c   | 8 ++++++++
+ 2 files changed, 11 insertions(+)
+
+diff --git a/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/app/chg/src/pm_app_smbchg.c b/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/app/chg/src/pm_app_smbchg.c
+index d8c18fa..4835da0 100755
+--- a/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/app/chg/src/pm_app_smbchg.c
++++ b/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/app/chg/src/pm_app_smbchg.c
+@@ -54,6 +54,7 @@ when       who     what, where, why
+ #include "CoreVerify.h"
+ #include "boot_logger.h"
+ #include "boot_logger_timer.h"
++#include "pm_led.h"
+ 
+ 
+ /*===========================================================================
+@@ -286,6 +287,7 @@ pm_err_flag_type pm_sbl_chg_check_weak_battery_status(uint32 device_index)
+ 
+         //Toggle Red LED and delay 500ms
+         toggle_led = !toggle_led;
++        pm_led_default_led_enable(device_index, toggle_led);
+         //      err_flag |= pm_rgb_led_config(device_index, PM_RGB_1, PM_RGB_SEGMENT_R,  PM_RGB_VOLTAGE_SOURCE_VPH, PM_RGB_DIM_LEVEL_LOW, toggle_led);
+         CHG_VERIFY(pm_clk_busy_wait(PM_WEAK_BATTERY_CHARGING_DELAY)); //500ms 
+ 
+@@ -337,6 +339,7 @@ pm_err_flag_type pm_sbl_chg_check_weak_battery_status(uint32 device_index)
+     
+ 
+     toggle_led = FALSE;
++    pm_led_default_led_enable(device_index, toggle_led);
+     //   err_flag |= pm_rgb_led_config(device_index, PM_RGB_1, PM_RGB_SEGMENT_R,  PM_RGB_VOLTAGE_SOURCE_VPH, PM_RGB_DIM_LEVEL_LOW, toggle_led);
+ 
+     if(!bat_present)
+diff --git a/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/target/msm8937_pm8937_pmi8937/system/src/pm_sbl_boot.c b/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/target/msm8937_pm8937_pmi8937/system/src/pm_sbl_boot.c
+index cacce65..994f20b 100755
+--- a/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/target/msm8937_pm8937_pmi8937/system/src/pm_sbl_boot.c
++++ b/BOOT.BF.3.3/boot_images/core/systemdrivers/pmic/target/msm8937_pm8937_pmi8937/system/src/pm_sbl_boot.c
+@@ -58,6 +58,9 @@ when       who     what, where, why
+ #include "CoreVerify.h"
+ #include "pm_smbchg_driver.h"
+ #include "pm_smbchg_chgr.h"
++#include "boot_logger.h"
++#include "boot_logger_timer.h"
++#include "pm_led.h"
+ 
+ /*===========================================================================
+ 
+@@ -123,6 +126,11 @@ pm_sbl_chg_init (void)
+     if(0xFF == device_index)
+     {
+         return PM_ERR_FLAG__CHARGER_MODULE_ABSENT;
++    } else {
++        char wangs_buf[128] = {0};
++        snprintf(wangs_buf, 128, ">>> WANGS >>> %s: device_index=0x%x, Disable defaultled", __func__, device_index);
++        boot_log_message(wangs_buf);
++        pm_led_default_led_enable(device_index, FALSE);
+     }
+ 	
+     err_flag |= pm_sbl_chg_pre_init();
+-- 
+1.9.1
+

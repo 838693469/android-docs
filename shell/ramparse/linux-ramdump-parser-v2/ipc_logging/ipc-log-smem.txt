@@ -1,0 +1,21 @@
+----------------------------------------------------------------------
+Log name: smem (4 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[     0.880603126/         0xa0b6f09] smem security enabled
+[     0.880608699/         0xa0b6f6e] Skipping smem partition 0 - bad cacheline
+[     0.880614324/         0xa0b6fda] Partition 1 offset:aa000 remote:1
+[     0.880620366/         0xa0b704d] Partition 2 offset:86000 remote:2
+[     0.880625626/         0xa0b70b3] Partition 3 offset:5a000 remote:4
+[     0.880629845/         0xa0b7104] Skipping smem partition 4 - duplicate of 1
+[     0.880633908/         0xa0b7152] Skipping smem partition 5 - duplicate of 1
+[     0.880637710/         0xa0b719a] Skipping smem partition 6 - duplicate of 2
+[     0.887334845/         0xa0d67e6] smem_alloc: allocating 85 size 32 to_proc 0 flags 2
+[     0.887346251/         0xa0d68bf] smem_alloc: allocating 333 size 160 to_proc 0 flags 2
+[     3.158510113/         0xca6ca09] smem_alloc: allocating 79 size 40000 to_proc 0 flags 2
+[     3.158520581/         0xca6cad1] smem_alloc: allocating 78 size 4 to_proc 0 flags 2
+[     3.160220425/         0xca74a4f] smem_alloc: allocating 428 size 340 to_proc 1 flags 0
+[     3.160261675/         0xca74d67] smem_alloc: allocating 429 size 340 to_proc 2 flags 0
+[     3.160291206/         0xca74f9d] smem_alloc: allocating 431 size 340 to_proc 4 flags 0
+Log extracted successfully

@@ -1,0 +1,89 @@
+diff --git a/common/config/partition.xml b/common/config/partition.xml
+index 7323f19..39e5d57 100755
+--- a/common/config/partition.xml
++++ b/common/config/partition.xml
+@@ -30,7 +30,7 @@
+ 	<partition label="modemst2" size_in_kb="1536" type="0A288B1F-22C9-E33B-8F5D-0E81686A68CB" bootable="false" readonly="false" filename=""/>
+ 	<partition label="DDR" size_in_kb="32" type="20A0C19C-286A-42FA-9CE7-F64C3226A794" bootable="false" readonly="true"/>
+ 	<partition label="fsg" size_in_kb="1536" type="638FF8E2-22C9-E33B-8F5D-0E81686A68CB" bootable="false" readonly="true" filename=""/>
+-	<partition label="sec" size_in_kb="16" type="303E6AC3-AF15-4C54-9E9B-D9A8FBECF401" bootable="false" readonly="true" filename="sec.dat"/>
++	<partition label="sec" size_in_kb="16" type="303E6AC3-AF15-4C54-9E9B-D9A8FBECF401" bootable="false" readonly="true" filename=""/>
+ 	<partition label="splash" size_in_kb="11264" type="20117f86-E985-4357-B9EE-374BC1D8487D" bootable="false" readonly="false" filename=""/>
+ 	<partition label="aboot" size_in_kb="1024" type="400FFDCD-22E0-47E7-9A23-F16ED9382388" bootable="false" readonly="true" filename="emmc_appsboot.mbn"/>
+ 	<partition label="abootbak" size_in_kb="1024" type="EBD0A0A2-B9E5-4433-87C0-68B6B72699C7" bootable="false" readonly="true" filename="emmc_appsboot.mbn"/>
+diff --git a/contents.xml b/contents.xml
+index c9a2a85..248dc26 100755
+--- a/contents.xml
++++ b/contents.xml
+@@ -177,7 +177,7 @@
+       <role>modem</role>
+       <chipset>MSM8953</chipset>
+       <build_id>MPSS.TA.2.3.c1-00600-8953_GEN_PACK-1</build_id>
+-      <short_build_path cmm_var="MODEM_BUILDID">8953.genw3k.prod</short_build_path>
++      <short_build_path cmm_var="MODEM_BUILDID">8953.gen.prod</short_build_path>
+       <windows_root_path cmm_root_path_var="MPSS_BUILDROOT">.\..\MPSS.TA.2.3</windows_root_path>
+       <linux_root_path cmm_root_path_var="MPSS_BUILDROOT">./../MPSS.TA.2.3</linux_root_path>
+       <image_dir>modem_proc</image_dir>
+@@ -185,22 +185,22 @@
+       <release_path type="bin">BIN</release_path>
+       <file_ref fat_file="true">
+         <file_name>mba.mbn</file_name>
+-        <file_path>modem_proc/build/ms/bin/8953.genw3k.prod</file_path>
++        <file_path>modem_proc/build/ms/bin/8953.gen.prod</file_path>
+       </file_ref>
+       <file_ref fat_file="true">
+         <file_name>qdsp6m.qdb</file_name>
+-        <file_path>modem_proc/build/ms/bin/8953.genw3k.prod/</file_path>
++        <file_path>modem_proc/build/ms/bin/8953.gen.prod/</file_path>
+       </file_ref>
+       <file_ref pil_split="modem">
+         <file_name>qdsp6sw.mbn</file_name>
+-        <file_path flavor="asic">modem_proc/build/ms/bin/8953.genw3k.prod</file_path>
++        <file_path flavor="asic">modem_proc/build/ms/bin/8953.gen.prod</file_path>
+       </file_ref>
+       <file_ref fat_file="true" sub_dir="true">
+         <file_name>*</file_name>
+         <file_path>modem_proc/mcfg/configs/</file_path>
+       </file_ref>
+       <file_ref symbol="modem">
+-        <file_name>M89538953.genw3k.prodQ*.elf</file_name>
++        <file_name>M89538953.gen.prodQ*.elf</file_name>
+         <file_path>modem_proc/build/ms/</file_path>
+       </file_ref>
+       <file_ref debug_script="load_coredump">
+@@ -241,15 +241,15 @@
+       </file_ref>
+       <download_file cmm_file_var="MBA_BINARY" minimized="true">
+         <file_name>mba.mbn</file_name>
+-        <file_path>modem_proc/build/ms/bin/8953.genw3k.prod/</file_path>
++        <file_path>modem_proc/build/ms/bin/8953.gen.prod/</file_path>
+       </download_file>
+       <download_file cmm_file_var="MPSS_BINARY" minimized="true">
+         <file_name>qdsp6sw.mbn</file_name>
+-        <file_path>modem_proc/build/ms/bin/8953.genw3k.prod/</file_path>
++        <file_path>modem_proc/build/ms/bin/8953.gen.prod/</file_path>
+       </download_file>
+       <download_file clean_for_release="HK11" cmm_file_var="MPSS_ELF" minimized="true">
+-        <file_name>MODEM_PROC_IMG_8953.genw3k.prodQ.elf</file_name>
+-        <file_path>modem_proc/scripts/bsp/modem_proc_img/build/8953.genw3k.prod/</file_path>
++        <file_name>MODEM_PROC_IMG_8953.gen.prodQ.elf</file_name>
++        <file_path>modem_proc/scripts/bsp/modem_proc_img/build/8953.gen.prod/</file_path>
+       </download_file>
+       <buildfile_path>modem_proc/build/ms/</buildfile_path>
+       <build_command>build_client.py 8953_GENU_PACK bparams=-k</build_command>
+@@ -497,6 +497,7 @@
+       <buildfile_path>cd/</buildfile_path>
+       <build_command>cd ./wcnss_proc/Pronto/bsp/build/; source ./wcnss_build.sh 8953 pronto --buildspec=klocwork BUILD_ID=SCAQNAZ USES_FLAGS=USES_NO_STRIP_NO_ODM BUILD_VER=CNSS-PR-4-0-00434 &amp;&amp; source ./wcnss_build.sh 8937 pronto --buildspec=klocwork BUILD_ID=SCAQJAZ USES_FLAGS=USES_NO_STRIP_NO_ODM BUILD_VER=CNSS-PR-4-0-00434 &amp;&amp; source ./wcnss_build.sh 8937 pronto --buildspec=klocwork BUILD_ID=SCAQRAZ USES_FLAGS=USES_NO_STRIP_NO_ODM BUILD_VER=CNSS-PR-4-0-00434 &amp;&amp; source ./wcnss_build.sh 8916_COEX pronto --buildspec=klocwork BUILD_ID=SCAQBAZ USES_FLAGS=USES_NO_STRIP_NO_ODM BUILD_VER=CNSS-PR-4-0-00434 &amp;&amp; source ./wcnss_build.sh 8909_MR pronto --buildspec=klocwork BUILD_ID=SCAQMAZ USES_FLAGS=USES_NO_STRIP_NO_ODM BUILD_VER=CNSS-PR-4-0-00434</build_command>
+     </build>
++    <!--
+     <build>
+       <name>wapi</name>
+       <role>wapi</role>
+@@ -509,6 +510,7 @@
+       <buildfile_path>cd/</buildfile_path>
+       <build_command>cd ./addon/build_wapi; source ./build.sh</build_command>
+     </build>
++    -->
+   </builds_flat>
+   <build_tools>
+     

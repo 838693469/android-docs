@@ -1,0 +1,45 @@
+diff --git a/trustzone_images/build/ms/setenv.sh b/trustzone_images/build/ms/setenv.sh
+index 8ced8c5..5520e88 100755
+--- a/trustzone_images/build/ms/setenv.sh
++++ b/trustzone_images/build/ms/setenv.sh
+@@ -5,6 +5,9 @@ export BUILDSPEC=KLOCWORK
+ #===============================================================================
+ unamestr=`uname`
+ # Set up compiler path
++if [ -n "$ARM_COMPILER_PATH" ]; then
++    echo -e "\nINFO: Already set ARM_COMPILER_PATH=$ARM_COMPILER_PATH\n"
++else
+    PYTHON_PATH=/pkg/qct/software/python/2.7/bin
+    MAKE_PATH=/pkg/gnu/make/3.81/bin
+ export ARMTOOLS=ARMCT6 #FIXME
+@@ -30,6 +33,7 @@ export PATH=$GNUTOOL:$PATH
+    export PATH=$MAKE_PATH:$PYTHONBIN:$ARM_COMPILER_PATH:$PATH
+    export ARMHOME=$ARMROOT
+ #   export_armlmd_license
++fi
+ 
+ #==============================================================================
+ # Dump environment to stdout so that calling scripts can read it.
+diff --git a/trustzone_images/tools/build/scons/build/setenv.sh b/trustzone_images/tools/build/scons/build/setenv.sh
+index 54a7574..5c9b907 100755
+--- a/trustzone_images/tools/build/scons/build/setenv.sh
++++ b/trustzone_images/tools/build/scons/build/setenv.sh
+@@ -57,6 +57,9 @@ if [ "$unamestr" = "Linux" ]; then
+      rm -f __temp.out
+    }
+ 
++if [ -n "$ARM_COMPILER_PATH" ]; then
++   echo -e "\nINFO: Already set ARM_COMPILER_PATH=$ARM_COMPILER_PATH\n"
++else
+    ARM_COMPILER_PATH=/pkg/qct/software/arm/RVDS/2.2BLD593/RVCT/Programs/2.2/593/linux-pentium
+    PYTHON_PATH=/pkg/qct/software/python/2.6.6/bin
+    MAKE_PATH=/pkg/gnu/make/3.81/bin
+@@ -76,6 +79,8 @@ if [ "$unamestr" = "Linux" ]; then
+    export HEXAGON_ROOT=/pkg/qct/software/hexagon/releases/tools
+ fi
+ 
++fi
++
+ #==============================================================================
+ # Klocwork
+ #==============================================================================

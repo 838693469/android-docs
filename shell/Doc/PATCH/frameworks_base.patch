@@ -1,0 +1,59 @@
+diff --git a/core/java/android/os/PowerManager.java b/core/java/android/os/PowerManager.java
+index 84629e4..e1b3167 100644
+--- a/core/java/android/os/PowerManager.java
++++ b/core/java/android/os/PowerManager.java
+@@ -1476,6 +1476,12 @@ public final class PowerManager {
+         };
+ 
+         WakeLock(int flags, String tag, String packageName) {
++            //Filter tag, e.g ConsumerIrService
++            if (tag != null) {
++                Log.d(TAG, "wangs: flags = " + flags + " tag = " + tag);
++                Log.d(TAG, Log.getStackTraceString(new Throwable()));
++            }
++
+             mFlags = flags;
+             mTag = tag;
+             mPackageName = packageName;
+diff --git a/services/core/java/com/android/server/power/PowerManagerService.java b/services/core/java/com/android/server/power/PowerManagerService.java
+index 8caec48..fdc12ca 100755
+--- a/services/core/java/com/android/server/power/PowerManagerService.java
++++ b/services/core/java/com/android/server/power/PowerManagerService.java
+@@ -136,7 +136,7 @@ public final class PowerManagerService extends SystemService
+         implements Watchdog.Monitor {
+     private static final String TAG = "PowerManagerService";
+ 
+-    private static final boolean DEBUG = SystemProperties.getInt("persist.sys.power", 0) == 1;
++    private static final boolean DEBUG = true;  //SystemProperties.getInt("persist.sys.power", 0) == 1;
+     private static final boolean DEBUG_SPEW = DEBUG && true;
+ 
+     // BEGIN robert_lcc@asus.com for smart reading
+@@ -1660,6 +1660,9 @@ public final class PowerManagerService extends SystemService
+             // Report the number of wake locks that will be cleared by going to sleep.
+             int numWakeLocksCleared = 0;
+             final int numWakeLocks = mWakeLocks.size();
++            if (numWakeLocks > 0) {
++                Slog.d(TAG, "wangs Dump WakeLock: mLocks.size=" + numWakeLocks + ":");
++            }
+             for (int i = 0; i < numWakeLocks; i++) {
+                 final WakeLock wakeLock = mWakeLocks.get(i);
+                 switch (wakeLock.mFlags & PowerManager.WAKE_LOCK_LEVEL_MASK) {
+@@ -2133,6 +2136,7 @@ public final class PowerManagerService extends SystemService
+             final int numWakeLocks = mWakeLocks.size();
+             for (int i = 0; i < numWakeLocks; i++) {
+                 final WakeLock wakeLock = mWakeLocks.get(i);
++                Slog.d(TAG,"wangs WakeLock[" + i + "]:" + wakeLock.toString());
+                 if ((wakeLock.mFlags & PowerManager.WAKE_LOCK_LEVEL_MASK)
+                         == PowerManager.PARTIAL_WAKE_LOCK) {
+                     if (wakeLock.mNotifiedAcquired && !wakeLock.mNotifiedLong) {
+@@ -4541,6 +4545,10 @@ public final class PowerManagerService extends SystemService
+                 sb.append(" pid=");
+                 sb.append(mOwnerPid);
+             }
++            if (mPackageName != null && !mPackageName.equals("")) {
++                sb.append(" mPackageName=");
++                sb.append(mPackageName);
++            }
+             if (mWorkSource != null) {
+                 sb.append(" ws=");
+                 sb.append(mWorkSource);

@@ -1,0 +1,336 @@
+----------------------------------------------------------------------
+Log name: diag (50 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[     3.339510738/         0xcdbd117] [__diag_smd_init] MODEM_CNTL initialized fwd_ctxt: 0000000000000000
+[     3.339674124/         0xcdbdd56] [__diag_smd_init] MODEM_DATA initialized fwd_ctxt: 0000000000000000
+[     3.339834071/         0xcdbe955] [__diag_smd_init] MODEM_CMD initialized fwd_ctxt: 0000000000000000
+[     3.339998603/         0xcdbf5ac] [__diag_smd_init] MODEM_DCI initialized fwd_ctxt: 0000000000000000
+[     3.340198186/         0xcdc04a4] [__diag_smd_init] MODEM_DCI_CMD initialized fwd_ctxt: 0000000000000000
+[     3.340358655/         0xcdc10ad] [__diag_smd_init] LPASS_CNTL initialized fwd_ctxt: 0000000000000000
+[     3.340529801/         0xcdc1d83] [__diag_smd_init] LPASS_DATA initialized fwd_ctxt: 0000000000000000
+[     3.340689749/         0xcdc2982] [__diag_smd_init] LPASS_CMD initialized fwd_ctxt: 0000000000000000
+[     3.340849436/         0xcdc357c] [__diag_smd_init] LPASS_DCI initialized fwd_ctxt: 0000000000000000
+[     3.341010113/         0xcdc4189] [__diag_smd_init] LPASS_DCI_CMD initialized fwd_ctxt: 0000000000000000
+[     3.341177665/         0xcdc4e1a] [__diag_smd_init] WCNSS_CNTL initialized fwd_ctxt: 0000000000000000
+[     3.341337457/         0xcdc5a15] [__diag_smd_init] WCNSS_DATA initialized fwd_ctxt: 0000000000000000
+[     3.341506363/         0xcdc66c1] [__diag_smd_init] WCNSS_CMD initialized fwd_ctxt: 0000000000000000
+[     3.341749176/         0xcdc78f7] [__diag_smd_init] WCNSS_DCI initialized fwd_ctxt: 0000000000000000
+[     3.341931780/         0xcdc86a9] [__diag_smd_init] WCNSS_DCI_CMD initialized fwd_ctxt: 0000000000000000
+[     3.342092040/         0xcdc92ae] [__diag_smd_init] SENSORS_CNTL initialized fwd_ctxt: 0000000000000000
+[     3.342268446/         0xcdc9fe9] [__diag_smd_init] SENSORS_DATA initialized fwd_ctxt: 0000000000000000
+[     3.342439592/         0xcdcacbf] [__diag_smd_init] SENSORS_CMD initialized fwd_ctxt: 0000000000000000
+[     3.342600946/         0xcdcb8da] [__diag_smd_init] SENSORS_DCI initialized fwd_ctxt: 0000000000000000
+[     3.342759905/         0xcdcc4c5] [__diag_smd_init] SENSORS_DCI_CMD initialized fwd_ctxt: 0000000000000000
+[     3.347887092/         0xcde4551] [diag_socket_init] diag_socket_init: registering notifier for 'modem', handle=ffffffc0d7f5f000
+[     3.347909019/         0xcde46f6] [diag_socket_init] diag_socket_init: registering notifier for 'adsp', handle=ffffffc0d7a02a00
+[     3.347922457/         0xcde47f6] [diag_socket_init] diag_socket_init: registering notifier for 'wcnss', handle=ffffffc0d7a02c00
+[     3.347935269/         0xcde48eb] [diag_socket_init] diag_socket_init: registering notifier for 'slpi', handle=ffffffc0d7a02e00
+[     3.347940582/         0xcde4952] [diag_state_open_smd] MODEM_CNTL setting diag state to 1
+[     3.347944280/         0xcde4998] [diag_state_open_socket] MODEM_CNTL setting diag state to 1
+[     3.347946884/         0xcde49ca] [diag_state_open_smd] LPASS_CNTL setting diag state to 1
+[     3.347948811/         0xcde49ef] [diag_state_open_socket] LPASS_CNTL setting diag state to 1
+[     3.347950738/         0xcde4a14] [diag_state_open_smd] WCNSS_CNTL setting diag state to 1
+[     3.347952561/         0xcde4a37] [diag_state_open_socket] WCNSS_CNTL setting diag state to 1
+[     3.347954801/         0xcde4a62] [diag_state_open_smd] SENSORS_CNTL setting diag state to 1
+[     3.347956624/         0xcde4a85] [diag_state_open_socket] SENSORS_CNTL setting diag state to 1
+[     6.831644395/        0x10dae71d] [socket_ready_notify] received notification from IPCR
+[     6.831701270/        0x10daeb60] [socket_ready_notify] Initialized all servers
+[     6.832404290/        0x10db2019] [socket_open_server] MODEM_CNTL opened server svc: 4097 ins: 0
+[     6.832825593/        0x10db3fb2] [socket_open_server] MODEM_DATA opened server svc: 4097 ins: 2
+[     6.833233509/        0x10db5e4a] [socket_open_server] MODEM_DCI opened server svc: 4097 ins: 4
+[     6.833590072/        0x10db7909] [socket_open_server] LPASS_CNTL opened server svc: 4097 ins: 64
+[     6.833931999/        0x10db92ae] [socket_open_server] LPASS_DATA opened server svc: 4097 ins: 66
+[     6.834234499/        0x10dba95d] [socket_open_server] LPASS_DCI opened server svc: 4097 ins: 68
+[     6.834636634/        0x10dbc787] [socket_open_server] WCNSS_CNTL opened server svc: 4097 ins: 128
+[     6.834928770/        0x10dbdd70] [socket_open_server] WCNSS_DATA opened server svc: 4097 ins: 130
+[     6.835230020/        0x10dbf408] [socket_open_server] WCNSS_DCI opened server svc: 4097 ins: 132
+[     6.835281686/        0x10dbf7e7] [cntl_socket_init_work_fn] Initialized control sockets
+[     6.835558145/        0x10dc0ca3] [socket_open_server] SENSORS_CNTL opened server svc: 4097 ins: 192
+[     6.836299343/        0x10dc443c] [socket_open_server] SENSORS_DCI opened server svc: 4097 ins: 196
+[     6.836434343/        0x10dc4e5b] [socket_open_server] SENSORS_DATA opened server svc: 4097 ins: 194
+[    13.779958062/        0x18ce8aa3] [restart_notifier_cb] restart_notifier_cb: ssr for processor 1 ('adsp')
+[    13.779965093/        0x18ce8b28] [restart_notifier_cb] diag: restart_notifier_cb: SUBSYS_BEFORE_POWERUP
+[    13.779968426/        0x18ce8b67] [restart_notifier_cb] diag: bootup_req[adsp] = 0
+[    13.781372385/        0x18cef4b5] [restart_notifier_cb] restart_notifier_cb: ssr for processor 1 ('adsp')
+[    13.781378635/        0x18cef52b] [restart_notifier_cb] diag: code: 6
+[    13.781381655/        0x18cef566] [restart_notifier_cb] diag: bootup_req[adsp] = 0
+[    14.519681241/        0x19a741df] [restart_notifier_cb] restart_notifier_cb: ssr for processor 1 ('adsp')
+[    14.519688272/        0x19a74265] [restart_notifier_cb] diag: restart_notifier_cb: SUBSYS_AFTER_POWERUP
+[    14.519691606/        0x19a742a4] [restart_notifier_cb] diag: bootup_req[adsp] = 1
+[    14.520407543/        0x19a77856] [smd_notify] LPASS_CNTL channel opened
+[    14.520965772/        0x19a7a234] [smd_notify] LPASS_DATA channel opened
+[    14.523342022/        0x19a8546e] [diagfwd_channel_open] p: 1 t: 1 considered opened
+[    14.523348116/        0x19a854e1] [diag_state_open_smd] LPASS_CNTL setting diag state to 1
+[    14.523351814/        0x19a85529] [diag_state_open_smd] LPASS_CNTL setting diag state to 1
+[    14.523354835/        0x19a85562] [smd_open_work_fn] LPASS_CNTL exiting
+[    14.523721189/        0x19a870dd] [diagfwd_channel_read] issued a read p: 1 t: 1 buf: 0000000000000000
+[    14.523784574/        0x19a8759d] [diag_smd_read] LPASS_CNTL read total bytes: 628
+[    14.523851345/        0x19a87aa0] [diag_state_close_socket] LPASS_CNTL setting diag state to 0
+[    14.523859470/        0x19a87b3b] [diag_smd_invalidate] LPASS_CNTL prev: 0000000000000000 fwd_ctxt: 0000000000000000
+[    14.523866866/        0x19a87bca] [smd_late_init] LPASS_DATA entering
+[    14.523925720/        0x19a88035] [diagfwd_channel_read] issued a read p: 1 t: 1 buf: 0000000000000000
+[    14.523930876/        0x19a88097] [diag_smd_read] LPASS_CNTL error in read, err: 0
+[    14.524082283/        0x19a88bf3] [diagfwd_channel_open] p: 1 t: 0 considered opened
+[    14.524086606/        0x19a88c45] [smd_late_init] LPASS_DATA exiting
+[    14.524089001/        0x19a88c72] [smd_late_init] LPASS_DCI entering
+[    14.524091918/        0x19a88caa] [diag_state_open_smd] LPASS_DCI setting diag state to 1
+[    14.524094522/        0x19a88cdc] [smd_late_init] LPASS_DCI exiting
+[    14.524096554/        0x19a88d04] [smd_late_init] LPASS_CMD entering
+[    14.524099001/        0x19a88d33] [smd_late_init] LPASS_CMD exiting
+[    14.524101085/        0x19a88d5a] [smd_late_init] LPASS_DCI_CMD entering
+[    14.524103793/        0x19a88d8e] [diag_state_open_smd] LPASS_DCI_CMD setting diag state to 1
+[    14.524106033/        0x19a88dba] [smd_late_init] LPASS_DCI_CMD exiting
+[    14.524130095/        0x19a88f87] [diag_smd_write] LPASS_CNTL wrote to channel, write_len: 14
+[    14.524152699/        0x19a89139] [diag_smd_write] LPASS_CNTL wrote to channel, write_len: 44
+[    14.524219418/        0x19a8963c] [diagfwd_channel_read] issued a read p: 1 t: 1 buf: 0000000000000000
+[    14.524225304/        0x19a896ab] [diag_smd_read] LPASS_CNTL error in read, err: 0
+[    14.524235095/        0x19a89767] [diagfwd_channel_read] issued a read p: 1 t: 1 buf: 0000000000000000
+[    14.524238793/        0x19a897af] [diag_smd_read] LPASS_CNTL error in read, err: 0
+[    14.524335095/        0x19a89ee8] [diagfwd_channel_read] issued a read p: 1 t: 1 buf: 0000000000000000
+[    14.524463220/        0x19a8a883] [diag_smd_read] LPASS_CNTL read total bytes: 2571
+[    14.524571606/        0x19a8b0a6] [diagfwd_channel_read] issued a read p: 1 t: 1 buf: 0000000000000000
+[    14.524575720/        0x19a8b0f3] [diag_smd_read] LPASS_CNTL error in read, err: 0
+[    14.526644106/        0x19a94c17] [diagfwd_channel_read] issued a read p: 1 t: 1 buf: 0000000000000000
+[    14.526660512/        0x19a94d50] [diag_smd_read] LPASS_CNTL read total bytes: 44
+[    14.526723429/        0x19a95208] [diagfwd_channel_read] issued a read p: 1 t: 1 buf: 0000000000000000
+[    14.526728116/        0x19a95261] [diag_smd_read] LPASS_CNTL error in read, err: 0
+[    14.527655512/        0x19a997f1] [diagfwd_channel_read] issued a read p: 1 t: 1 buf: 0000000000000000
+[    14.527665460/        0x19a998af] [diag_smd_read] LPASS_CNTL read total bytes: 28
+[    14.527705564/        0x19a99bb1] [diagfwd_channel_read] issued a read p: 1 t: 1 buf: 0000000000000000
+[    14.527710199/        0x19a99c0a] [diag_smd_read] LPASS_CNTL error in read, err: 0
+[    14.536117022/        0x19ac128e] [diagfwd_channel_read] issued a read p: 1 t: 1 buf: 0000000000000000
+[    14.536131918/        0x19ac13aa] [diag_smd_read] LPASS_CNTL read total bytes: 28
+[    14.536175616/        0x19ac16f2] [diagfwd_channel_read] issued a read p: 1 t: 1 buf: 0000000000000000
+[    14.536180356/        0x19ac174c] [diag_smd_read] LPASS_CNTL error in read, err: 0
+[    14.536228793/        0x19ac1aef] [diagfwd_channel_read] issued a read p: 1 t: 1 buf: 0000000000000000
+[    14.536237699/        0x19ac1b9a] [diag_smd_read] LPASS_CNTL read total bytes: 36
+[    14.536269991/        0x19ac1e06] [diagfwd_channel_read] issued a read p: 1 t: 1 buf: 0000000000000000
+[    14.536274366/        0x19ac1e59] [diag_smd_read] LPASS_CNTL error in read, err: 0
+[    14.536333220/        0x19ac22c4] [diagfwd_channel_read] issued a read p: 1 t: 1 buf: 0000000000000000
+[    14.536342283/        0x19ac2371] [diag_smd_read] LPASS_CNTL read total bytes: 28
+[    14.536367387/        0x19ac2554] [diagfwd_channel_read] issued a read p: 1 t: 1 buf: 0000000000000000
+[    14.536371762/        0x19ac25a7] [diag_smd_read] LPASS_CNTL error in read, err: 0
+[    14.537238949/        0x19ac66b3] [diagfwd_channel_read] issued a read p: 1 t: 1 buf: 0000000000000000
+[    14.537249731/        0x19ac6781] [diag_smd_read] LPASS_CNTL read total bytes: 44
+[    14.537288272/        0x19ac6a65] [diagfwd_channel_read] issued a read p: 1 t: 1 buf: 0000000000000000
+[    14.537292699/        0x19ac6aba] [diag_smd_read] LPASS_CNTL error in read, err: 0
+[    14.590430772/        0x19bbfc15] [restart_notifier_cb] restart_notifier_cb: ssr for processor 1 ('adsp')
+[    14.590436085/        0x19bbfc7b] [restart_notifier_cb] diag: code: 7
+[    14.590439262/        0x19bbfcb7] [restart_notifier_cb] diag: bootup_req[adsp] = 1
+[    15.511575463/        0x1ac9d9ef] [restart_notifier_cb] restart_notifier_cb: ssr for processor 0 ('modem')
+[    15.511581036/        0x1ac9da59] [restart_notifier_cb] diag: restart_notifier_cb: SUBSYS_BEFORE_POWERUP
+[    15.511583796/        0x1ac9da8e] [restart_notifier_cb] diag: bootup_req[modem] = 0
+[    15.537307702/        0x1ad163da] [restart_notifier_cb] restart_notifier_cb: ssr for processor 0 ('modem')
+[    15.537312963/        0x1ad1643f] [restart_notifier_cb] diag: code: 6
+[    15.537315619/        0x1ad16471] [restart_notifier_cb] diag: bootup_req[modem] = 0
+[    16.406838382/        0x1bd022a8] [restart_notifier_cb] restart_notifier_cb: ssr for processor 0 ('modem')
+[    16.406847236/        0x1bd02351] [restart_notifier_cb] diag: restart_notifier_cb: SUBSYS_AFTER_POWERUP
+[    16.406850882/        0x1bd02397] [restart_notifier_cb] diag: bootup_req[modem] = 1
+[    16.407590726/        0x1bd05b14] [restart_notifier_cb] restart_notifier_cb: ssr for processor 0 ('modem')
+[    16.407595726/        0x1bd05b73] [restart_notifier_cb] diag: code: 7
+[    16.407598070/        0x1bd05ba1] [restart_notifier_cb] diag: bootup_req[modem] = 1
+[    17.149202551/        0x1ca99ff6] [smd_notify] MODEM_DCI_CMD channel opened
+[    17.149657343/        0x1ca9c212] [smd_notify] MODEM_DCI channel opened
+[    17.150038853/        0x1ca9deaf] [smd_notify] MODEM_CNTL channel opened
+[    17.150128645/        0x1ca9e56c] [diagfwd_channel_open] p: 0 t: 1 considered opened
+[    17.150132499/        0x1ca9e5b6] [diag_state_open_smd] MODEM_CNTL setting diag state to 1
+[    17.150135832/        0x1ca9e5f5] [diag_state_open_smd] MODEM_CNTL setting diag state to 1
+[    17.150138176/        0x1ca9e622] [smd_open_work_fn] MODEM_CNTL exiting
+[    17.150431301/        0x1ca9fc1e] [smd_notify] MODEM_CMD channel opened
+[    17.151022030/        0x1caa286c] [smd_notify] MODEM_DATA channel opened
+[    17.155740416/        0x1cab8a50] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.155925780/        0x1cab9834] [diag_smd_read] MODEM_CNTL read total bytes: 2211
+[    17.156888489/        0x1cabe06b] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.156909895/        0x1cabe204] [diag_smd_read] MODEM_CNTL read total bytes: 140
+[    17.157111145/        0x1cabf11d] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.157116093/        0x1cabf17b] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.158701926/        0x1cac686b] [diag_state_close_socket] MODEM_CNTL setting diag state to 0
+[    17.158711145/        0x1cac691b] [diag_smd_invalidate] MODEM_CNTL prev: 0000000000000000 fwd_ctxt: 0000000000000000
+[    17.158731197/        0x1cac6a9d] [smd_late_init] MODEM_DATA entering
+[    17.158905155/        0x1cac77aa] [diagfwd_channel_open] p: 0 t: 0 considered opened
+[    17.158908176/        0x1cac77e2] [smd_late_init] MODEM_DATA exiting
+[    17.158909895/        0x1cac7803] [smd_late_init] MODEM_DCI entering
+[    17.158912239/        0x1cac7830] [diag_state_open_smd] MODEM_DCI setting diag state to 1
+[    17.158969218/        0x1cac7c77] [diagfwd_channel_open] p: 0 t: 2 considered opened
+[    17.158972030/        0x1cac7cac] [diag_state_open_smd] MODEM_DCI setting diag state to 1
+[    17.158974009/        0x1cac7cd2] [smd_late_init] MODEM_DCI exiting
+[    17.158975728/        0x1cac7cf3] [smd_late_init] MODEM_CMD entering
+[    17.158978697/        0x1cac7d2d] [diagfwd_channel_read] issued a read p: 0 t: 2 buf: 0000000000000000
+[    17.158983801/        0x1cac7d8f] [diag_smd_read] MODEM_DCI error in read, err: 0
+[    17.159055520/        0x1cac82ef] [diagfwd_channel_open] p: 0 t: 3 considered opened
+[    17.159058020/        0x1cac831f] [smd_late_init] MODEM_CMD exiting
+[    17.159059739/        0x1cac8340] [smd_late_init] MODEM_DCI_CMD entering
+[    17.159062187/        0x1cac836f] [diag_state_open_smd] MODEM_DCI_CMD setting diag state to 1
+[    17.159119582/        0x1cac87be] [diagfwd_channel_open] p: 0 t: 4 considered opened
+[    17.159122343/        0x1cac87f2] [diag_state_open_smd] MODEM_DCI_CMD setting diag state to 1
+[    17.159124322/        0x1cac8818] [smd_late_init] MODEM_DCI_CMD exiting
+[    17.159128905/        0x1cac8871] [diagfwd_channel_read] issued a read p: 0 t: 4 buf: 0000000000000000
+[    17.159133124/        0x1cac88c2] [diag_smd_read] MODEM_DCI_CMD error in read, err: 0
+[    17.159152343/        0x1cac8a32] [diag_smd_write] MODEM_CNTL wrote to channel, write_len: 14
+[    17.159175416/        0x1cac8bed] [diag_smd_write] MODEM_CNTL wrote to channel, write_len: 44
+[    17.159258228/        0x1cac9224] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.159262134/        0x1cac926e] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.159298489/        0x1cac9529] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.159481249/        0x1caca2dd] [diag_smd_read] MODEM_CNTL read total bytes: 2966
+[    17.159562447/        0x1caca8f5] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.159565520/        0x1caca930] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.159852551/        0x1cacbeb6] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.159860572/        0x1cacbf50] [diag_smd_read] MODEM_CNTL read total bytes: 56
+[    17.159922239/        0x1cacc3f1] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.159925832/        0x1cacc435] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.162272707/        0x1cad7439] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.162286353/        0x1cad753f] [diag_smd_read] MODEM_CNTL read total bytes: 448
+[    17.162766822/        0x1cad9949] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.162770520/        0x1cad998f] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.165638124/        0x1cae70a4] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.165651145/        0x1cae719b] [diag_smd_read] MODEM_CNTL read total bytes: 240
+[    17.165797760/        0x1cae7c9b] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.165801614/        0x1cae7ce4] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.188693124/        0x1cb531c2] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.188703385/        0x1cb53286] [diag_smd_read] MODEM_CNTL read total bytes: 28
+[    17.188733228/        0x1cb534c4] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.188736718/        0x1cb53506] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.189529999/        0x1cb57085] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.189536666/        0x1cb57105] [diag_smd_read] MODEM_CNTL read total bytes: 28
+[    17.189554478/        0x1cb5725b] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.189557760/        0x1cb5729a] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.202444739/        0x1cb93921] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.202453333/        0x1cb939c6] [diag_smd_read] MODEM_CNTL read total bytes: 44
+[    17.202479791/        0x1cb93bc1] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.202483280/        0x1cb93c05] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.207178905/        0x1cba9c31] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.207188749/        0x1cba9ced] [diag_smd_read] MODEM_CNTL read total bytes: 140
+[    17.207230989/        0x1cbaa019] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.207234322/        0x1cbaa058] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.216736770/        0x1cbd6909] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.216750885/        0x1cbd6a17] [diag_smd_read] MODEM_CNTL read total bytes: 28
+[    17.216782655/        0x1cbd6c79] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.216787239/        0x1cbd6cd1] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.221680416/        0x1cbedbcf] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.221693489/        0x1cbedcc9] [diag_smd_read] MODEM_CNTL read total bytes: 164
+[    17.221746301/        0x1cbee0c0] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.221750833/        0x1cbee116] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.248029843/        0x1cc69407] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.248062916/        0x1cc6967d] [diag_smd_read] MODEM_CNTL read total bytes: 412
+[    17.248151041/        0x1cc69d1e] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.248155104/        0x1cc69d67] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.279987343/        0x1ccff0d3] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.280011458/        0x1ccff2a1] [diag_smd_read] MODEM_CNTL read total bytes: 772
+[    17.280221562/        0x1cd00264] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.280226249/        0x1cd002be] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.538067292/        0x1d1b8cd2] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.538078281/        0x1d1b8da5] [diag_smd_read] MODEM_CNTL read total bytes: 28
+[    17.538108386/        0x1d1b8fe6] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.538111979/        0x1d1b902c] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.540120209/        0x1d1c26ca] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.540134167/        0x1d1c27d5] [diag_smd_read] MODEM_CNTL read total bytes: 56
+[    17.540156198/        0x1d1c297d] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.540159688/        0x1d1c29c0] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.564413854/        0x1d2344d1] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.564423073/        0x1d234580] [diag_smd_read] MODEM_CNTL read total bytes: 28
+[    17.564448125/        0x1d234762] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.564451667/        0x1d2347a5] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.580191355/        0x1d27e420] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.580199844/        0x1d27e4c3] [diag_smd_read] MODEM_CNTL read total bytes: 36
+[    17.580228802/        0x1d27e6ef] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.580232500/        0x1d27e735] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.599865625/        0x1d2da7b1] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.599876823/        0x1d2da888] [diag_smd_read] MODEM_CNTL read total bytes: 152
+[    17.600010469/        0x1d2db28f] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.600019219/        0x1d2db336] [diag_smd_read] MODEM_CNTL read total bytes: 28
+[    17.600036407/        0x1d2db481] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.600039844/        0x1d2db4c2] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.603079480/        0x1d2e98bd] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.603087761/        0x1d2e995a] [diag_smd_read] MODEM_CNTL read total bytes: 28
+[    17.603107813/        0x1d2e9adc] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.603111355/        0x1d2e9b1f] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.603684271/        0x1d2ec617] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.603692032/        0x1d2ec6ac] [diag_smd_read] MODEM_CNTL read total bytes: 44
+[    17.603716146/        0x1d2ec87c] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.603719792/        0x1d2ec8c1] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.610645417/        0x1d30d02e] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.610717084/        0x1d30d58d] [diag_smd_read] MODEM_CNTL read total bytes: 28
+[    17.610738178/        0x1d30d724] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.610741928/        0x1d30d76b] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.645033021/        0x1d3ae341] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.645043490/        0x1d3ae408] [diag_smd_read] MODEM_CNTL read total bytes: 80
+[    17.645076146/        0x1d3ae67c] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.645079792/        0x1d3ae6c1] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.675343542/        0x1d43c48a] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.675354011/        0x1d43c552] [diag_smd_read] MODEM_CNTL read total bytes: 100
+[    17.675392396/        0x1d43c834] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.675396042/        0x1d43c879] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.681462240/        0x1d458f71] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.681472136/        0x1d45902e] [diag_smd_read] MODEM_CNTL read total bytes: 44
+[    17.681499011/        0x1d459233] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.681502605/        0x1d459278] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.724202188/        0x1d5214f0] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.724216407/        0x1d521600] [diag_smd_read] MODEM_CNTL read total bytes: 160
+[    17.724267345/        0x1d5219d3] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.724271251/        0x1d521a1d] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.763290938/        0x1d5d8899] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.763381928/        0x1d5d8f6b] [diag_smd_read] MODEM_CNTL read total bytes: 108
+[    17.763725366/        0x1d5da92d] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.763729376/        0x1d5da979] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.764654949/        0x1d5deee5] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.764669116/        0x1d5deff5] [diag_smd_read] MODEM_CNTL read total bytes: 396
+[    17.764762345/        0x1d5df6f2] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.764765991/        0x1d5df738] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    17.793506407/        0x1d6662c1] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.793523022/        0x1d666400] [diag_smd_read] MODEM_CNTL read total bytes: 260
+[    17.793588595/        0x1d6668eb] [diagfwd_channel_read] issued a read p: 0 t: 1 buf: 0000000000000000
+[    17.793592293/        0x1d666932] [diag_smd_read] MODEM_CNTL error in read, err: 0
+[    19.195816880/        0x1f01380b] [restart_notifier_cb] restart_notifier_cb: ssr for processor 2 ('wcnss')
+[    19.195824016/        0x1f013892] [restart_notifier_cb] diag: restart_notifier_cb: SUBSYS_BEFORE_POWERUP
+[    19.195827245/        0x1f0138d1] [restart_notifier_cb] diag: bootup_req[wcnss] = 0
+[    19.219902870/        0x1f08467d] [restart_notifier_cb] restart_notifier_cb: ssr for processor 2 ('wcnss')
+[    19.219909901/        0x1f084706] [restart_notifier_cb] diag: code: 6
+[    19.219912922/        0x1f08473e] [restart_notifier_cb] diag: bootup_req[wcnss] = 0
+[    20.210952300/        0x202a9f32] [restart_notifier_cb] restart_notifier_cb: ssr for processor 2 ('wcnss')
+[    20.210958238/        0x202a9fa3] [restart_notifier_cb] diag: code: 7
+[    20.210960738/        0x202a9fd3] [restart_notifier_cb] diag: bootup_req[wcnss] = 0
+[    20.224476206/        0x202e957d] [restart_notifier_cb] restart_notifier_cb: ssr for processor 2 ('wcnss')
+[    20.224483081/        0x202e9601] [restart_notifier_cb] diag: restart_notifier_cb: SUBSYS_AFTER_POWERUP
+[    20.224486258/        0x202e963e] [restart_notifier_cb] diag: bootup_req[wcnss] = 1
+[    20.226151675/        0x202f1325] [smd_notify] WCNSS_CNTL channel opened
+[    20.226284852/        0x202f1d23] [diagfwd_channel_open] p: 2 t: 1 considered opened
+[    20.226290477/        0x202f1d8f] [diag_state_open_smd] WCNSS_CNTL setting diag state to 1
+[    20.226294123/        0x202f1dd5] [diag_state_open_smd] WCNSS_CNTL setting diag state to 1
+[    20.226297404/        0x202f1e14] [smd_open_work_fn] WCNSS_CNTL exiting
+[    20.226304279/        0x202f1e97] [diagfwd_channel_read] issued a read p: 2 t: 1 buf: 0000000000000000
+[    20.226310113/        0x202f1f08] [diag_smd_read] WCNSS_CNTL error in read, err: 0
+[    20.226661831/        0x202f3968] [smd_notify] WCNSS_DATA channel opened
+[    21.402858970/        0x2187d035] [diagfwd_channel_read] issued a read p: 2 t: 1 buf: 0000000000000000
+[    21.402884075/        0x2187d213] [diag_smd_read] WCNSS_CNTL read total bytes: 14
+[    21.403126939/        0x2187e44c] [diag_state_close_socket] WCNSS_CNTL setting diag state to 0
+[    21.403141262/        0x2187e55e] [diag_smd_invalidate] WCNSS_CNTL prev: 0000000000000000 fwd_ctxt: 0000000000000000
+[    21.403152825/        0x2187e63c] [smd_late_init] WCNSS_DATA entering
+[    21.403163085/        0x2187e701] [diagfwd_channel_read] issued a read p: 2 t: 1 buf: 0000000000000000
+[    21.403168293/        0x2187e764] [diag_smd_read] WCNSS_CNTL error in read, err: 0
+[    21.403395585/        0x2187f873] [diagfwd_channel_open] p: 2 t: 0 considered opened
+[    21.403401002/        0x2187f8d8] [smd_late_init] WCNSS_DATA exiting
+[    21.403403658/        0x2187f90b] [smd_late_init] WCNSS_DCI entering
+[    21.403406731/        0x2187f947] [diag_state_open_smd] WCNSS_DCI setting diag state to 1
+[    21.403409335/        0x2187f979] [smd_late_init] WCNSS_DCI exiting
+[    21.403411366/        0x2187f99f] [smd_late_init] WCNSS_CMD entering
+[    21.403413762/        0x2187f9ce] [smd_late_init] WCNSS_CMD exiting
+[    21.403416418/        0x2187fa00] [smd_late_init] WCNSS_DCI_CMD entering
+[    21.403419387/        0x2187fa39] [diag_state_open_smd] WCNSS_DCI_CMD setting diag state to 1
+[    21.403421679/        0x2187fa65] [smd_late_init] WCNSS_DCI_CMD exiting
+[    21.403458658/        0x2187fd2b] [diag_smd_write] WCNSS_CNTL wrote to channel, write_len: 14
+[    21.403483814/        0x2187ff0f] [diag_smd_write] WCNSS_CNTL wrote to channel, write_len: 44
+[    21.404950064/        0x21886d09] [diagfwd_channel_read] issued a read p: 2 t: 1 buf: 0000000000000000
+[    21.405057043/        0x2188750d] [diag_smd_read] WCNSS_CNTL read total bytes: 620
+[    21.405165168/        0x21887d29] [diagfwd_channel_read] issued a read p: 2 t: 1 buf: 0000000000000000
+[    21.405170272/        0x21887d8a] [diag_smd_read] WCNSS_CNTL error in read, err: 0
+[    21.405180012/        0x21887e46] [diagfwd_channel_read] issued a read p: 2 t: 1 buf: 0000000000000000
+[    21.405183866/        0x21887e8f] [diag_smd_read] WCNSS_CNTL error in read, err: 0
+[    21.405241210/        0x218882dd] [diagfwd_channel_read] issued a read p: 2 t: 1 buf: 0000000000000000
+[    21.405246002/        0x21888338] [diag_smd_read] WCNSS_CNTL error in read, err: 0
+[    21.409240637/        0x2189aed2] [diagfwd_channel_read] issued a read p: 2 t: 1 buf: 0000000000000000
+[    21.410557616/        0x218a119c] [diag_smd_read] WCNSS_CNTL read total bytes: 2810
+[    21.410732095/        0x218a1eae] [diagfwd_channel_read] issued a read p: 2 t: 1 buf: 0000000000000000
+[    21.410741470/        0x218a1f61] [diag_smd_read] WCNSS_CNTL error in read, err: 0
+Log extracted successfully

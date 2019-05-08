@@ -1,0 +1,17 @@
+diff --git a/rpm_proc/build/build_8953.sh b/rpm_proc/build/build_8953.sh
+index 189a0f6..2f8cb7a 100755
+--- a/rpm_proc/build/build_8953.sh
++++ b/rpm_proc/build/build_8953.sh
+@@ -14,6 +14,11 @@ export HAL_PLATFORM=8953
+ export TARGET_FAMILY=8953
+ export CHIPSET=msm8953
+ export SECPOLICY=USES_SEC_POLICY_DEFAULT_SIGN
+-cd './rpm_proc/build/'
++#cd './rpm_proc/build/'
++if [[ "$@" =~ "BUILD_ID" ]];then
++    echo -e "======= No set BUILD_ID =======\n"
++else
++    unset BUILD_ID
++fi
+ 
+ python ./build_common.py $@

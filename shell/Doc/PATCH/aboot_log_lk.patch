@@ -1,0 +1,85 @@
+diff --git a/app/aboot/aboot.c b/app/aboot/aboot.c
+index caecdf0..b35c596 100644
+--- a/app/aboot/aboot.c
++++ b/app/aboot/aboot.c
+@@ -1480,6 +1480,10 @@ void boot_linux(void *kernel, unsigned *tags,
+ 	dprintf(INFO, "booting linux @ %p, ramdisk @ %p (%d), tags/device tree @ %p\n",
+ 		entry, ramdisk, ramdisk_size, (void *)tags_phys);
+ 
++#if WITH_DEBUG_LOG_BUF
++    memmove_log_to_kernel(tags_phys);
++#endif
++
+ 	enter_critical_section();
+ 
+ 	/* do any platform specific cleanup before kernel entry */
+diff --git a/include/debug.h b/include/debug.h
+index 59e7731..0669383 100644
+--- a/include/debug.h
++++ b/include/debug.h
+@@ -52,6 +52,9 @@ void _dputc(char c); // XXX for now, platform implements
+ int _dputs(const char *str);
+ int _dprintf(const char *fmt, ...) __PRINTFLIKE(1, 2);
+ int _dvprintf(const char *fmt, va_list ap);
++#if WITH_DEBUG_LOG_BUF
++void memmove_log_to_kernel(unsigned tags_addr);
++#endif
+ 
+ #define dputc(level, str) do { if ((level) <= DEBUGLEVEL) { _dputc(str); } } while (0)
+ #define dputs(level, str) do { if ((level) <= DEBUGLEVEL) { _dputs(str); } } while (0)
+diff --git a/platform/msm8952/include/platform/iomap.h b/platform/msm8952/include/platform/iomap.h
+index 3c60e82..4113e83 100644
+--- a/platform/msm8952/include/platform/iomap.h
++++ b/platform/msm8952/include/platform/iomap.h
+@@ -37,8 +37,8 @@
+ #define DDR_START                          get_ddr_start()
+ #define ABOOT_FORCE_KERNEL_ADDR            DDR_START + 0x8000
+ #define ABOOT_FORCE_KERNEL64_ADDR          DDR_START + 0x80000
+-#define ABOOT_FORCE_TAGS_ADDR              DDR_START + 0x3400000
+-#define ABOOT_FORCE_RAMDISK_ADDR           DDR_START + 0x3600000
++#define ABOOT_FORCE_TAGS_ADDR              DDR_START + 0x3408000
++#define ABOOT_FORCE_RAMDISK_ADDR           DDR_START + 0x3608000
+ 
+ #define MSM_SHARED_BASE                    0x86300000
+ #define MSM_SHARED_IMEM_BASE               0x08600000
+diff --git a/platform/msm_shared/debug.c b/platform/msm_shared/debug.c
+index 8a28c4c..0e641a2 100644
+--- a/platform/msm_shared/debug.c
++++ b/platform/msm_shared/debug.c
+@@ -31,6 +31,8 @@
+  */
+ 
+ #include <stdlib.h>
++#include <string.h>
++#include <platform/iomap.h>
+ #include <debug.h>
+ #include <printf.h>
+ #include <arch/arm/dcc.h>
+@@ -64,7 +66,7 @@ static void write_dcc(char c)
+ #if WITH_DEBUG_LOG_BUF
+ 
+ #ifndef LK_LOG_BUF_SIZE
+-#define LK_LOG_BUF_SIZE    (4096) /* align on 4k */
++#define LK_LOG_BUF_SIZE    (32*1024) /* align on 32k */
+ #endif
+ 
+ #define LK_LOG_COOKIE    0x474f4c52 /* "RLOG" in ASCII */
+@@ -96,6 +98,18 @@ static void log_putc(char c)
+ 	if (unlikely(log.header.idx >= log.header.max_size))
+ 		log.header.idx = 0;
+ }
++
++void memmove_log_to_kernel(unsigned tags_addr)
++{
++    unsigned log_addr = tags_addr - log.header.max_size;
++    char size_buf[8];
++
++    snprintf(size_buf, sizeof(size_buf), "%d", log.header.size_written);
++    dprintf(CRITICAL, "[aboot] log: max_size=0x%08x, size_written=%d\n", log.header.max_size, log.header.size_written);
++
++    log_addr = VA((addr_t)(log_addr));
++    memmove((void*) log_addr, (char *)log.data, log.header.max_size);
++}
+ #endif /* WITH_DEBUG_LOG_BUF */
+ 
+ void display_fbcon_message(char *str)

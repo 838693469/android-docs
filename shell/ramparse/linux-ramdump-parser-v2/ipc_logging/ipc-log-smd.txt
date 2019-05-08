@@ -1,0 +1,243 @@
+----------------------------------------------------------------------
+Log name: smd (4 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[    31.526629939/        0x2d1dc304] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 92r/92w : 460r/480w
+[    31.526645824/        0x2d1dc434] SMD Int rpm->Apps
+[    31.527350668/        0x2d1df913] Apps->rpm ch4 'rpm_requests': tx67/rx0 92r/156w : 480r/480w
+[    31.527491449/        0x2d1e03a1] SMD Int rpm->Apps
+[    31.527512126/        0x2d1e052e] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 156r/156w : 500r/520w
+[    31.568214887/        0x2d29f1e3] Apps->rpm ch4 'rpm_requests': tx67/rx0 156r/220w : 520r/520w
+[    31.568355981/        0x2d29fc79] SMD Int rpm->Apps
+[    31.568373272/        0x2d29fdc3] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 220r/220w : 540r/560w
+[    31.572855928/        0x2d2b4df9] Apps->rpm ch4 'rpm_requests': tx67/rx0 220r/284w : 560r/560w
+[    31.572993845/        0x2d2b584f] SMD Int rpm->Apps
+[    31.573008272/        0x2d2b5963] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 284r/284w : 580r/600w
+[    31.573200147/        0x2d2b67c8] Apps->rpm ch4 'rpm_requests': tx67/rx0 284r/348w : 600r/600w
+[    31.573337074/        0x2d2b720d] SMD Int rpm->Apps
+[    31.573351397/        0x2d2b731f] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 348r/348w : 620r/640w
+[    31.573990095/        0x2d2ba307] Apps->rpm ch4 'rpm_requests': tx67/rx0 348r/412w : 640r/640w
+[    31.574127647/        0x2d2bad58] SMD Int rpm->Apps
+[    31.574142647/        0x2d2bae78] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 412r/412w : 660r/680w
+[    31.575304991/        0x2d2c05a5] Apps->rpm ch4 'rpm_requests': tx67/rx0 412r/476w : 680r/680w
+[    31.575443428/        0x2d2c1007] SMD Int rpm->Apps
+[    31.575458064/        0x2d2c1120] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 476r/476w : 700r/720w
+[    31.575470303/        0x2d2c120b] SMD Int rpm->Apps
+[    31.577601449/        0x2d2cb1e1] Apps->rpm ch4 'rpm_requests': tx67/rx0 476r/540w : 720r/720w
+[    31.577738585/        0x2d2cbc2a] SMD Int rpm->Apps
+[    31.577754001/        0x2d2cbd52] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 540r/540w : 740r/760w
+[    31.618222231/        0x2d389870] Apps->rpm ch4 'rpm_requests': tx67/rx0 540r/604w : 760r/760w
+[    31.618362804/        0x2d38a2fd] SMD Int rpm->Apps
+[    31.618381866/        0x2d38a468] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 604r/604w : 780r/800w
+[    31.620566449/        0x2d394841] Apps->rpm ch4 'rpm_requests': tx67/rx0 604r/668w : 800r/800w
+[    31.620705199/        0x2d3952a9] SMD Int rpm->Apps
+[    31.620719731/        0x2d3953bf] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 668r/668w : 820r/840w
+[    31.622518324/        0x2d39daa5] Apps->rpm ch4 'rpm_requests': tx67/rx0 668r/732w : 840r/840w
+[    31.622657231/        0x2d39e511] SMD Int rpm->Apps
+[    31.622670304/        0x2d39e60a] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 732r/732w : 860r/880w
+[    31.624263377/        0x2d3a5d86] Apps->rpm ch4 'rpm_requests': tx67/rx0 732r/796w : 880r/880w
+[    31.624400824/        0x2d3a67d6] SMD Int rpm->Apps
+[    31.624414731/        0x2d3a68e0] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 796r/796w : 900r/920w
+[    31.625488793/        0x2d3ab96f] Apps->rpm ch4 'rpm_requests': tx67/rx0 796r/860w : 920r/920w
+[    31.625625981/        0x2d3ac3b7] SMD Int rpm->Apps
+[    31.625639002/        0x2d3ac4b1] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 860r/860w : 940r/960w
+[    31.625649262/        0x2d3ac576] SMD Int rpm->Apps
+[    31.626330147/        0x2d3af889] Apps->rpm ch4 'rpm_requests': tx67/rx0 860r/924w : 960r/960w
+[    31.626467179/        0x2d3b02ce] SMD Int rpm->Apps
+[    31.626479783/        0x2d3b03c1] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 924r/924w : 980r/1000w
+[    31.626490408/        0x2d3b048c] SMD Int rpm->Apps
+[    31.668306137/        0x2d4744ba] Apps->rpm ch4 'rpm_requests': tx67/rx0 924r/988w : 1000r/1000w
+[    31.668444575/        0x2d474f1e] SMD Int rpm->Apps
+[    31.668460252/        0x2d475049] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 988r/988w : 1020r/16w
+[    31.673882700/        0x2d48e6fa] Apps->rpm ch4 'rpm_requests': tx67/rx0 988r/28w : 16r/16w
+[    31.674021658/        0x2d48f165] SMD Int rpm->Apps
+[    31.674034783/        0x2d48f260] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 28r/28w : 36r/56w
+[    31.676881502/        0x2d49c7e2] Apps->rpm ch4 'rpm_requests': tx67/rx0 28r/92w : 56r/56w
+[    31.677018845/        0x2d49d22f] SMD Int rpm->Apps
+[    31.677032231/        0x2d49d330] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 92r/92w : 76r/96w
+[    31.677845981/        0x2d4a1038] Apps->rpm ch4 'rpm_requests': tx67/rx0 92r/156w : 96r/96w
+[    31.677982908/        0x2d4a1a7e] SMD Int rpm->Apps
+[    31.677996762/        0x2d4a1b86] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 156r/156w : 116r/136w
+[    31.678007075/        0x2d4a1c4d] SMD Int rpm->Apps
+[    31.683485304/        0x2d4bb72c] Apps->rpm ch4 'rpm_requests': tx67/rx0 156r/220w : 136r/136w
+[    31.683622127/        0x2d4bc16e] SMD Int rpm->Apps
+[    31.683635564/        0x2d4bc26f] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 220r/220w : 156r/176w
+[    31.683645564/        0x2d4bc330] SMD Int rpm->Apps
+[    31.687387752/        0x2d4cdbda] Apps->rpm ch4 'rpm_requests': tx67/rx0 220r/284w : 176r/176w
+[    31.687525148/        0x2d4ce628] SMD Int rpm->Apps
+[    31.687539418/        0x2d4ce739] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 284r/284w : 196r/216w
+[    31.692449731/        0x2d4e5782] Apps->rpm ch4 'rpm_requests': tx67/rx0 284r/348w : 216r/216w
+[    31.692584210/        0x2d4e6196] SMD Int rpm->Apps
+[    31.692601866/        0x2d4e62e8] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 348r/348w : 236r/256w
+[    31.692715460/        0x2d4e6b6e] Apps->rpm ch4 'rpm_requests': tx67/rx0 348r/412w : 256r/256w
+[    31.692847491/        0x2d4e7556] SMD Int rpm->Apps
+[    31.692863273/        0x2d4e7683] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 412r/412w : 276r/296w
+[    31.692930512/        0x2d4e7b8f] Apps->rpm ch4 'rpm_requests': tx67/rx0 412r/476w : 296r/296w
+[    31.693096502/        0x2d4e8802] SMD Int rpm->Apps
+[    31.693113793/        0x2d4e894d] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 476r/476w : 316r/336w
+[    31.693124106/        0x2d4e8a13] SMD Int rpm->Apps
+[    31.693203793/        0x2d4e900e] Apps->rpm ch4 'rpm_requests': tx67/rx0 476r/540w : 336r/336w
+[    31.693341918/        0x2d4e9a6a] SMD Int rpm->Apps
+[    31.693355877/        0x2d4e9b75] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 540r/540w : 356r/376w
+[    31.693366293/        0x2d4e9c3d] SMD Int rpm->Apps
+[    31.693455200/        0x2d4ea2e9] Apps->rpm ch4 'rpm_requests': tx67/rx0 540r/604w : 376r/376w
+[    31.693587179/        0x2d4eaccf] SMD Int rpm->Apps
+[    31.693602491/        0x2d4eadf4] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 604r/604w : 396r/416w
+[    31.693613273/        0x2d4eaec3] SMD Int rpm->Apps
+[    31.693715512/        0x2d4eb66f] Apps->rpm ch4 'rpm_requests': tx67/rx0 604r/668w : 416r/416w
+[    31.693848846/        0x2d4ec06f] SMD Int rpm->Apps
+[    31.693863116/        0x2d4ec181] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 668r/668w : 436r/456w
+[    31.693874002/        0x2d4ec251] SMD Int rpm->Apps
+[    31.694045252/        0x2d4ecf2a] Apps->rpm ch4 'rpm_requests': tx67/rx0 668r/732w : 456r/456w
+[    31.694179731/        0x2d4ed940] SMD Int rpm->Apps
+[    31.694194523/        0x2d4eda5b] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 732r/732w : 476r/496w
+[    31.694205356/        0x2d4edb2b] SMD Int rpm->Apps
+[    31.694299314/        0x2d4ee239] Apps->rpm ch4 'rpm_requests': tx67/rx0 732r/796w : 496r/496w
+[    31.694437179/        0x2d4eec8f] SMD Int rpm->Apps
+[    31.694451658/        0x2d4eeda5] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 796r/796w : 516r/536w
+[    31.694909731/        0x2d4f1000] Apps->rpm ch4 'rpm_requests': tx67/rx0 796r/860w : 536r/536w
+[    31.695043533/        0x2d4f1a09] SMD Int rpm->Apps
+[    31.695057387/        0x2d4f1b13] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 860r/860w : 556r/576w
+[    31.695067596/        0x2d4f1bd7] SMD Int rpm->Apps
+[    31.695169471/        0x2d4f237b] Apps->rpm ch4 'rpm_requests': tx67/rx0 860r/924w : 576r/576w
+[    31.695301189/        0x2d4f2d5c] SMD Int rpm->Apps
+[    31.695315096/        0x2d4f2e66] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 924r/924w : 596r/616w
+[    31.695325408/        0x2d4f2f2d] SMD Int rpm->Apps
+[    31.695388846/        0x2d4f33ef] Apps->rpm ch4 'rpm_requests': tx67/rx0 924r/988w : 616r/616w
+[    31.695538221/        0x2d4f3f23] SMD Int rpm->Apps
+[    31.695552752/        0x2d4f403a] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 988r/988w : 636r/656w
+[    31.695563116/        0x2d4f4100] SMD Int rpm->Apps
+[    31.695640043/        0x2d4f46c6] Apps->rpm ch4 'rpm_requests': tx67/rx0 988r/28w : 656r/656w
+[    31.695783325/        0x2d4f5184] SMD Int rpm->Apps
+[    31.695797283/        0x2d4f5291] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 28r/28w : 676r/696w
+[    31.695814418/        0x2d4f53d9] SMD Int rpm->Apps
+[    31.695899575/        0x2d4f5a3d] Apps->rpm ch4 'rpm_requests': tx67/rx0 28r/92w : 696r/696w
+[    31.696034002/        0x2d4f6452] SMD Int rpm->Apps
+[    31.696049418/        0x2d4f6579] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 92r/92w : 716r/736w
+[    31.696060043/        0x2d4f6645] SMD Int rpm->Apps
+[    31.696160981/        0x2d4f6dd8] Apps->rpm ch4 'rpm_requests': tx67/rx0 92r/156w : 736r/736w
+[    31.696294575/        0x2d4f77dd] SMD Int rpm->Apps
+[    31.696308637/        0x2d4f78ea] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 156r/156w : 756r/776w
+[    31.696320616/        0x2d4f79d0] SMD Int rpm->Apps
+[    31.696396346/        0x2d4f7f7f] Apps->rpm ch4 'rpm_requests': tx67/rx0 156r/220w : 776r/776w
+[    31.696546085/        0x2d4f8aba] SMD Int rpm->Apps
+[    31.696559887/        0x2d4f8bc2] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 220r/220w : 796r/816w
+[    31.696570356/        0x2d4f8c8c] SMD Int rpm->Apps
+[    31.696663637/        0x2d4f938b] Apps->rpm ch4 'rpm_requests': tx67/rx0 220r/284w : 816r/816w
+[    31.696800877/        0x2d4f9dd7] SMD Int rpm->Apps
+[    31.696815668/        0x2d4f9ef1] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 284r/284w : 836r/856w
+[    31.696826241/        0x2d4f9fbd] SMD Int rpm->Apps
+[    31.698077179/        0x2d4ffd90] Apps->rpm ch4 'rpm_requests': tx67/rx0 284r/348w : 856r/856w
+[    31.698211137/        0x2d50079b] SMD Int rpm->Apps
+[    31.698224991/        0x2d5008a5] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 348r/348w : 876r/896w
+[    31.698235564/        0x2d50096f] SMD Int rpm->Apps
+[    31.698339523/        0x2d50113e] Apps->rpm ch4 'rpm_requests': tx67/rx0 348r/412w : 896r/896w
+[    31.698471502/        0x2d501b22] SMD Int rpm->Apps
+[    31.698485460/        0x2d501c2d] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 412r/412w : 916r/936w
+[    31.698495929/        0x2d501cf6] SMD Int rpm->Apps
+[    31.698559991/        0x2d5021c5] Apps->rpm ch4 'rpm_requests': tx67/rx0 412r/476w : 936r/936w
+[    31.698712075/        0x2d502d2d] SMD Int rpm->Apps
+[    31.698726085/        0x2d502e39] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 476r/476w : 956r/976w
+[    31.698736554/        0x2d502f03] SMD Int rpm->Apps
+[    31.698808846/        0x2d50346e] Apps->rpm ch4 'rpm_requests': tx67/rx0 476r/540w : 976r/976w
+[    31.698957127/        0x2d503f8e] SMD Int rpm->Apps
+[    31.698971189/        0x2d50409c] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 540r/540w : 996r/1016w
+[    31.698981398/        0x2d504160] SMD Int rpm->Apps
+[    31.699055304/        0x2d5046eb] Apps->rpm ch4 'rpm_requests': tx67/rx0 540r/604w : 1016r/1016w
+[    31.699201502/        0x2d5051e1] SMD Int rpm->Apps
+[    31.699218116/        0x2d505321] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 604r/604w : 12r/32w
+[    31.699228273/        0x2d5053e4] SMD Int rpm->Apps
+[    31.699318950/        0x2d505ab1] Apps->rpm ch4 'rpm_requests': tx67/rx0 604r/668w : 32r/32w
+[    31.699450981/        0x2d506498] SMD Int rpm->Apps
+[    31.699465043/        0x2d5065a5] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 668r/668w : 52r/72w
+[    31.699475200/        0x2d506668] SMD Int rpm->Apps
+[    31.699548950/        0x2d506bf1] Apps->rpm ch4 'rpm_requests': tx67/rx0 668r/732w : 72r/72w
+[    31.699689887/        0x2d507683] SMD Int rpm->Apps
+[    31.699703950/        0x2d507790] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 732r/732w : 92r/112w
+[    31.699714939/        0x2d507864] SMD Int rpm->Apps
+[    31.699803273/        0x2d507f03] Apps->rpm ch4 'rpm_requests': tx67/rx0 732r/796w : 112r/112w
+[    31.699938481/        0x2d508927] SMD Int rpm->Apps
+[    31.699952543/        0x2d508a35] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 796r/796w : 132r/152w
+[    31.699962856/        0x2d508afc] SMD Int rpm->Apps
+[    31.728210981/        0x2d58d19e] Apps->rpm ch4 'rpm_requests': tx67/rx0 796r/860w : 152r/152w
+[    31.728350512/        0x2d58dc0f] SMD Int rpm->Apps
+[    31.728367908/        0x2d58dd5c] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 860r/860w : 172r/192w
+[    31.728379939/        0x2d58de44] SMD Int rpm->Apps
+[    31.734766866/        0x2d5abd4a] Apps->rpm ch4 'rpm_requests': tx67/rx0 860r/924w : 192r/192w
+[    31.734903846/        0x2d5ac78f] SMD Int rpm->Apps
+[    31.734916814/        0x2d5ac887] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 924r/924w : 212r/232w
+[    31.734926919/        0x2d5ac94a] SMD Int rpm->Apps
+[    31.735352908/        0x2d5ae93d] Apps->rpm ch4 'rpm_requests': tx67/rx0 924r/988w : 232r/232w
+[    31.735490825/        0x2d5af395] SMD Int rpm->Apps
+[    31.735504523/        0x2d5af49b] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 988r/988w : 252r/272w
+[    31.735514731/        0x2d5af560] SMD Int rpm->Apps
+[    31.738328481/        0x2d5bc868] Apps->rpm ch4 'rpm_requests': tx67/rx0 988r/28w : 272r/272w
+[    31.738466294/        0x2d5bd2be] SMD Int rpm->Apps
+[    31.738479575/        0x2d5bd3bc] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 28r/28w : 292r/312w
+[    31.742360877/        0x2d5cf6d7] Apps->rpm ch4 'rpm_requests': tx67/rx0 28r/92w : 312r/312w
+[    31.742498794/        0x2d5d012f] SMD Int rpm->Apps
+[    31.742513064/        0x2d5d0240] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 92r/92w : 332r/352w
+[    31.743507856/        0x2d5d4cdd] Apps->rpm ch4 'rpm_requests': tx67/rx0 92r/156w : 352r/352w
+[    31.743644627/        0x2d5d571d] SMD Int rpm->Apps
+[    31.743657596/        0x2d5d5817] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 156r/156w : 372r/392w
+[    31.743667544/        0x2d5d58d6] SMD Int rpm->Apps
+[    31.788253794/        0x2d6a68cf] Apps->rpm ch4 'rpm_requests': tx67/rx0 156r/220w : 392r/392w
+[    31.788396294/        0x2d6a7380] SMD Int rpm->Apps
+[    31.788418898/        0x2d6a7530] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 220r/220w : 412r/432w
+[    31.788923794/        0x2d6a9b0e] Apps->rpm ch4 'rpm_requests': tx67/rx0 220r/284w : 432r/432w
+[    31.789064315/        0x2d6aa598] SMD Int rpm->Apps
+[    31.789081502/        0x2d6aa6e2] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 284r/284w : 452r/472w
+[    31.789473637/        0x2d6ac44b] Apps->rpm ch4 'rpm_requests': tx67/rx0 284r/348w : 472r/472w
+[    31.789611867/        0x2d6acea9] SMD Int rpm->Apps
+[    31.789626762/        0x2d6acfc6] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 348r/348w : 492r/512w
+[    31.789637544/        0x2d6ad095] SMD Int rpm->Apps
+[    31.789851815/        0x2d6ae0a9] Apps->rpm ch4 'rpm_requests': tx67/rx0 348r/412w : 512r/512w
+[    31.789990304/        0x2d6aeb0c] SMD Int rpm->Apps
+[    31.790005044/        0x2d6aec26] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 412r/412w : 532r/552w
+[    31.790458637/        0x2d6b0e2b] Apps->rpm ch4 'rpm_requests': tx67/rx0 412r/476w : 552r/552w
+[    31.790596398/        0x2d6b187f] SMD Int rpm->Apps
+[    31.790610356/        0x2d6b198b] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 476r/476w : 572r/592w
+[    31.790815877/        0x2d6b28f7] Apps->rpm ch4 'rpm_requests': tx67/rx0 476r/540w : 592r/592w
+[    31.790953637/        0x2d6b334c] SMD Int rpm->Apps
+[    31.790967752/        0x2d6b3459] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 540r/540w : 612r/632w
+[    31.790979367/        0x2d6b3538] SMD Int rpm->Apps
+[    31.794959315/        0x2d6c5fca] Apps->rpm ch4 'rpm_requests': tx67/rx0 540r/604w : 632r/632w
+[    31.795108273/        0x2d6c6af4] SMD Int rpm->Apps
+[    31.795142179/        0x2d6c6d74] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 604r/604w : 652r/672w
+[    31.795163377/        0x2d6c6f06] SMD Int rpm->Apps
+[    31.838173325/        0x2d7908c5] Apps->rpm ch4 'rpm_requests': tx67/rx0 604r/668w : 672r/672w
+[    31.838313065/        0x2d791341] SMD Int rpm->Apps
+[    31.838330252/        0x2d79148a] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 668r/668w : 692r/712w
+[    31.838343325/        0x2d791587] SMD Int rpm->Apps
+[    31.861078169/        0x2d7fbea6] Apps->rpm ch4 'rpm_requests': tx67/rx0 668r/732w : 712r/712w
+[    31.861218586/        0x2d7fc92a] SMD Int rpm->Apps
+[    31.861234159/        0x2d7fca54] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 732r/732w : 732r/752w
+[    31.863080356/        0x2d8054cc] Apps->rpm ch4 'rpm_requests': tx67/rx0 732r/796w : 752r/752w
+[    31.863218065/        0x2d805f20] SMD Int rpm->Apps
+[    31.863232075/        0x2d80602c] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 796r/796w : 772r/792w
+[    31.863242544/        0x2d8060f6] SMD Int rpm->Apps
+[    31.896452284/        0x2d8a1bb1] Apps->rpm ch4 'rpm_requests': tx67/rx0 796r/860w : 792r/792w
+[    31.896589367/        0x2d8a25f9] SMD Int rpm->Apps
+[    31.896602804/        0x2d8a26fa] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 860r/860w : 812r/832w
+[    31.928480825/        0x2d937dd5] Apps->rpm ch4 'rpm_requests': tx67/rx0 860r/924w : 832r/832w
+[    31.928618430/        0x2d938827] SMD Int rpm->Apps
+[    31.928631711/        0x2d938926] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 924r/924w : 852r/872w
+[    31.928642284/        0x2d9389f0] SMD Int rpm->Apps
+[    31.929897127/        0x2d93e80f] Apps->rpm ch4 'rpm_requests': tx67/rx0 924r/988w : 872r/872w
+[    31.930034367/        0x2d93f258] SMD Int rpm->Apps
+[    31.930047180/        0x2d93f34e] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 988r/988w : 892r/912w
+[    31.930062388/        0x2d93f472] SMD Int rpm->Apps
+[    31.963345253/        0x2d9db4aa] Apps->rpm ch4 'rpm_requests': tx67/rx0 988r/28w : 912r/912w
+[    31.963482336/        0x2d9dbef2] SMD Int rpm->Apps
+[    31.963495409/        0x2d9dbfed] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 28r/28w : 932r/952w
+[    31.963505826/        0x2d9dc0b4] SMD Int rpm->Apps
+[    32.008148482/        0x2daad4e8] Apps->rpm ch4 'rpm_requests': tx67/rx0 28r/92w : 952r/952w
+[    32.008285513/        0x2daadf2f] SMD Int rpm->Apps
+[    32.008300253/        0x2daae04a] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 92r/92w : 972r/992w
+[    32.008310565/        0x2daae10f] SMD Int rpm->Apps
+[    32.030262440/        0x2db14f75] Apps->rpm ch4 'rpm_requests': tx67/rx0 92r/156w : 992r/992w
+[    32.030399732/        0x2db159c1] SMD Int rpm->Apps
+[    32.030413482/        0x2db15ac7] SMD ch4 'rpm_requests' Data event 0x1 tx3/rx20 156r/156w : 1012r/8w
+[    32.030423638/        0x2db15b8a] SMD Int rpm->Apps
+Log extracted successfully

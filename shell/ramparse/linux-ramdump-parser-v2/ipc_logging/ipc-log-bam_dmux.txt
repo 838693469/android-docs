@@ -1,0 +1,133 @@
+----------------------------------------------------------------------
+Log name: bam_dmux (5 pages)
+----------------------------------------------------------------------
+Parsing as a full log
+
+[     6.905645905/        0x10f09539] <DMUX> drpa vuwa0 bam_dmux_probe: base:0000000004044000 size:19000 irq:181 satellite:0 num_buffs:32 dl_mtu:1000 cpu-affinity:1 ul_timeout_delay:100
+[     6.905660176/        0x10f0964a] <DMUX> drpa vuwa0 bam_dmux_probe: did not get xo clock
+[     6.905665332/        0x10f096ac] <DMUX> drpa vuwa0 bam_dmux_probe: did not get dfab clock
+[    21.373659595/        0x217f423e] <DMUX> drPa vuwa0 bam_dmux_smsm_cb: 0x08000009 -> 0x0800000b
+[    21.373672356/        0x217f4333] <DMUX> drPa vuwa0 bam_dmux_smsm_cb: init
+[    21.373678866/        0x217f43b0] <DMUX> drPa vuwa0 grab_wakelock: ref count = 0
+[    21.373689595/        0x217f447d] <DMUX> drPa vuwa0 vote_dfab
+[    21.375179074/        0x217fb434] <DMUX> drPa vuwa0 toggle_apps_ack: apps ack 0->1
+[    21.375350481/        0x217fc110] <DMUX> drPA vuwa0 grab_wakelock: ref count = 1
+[    21.375405116/        0x217fc529] <DMUX> drPA vuwa0 rx_timer_work_func: polling start
+[    21.375433449/        0x217fc748] <DMUX> drPA vuwa0 handle_bam_mux_cmd: opening cid 0 PC enabled
+[    21.384643137/        0x21827a0c] <DMUX> drPA vuwa0 rx_timer_work_func: polling exit, no data
+[    21.384683033/        0x21827d00] <DMUX> drPA vuwa0 release_wakelock: ref count = 2
+[    22.374080536/        0x22a459d5] <DMUX> drPA vuwa1 power_vote: curr=0, vote=1
+[    22.374101994/        0x22a45b6b] <DMUX> drPA Vuwa1 ul_wakeup waiting for wakeup ack
+[    22.374205588/        0x22a46330] <DMUX> drPA Vuwa1 bam_dmux_smsm_ack_cb: 0x0800000b -> 0x0800080b
+[    22.374245484/        0x22a4662e] <DMUX> drPA VuwA1 ul_wakeup waiting completion
+[    22.374249963/        0x22a46684] <DMUX> drPA VUwA1 ul_wakeup complete
+[    22.374257359/        0x22a46712] <DMUX> drPA VUwA1 notify_all: event=2, data=0
+[    22.468199286/        0x22bfecbe] <DMUX> drPA VUwA0 ul_timeout: pkt written 1
+[    22.568106109/        0x22dd31bf] <DMUX> drPA VUwA0 ul_powerdown: powerdown
+[    22.568114026/        0x22dd3253] <DMUX> drPA VUWa0 power_vote: curr=1, vote=0
+[    22.568131057/        0x22dd3399] <DMUX> drPA vuWa0 notify_all: event=3, data=0
+[    22.568215953/        0x22dd39f7] <DMUX> drPA vuWa0 bam_dmux_smsm_ack_cb: 0x0800080b -> 0x0800000b
+[    24.373740594/        0x24ee3051] <DMUX> drpA vuWA0 bam_dmux_smsm_cb: 0x0800000b -> 0x08000009
+[    24.373749917/        0x24ee3103] <DMUX> drpA vuWA0 bam_dmux_smsm_cb: disconnect
+[    24.373757469/        0x24ee3194] <DMUX> drpa vuWA0 disconnect_to_bam: disconnect tx
+[    24.373796740/        0x24ee3487] <DMUX> drpa vuWA0 disconnect_to_bam: disconnect rx
+[    24.373815125/        0x24ee35e8] <DMUX> drpa vuWA0 disconnect_to_bam: device reset
+[    24.373964552/        0x24ee411c] <DMUX> drpa vuWA0 unvote_dfab
+[    24.374201323/        0x24ee52df] <DMUX> drpa vuWA0 toggle_apps_ack: apps ack 1->0
+[    24.374219917/        0x24ee5444] <DMUX> drpa vuWA0 release_wakelock: ref count = 1
+[    28.121414043/        0x293823d2] <DMUX> drPa vuWA0 bam_dmux_smsm_cb: 0x08000009 -> 0x0800000b
+[    28.121420085/        0x29382446] <DMUX> drPa vuWA0 bam_dmux_smsm_cb: reconnect
+[    28.121424199/        0x29382495] <DMUX> drPa vuWA0 grab_wakelock: ref count = 0
+[    28.121430658/        0x29382511] <DMUX> drPa vuWA0 vote_dfab
+[    28.121646699/        0x29383545] <DMUX> drPA vuWA0 toggle_apps_ack: apps ack 0->1
+[    28.135376751/        0x293c3b08] <DMUX> drPA vuWA1 ul_wakeup waiting for previous ack
+[    28.135388939/        0x293c3bf0] <DMUX> drPA vuwa1 power_vote: curr=0, vote=1
+[    28.135406803/        0x293c3d47] <DMUX> drPA Vuwa1 ul_wakeup waiting for wakeup ack
+[    28.135550814/        0x293c4815] <DMUX> drPA Vuwa1 bam_dmux_smsm_ack_cb: 0x0800000b -> 0x0800080b
+[    28.136301751/        0x293c8068] <DMUX> drPA VuwA1 ul_wakeup waiting completion
+[    28.136309251/        0x293c80f7] <DMUX> drPA VUwA1 ul_wakeup complete
+[    28.136321699/        0x293c81e6] <DMUX> drPA VUwA1 notify_all: event=2, data=0
+[    28.138773522/        0x293d39c9] <DMUX> drPA VUwA0 grab_wakelock: ref count = 1
+[    28.138818626/        0x293d3d2b] <DMUX> drPA VUwA0 rx_timer_work_func: polling start
+[    28.145224928/        0x293f1da6] <DMUX> drPA VUwA0 rx_timer_work_func: polling exit, no data
+[    28.145279981/        0x293f21c5] <DMUX> drPA VUwA0 release_wakelock: ref count = 2
+[    28.148494981/        0x294012e6] <DMUX> drPA VUwA0 grab_wakelock: ref count = 1
+[    28.148526074/        0x2940153c] <DMUX> drPA VUwA0 rx_timer_work_func: polling start
+[    28.151676856/        0x2941018b] <DMUX> drPA VUwA0 rx_timer_work_func: polling exit, no data
+[    28.151694564/        0x294102e2] <DMUX> drPA VUwA0 release_wakelock: ref count = 2
+[    28.228100918/        0x2957655c] <DMUX> drPA VUwA0 ul_timeout: pkt written 1
+[    28.288458158/        0x29691423] <DMUX> drPA VUwA0 grab_wakelock: ref count = 1
+[    28.288495398/        0x296916ee] <DMUX> drPA VUwA0 rx_timer_work_func: polling start
+[    28.291667846/        0x296a04db] <DMUX> drPA VUwA0 rx_timer_work_func: polling exit, no data
+[    28.291683783/        0x296a060e] <DMUX> drPA VUwA0 release_wakelock: ref count = 2
+[    28.328058887/        0x2974ae37] <DMUX> drPA VUwA0 ul_timeout: pkt written 1
+[    28.428052950/        0x2991f9c4] <DMUX> drPA VUwA0 ul_timeout: pkt written 1
+[    28.528057742/        0x29af461e] <DMUX> drPA VUwA0 ul_powerdown: powerdown
+[    28.528067742/        0x29af46d9] <DMUX> drPA VUWa0 power_vote: curr=1, vote=0
+[    28.528087534/        0x29af4855] <DMUX> drPA vuWa0 notify_all: event=3, data=0
+[    28.528263575/        0x29af5589] <DMUX> drPA vuWa0 bam_dmux_smsm_ack_cb: 0x0800080b -> 0x0800000b
+[    28.588154201/        0x29c0e156] <DMUX> drPA vuWA1 ul_wakeup waiting for previous ack
+[    28.588161388/        0x29c0e1df] <DMUX> drPA vuwa1 power_vote: curr=0, vote=1
+[    28.588177586/        0x29c0e316] <DMUX> drPA Vuwa1 ul_wakeup waiting for wakeup ack
+[    28.588369305/        0x29c0f177] <DMUX> drPA Vuwa1 bam_dmux_smsm_ack_cb: 0x0800000b -> 0x0800080b
+[    28.588394721/        0x29c0f360] <DMUX> drPA VuwA1 ul_wakeup waiting completion
+[    28.588399565/        0x29c0f3bc] <DMUX> drPA VUwA1 ul_wakeup complete
+[    28.588406232/        0x29c0f43d] <DMUX> drPA VUwA1 notify_all: event=2, data=0
+[    28.589491180/        0x29c1459c] <DMUX> drPA VUwA0 grab_wakelock: ref count = 1
+[    28.589527690/        0x29c14859] <DMUX> drPA VUwA0 rx_timer_work_func: polling start
+[    28.592675867/        0x29c23478] <DMUX> drPA VUwA0 rx_timer_work_func: polling exit, no data
+[    28.592697899/        0x29c2361d] <DMUX> drPA VUwA0 release_wakelock: ref count = 2
+[    28.688059566/        0x29de2643] <DMUX> drPA VUwA0 ul_timeout: pkt written 1
+[    28.788051128/        0x29fb71a0] <DMUX> drPA VUwA0 ul_powerdown: powerdown
+[    28.788062899/        0x29fb7288] <DMUX> drPA VUWa0 power_vote: curr=1, vote=0
+[    28.788081962/        0x29fb73e9] <DMUX> drPA vuWa0 notify_all: event=3, data=0
+[    28.788204201/        0x29fb7d16] <DMUX> drPA vuWa0 bam_dmux_smsm_ack_cb: 0x0800080b -> 0x0800000b
+[    29.138948369/        0x2a623ee7] <DMUX> drPA vuWA0 grab_wakelock: ref count = 1
+[    29.138993317/        0x2a624247] <DMUX> drPA vuWA0 rx_timer_work_func: polling start
+[    29.139225348/        0x2a6253ac] <DMUX> drPA vuWA1 ul_wakeup waiting for previous ack
+[    29.139231234/        0x2a62541d] <DMUX> drPA vuwa1 power_vote: curr=0, vote=1
+[    29.139247015/        0x2a62554b] <DMUX> drPA Vuwa1 ul_wakeup waiting for wakeup ack
+[    29.139359202/        0x2a625db5] <DMUX> drPA Vuwa1 bam_dmux_smsm_ack_cb: 0x0800000b -> 0x0800080b
+[    29.139383994/        0x2a625f92] <DMUX> drPA VuwA1 ul_wakeup waiting completion
+[    29.139388473/        0x2a625fe8] <DMUX> drPA VUwA1 ul_wakeup complete
+[    29.139395036/        0x2a626065] <DMUX> drPA VUwA1 notify_all: event=2, data=0
+[    29.142137588/        0x2a632e17] <DMUX> drPA VUwA0 rx_timer_work_func: polling exit, no data
+[    29.142152327/        0x2a632f31] <DMUX> drPA VUwA0 release_wakelock: ref count = 2
+[    29.248060244/        0x2a82364c] <DMUX> drPA VUwA0 ul_timeout: pkt written 1
+[    29.348345193/        0x2a9f97ab] <DMUX> drPA VUwA0 ul_powerdown: powerdown
+[    29.348352536/        0x2a9f9835] <DMUX> drPA VUWa0 power_vote: curr=1, vote=0
+[    29.348368370/        0x2a9f9965] <DMUX> drPA vuWa0 notify_all: event=3, data=0
+[    29.348459776/        0x2a9fa040] <DMUX> drPA vuWa0 bam_dmux_smsm_ack_cb: 0x0800080b -> 0x0800000b
+[    30.139075976/        0x2b87407c] <DMUX> drPA vuWA0 grab_wakelock: ref count = 1
+[    30.139123007/        0x2b8743ff] <DMUX> drPA vuWA0 rx_timer_work_func: polling start
+[    30.139360976/        0x2b8755da] <DMUX> drPA vuWA1 ul_wakeup waiting for previous ack
+[    30.139368476/        0x2b875667] <DMUX> drPA vuwa1 power_vote: curr=0, vote=1
+[    30.139385403/        0x2b8757ac] <DMUX> drPA Vuwa1 ul_wakeup waiting for wakeup ack
+[    30.139566653/        0x2b876544] <DMUX> drPA Vuwa1 bam_dmux_smsm_ack_cb: 0x0800000b -> 0x0800080b
+[    30.139600455/        0x2b8767cf] <DMUX> drPA VuwA1 ul_wakeup waiting completion
+[    30.139608841/        0x2b87686f] <DMUX> drPA VUwA1 ul_wakeup complete
+[    30.139618320/        0x2b876925] <DMUX> drPA VUwA1 notify_all: event=2, data=0
+[    30.142565664/        0x2b884633] <DMUX> drPA VUwA0 rx_timer_work_func: polling exit, no data
+[    30.142586810/        0x2b8847c8] <DMUX> drPA VUwA0 release_wakelock: ref count = 2
+[    30.238049466/        0x2ba43f7c] <DMUX> drPA VUwA0 ul_timeout: pkt written 1
+[    30.338097018/        0x2bc18f0f] <DMUX> drPA VUwA0 ul_powerdown: powerdown
+[    30.338106498/        0x2bc18fc1] <DMUX> drPA VUWa0 power_vote: curr=1, vote=0
+[    30.338125977/        0x2bc19137] <DMUX> drPA vuWa0 notify_all: event=3, data=0
+[    30.338246706/        0x2bc19a45] <DMUX> drPA vuWa0 bam_dmux_smsm_ack_cb: 0x0800080b -> 0x0800000b
+[    31.139223896/        0x2cac4395] <DMUX> drPA vuWA0 grab_wakelock: ref count = 1
+[    31.139270198/        0x2cac4709] <DMUX> drPA vuWA0 rx_timer_work_func: polling start
+[    31.139529469/        0x2cac5a7c] <DMUX> drPA vuWA1 ul_wakeup waiting for previous ack
+[    31.139536760/        0x2cac5b06] <DMUX> drPA vuwa1 power_vote: curr=0, vote=1
+[    31.139557333/        0x2cac5c91] <DMUX> drPA Vuwa1 ul_wakeup waiting for wakeup ack
+[    31.139683531/        0x2cac6609] <DMUX> drPA Vuwa1 bam_dmux_smsm_ack_cb: 0x0800000b -> 0x0800080b
+[    31.139712073/        0x2cac682d] <DMUX> drPA VuwA1 ul_wakeup waiting completion
+[    31.139718010/        0x2cac689e] <DMUX> drPA VUwA1 ul_wakeup complete
+[    31.139728010/        0x2cac695e] <DMUX> drPA VUwA1 notify_all: event=2, data=0
+[    31.142454990/        0x2cad35ea] <DMUX> drPA VUwA0 rx_timer_work_func: polling exit, no data
+[    31.142492490/        0x2cad38b8] <DMUX> drPA VUwA0 release_wakelock: ref count = 2
+[    31.238058167/        0x2cc93823] <DMUX> drPA VUwA0 ul_timeout: pkt written 1
+[    31.338104209/        0x2ce68797] <DMUX> drPA VUwA0 ul_powerdown: powerdown
+[    31.338111657/        0x2ce68824] <DMUX> drPA VUWa0 power_vote: curr=1, vote=0
+[    31.338130667/        0x2ce68991] <DMUX> drPA vuWa0 notify_all: event=3, data=0
+[    31.338229782/        0x2ce69100] <DMUX> drPA vuWa0 bam_dmux_smsm_ack_cb: 0x0800080b -> 0x0800000b
+Log extracted successfully

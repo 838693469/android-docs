@@ -1,0 +1,29 @@
+diff --git a/common/restriction_checker/config.py b/common/restriction_checker/config.py
+index d24a803..faf3075 100755
+--- a/common/restriction_checker/config.py
++++ b/common/restriction_checker/config.py
+@@ -27,6 +27,11 @@ ignore_paths = [
+ "toolchain",
+ "tools",
+ "vendor/qcom/proprietary/common",
++
++# wangs: add
++"amss_codes",
++"logs",
++
+ #
+ # TODO: Below are existing violations.
+ # Remove them once resolved.
+diff --git a/common/restriction_checker/restriction_checker.py b/common/restriction_checker/restriction_checker.py
+index 844617a..0cddfd4 100755
+--- a/common/restriction_checker/restriction_checker.py
++++ b/common/restriction_checker/restriction_checker.py
+@@ -22,7 +22,7 @@ log_file                = "out/restriction_checker/checker_log"
+ log_file_fd = None
+ 
+ TAG   = "Restriction_Checker"
+-DEBUG = False
++DEBUG = True
+ TEST  = False # Used to test restriction checker
+ 
+ #
