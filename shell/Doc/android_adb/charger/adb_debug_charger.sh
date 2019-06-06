@@ -13,9 +13,9 @@ echo -e "\n Android boot Mode is : '${boot_mode}' \n"
 adb shell dmesg > dmesg.log
 
 #adb shell "echo 8 > /proc/sys/kernel/printk"
-adb shell "echo 'file phy-msm-usb.c +p' > /sys/kernel/debug/dynamic_debug/control"
-adb shell "echo 'file ci13xxx_msm.c +p' > /sys/kernel/debug/dynamic_debug/control"
-adb shell "echo 'file qpnp-smbcharger.c +p' > /sys/kernel/debug/dynamic_debug/control"
+adb shell "echo -n 'file phy-msm-usb.c +p' > /sys/kernel/debug/dynamic_debug/control"
+adb shell "echo -n 'file ci13xxx_msm.c +p' > /sys/kernel/debug/dynamic_debug/control"
+adb shell "echo -n 'file qpnp-smbcharger.c +p' > /sys/kernel/debug/dynamic_debug/control"
 #adb shell "echo 'file qpnp-fg.c +p' > /sys/kernel/debug/dynamic_debug/control"
 
 echo -e "\n----------------------------------------------------\n"
