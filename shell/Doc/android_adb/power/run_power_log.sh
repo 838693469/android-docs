@@ -47,6 +47,10 @@ echo -e "\n[`date +%H:%M:%S.%N`]\n" >> $SAVE_LOG_PATH/time.txt
 cat /sys/kernel/debug/wakeup_sources > $SAVE_LOG_PATH/wakeup_sources_1.txt
 dmesg -C
 
+# clear battery data reset & recatch it
+dumpsys batterystats --enable full-wake-history
+dumpsys batterystats --reset
+
 sleep 30
 
 top -m 25 -d 1 -n 1 > $SAVE_LOG_PATH/top.txt
