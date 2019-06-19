@@ -1,0 +1,186 @@
+From 8f0a2e6ed9aa32e1faf0efb114f935e21197b4eb Mon Sep 17 00:00:00 2001
+From: linjiashuo <linjiashuo@wingtech.com>
+Date: Fri, 1 Mar 2019 11:55:55 +0800
+Subject: [PATCH] Issue Description:ExtB882325 recheck apsd to correct usb_type
+ when apsd fail Root Cause:apsd fail Product:K81923AA1 Reference Git
+ Repository:kernel Modify Methods:recheck apsd to correct usb_type when apsd
+ fail Test Requirements:redo charging test to see if charge status is ok
+ Owner:linjiashuo Reviewer:jinzhao Comments:recheck apsd to correct usb_type
+ when apsd fail Range [1/2/3/4]:4
+
+Change-Id: I6cef010c5e84e7baa99fa4cb41151c5b113adeea
+(cherry picked from commit 97682d7356499f53551cb67b622f5327cad53a4a)
+---
+ drivers/power/supply/qcom/smb5-lib.c | 82 ++++++++++++++++++++++++++++++++++--
+ drivers/power/supply/qcom/smb5-lib.h |  5 +++
+ 2 files changed, 83 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/power/supply/qcom/smb5-lib.c b/drivers/power/supply/qcom/smb5-lib.c
+index 8fc03f8..8e9b885 100755
+--- a/drivers/power/supply/qcom/smb5-lib.c
++++ b/drivers/power/supply/qcom/smb5-lib.c
+@@ -1334,8 +1334,10 @@ int smblib_rerun_apsd_if_required(struct smb_charger *chg)
+ 		return rc;
+ 	}
+ 
+-	if (!val.intval)
++	if (!val.intval) {
++		smblib_err(chg, "usb not present, rc = %d\n", rc);
+ 		return 0;
++	}
+ 
+ 	rc = smblib_request_dpdm(chg, true);
+ 	if (rc < 0)
+@@ -1384,7 +1386,7 @@ static int set_sdp_current(struct smb_charger *chg, int icl_ua)
+ 		break;
+ 	default:
+ 		smblib_err(chg, "ICL %duA isn't supported for SDP\n", icl_ua);
+-		if (icl_ua == 3000000) {
++		if (icl_ua == 2000000) {
+ 			smblib_rerun_apsd_if_required(chg);
+ 			smblib_dbg(chg, PR_INTERRUPT, "IRQ: DCP->SDP redetect\n");
+ 		}
+@@ -2852,6 +2854,22 @@ static DEVICE_ATTR(charger_version, S_IRUGO |S_IWUSR |S_IWGRP,
+ #endif
+ // - ExtR839949, linjiashuo@wingtech, modify mcharge function
+ 
++// + ExtB882325, linjiashuo@wingtech, recheck apsd to correct usb_type when apsd fail, 20190228
++static int smblib_recheck_apsd_regulation(struct smb_charger *chg, bool enable)
++{
++	int rc = 0;
++
++	if(enable) {
++		schedule_delayed_work(&chg->apsd_recheck_work, msecs_to_jiffies(5000));
++	} else {
++		chg->apsd_recheck_cnt = 0;
++		cancel_delayed_work_sync(&chg->apsd_recheck_work);
++	}
++
++	return rc;
++}
++// - ExtB882325, linjiashuo@wingtech, recheck apsd to correct usb_type when apsd fail, 20190228
++
+ static int smblib_set_sw_thermal_regulation(struct smb_charger *chg,
+ 						bool enable)
+ {
+@@ -5035,6 +5053,9 @@ void smblib_usb_plugin_locked(struct smb_charger *chg)
+ 		if (rc < 0)
+ 			smblib_err(chg, "Couldn't to enable DPDM rc=%d\n", rc);
+ 
++		// ExtB882325, linjiashuo@wingtech, recheck apsd to correct usb_type when apsd fail, 20190228
++		smblib_recheck_apsd_regulation(chg, true);
++
+ 		/* Enable SW Thermal regulation */
+ 		rc = smblib_set_sw_thermal_regulation(chg, true);
+ 		if (rc < 0)
+@@ -5050,12 +5071,29 @@ void smblib_usb_plugin_locked(struct smb_charger *chg)
+ 		schedule_delayed_work(&chg->pl_enable_work,
+ 					msecs_to_jiffies(PL_DELAY_MS));
+ 	} else {
++		// ExtB882325, linjiashuo@wingtech, recheck apsd to correct usb_type when apsd fail, 20190228
++		smblib_recheck_apsd_regulation(chg, false);
++
+ 		/* Disable SW Thermal Regulation */
+ 		rc = smblib_set_sw_thermal_regulation(chg, false);
+ 		if (rc < 0)
+ 			smblib_err(chg, "Couldn't stop SW thermal regulation WA, rc=%d\n",
+ 				rc);
+ 
++		// + ExtR839949, linjiashuo@wingtech, add mcharge
++#ifdef CONFIG_MCHARGER
++		smblib_dbg(chg, PR_MISC, "[mchg] usbin-plugout, cancel mcharge work..\n");
++
++		mcharger_p10_set_is_cable_out_occur(true);
++		if (mcharger_p10_get_is_enable()) {
++			mcharger_p10_set_is_enable(false);
++			mcharger_p10_set_to_check_chr_type(false);
++		}
++		mcharger_aicl_enable_set(true);
++		cancel_delayed_work_sync(&chg->mcharge_work);
++#endif
++		// - ExtR839949, linjiashuo@wingtech, add mcharge
++
+ 		if (chg->wa_flags & BOOST_BACK_WA) {
+ 			data = chg->irq_info[SWITCHER_POWER_OK_IRQ].irq_data;
+ 			if (data) {
+@@ -6472,6 +6510,38 @@ static void smblib_mcharge_work(struct work_struct *work)
+ #endif
+ // - ExtR839949, linjiashuo@wingtech, add mcharge
+ 
++// + ExtB882325, linjiashuo@wingtech, recheck apsd to correct usb_type when apsd fail, 20190228
++#define APSD_RETRY_MAX_TIMES	3
++#define APSD_RETRY_DELAY_MS	3000
++static void smblib_apsd_recheck_work(struct work_struct *work)
++{
++	struct smb_charger *chg = container_of(work, struct smb_charger,
++						apsd_recheck_work.work);
++	union power_supply_propval usb_online;
++	const struct apsd_result *apsd_result;
++
++	smblib_get_prop_usb_online(chg, &usb_online);
++	apsd_result = smblib_update_usb_type(chg);
++	if(usb_online.intval == 0 || apsd_result->pst != POWER_SUPPLY_TYPE_UNKNOWN) { //POWER_SUPPLY_TYPE_UNKNOWN
++		smblib_dbg(chg, PR_MISC, "usb_on=%d, apsd_result=%s, no need to recheck.\n",
++				usb_online.intval, apsd_result->name);
++		return;
++	}
++
++	if(chg->apsd_recheck_cnt >= APSD_RETRY_MAX_TIMES) {
++		smblib_err(chg, "apsd recheck counts is %d, exceed max_threshold %d, exit.\n",
++				chg->apsd_recheck_cnt, APSD_RETRY_MAX_TIMES);
++		return;
++	}
++
++	smblib_rerun_apsd_if_required(chg);
++	chg->apsd_recheck_cnt++;
++
++	schedule_delayed_work(&chg->apsd_recheck_work,
++			msecs_to_jiffies(APSD_RETRY_DELAY_MS));
++}
++// - ExtB882325, linjiashuo@wingtech, recheck apsd to correct usb_type when apsd fail, 20190228
++
+ static void smblib_uusb_otg_work(struct work_struct *work)
+ {
+ 	struct smb_charger *chg = container_of(work, struct smb_charger,
+@@ -7076,9 +7146,8 @@ int smblib_init(struct smb_charger *chg)
+ 	INIT_DELAYED_WORK(&chg->thermal_regulation_work,
+ 					smblib_thermal_regulation_work);
+ 	INIT_DELAYED_WORK(&chg->period_update_work, smblib_period_update_work); // linjiashuo.WT, add charging debug log
+-
+ 	INIT_DELAYED_WORK(&chg->update_temp_work,get_board_temp_work);//+ ExtB861970,yinjie1.wt,add,2019/01/15, torch is closed when pcb_temperature higher 44 degree
+-	
++
+ 	//+ ExtR839949, linjiashuo@wingtech, modify mcharge function
+ #ifdef CONFIG_MCHARGER
+ 	INIT_DELAYED_WORK(&chg->mcharge_work, smblib_mcharge_work);
+@@ -7088,6 +7157,11 @@ int smblib_init(struct smb_charger *chg)
+ #endif
+ 	//- ExtR839949, linjiashuo@wingtech, modify mcharge function
+ 
++	// + ExtB882325, linjiashuo@wingtech, recheck apsd to correct usb_type when apsd fail, 20190228
++	INIT_DELAYED_WORK(&chg->apsd_recheck_work, smblib_apsd_recheck_work);
++	chg->apsd_recheck_cnt = 0;
++	// - ExtB882325, linjiashuo@wingtech, recheck apsd to correct usb_type when apsd fail, 20190228
++
+ 	if (chg->uusb_moisture_protection_enabled) {
+ 		INIT_WORK(&chg->moisture_protection_work,
+ 					smblib_moisture_protection_work);
+diff --git a/drivers/power/supply/qcom/smb5-lib.h b/drivers/power/supply/qcom/smb5-lib.h
+index 13676b3..f47c9ea 100755
+--- a/drivers/power/supply/qcom/smb5-lib.h
++++ b/drivers/power/supply/qcom/smb5-lib.h
+@@ -480,6 +480,11 @@ struct smb_charger {
+ 	unsigned int		mchg_try_times;
+ #endif
+ 
++	// + ExtB882325, linjiashuo@wingtech, recheck apsd to correct usb_type when apsd fail, 20190228
++	struct delayed_work apsd_recheck_work;
++	unsigned int		apsd_recheck_cnt;
++	// - ExtB882325, linjiashuo@wingtech, recheck apsd to correct usb_type when apsd fail, 20190228
++
+ 	//+ ExtR839947, linjiashuo.WT, add charging strategy
+ 	struct device 	*usb_thermal;
+ 	struct semaphore  usbchg_sync_temp_sem;
+-- 
+1.9.1
+

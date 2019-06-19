@@ -1,0 +1,161 @@
+From 03bdc6f7cfec4d36ef6042dcf4a6ff4332ef1428 Mon Sep 17 00:00:00 2001
+From: linjiashuo <linjiashuo@wingtech.com>
+Date: Sat, 15 Dec 2018 14:49:57 +0800
+Subject: [PATCH] Issue Description:ExtB860401 the time of 99% increase to 100%
+ is too long when charging Root Cause:cv charging current limit charging speed
+ Product:K81923AA1 Reference Git Repository:kernel Modify Methods:add time
+ limit for 99% increase to 100% Test Requirements:redo charging test to see if
+ the time of 99% increase to 100% is ok Owner:linjiashuo Reviewer:jinzhao
+ Comments:the time of 99% increase to 100% is too long when charging Range
+ [1/2/3/4]:4
+
+Change-Id: Idabaad9b6aff61dd395e275ed6ed4ac66bb1322e
+---
+ drivers/power/supply/qcom/qg-core.h |  1 +
+ drivers/power/supply/qcom/qg-soc.c  | 65 +++++++++++++++++++++++++++++++++----
+ drivers/power/supply/qcom/qpnp-qg.c | 14 ++++++++
+ 3 files changed, 73 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/power/supply/qcom/qg-core.h b/drivers/power/supply/qcom/qg-core.h
+index 41579f6..4bd6587 100644
+--- a/drivers/power/supply/qcom/qg-core.h
++++ b/drivers/power/supply/qcom/qg-core.h
+@@ -138,6 +138,7 @@ struct qpnp_qg {
+ 	ktime_t			last_user_update_time;
+ 	ktime_t			last_fifo_update_time;
+ 	unsigned long		last_maint_soc_update_time;
++	unsigned long		soc_to_full_trigger_time; // ExtB860401, linjiashuo@wingtech, decrease the time of soc increase to full
+ 	struct iio_channel	*batt_therm_chan;
+ 	struct iio_channel	*batt_id_chan;
+ 
+diff --git a/drivers/power/supply/qcom/qg-soc.c b/drivers/power/supply/qcom/qg-soc.c
+index 711bd2b..5567f0a 100644
+--- a/drivers/power/supply/qcom/qg-soc.c
++++ b/drivers/power/supply/qcom/qg-soc.c
+@@ -126,13 +126,24 @@ static bool is_scaling_required(struct qpnp_qg *chip)
+ 		return true;
+ 
+ 	if ((abs(chip->catch_up_soc - chip->msoc) < chip->dt.delta_soc) &&
+-		chip->catch_up_soc != 0 && chip->catch_up_soc != 100)
+-		return false;
+-
+-	if (chip->catch_up_soc == chip->msoc)
+-		/* SOC has not changed */
++		chip->catch_up_soc != 0 && chip->catch_up_soc != 100 &&
++		chip->catch_up_soc != 99) //ExtB860401, linjiashuo@wingtech, decrease the time of soc increase to full
+ 		return false;
+ 
++	if (chip->catch_up_soc == chip->msoc) {
++		//+ ExtB860401, linjiashuo@wingtech, decrease the time of soc increase to full
++		if(chip->soc_to_full_trigger_time == 0 ||
++				chip->catch_up_soc != 99 ||
++				!is_usb_present(chip)) {
++			/* SOC has not changed */
++			chip->soc_to_full_trigger_time = 0;
++			qg_dbg(chip, QG_DEBUG_SOC, "Joshua: time limit of soc increase to full is clear.\n");
++			return false;
++		} else {
++			pr_err("Joshua is_scaling_required: trigger time limit of soc increase to full, required soc scaling.\n");
++		}
++		//- ExtB860401, linjiashuo@wingtech, decrease the time of soc increase to full
++	}
+ 
+ 	if (chip->catch_up_soc > chip->msoc && !is_usb_present(chip))
+ 		/* USB is not present and SOC has increased */
+@@ -166,19 +177,59 @@ static bool maint_soc_timeout(struct qpnp_qg *chip)
+ 	return false;
+ }
+ 
++#define SOC_99_MAX_STAY_TIME_S 340 //340s
+ static void update_msoc(struct qpnp_qg *chip)
+ {
+ 	int rc = 0, sdam_soc, batt_temp = 0,  batt_soc_32bit = 0;
++	int last_ibat = 0;
+ 	bool usb_present = is_usb_present(chip);
++	unsigned long now_time;
++
++	rc = qg_get_battery_current(chip, &last_ibat);
++	if(rc < 0) {
++		pr_err("Joshua update_msoc: qg_get_battery_current failed.\n");
++		last_ibat = 0;
++	}
++	qg_dbg(chip, QG_DEBUG_SOC, "Joshua: last_ibat=%d.\n", last_ibat);
+ 
+ 	if (chip->catch_up_soc > chip->msoc) {
+ 		/* SOC increased */
+-		if (usb_present) /* Increment if USB is present */
++		if (usb_present) { /* Increment if USB is present */
+ 			chip->msoc += chip->dt.delta_soc;
++			//+ ExtB860401, linjiashuo@wingtech, decrease the time of soc increase to full
++			if(chip->msoc == 99) {
++				get_rtc_time(&chip->soc_to_full_trigger_time);
++				qg_dbg(chip, QG_DEBUG_SOC, "Joshua: soc increases to 99, time_limit start, is %d.\n",
++					chip->soc_to_full_trigger_time);
++			} else {
++				chip->soc_to_full_trigger_time = 0;
++				qg_dbg(chip, QG_DEBUG_SOC, "Joshua: clear soc_to_full_trigger_time to %d.\n",
++					chip->soc_to_full_trigger_time);
++			}
++			//- ExtB860401, linjiashuo@wingtech, decrease the time of soc increase to full
++		}
+ 	} else if (chip->catch_up_soc < chip->msoc) {
+ 		/* SOC dropped */
+-		chip->msoc -= chip->dt.delta_soc;
++		chip->catch_up_soc = chip->msoc;
++		if (!usb_present || last_ibat > 0) {
++			chip->msoc -= chip->dt.delta_soc;
++			chip->catch_up_soc = chip->msoc;
++		}
++		chip->soc_to_full_trigger_time = 0;
+ 	}
++
++	//+ ExtB860401, linjiashuo@wingtech, decrease the time of soc increase to full
++	if(chip->msoc == 99 && usb_present) {
++		get_rtc_time(&now_time);
++		if(now_time - chip->soc_to_full_trigger_time >= SOC_99_MAX_STAY_TIME_S) {
++			pr_err("Joshua update_msoc: soc_to_full_trigger_time expire, soc increase to 100\n");
++			chip->soc_to_full_trigger_time = 0;
++			chip->msoc += chip->dt.delta_soc;
++			chip->catch_up_soc = chip->msoc;
++		}
++	}
++	//- ExtB860401, linjiashuo@wingtech, decrease the time of soc increase to full
++
+ 	chip->msoc = CAP(0, 100, chip->msoc);
+ 
+ 	if (chip->maint_soc > 0 && chip->msoc < chip->maint_soc
+diff --git a/drivers/power/supply/qcom/qpnp-qg.c b/drivers/power/supply/qcom/qpnp-qg.c
+index 2667b84..cade6bd 100644
+--- a/drivers/power/supply/qcom/qpnp-qg.c
++++ b/drivers/power/supply/qcom/qpnp-qg.c
+@@ -2003,6 +2003,19 @@ static int qg_usb_status_update(struct qpnp_qg *chip)
+ 		qg_dbg(chip, QG_DEBUG_STATUS,
+ 			"USB status changed Present=%d\n",
+ 							usb_present);
++		//+ ExtB860401, linjiashuo@wingtech, decrease the time of soc increase to full
++		if(usb_present) {
++			if(chip->catch_up_soc == chip->msoc &&
++					chip->msoc == 99) {
++				get_rtc_time(&chip->soc_to_full_trigger_time);
++				qg_dbg(chip, QG_DEBUG_SOC, "Joshua: soc=99, time_limit start, is %d.\n",
++						chip->soc_to_full_trigger_time);
++			}
++		} else {
++			chip->soc_to_full_trigger_time = 0;
++		}
++		//+ ExtB860401, linjiashuo@wingtech, decrease the time of soc increase to full
++
+ 		qg_scale_soc(chip, false);
+ 	}
+ 
+@@ -3844,6 +3857,7 @@ static int qpnp_qg_probe(struct platform_device *pdev)
+ 	chip->soh = -EINVAL;
+ 	chip->esr_actual = -EINVAL;
+ 	chip->esr_nominal = -EINVAL;
++	chip->soc_to_full_trigger_time = 0;	// ExtB860401, linjiashuo@wingtech, decrease the time of soc increase to full
+ 
+ 	rc = qg_alg_init(chip);
+ 	if (rc < 0) {
+-- 
+1.9.1
+

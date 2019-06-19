@@ -1,0 +1,48 @@
+From 03d948dbd890cf5fa766e391f8efeba18bf0bfb1 Mon Sep 17 00:00:00 2001
+From: linjiashuo <linjiashuo@wingtech.com>
+Date: Wed, 16 Jan 2019 17:43:56 +0800
+Subject: [PATCH] Issue Description:ExtB867703 reduce the time of DCD in APSD
+ Root Cause:the time of APSD is too long Product:K81923AA1 Reference Git
+ Repository:kernel Modify Methods:reduce the time of DCD Test Requirements:do
+ cable plugin test to check the time of APSD Owner:linjiashuo Reviewer:jinzhao
+ Comments:reduce the time of DCD in APSD Range [1/2/3/4]:4
+
+Change-Id: Ib42b43548c76a9328439e2ac64ed58325bf425ba
+---
+ drivers/power/supply/qcom/qpnp-smb5.c | 7 +++++++
+ drivers/power/supply/qcom/smb5-reg.h  | 1 +
+ 2 files changed, 8 insertions(+)
+
+diff --git a/drivers/power/supply/qcom/qpnp-smb5.c b/drivers/power/supply/qcom/qpnp-smb5.c
+index 21c64cb..271dedf 100644
+--- a/drivers/power/supply/qcom/qpnp-smb5.c
++++ b/drivers/power/supply/qcom/qpnp-smb5.c
+@@ -2168,6 +2168,13 @@ static int smb5_init_hw(struct smb5 *chip)
+ 		return rc;
+ 	}
+ 
++	// + ExtB867703, linjiashuo@WT, reduce the time of APSD, 20190116
++	rc = smblib_masked_write(chg, USBIN_OPTIONS_2_CFG_REG,
++			DCD_TIMEOUT_SEL_BIT, 0);
++	if (rc < 0)
++		dev_err(chg->dev, "Couldn't config  DCD_TIMEOUT_SEL_BIT rc=%d\n", rc);
++	// - ExtB867703, linjiashuo@WT, reduce the time of APSD, 20190116
++
+ 	switch (chip->dt.chg_inhibit_thr_mv) {
+ 	case 50:
+ 		rc = smblib_masked_write(chg, CHARGE_INHIBIT_THRESHOLD_CFG_REG,
+diff --git a/drivers/power/supply/qcom/smb5-reg.h b/drivers/power/supply/qcom/smb5-reg.h
+index 605de0a..9ba7e46 100644
+--- a/drivers/power/supply/qcom/smb5-reg.h
++++ b/drivers/power/supply/qcom/smb5-reg.h
+@@ -270,6 +270,7 @@ enum {
+ 
+ #define USBIN_OPTIONS_2_CFG_REG			(USBIN_BASE + 0x63)
+ #define FLOAT_OPTIONS_MASK			GENMASK(2, 0)
++#define DCD_TIMEOUT_SEL_BIT				BIT(5) // ExtB867703, linjiashuo@WT, reduce the time of APSD, 20190116
+ #define FLOAT_DIS_CHGING_CFG_BIT		BIT(2)
+ #define SUSPEND_FLOAT_CFG_BIT			BIT(1)
+ #define FORCE_FLOAT_SDP_CFG_BIT			BIT(0)
+-- 
+1.9.1
+

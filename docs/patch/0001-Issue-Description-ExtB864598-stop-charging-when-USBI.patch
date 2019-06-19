@@ -1,0 +1,47 @@
+From 75723314ffa7745d125463550c4f7c8bfea3eef2 Mon Sep 17 00:00:00 2001
+From: linjiashuo <linjiashuo@wingtech.com>
+Date: Tue, 18 Dec 2018 16:34:16 +0800
+Subject: [PATCH] Issue Description:ExtB864598 stop charging when USBIN voltage
+ is up to 6.9V Root Cause:adapter voltage allowance is not correct
+ Product:K81923AA1 Reference Git Repository:kernel Modify Methods:modify
+ adapter voltage allowance to 5V_TO_9V Test Requirements:do charging test to
+ see if USBIN vlotage is risen to about 10.3V Owner:linjiashuo
+ Reviewer:jinzhao Comments:stop charging when USBIN voltage is up to 6.9V
+ Range [1/2/3/4]:4
+
+Change-Id: Ia8b0ef169248bcabe63b5126b2d8a384dc8ca13e
+---
+ drivers/power/supply/qcom/smb5-lib.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/power/supply/qcom/smb5-lib.c b/drivers/power/supply/qcom/smb5-lib.c
+index 5a40678..2160e73 100644
+--- a/drivers/power/supply/qcom/smb5-lib.c
++++ b/drivers/power/supply/qcom/smb5-lib.c
+@@ -1220,9 +1220,9 @@ static void smblib_uusb_removal(struct smb_charger *chg)
+ 
+ 	/* reconfigure allowed voltage for HVDCP */
+ 	rc = smblib_set_adapter_allowance(chg,
+-			USBIN_ADAPTER_ALLOW_5V_OR_9V_TO_12V);
++			USBIN_ADAPTER_ALLOW_5V_TO_9V);
+ 	if (rc < 0)
+-		smblib_err(chg, "Couldn't set USBIN_ADAPTER_ALLOW_5V_OR_9V_TO_12V rc=%d\n",
++		smblib_err(chg, "Couldn't set USBIN_ADAPTER_ALLOW_5V_TO_9V rc=%d\n",
+ 			rc);
+ 
+ 	chg->voltage_min_uv = MICRO_5V;
+@@ -5467,9 +5467,9 @@ static void typec_src_removal(struct smb_charger *chg)
+ 
+ 	/* reconfigure allowed voltage for HVDCP */
+ 	rc = smblib_set_adapter_allowance(chg,
+-			USBIN_ADAPTER_ALLOW_5V_OR_9V_TO_12V);
++			USBIN_ADAPTER_ALLOW_5V_TO_9V);
+ 	if (rc < 0)
+-		smblib_err(chg, "Couldn't set USBIN_ADAPTER_ALLOW_5V_OR_9V_TO_12V rc=%d\n",
++		smblib_err(chg, "Couldn't set USBIN_ADAPTER_ALLOW_5V_TO_9V rc=%d\n",
+ 			rc);
+ 
+ 	/*
+-- 
+1.9.1
+
