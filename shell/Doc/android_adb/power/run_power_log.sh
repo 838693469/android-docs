@@ -62,6 +62,7 @@ cat /sys/kernel/debug/wakeup_sources > $SAVE_LOG_PATH/wakeup_sources_2.txt
 dumpsys power > $SAVE_LOG_PATH/dumpsys_power.txt
 
 bugreport > $SAVE_LOG_PATH/bugreport.txt
+#bugreport 可以使用GO工具图形化解析
 
 
 echo -e "\n[`date +%H:%M:%S.%N`]\n" >> $SAVE_LOG_PATH/time.txt
