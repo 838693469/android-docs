@@ -1,7 +1,8 @@
 #!/bin/bash
-# hansei.py parse for rpm resource from ramdump
+# hansei.py parse for rpm resource from ramdump(msm8937 chipset done)
 # owner:hongwei.di
-
+# arg1: qualcomm amss_codes root dir
+# output: ${pwd}/output/
 
 TOP_DIR=`pwd`
 HANSEI_DIR="$1"
