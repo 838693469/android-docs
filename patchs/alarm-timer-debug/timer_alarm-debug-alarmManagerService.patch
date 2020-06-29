@@ -1,0 +1,25 @@
+diff --git a/services/core/java/com/android/server/AlarmManagerService.java b/services/core/java/com/android/server/AlarmManagerService.java
+index 9e4352e..a135dd4 100644
+--- a/services/core/java/com/android/server/AlarmManagerService.java
++++ b/services/core/java/com/android/server/AlarmManagerService.java
+@@ -136,7 +136,7 @@ class AlarmManagerService extends SystemService {
+     static final int TYPE_NONWAKEUP_MASK = 0x1; // low bit => non-wakeup
+ 
+     static final String TAG = "AlarmManager";
+-    static final boolean localLOGV = false;
++    static final boolean localLOGV = true;
+     static final boolean DEBUG_BATCH = localLOGV || false;
+     static final boolean DEBUG_VALIDATE = localLOGV || false;
+     static final boolean DEBUG_ALARM_CLOCK = localLOGV || false;
+@@ -3831,6 +3831,11 @@ class AlarmManagerService extends SystemService {
+             } else {
+               Trace.traceBegin(Trace.TRACE_TAG_POWER, "Dispatch non-wakeup alarm to " + alarm.packageName);
+             }
++
++	    if (alarm.wakeup && alarm.operation != null) {
++		Slog.v(TAG, "triggerd:" + alarm.operation.getIntent().toShortString(false, true, false, false) + "[oem]" + alarm + "\n");
++	    }
++
+             try {
+                 if (localLOGV) {
+                     Slog.v(TAG, "sending alarm " + alarm);
