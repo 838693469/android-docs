@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=pytimechart
+GenericName=pytimchart trace analyser
+Comment=Viewer for linux kernel's ftrace/perf/trace-event data
+Exec=pytimechart
+Icon=
+Terminal=false
+Type=Application
+Categories=Development;

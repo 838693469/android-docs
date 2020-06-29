@@ -1,0 +1,14 @@
+# minimal style that allows pytimechart to looks at least ok on
+# every themes of ubuntu
+
+style "default" {
+	text[NORMAL]      = "#323232"
+	bg[NORMAL]        = "#D9D4CC"
+}
+style "menubar" = "default" {
+	engine "murrine" {
+		textstyle = 0
+	}
+}
+class "GtkMenuBar"   style:highest "default"
+widget_class "*<GtkMenuBar>.*"			style "default"

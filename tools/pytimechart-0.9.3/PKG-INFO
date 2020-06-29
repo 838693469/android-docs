@@ -1,0 +1,50 @@
+Metadata-Version: 1.0
+Name: pytimechart
+Version: 0.9.3
+Summary: Fast graphical exploration and visualisation for linux kernel traces
+Home-page: http://gitorious.org/pytimechart
+Author: Pierre Tardy
+Author-email: tardyp@gmail.com
+License: BSD
+Download-URL: http://gitorious.org/pytimechart
+Description: pyTimechart is aimed at helping kernel developer to browse into large scale traces.
+        
+        Based on very powerful and efficient plotting library *Chaco*, pytimechart UI feels very smooth.
+        
+        Based on the python language, its plugin based architecture allow developer to very quickly implement
+        parsing and representation of new trace-event function-trace or trace_printk
+        
+        Kernel traces are parsed as trace-events, and organised into processes, each process
+        is displayed in its own line. The x-axis representing the time, process is represented
+        as intervals when it is scheduled in the system.
+        
+        pyTimechart processes are not only *process* in the common unix sense, it can be any group
+        of activities in the system. Thus pytimechart display activities of:
+        
+        * cpuidle states
+        * cpufreq states
+        * runtime_pm
+        * irqs
+        * tasklets
+        * works
+        * timers
+        * kernel threads
+        * user process
+        * whatever there is a plugin for
+        
+        pyTimechart also represent graphically the wakeup events between two process.
+        
+Keywords: gui,ftrace,perf,trace-event
+Platform: Windows
+Platform: Linux
+Platform: Mac OS-X
+Platform: Unix
+Platform: Solaris
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: OS Independent
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Unix
+Classifier: Intended Audience :: Developers

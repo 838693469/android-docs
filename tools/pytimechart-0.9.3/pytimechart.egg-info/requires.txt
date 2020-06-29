@@ -1,0 +1,5 @@
+Traits >= 3.0
+TraitsGUI >= 3.0
+TraitsBackendWX >= 3.0
+Enable >= 3.0
+Chaco >= 3.0
